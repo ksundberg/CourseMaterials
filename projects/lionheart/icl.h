@@ -1,0 +1,38 @@
+#ifndef icl_H
+#define icl_H
+#include "unit.h"
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <cmath>
+#define INFANTRYHP 10
+#define ARCHERHP   10
+#define KNIGHTHP   5
+#define CROWNHP    1
+
+using namespace std;
+
+class icl : public Unit {
+public:
+	icl():Unit(){}
+
+	icl(int ir,int ic,int ihp,Dir idir,Rank irank,
+	bool idead, string itla):
+	Unit(ir,ic,ihp,idir,irank,idead,itla){}
+	enum ThingType{unit,space,rock};
+	
+	struct Thing{ 
+	ThingType what;  
+	Rank rank;       
+	string tla;      
+	Dir dir;         
+	int hp;          
+};       
+	void Place(int minR,int maxR,int minC,int maxC, SitRep sitrep);
+	Action Recommendation(SitRep sitrep);
+	
+
+private:
+
+};
+#endif
