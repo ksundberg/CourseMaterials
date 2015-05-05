@@ -123,6 +123,11 @@
 <node CREATED="1430767831753" ID="ID_1384348446" MODIFIED="1430767975872" TEXT="Some packages (Visual Studio) bundle all of these together"/>
 </node>
 </node>
+<node CREATED="1430858955675" ID="ID_430047525" MODIFIED="1430858964199" TEXT="Compiler Warnings And Errors">
+<node CREATED="1430858964200" ID="ID_819013735" MODIFIED="1430858976115" TEXT="You must fix all compile errors"/>
+<node CREATED="1430858976371" ID="ID_49577163" MODIFIED="1430858982313" TEXT="You should fix all compile warnings"/>
+<node CREATED="1430858982522" ID="ID_573454005" MODIFIED="1430858991987" TEXT="Your compiler is your greatest ally . . . use it"/>
+</node>
 </node>
 </node>
 </node>
