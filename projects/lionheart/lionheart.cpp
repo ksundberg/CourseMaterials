@@ -6,8 +6,8 @@
 #include "lionheart.h"
 
 // A few globals, just to be Old School
-Thing b[ROWS][COLS];
-char c[ROWS][COLS];
+Thing board[ROWS][COLS];
+char charBoard[ROWS][COLS];
 int numplayers;
 int numTurns;
 string tla[4];
@@ -19,21 +19,21 @@ string winner;
 
 			
 void unit2thing(Unit *u, int r, int c){
-	if(!u){b[r][c].what=space; return;}
-	if(u->getDead()){b[r][c].what=space; return;}
-	b[r][c].what = unit;
-	b[r][c].rank = u->getRank();
-	b[r][c].tla = u->getTla();
-	b[r][c].dir = u->getDir();
-	b[r][c].hp = u->getHp();
+	if(!u){board[r][c].what=space; return;}
+	if(u->getDead()){board[r][c].what=space; return;}
+	board[r][c].what = unit;
+	board[r][c].rank = u->getRank();
+	board[r][c].tla = u->getTla();
+	board[r][c].dir = u->getDir();
+	board[r][c].hp = u->getHp();
 }
 
 void makeB(Unit *u[NUM]){
 	int i,j;
 	for(i=0;i<ROWS;++i){
 		for(j=0;j<COLS;++j){
-			b[i][j].what=space;
-			if(c[i][j]=='X')b[i][j].what = rock; 
+			board[i][j].what=space;
+			if(charBoard[i][j]=='X')board[i][j].what = rock; 
 		}
 	}
 			
@@ -46,20 +46,20 @@ bool nextToBarrier(Unit *u){
 	int r,c;
 	r=u->getR();
 	c=u->getC();
-	if(r-1>0     && c-1>0     && b[r-1][c-1].what == rock)return true;
-	if(r-1>0                  && b[r-1][c  ].what == rock)return true;
-	if(r-1>0     && c+1<=COLS && b[r-1][c+1].what == rock)return true;
-	if(             c-1>0     && b[r  ][c-1].what == rock)return true;
-	if(             c+1<=COLS && b[r  ][c+1].what == rock)return true;
-	if(r+1<=ROWS && c-1>0     && b[r+1][c-1].what == rock)return true;
-	if(r+1<=ROWS              && b[r+1][c  ].what == rock)return true;
-	if(r+1<=ROWS && c+1<=COLS && b[r+1][c+1].what == rock)return true;
+	if(r-1>0     && c-1>0     && board[r-1][c-1].what == rock)return true;
+	if(r-1>0                  && board[r-1][c  ].what == rock)return true;
+	if(r-1>0     && c+1<=COLS && board[r-1][c+1].what == rock)return true;
+	if(             c-1>0     && board[r  ][c-1].what == rock)return true;
+	if(             c+1<=COLS && board[r  ][c+1].what == rock)return true;
+	if(r+1<=ROWS && c-1>0     && board[r+1][c-1].what == rock)return true;
+	if(r+1<=ROWS              && board[r+1][c  ].what == rock)return true;
+	if(r+1<=ROWS && c+1<=COLS && board[r+1][c+1].what == rock)return true;
 	return false;
 }
 
 bool localSearch(Dir map[ROWS][COLS], Dir map2[ROWS][COLS],int r, int c){
 	if(map[r][c]!=none)return false;
-	if(b[r][c].what==rock)return false;
+	if(board[r][c].what==rock)return false;
 
 	if(r-1>=0  &&map2[r-1][c  ]!=none){map[r][c]=up;return true;}
 	if(c+1<COLS&&map2[r  ][c+1]!=none){map[r][c]=rt;return true;}
@@ -182,10 +182,10 @@ Dir anyDir(Unit *u){
 	int tr,tc;
 	r=u->getR();
 	c=u->getC();
-	tr=r-1;tc=c  ;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&b[tr][tc].what==space)return up;
-	tr=r+1;tc=c  ;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&b[tr][tc].what==space)return dn;
-	tr=r  ;tc=c-1;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&b[tr][tc].what==space)return lt;
-	tr=r  ;tc=c+1;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&b[tr][tc].what==space)return rt;
+	tr=r-1;tc=c  ;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&board[tr][tc].what==space)return up;
+	tr=r+1;tc=c  ;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&board[tr][tc].what==space)return dn;
+	tr=r  ;tc=c-1;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&board[tr][tc].what==space)return lt;
+	tr=r  ;tc=c+1;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&board[tr][tc].what==space)return rt;
 	return none;
 }
 		
@@ -195,7 +195,7 @@ SitRep makeSitRep(Unit *u[NUM],int m){
 	if(!u[m])exit(5);
 	SitRep s;
 	int i,j;
-	for(i=0;i<ROWS;++i)for(j=0;j<COLS;++j)s.thing[i][j]=b[i][j];
+	for(i=0;i<ROWS;++i)for(j=0;j<COLS;++j)s.thing[i][j]=board[i][j];
 	s.nearestEnemyCrown = getNearestEnemyCrown(u,m);
 	s.nearestEnemy = getNearestEnemy(u,m);
 	s.anyOpenSpace = anyDir(u[m]);
@@ -246,7 +246,7 @@ void display(Unit *u[]){
 		sout<<"|";
 		for(j=0;j<COLS;++j){
 			// if it's open space
-			if(b[i][j].what==space){
+			if(board[i][j].what==space){
 				if(DOTS) sout<<".";
 				else     sout<<" ";
 				if(!TINYMAP)sout<<" ";
@@ -254,7 +254,7 @@ void display(Unit *u[]){
 			}
 			
 			// if it's a rock
-			if(b[i][j].what==rock){
+			if(board[i][j].what==rock){
 				sout<<"X";
 				if(!TINYMAP)sout<<" ";
 				continue;
@@ -263,15 +263,15 @@ void display(Unit *u[]){
 			//else it's a unit
 			//turn on some colors if ANSI set
 			if(ANSI){
-				if(b[i][j].tla==tla[0]) sout << "\033[0;31m";
-				if(b[i][j].tla==tla[1]) sout << "\033[0;35m";
-				if(b[i][j].tla==tla[2]) sout << "\033[0;36m";
-				if(b[i][j].tla==tla[3]) sout << "\033[0;37m";
+				if(board[i][j].tla==tla[0]) sout << "\033[0;31m";
+				if(board[i][j].tla==tla[1]) sout << "\033[0;35m";
+				if(board[i][j].tla==tla[2]) sout << "\033[0;36m";
+				if(board[i][j].tla==tla[3]) sout << "\033[0;37m";
 			}
 
 			//spit out the appropriate unit character
-			if(ANSI || b[i][j].tla==tla[0]){
-				switch(b[i][j].rank){
+			if(ANSI || board[i][j].tla==tla[0]){
+				switch(board[i][j].rank){
 				case infantry: sout<<"i";break;
 				case archer:   sout<<"a";break;
 				case knight:   sout<<"k";break;
@@ -279,7 +279,7 @@ void display(Unit *u[]){
 				default:       sout<<"?";break;
 				}
 			}else{
-				switch(b[i][j].rank){
+				switch(board[i][j].rank){
 				case infantry: sout<<"I";break;
 				case archer:   sout<<"A";break;
 				case knight:   sout<<"K";break;
@@ -290,7 +290,7 @@ void display(Unit *u[]){
 
 			//indicate direction if there is space
 			if(!TINYMAP){
-				switch(b[i][j].dir){
+				switch(board[i][j].dir){
 				case up:  sout<<"^";break;
 				case dn:  sout<<"v";break;
 				case rt:  sout<<">";break;
@@ -349,11 +349,11 @@ void readMap(){
 
 	for(i=0;i<ROWS;++i){
 		for(j=0;j<COLS;++j){
-			b[i][j].what=space;
-			fin >> c[i][j];
-			if(c[i][j]=='X'){
-				b[i][j].dir = none; 
-				b[i][j].what = rock; 
+			board[i][j].what=space;
+			fin >> charBoard[i][j];
+			if(charBoard[i][j]=='X'){
+				board[i][j].dir = none; 
+				board[i][j].what = rock; 
 			}
 		}
 	//cout << endl;
@@ -552,11 +552,11 @@ if(tla=="usa") return new usa(0,0,hp,up,rank,false,tla);
 
 void updateB(Unit *u){
 	if(!u)exit(5);
-	b[u->getR()][u->getC()].what=unit;
-	b[u->getR()][u->getC()].rank=u->getRank();
-	b[u->getR()][u->getC()].tla=u->getTla();
-	b[u->getR()][u->getC()].dir=u->getDir();
-	b[u->getR()][u->getC()].hp=u->getHp();
+	board[u->getR()][u->getC()].what=unit;
+	board[u->getR()][u->getC()].rank=u->getRank();
+	board[u->getR()][u->getC()].tla=u->getTla();
+	board[u->getR()][u->getC()].dir=u->getDir();
+	board[u->getR()][u->getC()].hp=u->getHp();
 }
 
 
@@ -567,11 +567,11 @@ void checkPlacement(Unit *u,Unit t,int minr,int maxr,int minc,int maxc){
 	tc=u->getC();
 	int i;
 	
-	if(b[tr][tc].what==rock){
+	if(board[tr][tc].what==rock){
 		cout << "error: "<<u->getTla()<<" placed unit on a rock. exiting.\n";
 		exit (6);
 	}
-	if(b[tr][tc].what==unit){
+	if(board[tr][tc].what==unit){
 		cout << "error: "<<u->getTla()<<" placed unit on another unit. exiting.\n";
 		exit (6);
 	}
@@ -705,7 +705,7 @@ int clear(Unit *u[], int m, int dist){
 		if(tr<0||tr>=ROWS||tc<0||tc>=COLS)break;
 	
 		// is there a something there?
-		if(b[tr][tc].what!=space)break;
+		if(board[tr][tc].what!=space)break;
 	
 		//nothing there?  bump the goDist
 		++goDist;
