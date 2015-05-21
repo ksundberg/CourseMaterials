@@ -16,7 +16,22 @@ ${CMAKE_BINARY_DIR}
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
   endif()
   endif()
-
+##############################
+# Map Files
+set(Map_files
+    4player.in
+    map1.in
+    map2.in
+    map3.in
+    map4.in
+    map6.in
+    forts.in
+    map.in
+    navy.in
+   )
+foreach(map ${Map_files})
+  configure_file(resources/maps/${map} ${map} COPYONLY)
+endforeach()
 ###############################
 # Student Files
 set(Student_tlas
