@@ -269,7 +269,7 @@ void display(Unit *u[]){
 				if(b[i][j].tla==tla[3]) sout << "\033[0;37m";
 			}
 
-			//spit out the appropirate unit character
+			//spit out the appropriate unit character
 			if(ANSI || b[i][j].tla==tla[0]){
 				switch(b[i][j].rank){
 				case infantry: sout<<"i";break;
@@ -880,7 +880,7 @@ void doTurn(Unit *u[NUM]){
 	int lr,lc;
 	int i,j,t,next[NUM];
 
-	//come up witha a randome ordering of pieces for this turn
+	//come up with a random ordering of pieces for this turn
 	for(i=0;i<NUM;++i)next[i]=i;
 	for(i=NUM-1;i>0;--i){
 		j=rand()%i;

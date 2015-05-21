@@ -5,10 +5,7 @@
 #include <string>
 #include <cstdlib>
 #include <cmath>
-#define INFANTRYHP 10
-#define ARCHERHP   10
-#define KNIGHTHP   5
-#define CROWNHP    1
+#include "lionheart2.h"
 
 using namespace std;
 

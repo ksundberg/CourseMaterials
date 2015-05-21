@@ -7,7 +7,7 @@ float dist(int ar,int ac,int br,int bc){
 
 Unit::Unit(){ r=0; c=0; hp=0; dir=up; rank=infantry; dead=true; }
 
-Unit::Unit(int ir,int ic,int ihp,Dir idir,Rank irank, bool idead, string itla){ 
+Unit::Unit(int ir,int ic,int ihp,Dir idir,Rank irank, bool idead, std::string itla){ 
 	r=ir; c=ic; hp=ihp; dir=idir; rank=irank; dead=idead; tla=itla;
 }
 
@@ -17,7 +17,7 @@ int Unit::getHp(){ return hp; }
 Dir Unit::getDir(){ return dir; } 
 Rank Unit::getRank(){ return rank; } 
 bool Unit::getDead(){ return dead; } 
-string Unit::getTla(){ return tla; }
+std::string Unit::getTla(){ return tla; }
 
 void Unit::Turn(Dir newDir){ dir=newDir; }
 
