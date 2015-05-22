@@ -6,7 +6,7 @@
 #include "lionheart.h"
 
 // A few globals, just to be Old School
-char charBoard[ROWS][COLS];
+
 int numplayers;
 int numTurns;
 string tla[4];
@@ -27,7 +27,7 @@ void unit2thing(Unit *u, int r, int c,Board& board){
 	board[r][c].hp = u->getHp();
 }
 
-void makeB(Unit *u[NUM],Board& board){
+void makeB(Unit *u[NUM],Board& board,CharBoard& charBoard){
 	int i,j;
 	for(i=0;i<ROWS;++i){
 		for(j=0;j<COLS;++j){
@@ -312,7 +312,7 @@ void display(Unit *u[],Board& board){
 }
 
 
-void readMap(Board& board){
+void readMap(Board& board,CharBoard& charBoard){
 	int i,j,rows,cols;
 	ifstream  fin;
 	fin.open(INFILE);
@@ -598,9 +598,9 @@ void checkNoMods(Unit *u,Unit t){
 
 }
 
-void setUpBoard(Unit *u[NUM],Board& board){
+void setUpBoard(Unit *u[NUM],Board& board,CharBoard& charBoard){
 	Unit t;
-	readMap(board);
+	readMap(board,charBoard);
 	bool gotNames=false;
 	int i;
 	int pnum;
@@ -869,7 +869,7 @@ bool oneLeft(Unit *u[NUM]){
 }
 
 	
-void doTurn(Unit *u[NUM],Board& board){
+void doTurn(Unit *u[NUM],Board& board,CharBoard& charBoard){
 	Unit tu;
 	int m;
     	SitRep sitRep;
@@ -891,7 +891,7 @@ void doTurn(Unit *u[NUM],Board& board){
 		m=next[i];
 		if(oneLeft(u))return;;
         	if(u[m]&&!u[m]->getDead()){
-			makeB(u,board);
+			makeB(u,board,charBoard);
             		sitRep=makeSitRep(u,m,board);
             		int tseed=rand();  //Save the current state of rand...
 			tu=*u[m];
@@ -926,16 +926,16 @@ void doTurn(Unit *u[NUM],Board& board){
 
 
 //run an automatic game.  tla1 and tla2 should be set up prior to calling
-int autoGame(Unit *u[],Board& board){
+int autoGame(Unit *u[],Board& board,CharBoard& charBoard){
 	bool done=false;
 
 	// set up the board
-	setUpBoard(u,board);
+	setUpBoard(u,board,charBoard);
 	
 	while(!done){
 		// do a turn
 		++numTurns;
-		doTurn(u,board);	
+		doTurn(u,board,charBoard);	
 		if(oneLeft(u))done=true;
 	}
 	if(AUTOTOURNEY){
@@ -946,7 +946,7 @@ int autoGame(Unit *u[],Board& board){
 }
 
 //run a whole tournament of each tla against AUTONUMMATCHES random others, output stats on each
-void autoTourney(Unit *u[],Board& board){
+void autoTourney(Unit *u[],Board& board,CharBoard& charBoard){
 	int i,j,k;
 	int wins;
 	int w;
@@ -960,7 +960,7 @@ void autoTourney(Unit *u[],Board& board){
 			//while(k==i || noPlay[k])k=rand()%NUMTLAS;
 			k=79;
 			tla[1]=tlalist[k];	
-			w=autoGame(u,board);
+			w=autoGame(u,board,charBoard);
 			//cout << "\t"<<tla[0]<<" vs. "<<tla[1]<<": ";
 			//cout << "winner: "<<winner<<"  -- ";
 			//if(w==2)cout<<"win\n";
@@ -979,6 +979,7 @@ int main()
 {
 
   Board board;
+  CharBoard charBoard;
 
   Unit* u[NUM];
   char line[1024];
@@ -989,12 +990,12 @@ int main()
 
   // if running an auto tourney, just do that and quit
   if (AUTOTOURNEY) {
-    autoTourney(u,board);
+    autoTourney(u,board,charBoard);
     return 0;
   }
 
   // set up the board
-  setUpBoard(u,board);
+  setUpBoard(u,board,charBoard);
   display(u,board);
   cin.getline(line, 1023);
   cout << sout.str();
@@ -1004,7 +1005,7 @@ int main()
   {
     // do a turn
     ++numTurns;
-    doTurn(u,board);
+    doTurn(u,board,charBoard);
     display(u,board);
     cin.getline(line, 1023);
     cout << sout.str();

@@ -22,5 +22,6 @@ struct Thing{ // this struct is used to completely define any one space on the b
 };
 
 using Board = std::array<std::array<Thing,COLS>,ROWS>;
+using CharBoard = std::array<std::array<char,COLS>,ROWS>;
 #endif
 
