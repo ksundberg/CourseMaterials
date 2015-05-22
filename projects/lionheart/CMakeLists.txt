@@ -71,6 +71,7 @@ set(Provided_srcs
     lionheart.cpp
     lionheart2.h
     lionheart.h
+    Board.hpp
     unit.cpp
     unit.h)
 source_group("" FILES ${Provided_srcs})

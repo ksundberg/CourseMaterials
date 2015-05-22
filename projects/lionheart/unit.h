@@ -3,14 +3,10 @@
 #define UNIT_H  // than once, along with the #endif at the bottom
 #include <string>
 #include <cstdlib>
+
+#include "Board.hpp"
+
 const int HORSESPEED=5;//how far the mounted warriors can travel in one action
-const int ROWS=30;  // board vertical dimension
-const int COLS=30;// board horizontal dimension
-
-enum Dir{up,dn,lt,rt,none}; // all directions are specified using these
-
-enum Rank{infantry, archer, knight, crown}; // each unit has its own rank
-
 struct Location{     // The Location struct is used in the situation report
 	int r,c;     // to help the unit figure out where to go.
 	Dir dirFor;  // This is the direction to go if you want to get to r,c.
@@ -24,17 +20,6 @@ struct Action{  // this struct helps define the details of each action
 	Dir dir;           // for turn, which direction to turn to 
 	int ar,ac;         // archer target row and col
 };
-
-enum ThingType{unit,space,rock}; // All things on the board are units, rocks, or empty space
-
-struct Thing{ // this struct is used to completely define any one space on the board
-	ThingType what;  // a unit, a rock, or an empty space
-	Rank rank;       // if it is a unit, this gives its rank
-  std::string tla;      // if it is a unit, this gives its TLA
-	Dir dir;         // it it is a unit, this gives its current direction
-	int hp;          // if it is a unit, this gives its current strength
-};
-
 struct SitRep{  // this struct is given to the Recommendation function when an action is needed
 	Thing thing[ROWS][COLS];    // a 2-d array representing the board 
 	Location nearestEnemyCrown; // the location and direction of the nearest crown

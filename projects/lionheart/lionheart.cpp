@@ -6,7 +6,6 @@
 #include "lionheart.h"
 
 // A few globals, just to be Old School
-Thing board[ROWS][COLS];
 char charBoard[ROWS][COLS];
 int numplayers;
 int numTurns;
@@ -18,7 +17,7 @@ string winner;
 
 
 			
-void unit2thing(Unit *u, int r, int c){
+void unit2thing(Unit *u, int r, int c,Board& board){
 	if(!u){board[r][c].what=space; return;}
 	if(u->getDead()){board[r][c].what=space; return;}
 	board[r][c].what = unit;
@@ -28,7 +27,7 @@ void unit2thing(Unit *u, int r, int c){
 	board[r][c].hp = u->getHp();
 }
 
-void makeB(Unit *u[NUM]){
+void makeB(Unit *u[NUM],Board& board){
 	int i,j;
 	for(i=0;i<ROWS;++i){
 		for(j=0;j<COLS;++j){
@@ -38,11 +37,11 @@ void makeB(Unit *u[NUM]){
 	}
 			
 	for(i=0;i<NUM;++i){
-		if(u[i])unit2thing(u[i],u[i]->getR(),u[i]->getC());
+		if(u[i])unit2thing(u[i],u[i]->getR(),u[i]->getC(),board);
 	}
 }
 
-bool nextToBarrier(Unit *u){
+bool nextToBarrier(Unit *u,Board& board){
 	int r,c;
 	r=u->getR();
 	c=u->getC();
@@ -57,7 +56,7 @@ bool nextToBarrier(Unit *u){
 	return false;
 }
 
-bool localSearch(Dir map[ROWS][COLS], Dir map2[ROWS][COLS],int r, int c){
+bool localSearch(Dir map[ROWS][COLS], Dir map2[ROWS][COLS],int r, int c,Board& board){
 	if(map[r][c]!=none)return false;
 	if(board[r][c].what==rock)return false;
 
@@ -71,7 +70,7 @@ bool localSearch(Dir map[ROWS][COLS], Dir map2[ROWS][COLS],int r, int c){
 
 
 
-Dir pathDirFor(int sr, int sc, int er, int ec){
+Dir pathDirFor(int sr, int sc, int er, int ec,Board& board){
 	Dir map[ROWS][COLS],map2[ROWS][COLS];
 	
 	int i,j;
@@ -92,7 +91,7 @@ Dir pathDirFor(int sr, int sc, int er, int ec){
 
 		for(i=0;i<ROWS;++i){
 			for(j=0;j<COLS;++j){
-				if(localSearch(map,map2,i,j))changes=true;
+				if(localSearch(map,map2,i,j,board))changes=true;
 			}
 		}
 		for(i=0;i<ROWS;++i){
@@ -109,7 +108,7 @@ float getDist(int r,int c,int tr,int tc){
 	return sqrt((double)(tr-r)*(tr-r)+(tc-c)*(tc-c));
 }
 
-Location getNearestEnemyCrown(Unit *u[], int m){
+Location getNearestEnemyCrown(Unit *u[], int m,Board& board){
 	int r,c;
 	int tr,tc;
 	string tla;
@@ -132,11 +131,11 @@ Location getNearestEnemyCrown(Unit *u[], int m){
 	}
 	l.r=u[mini]->getR();	
 	l.c=u[mini]->getC();	
-	l.dirFor=pathDirFor(r,c,l.r,l.c);
+	l.dirFor=pathDirFor(r,c,l.r,l.c,board);
 	return l;
 }
 
-Location getNearestEnemy(Unit *u[], int m){
+Location getNearestEnemy(Unit *u[], int m,Board& board){
 	int r,c;
 	int tr,tc;
 	string tla;
@@ -159,7 +158,7 @@ Location getNearestEnemy(Unit *u[], int m){
 	}
 	l.r=u[mini]->getR();	
 	l.c=u[mini]->getC();	
-	l.dirFor=pathDirFor(r,c,l.r,l.c);
+	l.dirFor=pathDirFor(r,c,l.r,l.c,board);
 	return l;
 
 }
@@ -177,7 +176,7 @@ Dir manhattenDirFor(Unit *u, int tr, int tc){
 	}
 }
 
-Dir anyDir(Unit *u){
+Dir anyDir(Unit *u,Board& board){
 	int r,c;
 	int tr,tc;
 	r=u->getR();
@@ -191,14 +190,14 @@ Dir anyDir(Unit *u){
 		
 	
 
-SitRep makeSitRep(Unit *u[NUM],int m){
+SitRep makeSitRep(Unit *u[NUM],int m,Board& board){
 	if(!u[m])exit(5);
 	SitRep s;
 	int i,j;
 	for(i=0;i<ROWS;++i)for(j=0;j<COLS;++j)s.thing[i][j]=board[i][j];
-	s.nearestEnemyCrown = getNearestEnemyCrown(u,m);
-	s.nearestEnemy = getNearestEnemy(u,m);
-	s.anyOpenSpace = anyDir(u[m]);
+	s.nearestEnemyCrown = getNearestEnemyCrown(u,m,board);
+	s.nearestEnemy = getNearestEnemy(u,m,board);
+	s.anyOpenSpace = anyDir(u[m],board);
 	s.turnNumber = numTurns;
 	return s;
 }
@@ -209,7 +208,7 @@ int totalHp(Unit *u[], int m){
 	return sum;
 }
 
-void display(Unit *u[]){
+void display(Unit *u[],Board& board){
 	int i,j;
 	int lsize;
 	int rsize;
@@ -221,7 +220,7 @@ void display(Unit *u[]){
 	// don't display anything if we are doing the rankings
 	if(AUTOTOURNEY)return;
 
-	for(i=0;i<NUM;++i)if(u[i])unit2thing(u[i],u[i]->getR(),u[i]->getC());
+	for(i=0;i<NUM;++i)if(u[i])unit2thing(u[i],u[i]->getR(),u[i]->getC(),board);
 
 	// throw a legend out at the top
 	sout << "\n";
@@ -313,7 +312,7 @@ void display(Unit *u[]){
 }
 
 
-void readMap(){
+void readMap(Board& board){
 	int i,j,rows,cols;
 	ifstream  fin;
 	fin.open(INFILE);
@@ -550,7 +549,7 @@ if(tla=="usa") return new usa(0,0,hp,up,rank,false,tla);
 	exit(0);
 }
 
-void updateB(Unit *u){
+void updateB(Unit *u,Board& board){
 	if(!u)exit(5);
 	board[u->getR()][u->getC()].what=unit;
 	board[u->getR()][u->getC()].rank=u->getRank();
@@ -561,7 +560,7 @@ void updateB(Unit *u){
 
 
 
-void checkPlacement(Unit *u,Unit t,int minr,int maxr,int minc,int maxc){
+void checkPlacement(Unit *u,Unit t,int minr,int maxr,int minc,int maxc,Board& board){
 	int tr, tc;
 	tr=u->getR();
 	tc=u->getC();
@@ -600,9 +599,9 @@ void checkNoMods(Unit *u,Unit t){
 
 }
 
-void setUpBoard(Unit *u[NUM]){
+void setUpBoard(Unit *u[NUM],Board& board){
 	Unit t;
-	readMap();
+	readMap(board);
 	bool gotNames=false;
 	int i;
 	int pnum;
@@ -633,9 +632,9 @@ tryagain:
 		maxc=startBox[pnum].maxc;
 		u[i]=newUnit(tla[pnum],crown);
 		t=*u[i];
-		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i));
-		checkPlacement(u[i],t,minr,maxr,minc,maxc);
-		updateB(u[i]);
+		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i,board));
+		checkPlacement(u[i],t,minr,maxr,minc,maxc,board);
+		updateB(u[i],board);
 	}
 	// make all the knights
 	for(;i<(numplayers+NUMKNIGHTS);++i){
@@ -647,9 +646,9 @@ tryagain:
 		maxc=startBox[pnum].maxc;
 		u[i]=newUnit(tla[pnum],knight);
 		t=*u[i];
-		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i));
-		checkPlacement(u[i],t,minr,maxr,minc,maxc);
-		updateB(u[i]);
+		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i,board));
+		checkPlacement(u[i],t,minr,maxr,minc,maxc,board);
+		updateB(u[i],board);
 	}
 	// make all the archers
 	for(;i<(numplayers+NUMKNIGHTS+NUMARCHERS);++i){
@@ -660,9 +659,9 @@ tryagain:
 		maxc=startBox[pnum].maxc;
 		u[i]=newUnit(tla[pnum],archer);
 		t=*u[i];
-		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i));
-		checkPlacement(u[i],t,minr,maxr,minc,maxc);
-		updateB(u[i]);
+		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i,board));
+		checkPlacement(u[i],t,minr,maxr,minc,maxc,board);
+		updateB(u[i],board);
 	}
 	// make all the infantry
 	for(;i<NUM;++i){
@@ -673,9 +672,9 @@ tryagain:
 		maxc=startBox[pnum].maxc;
 		u[i]=newUnit(tla[pnum],infantry);
 		t=*u[i];
-		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i));
-		checkPlacement(u[i],t,minr,maxr,minc,maxc);
-		updateB(u[i]);
+		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i,board));
+		checkPlacement(u[i],t,minr,maxr,minc,maxc,board);
+		updateB(u[i],board);
 	}
 
 	return;
@@ -683,7 +682,7 @@ tryagain:
 
 //return the number of spaces the unit can move without hitting someting,
 //up to dist
-int clear(Unit *u[], int m, int dist){
+int clear(Unit *u[], int m, int dist,Board& board){
 	if(!u[m])exit(5);
 	int i;
 	int goDist=0;
@@ -871,7 +870,7 @@ bool oneLeft(Unit *u[NUM]){
 }
 
 	
-void doTurn(Unit *u[NUM]){
+void doTurn(Unit *u[NUM],Board& board){
 	Unit tu;
 	int m;
     	SitRep sitRep;
@@ -893,8 +892,8 @@ void doTurn(Unit *u[NUM]){
 		m=next[i];
 		if(oneLeft(u))return;;
         	if(u[m]&&!u[m]->getDead()){
-			makeB(u);
-            		sitRep=makeSitRep(u,m);
+			makeB(u,board);
+            		sitRep=makeSitRep(u,m,board);
             		int tseed=rand();  //Save the current state of rand...
 			tu=*u[m];
             		a=u[m]->Recommendation(sitRep);
@@ -907,10 +906,10 @@ void doTurn(Unit *u[NUM]){
 				case fwd:
 					lr=u[m]->getR();
 					lc=u[m]->getC();
-					if(!clear(u,m,a.maxDist))break;
+					if(!clear(u,m,a.maxDist,board))break;
 					if(u[m]->getRank()==archer||u[m]->getRank()==infantry)
 						a.maxDist=1;
-					u[m]->Move(clear(u,m,a.maxDist));
+					u[m]->Move(clear(u,m,a.maxDist,board));
 					break;
 				case attack:
 					hits=u[m]->Attack();
@@ -928,16 +927,16 @@ void doTurn(Unit *u[NUM]){
 
 
 //run an automatic game.  tla1 and tla2 should be set up prior to calling
-int autoGame(Unit *u[]){
+int autoGame(Unit *u[],Board& board){
 	bool done=false;
 
 	// set up the board
-	setUpBoard(u);
+	setUpBoard(u,board);
 	
 	while(!done){
 		// do a turn
 		++numTurns;
-		doTurn(u);	
+		doTurn(u,board);	
 		if(oneLeft(u))done=true;
 	}
 	if(AUTOTOURNEY){
@@ -948,7 +947,7 @@ int autoGame(Unit *u[]){
 }
 
 //run a whole tournament of each tla against AUTONUMMATCHES random others, output stats on each
-void autoTourney(Unit *u[]){
+void autoTourney(Unit *u[],Board& board){
 	int i,j,k;
 	int wins;
 	int w;
@@ -962,7 +961,7 @@ void autoTourney(Unit *u[]){
 			//while(k==i || noPlay[k])k=rand()%NUMTLAS;
 			k=79;
 			tla[1]=tlalist[k];	
-			w=autoGame(u);
+			w=autoGame(u,board);
 			//cout << "\t"<<tla[0]<<" vs. "<<tla[1]<<": ";
 			//cout << "winner: "<<winner<<"  -- ";
 			//if(w==2)cout<<"win\n";
@@ -977,55 +976,43 @@ void autoTourney(Unit *u[]){
 	return;
 }
 
+int main()
+{
 
- 
+  Board board;
 
+  Unit* u[NUM];
+  char line[1024];
+  bool done = false;
+  numTurns = 0;
 
+  srand(time(NULL));
 
+  // if running an auto tourney, just do that and quit
+  if (AUTOTOURNEY) {
+    autoTourney(u,board);
+    return 0;
+  }
 
+  // set up the board
+  setUpBoard(u,board);
+  display(u,board);
+  cin.getline(line, 1023);
+  cout << sout.str();
+  sout.str("");
 
-int main(){
-
-
-	Unit * u[NUM];
-	char line[1024];
-	bool done=false;
-	numTurns=0;
-	
-	srand(time(NULL));
-
-	// if running an auto tourney, just do that and quit
-	if(AUTOTOURNEY){
-		autoTourney(u);
-		return 0;
-	}
-
-	// set up the board
-	setUpBoard(u);
-	display(u);
-	cin.getline(line,1023);
-	cout<<sout.str();
-	sout.str("");
-	
-	while(!done){
-		// do a turn
-		++numTurns;
-		doTurn(u);	
-        	display(u);
-		cin.getline(line,1023);
-		cout<<sout.str();
-		sout.str("");
-        	if(line[0]=='q')done=true;
-		if(oneLeft(u))done=true;
-	}
-	return 0;
-
-
+  while (!done)
+  {
+    // do a turn
+    ++numTurns;
+    doTurn(u,board);
+    display(u,board);
+    cin.getline(line, 1023);
+    cout << sout.str();
+    sout.str("");
+    if (line[0] == 'q') done = true;
+    if (oneLeft(u)) done = true;
+  }
+  return 0;
 }
-	
-
- 
-
-
-
 
