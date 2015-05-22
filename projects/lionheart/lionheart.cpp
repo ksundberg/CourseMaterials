@@ -26,7 +26,7 @@ void unit2thing(Unit *u, int r, int c,Board& board){
 	board[r][c].hp = u->getHp();
 }
 
-void makeB(Unit *u[NUM],Board& board,CharBoard& charBoard){
+void makeB(Unit *u[NUM],Board& board,CharBoard const& charBoard){
 	int i,j;
 	for(i=0;i<ROWS;++i){
 		for(j=0;j<COLS;++j){
@@ -40,7 +40,7 @@ void makeB(Unit *u[NUM],Board& board,CharBoard& charBoard){
 	}
 }
 
-bool nextToBarrier(Unit *u,Board& board){
+bool nextToBarrier(Unit *u,Board const & board){
 	int r,c;
 	r=u->getR();
 	c=u->getC();
@@ -55,7 +55,7 @@ bool nextToBarrier(Unit *u,Board& board){
 	return false;
 }
 
-bool localSearch(Dir map[ROWS][COLS], Dir map2[ROWS][COLS],int r, int c,Board& board){
+bool localSearch(Dir map[ROWS][COLS], Dir map2[ROWS][COLS],int r, int c,Board const & board){
 	if(map[r][c]!=none)return false;
 	if(board[r][c].what==rock)return false;
 
@@ -69,7 +69,7 @@ bool localSearch(Dir map[ROWS][COLS], Dir map2[ROWS][COLS],int r, int c,Board& b
 
 
 
-Dir pathDirFor(int sr, int sc, int er, int ec,Board& board){
+Dir pathDirFor(int sr, int sc, int er, int ec,Board const & board){
 	Dir map[ROWS][COLS],map2[ROWS][COLS];
 	
 	int i,j;
@@ -107,7 +107,7 @@ float getDist(int r,int c,int tr,int tc){
 	return sqrt((double)(tr-r)*(tr-r)+(tc-c)*(tc-c));
 }
 
-Location getNearestEnemyCrown(Unit *u[], int m,Board& board){
+Location getNearestEnemyCrown(Unit *u[], int m,Board const & board){
 	int r,c;
 	int tr,tc;
   std::string tla;
@@ -680,7 +680,7 @@ tryagain:
 
 //return the number of spaces the unit can move without hitting someting,
 //up to dist
-int clear(Unit *u[], int m, int dist,Board& board){
+int clear(Unit *u[], int m, int dist,Board const& board){
 	if(!u[m])exit(5);
 	int i;
 	int goDist=0;
@@ -868,7 +868,7 @@ bool oneLeft(Unit *u[NUM]){
 }
 
 	
-void doTurn(Unit *u[NUM],Board& board,CharBoard& charBoard){
+void doTurn(Unit *u[NUM],Board& board,CharBoard const& charBoard){
 	Unit tu;
 	int m;
     	SitRep sitRep;
