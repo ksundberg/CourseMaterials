@@ -40,7 +40,7 @@ set(Student_tlas
     ckc clg cls clu cmd cow cra crb crd csq ctu
     cwc cze dfv die dih djh dkb dkd dlr dlt dnd
     dos drb drc dre dsc dss dww dxv edb eds emj
-    fed god gst gwh hlz hoe hsa hug ian icl ike
+    fed god gst gwh hlz hsa hug ian icl ike
     ipm jaz jbp jcl jdd jds jen jfr jmf jmh jms
     jmt jps jrp jrw jta jtd jtg jwl kac kdf kfc
     klb klh knk lam lav lel lhm lia lmn loz m11

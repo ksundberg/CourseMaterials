@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "mrr.h"
 #include <cmath>
 #include <iostream>

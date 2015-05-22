@@ -451,7 +451,6 @@ if(tla=="god") return new god(0,0,hp,up,rank,false,tla);
 if(tla=="gst") return new gst(0,0,hp,up,rank,false,tla);
 if(tla=="gwh") return new gwh(0,0,hp,up,rank,false,tla);
 if(tla=="hlz") return new hlz(0,0,hp,up,rank,false,tla);
-if(tla=="hoe") return new hoe(0,0,hp,up,rank,false,tla);
 if(tla=="hsa") return new hsa(0,0,hp,up,rank,false,tla);
 if(tla=="hug") return new hug(0,0,hp,up,rank,false,tla);
 if(tla=="ian") return new ian(0,0,hp,up,rank,false,tla);
