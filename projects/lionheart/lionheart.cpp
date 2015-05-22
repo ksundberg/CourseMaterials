@@ -9,29 +9,24 @@
 
 int numplayers;
 int numTurns;
-std::string tla[4];
-std::string color[4];
-Box startBox[4];
 std::string winner;
-
-
 			
 void unit2thing(Unit *u, int r, int c,Board& board){
-	if(!u){board[r][c].what=space; return;}
-	if(u->getDead()){board[r][c].what=space; return;}
-	board[r][c].what = unit;
-	board[r][c].rank = u->getRank();
-	board[r][c].tla = u->getTla();
-	board[r][c].dir = u->getDir();
-	board[r][c].hp = u->getHp();
+	if(!u){board.things[r][c].what=space; return;}
+	if(u->getDead()){board.things[r][c].what=space; return;}
+	board.things[r][c].what = unit;
+	board.things[r][c].rank = u->getRank();
+	board.things[r][c].tla = u->getTla();
+	board.things[r][c].dir = u->getDir();
+	board.things[r][c].hp = u->getHp();
 }
 
-void makeB(Unit *u[NUM],Board& board,CharBoard const& charBoard){
+void makeB(Unit *u[NUM],Board& board){
 	int i,j;
 	for(i=0;i<ROWS;++i){
 		for(j=0;j<COLS;++j){
-			board[i][j].what=space;
-			if(charBoard[i][j]=='X')board[i][j].what = rock; 
+			board.things[i][j].what=space;
+			if(board.c[i][j]=='X')board.things[i][j].what = rock; 
 		}
 	}
 			
@@ -44,20 +39,20 @@ bool nextToBarrier(Unit *u,Board const & board){
 	int r,c;
 	r=u->getR();
 	c=u->getC();
-	if(r-1>0     && c-1>0     && board[r-1][c-1].what == rock)return true;
-	if(r-1>0                  && board[r-1][c  ].what == rock)return true;
-	if(r-1>0     && c+1<=COLS && board[r-1][c+1].what == rock)return true;
-	if(             c-1>0     && board[r  ][c-1].what == rock)return true;
-	if(             c+1<=COLS && board[r  ][c+1].what == rock)return true;
-	if(r+1<=ROWS && c-1>0     && board[r+1][c-1].what == rock)return true;
-	if(r+1<=ROWS              && board[r+1][c  ].what == rock)return true;
-	if(r+1<=ROWS && c+1<=COLS && board[r+1][c+1].what == rock)return true;
+	if(r-1>0     && c-1>0     && board.things[r-1][c-1].what == rock)return true;
+	if(r-1>0                  && board.things[r-1][c  ].what == rock)return true;
+	if(r-1>0     && c+1<=COLS && board.things[r-1][c+1].what == rock)return true;
+	if(             c-1>0     && board.things[r  ][c-1].what == rock)return true;
+	if(             c+1<=COLS && board.things[r  ][c+1].what == rock)return true;
+	if(r+1<=ROWS && c-1>0     && board.things[r+1][c-1].what == rock)return true;
+	if(r+1<=ROWS              && board.things[r+1][c  ].what == rock)return true;
+	if(r+1<=ROWS && c+1<=COLS && board.things[r+1][c+1].what == rock)return true;
 	return false;
 }
 
 bool localSearch(Dir map[ROWS][COLS], Dir map2[ROWS][COLS],int r, int c,Board const & board){
 	if(map[r][c]!=none)return false;
-	if(board[r][c].what==rock)return false;
+	if(board.things[r][c].what==rock)return false;
 
 	if(r-1>=0  &&map2[r-1][c  ]!=none){map[r][c]=up;return true;}
 	if(c+1<COLS&&map2[r  ][c+1]!=none){map[r][c]=rt;return true;}
@@ -180,10 +175,10 @@ Dir anyDir(Unit *u,Board& board){
 	int tr,tc;
 	r=u->getR();
 	c=u->getC();
-	tr=r-1;tc=c  ;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&board[tr][tc].what==space)return up;
-	tr=r+1;tc=c  ;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&board[tr][tc].what==space)return dn;
-	tr=r  ;tc=c-1;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&board[tr][tc].what==space)return lt;
-	tr=r  ;tc=c+1;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&board[tr][tc].what==space)return rt;
+	tr=r-1;tc=c  ;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&board.things[tr][tc].what==space)return up;
+	tr=r+1;tc=c  ;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&board.things[tr][tc].what==space)return dn;
+	tr=r  ;tc=c-1;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&board.things[tr][tc].what==space)return lt;
+	tr=r  ;tc=c+1;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&board.things[tr][tc].what==space)return rt;
 	return none;
 }
 		
@@ -193,7 +188,7 @@ SitRep makeSitRep(Unit *u[NUM],int m,Board& board){
 	if(!u[m])exit(5);
 	SitRep s;
 	int i,j;
-	for(i=0;i<ROWS;++i)for(j=0;j<COLS;++j)s.thing[i][j]=board[i][j];
+	for(i=0;i<ROWS;++i)for(j=0;j<COLS;++j)s.thing[i][j]=board.things[i][j];
 	s.nearestEnemyCrown = getNearestEnemyCrown(u,m,board);
 	s.nearestEnemy = getNearestEnemy(u,m,board);
 	s.anyOpenSpace = anyDir(u[m],board);
@@ -201,9 +196,9 @@ SitRep makeSitRep(Unit *u[NUM],int m,Board& board){
 	return s;
 }
 
-int totalHp(Unit *u[], int m){
+int totalHp(Unit *u[], int m,Board const & board){
 	int i,sum=0;
-	for(i=0;i<NUM;++i)if(u[i]&&u[i]->getTla()==tla[m]) sum+=u[i]->getHp();
+	for(i=0;i<NUM;++i)if(u[i]&&u[i]->getTla()==board.tla[m]) sum+=u[i]->getHp();
 	return sum;
 }
 
@@ -224,16 +219,16 @@ void display(Unit *u[],Board& board,std::ostringstream& sout){
 	// throw a legend out at the top
 	sout << "\n";
 	sout << "\n";
-	color[0]="\033[0;31m";
-	color[1]="\033[0;35m";
-	color[2]="\033[0;36m";
-	color[3]="\033[0;37m";
+	board.color[0]="\033[0;31m";
+	board.color[1]="\033[0;35m";
+	board.color[2]="\033[0;36m";
+	board.color[3]="\033[0;37m";
 	sout<<"turn: "<<numTurns<<"  ";
 	if(numTurns>9)rsize--;
 	if(numTurns>99)rsize--;
 	for(i=0;i<rsize-9;++i)sout<<" ";
-	if(ANSI) for(i=0;i<numplayers;++i) sout <<color[i]<<tla[i]<<" "<<totalHp(u,i)<<"\033[0m     ";
-	else     sout <<tla[0]<<" (lowercase) "<<totalHp(u,0)<<"   "<<tla[1]<<" (ALLCAPS) "<<totalHp(u,1);
+	if(ANSI) for(i=0;i<numplayers;++i) sout <<board.color[i]<<board.tla[i]<<" "<<totalHp(u,i,board)<<"\033[0m     ";
+	else     sout <<board.tla[0]<<" (lowercase) "<<totalHp(u,0,board)<<"   "<<board.tla[1]<<" (ALLCAPS) "<<totalHp(u,1,board);
 	sout << "\n ";
 	for(i=0;i<COLS;++i)sout<<"-";
 	if(!TINYMAP) for(i=0;i<COLS;++i)sout<<"-";
@@ -244,7 +239,7 @@ void display(Unit *u[],Board& board,std::ostringstream& sout){
 		sout<<"|";
 		for(j=0;j<COLS;++j){
 			// if it's open space
-			if(board[i][j].what==space){
+			if(board.things[i][j].what==space){
 				if(DOTS) sout<<".";
 				else     sout<<" ";
 				if(!TINYMAP)sout<<" ";
@@ -252,7 +247,7 @@ void display(Unit *u[],Board& board,std::ostringstream& sout){
 			}
 			
 			// if it's a rock
-			if(board[i][j].what==rock){
+			if(board.things[i][j].what==rock){
 				sout<<"X";
 				if(!TINYMAP)sout<<" ";
 				continue;
@@ -261,15 +256,15 @@ void display(Unit *u[],Board& board,std::ostringstream& sout){
 			//else it's a unit
 			//turn on some colors if ANSI set
 			if(ANSI){
-				if(board[i][j].tla==tla[0]) sout << "\033[0;31m";
-				if(board[i][j].tla==tla[1]) sout << "\033[0;35m";
-				if(board[i][j].tla==tla[2]) sout << "\033[0;36m";
-				if(board[i][j].tla==tla[3]) sout << "\033[0;37m";
+				if(board.things[i][j].tla==board.tla[0]) sout << "\033[0;31m";
+				if(board.things[i][j].tla==board.tla[1]) sout << "\033[0;35m";
+				if(board.things[i][j].tla==board.tla[2]) sout << "\033[0;36m";
+				if(board.things[i][j].tla==board.tla[3]) sout << "\033[0;37m";
 			}
 
 			//spit out the appropriate unit character
-			if(ANSI || board[i][j].tla==tla[0]){
-				switch(board[i][j].rank){
+			if(ANSI || board.things[i][j].tla==board.tla[0]){
+				switch(board.things[i][j].rank){
 				case infantry: sout<<"i";break;
 				case archer:   sout<<"a";break;
 				case knight:   sout<<"k";break;
@@ -277,7 +272,7 @@ void display(Unit *u[],Board& board,std::ostringstream& sout){
 				default:       sout<<"?";break;
 				}
 			}else{
-				switch(board[i][j].rank){
+				switch(board.things[i][j].rank){
 				case infantry: sout<<"I";break;
 				case archer:   sout<<"A";break;
 				case knight:   sout<<"K";break;
@@ -288,7 +283,7 @@ void display(Unit *u[],Board& board,std::ostringstream& sout){
 
 			//indicate direction if there is space
 			if(!TINYMAP){
-				switch(board[i][j].dir){
+				switch(board.things[i][j].dir){
 				case up:  sout<<"^";break;
 				case dn:  sout<<"v";break;
 				case rt:  sout<<">";break;
@@ -311,7 +306,7 @@ void display(Unit *u[],Board& board,std::ostringstream& sout){
 }
 
 
-void readMap(Board& board,CharBoard& charBoard){
+void readMap(Board& board){
 	int i,j,rows,cols;
 	ifstream  fin;
 	fin.open(INFILE);
@@ -336,10 +331,10 @@ void readMap(Board& board,CharBoard& charBoard){
 		exit(3);
 	}
 	for(i=0;i<numplayers;++i){
-		fin>>startBox[i].minr;
-		fin>>startBox[i].maxr;
-		fin>>startBox[i].minc;
-		fin>>startBox[i].maxc;
+		fin>>board.startBox[i].minr;
+		fin>>board.startBox[i].maxr;
+		fin>>board.startBox[i].minc;
+		fin>>board.startBox[i].maxc;
 	}
 	
 	// max 2 players for non-ANSI terminal
@@ -347,11 +342,11 @@ void readMap(Board& board,CharBoard& charBoard){
 
 	for(i=0;i<ROWS;++i){
 		for(j=0;j<COLS;++j){
-			board[i][j].what=space;
-			fin >> charBoard[i][j];
-			if(charBoard[i][j]=='X'){
-				board[i][j].dir = none; 
-				board[i][j].what = rock; 
+			board.things[i][j].what=space;
+			fin >> board.c[i][j];
+			if(board.c[i][j]=='X'){
+				board.things[i][j].dir = none; 
+				board.things[i][j].what = rock; 
 			}
 		}
 	//cout << endl;
@@ -549,11 +544,11 @@ if(tla=="usa") return new usa(0,0,hp,up,rank,false,tla);
 
 void updateB(Unit *u,Board& board){
 	if(!u)exit(5);
-	board[u->getR()][u->getC()].what=unit;
-	board[u->getR()][u->getC()].rank=u->getRank();
-	board[u->getR()][u->getC()].tla=u->getTla();
-	board[u->getR()][u->getC()].dir=u->getDir();
-	board[u->getR()][u->getC()].hp=u->getHp();
+	board.things[u->getR()][u->getC()].what=unit;
+	board.things[u->getR()][u->getC()].rank=u->getRank();
+	board.things[u->getR()][u->getC()].tla=u->getTla();
+	board.things[u->getR()][u->getC()].dir=u->getDir();
+	board.things[u->getR()][u->getC()].hp=u->getHp();
 }
 
 
@@ -564,11 +559,11 @@ void checkPlacement(Unit *u,Unit t,int minr,int maxr,int minc,int maxc,Board& bo
 	tc=u->getC();
 	int i;
 	
-	if(board[tr][tc].what==rock){
+	if(board.things[tr][tc].what==rock){
 		cout << "error: "<<u->getTla()<<" placed unit on a rock. exiting.\n";
 		exit (6);
 	}
-	if(board[tr][tc].what==unit){
+	if(board.things[tr][tc].what==unit){
 		cout << "error: "<<u->getTla()<<" placed unit on another unit. exiting.\n";
 		exit (6);
 	}
@@ -597,9 +592,9 @@ void checkNoMods(Unit *u,Unit t){
 
 }
 
-void setUpBoard(Unit *u[NUM],Board& board,CharBoard& charBoard){
+void setUpBoard(Unit *u[NUM],Board& board){
 	Unit t;
-	readMap(board,charBoard);
+	readMap(board);
 	bool gotNames=false;
 	int i;
 	int pnum;
@@ -611,9 +606,9 @@ void setUpBoard(Unit *u[NUM],Board& board,CharBoard& charBoard){
 		for(i=0;i<numplayers;++i){
 tryagain:
 			cout<<"tla"<<i<<": ";
-			cin >> tla[i];
-			if(tla[i]=="?"){printTlaList();goto tryagain;}
-			if(!checksOut(tla[i])){
+			cin >> board.tla[i];
+			if(board.tla[i]=="?"){printTlaList();goto tryagain;}
+			if(!checksOut(board.tla[i])){
 				cout << "That tla is not in the list.\n";
 				cout << "type '?' to see a full list.\n";
 				goto tryagain;
@@ -624,11 +619,11 @@ tryagain:
 	// make all the crowns
 	for(i=0;i<numplayers;++i){
 		pnum=i%numplayers;
-		minr=startBox[pnum].minr;
-		maxr=startBox[pnum].maxr;
-		minc=startBox[pnum].minc;
-		maxc=startBox[pnum].maxc;
-		u[i]=newUnit(tla[pnum],crown);
+		minr=board.startBox[pnum].minr;
+		maxr=board.startBox[pnum].maxr;
+		minc=board.startBox[pnum].minc;
+		maxc=board.startBox[pnum].maxc;
+		u[i]=newUnit(board.tla[pnum],crown);
 		t=*u[i];
 		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i,board));
 		checkPlacement(u[i],t,minr,maxr,minc,maxc,board);
@@ -638,11 +633,11 @@ tryagain:
 	for(;i<(numplayers+NUMKNIGHTS);++i){
 		pnum=i%numplayers;
 		pnum=i%numplayers;
-		minr=startBox[pnum].minr;
-		maxr=startBox[pnum].maxr;
-		minc=startBox[pnum].minc;
-		maxc=startBox[pnum].maxc;
-		u[i]=newUnit(tla[pnum],knight);
+		minr=board.startBox[pnum].minr;
+		maxr=board.startBox[pnum].maxr;
+		minc=board.startBox[pnum].minc;
+		maxc=board.startBox[pnum].maxc;
+		u[i]=newUnit(board.tla[pnum],knight);
 		t=*u[i];
 		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i,board));
 		checkPlacement(u[i],t,minr,maxr,minc,maxc,board);
@@ -651,11 +646,11 @@ tryagain:
 	// make all the archers
 	for(;i<(numplayers+NUMKNIGHTS+NUMARCHERS);++i){
 		pnum=i%numplayers;
-		minr=startBox[pnum].minr;
-		maxr=startBox[pnum].maxr;
-		minc=startBox[pnum].minc;
-		maxc=startBox[pnum].maxc;
-		u[i]=newUnit(tla[pnum],archer);
+		minr=board.startBox[pnum].minr;
+		maxr=board.startBox[pnum].maxr;
+		minc=board.startBox[pnum].minc;
+		maxc=board.startBox[pnum].maxc;
+		u[i]=newUnit(board.tla[pnum],archer);
 		t=*u[i];
 		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i,board));
 		checkPlacement(u[i],t,minr,maxr,minc,maxc,board);
@@ -664,11 +659,11 @@ tryagain:
 	// make all the infantry
 	for(;i<NUM;++i){
 		pnum=i%numplayers;
-		minr=startBox[pnum].minr;
-		maxr=startBox[pnum].maxr;
-		minc=startBox[pnum].minc;
-		maxc=startBox[pnum].maxc;
-		u[i]=newUnit(tla[pnum],infantry);
+		minr=board.startBox[pnum].minr;
+		maxr=board.startBox[pnum].maxr;
+		minc=board.startBox[pnum].minc;
+		maxc=board.startBox[pnum].maxc;
+		u[i]=newUnit(board.tla[pnum],infantry);
 		t=*u[i];
 		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i,board));
 		checkPlacement(u[i],t,minr,maxr,minc,maxc,board);
@@ -702,7 +697,7 @@ int clear(Unit *u[], int m, int dist,Board const& board){
 		if(tr<0||tr>=ROWS||tc<0||tc>=COLS)break;
 	
 		// is there a something there?
-		if(board[tr][tc].what!=space)break;
+		if(board.things[tr][tc].what!=space)break;
 	
 		//nothing there?  bump the goDist
 		++goDist;
@@ -789,7 +784,7 @@ void makeSuffer(Unit *u[], int m, int hits){
 }
 
 
-bool oneLeft(Unit *u[NUM]){
+bool oneLeft(Unit *u[NUM],Board& board){
 	int i,j;
   std::string firstTla;
   std::string secondTla;
@@ -800,15 +795,15 @@ bool oneLeft(Unit *u[NUM]){
 	// out of time?
 	if(numTurns>MAXTURNS){
 		for(i=0;i<numplayers;++i){
-			if(totalHp(u,i)>maxHp){
-				maxHp=totalHp(u,i);
+			if(totalHp(u,i,board)>maxHp){
+				maxHp=totalHp(u,i,board);
 				maxPlayer=i;
 			}
 		}
 		for(i=0;i<numplayers;++i){
-			if(totalHp(u,i)==maxHp){
-				if(!AUTOTOURNEY)cout << tla[i]<<" has the most armies! ("<<totalHp(u,i)<<")\n";
-				if(AUTOTOURNEY)winner=tla[i];
+			if(totalHp(u,i,board)==maxHp){
+				if(!AUTOTOURNEY)cout << board.tla[i]<<" has the most armies! ("<<totalHp(u,i,board)<<")\n";
+				if(AUTOTOURNEY)winner=board.tla[i];
 				numWinners++;
 			}
 		}
@@ -868,7 +863,7 @@ bool oneLeft(Unit *u[NUM]){
 }
 
 	
-void doTurn(Unit *u[NUM],Board& board,CharBoard const& charBoard){
+void doTurn(Unit *u[NUM],Board& board){
 	Unit tu;
 	int m;
     	SitRep sitRep;
@@ -888,9 +883,9 @@ void doTurn(Unit *u[NUM],Board& board,CharBoard const& charBoard){
 
 	for(i=0;i<NUM;++i){
 		m=next[i];
-		if(oneLeft(u))return;;
+		if(oneLeft(u,board))return;;
         	if(u[m]&&!u[m]->getDead()){
-			makeB(u,board,charBoard);
+			makeB(u,board);
             		sitRep=makeSitRep(u,m,board);
             		int tseed=rand();  //Save the current state of rand...
 			tu=*u[m];
@@ -925,41 +920,41 @@ void doTurn(Unit *u[NUM],Board& board,CharBoard const& charBoard){
 
 
 //run an automatic game.  tla1 and tla2 should be set up prior to calling
-int autoGame(Unit *u[],Board& board,CharBoard& charBoard){
+int autoGame(Unit *u[],Board& board){
 	bool done=false;
 
 	// set up the board
-	setUpBoard(u,board,charBoard);
+	setUpBoard(u,board);
 	
 	while(!done){
 		// do a turn
 		++numTurns;
-		doTurn(u,board,charBoard);	
-		if(oneLeft(u))done=true;
+		doTurn(u,board);	
+		if(oneLeft(u,board))done=true;
 	}
 	if(AUTOTOURNEY){
-		if(winner==tla[0])return 2;
+		if(winner==board.tla[0])return 2;
 		else if(winner=="tie")return 1;
 	}
 	return 0;
 }
 
 //run a whole tournament of each tla against AUTONUMMATCHES random others, output stats on each
-void autoTourney(Unit *u[],Board& board,CharBoard& charBoard){
+void autoTourney(Unit *u[],Board& board){
 	int i,j,k;
 	int wins;
 	int w;
 	for(i=0;i<NUMTLAS;++i){
 		if(noPlay[i])continue;
 		wins=0;
-		tla[0]=tlalist[i];	
+		board.tla[0]=tlalist[i];	
 		for(j=0;j<AUTONUMMATCHES;++j){
 			numTurns=0;
 			//k=rand()%NUMTLAS;
 			//while(k==i || noPlay[k])k=rand()%NUMTLAS;
 			k=79;
-			tla[1]=tlalist[k];	
-			w=autoGame(u,board,charBoard);
+			board.tla[1]=tlalist[k];	
+			w=autoGame(u,board);
 			//cout << "\t"<<tla[0]<<" vs. "<<tla[1]<<": ";
 			//cout << "winner: "<<winner<<"  -- ";
 			//if(w==2)cout<<"win\n";
@@ -967,7 +962,7 @@ void autoTourney(Unit *u[],Board& board,CharBoard& charBoard){
 			//else cout<<"lose\n";
 			wins+=w;
 		}
-		cout << i << ": "<<tla[0] << " ";
+		cout << i << ": "<<board.tla[0] << " ";
 		cout << wins;
 		cout << endl;
 	}
@@ -978,7 +973,6 @@ int main()
 {
 
   Board board;
-  CharBoard charBoard;
 
   Unit* u[NUM];
   char line[1024];
@@ -989,12 +983,12 @@ int main()
 
   // if running an auto tourney, just do that and quit
   if (AUTOTOURNEY) {
-    autoTourney(u,board,charBoard);
+    autoTourney(u,board);
     return 0;
   }
 
   // set up the board
-  setUpBoard(u,board,charBoard);
+  setUpBoard(u,board);
   std::ostringstream sout;
   display(u,board,sout);
   cin.getline(line, 1023);
@@ -1005,13 +999,13 @@ int main()
   {
     // do a turn
     ++numTurns;
-    doTurn(u,board,charBoard);
+    doTurn(u,board);
     display(u,board,sout);
     cin.getline(line, 1023);
     cout << sout.str();
     sout.str("");
     if (line[0] == 'q') done = true;
-    if (oneLeft(u)) done = true;
+    if (oneLeft(u,board)) done = true;
   }
   return 0;
 }

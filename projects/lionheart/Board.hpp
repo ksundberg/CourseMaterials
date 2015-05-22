@@ -21,7 +21,22 @@ struct Thing{ // this struct is used to completely define any one space on the b
 	int hp;          // if it is a unit, this gives its current strength
 };
 
-using Board = std::array<std::array<Thing,COLS>,ROWS>;
-using CharBoard = std::array<std::array<char,COLS>,ROWS>;
+struct Box
+{
+  int minr;
+  int maxr;
+  int minc;
+  int maxc;
+};
+
+struct Board
+{
+  std::array<std::array<Thing,COLS>,ROWS> things;
+  std::array<std::array<char, COLS>, ROWS> c;
+  std::string tla[4];
+  std::string color[4];
+  Box startBox[4];
+};
+
 #endif
 

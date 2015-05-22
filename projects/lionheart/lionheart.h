@@ -157,12 +157,6 @@
 
 #include "lionheart2.h"
 
-struct Box{
-	int minr;
-	int maxr;
-	int minc;
-	int maxc;
-};
 
 bool noPlay[NUMTLAS]={
     1,     0,     0,     0,     0,     0,     1,     0,     0,     0,
