@@ -9,11 +9,10 @@
 
 int numplayers;
 int numTurns;
-string tla[4];
-string color[4];
+std::string tla[4];
+std::string color[4];
 Box startBox[4];
-stringstream sout;
-string winner;
+std::string winner;
 
 
 			
@@ -111,7 +110,7 @@ float getDist(int r,int c,int tr,int tc){
 Location getNearestEnemyCrown(Unit *u[], int m,Board& board){
 	int r,c;
 	int tr,tc;
-	string tla;
+  std::string tla;
 	int i;
 	float minDist=ROWS*COLS;
 	Location l;
@@ -138,7 +137,7 @@ Location getNearestEnemyCrown(Unit *u[], int m,Board& board){
 Location getNearestEnemy(Unit *u[], int m,Board& board){
 	int r,c;
 	int tr,tc;
-	string tla;
+  std::string tla;
 	int i;
 	float minDist=ROWS*COLS;
 	Location l;
@@ -208,7 +207,7 @@ int totalHp(Unit *u[], int m){
 	return sum;
 }
 
-void display(Unit *u[],Board& board){
+void display(Unit *u[],Board& board,std::ostringstream& sout){
 	int i,j;
 	int lsize;
 	int rsize;
@@ -371,7 +370,7 @@ void printTlaList(){
 }
 
 
-bool checksOut(string tla){
+bool checksOut(std::string tla){
 	int i;
 	for(i=0;i<NUMTLAS;++i){
 		if(tlalist[i]==tla)return true;
@@ -379,7 +378,7 @@ bool checksOut(string tla){
 	return false;
 }
 
-Unit * newUnit(string tla, Rank rank){
+Unit * newUnit(std::string tla, Rank rank){
 	int hp;
 	switch(rank){
 	case infantry:	hp=INFANTRYHP;	break;
@@ -792,8 +791,8 @@ void makeSuffer(Unit *u[], int m, int hits){
 
 bool oneLeft(Unit *u[NUM]){
 	int i,j;
-	string firstTla;
-	string secondTla;
+  std::string firstTla;
+  std::string secondTla;
 	int maxHp=0;
 	int maxPlayer=0;
 	int numWinners=0;
@@ -996,7 +995,8 @@ int main()
 
   // set up the board
   setUpBoard(u,board,charBoard);
-  display(u,board);
+  std::ostringstream sout;
+  display(u,board,sout);
   cin.getline(line, 1023);
   cout << sout.str();
   sout.str("");
@@ -1006,7 +1006,7 @@ int main()
     // do a turn
     ++numTurns;
     doTurn(u,board,charBoard);
-    display(u,board);
+    display(u,board,sout);
     cin.getline(line, 1023);
     cout << sout.str();
     sout.str("");

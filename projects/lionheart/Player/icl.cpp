@@ -56,13 +56,13 @@ Action icl::Recommendation(SitRep sitrep){
 	}
 	if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS){
 		
-		if(sitrep.thing[tr][tc].what==infantry){
+		if(sitrep.thing[tr][tc].what == unit && sitrep.thing[tr][tc].rank==infantry){
 			if(sitrep.thing[tr][tc].tla!=tla){
 				a.action=attack;
 				return a;
 			}
 		}
-		if(sitrep.thing[tr][tc].what==archer){
+		if(sitrep.thing[tr][tc].rank==archer){
 			if(sitrep.thing[tr][tc].tla!=tla){
 				if(sitrep.thing[tr][tc].what==rank && INFANTRYHP<=3 || ARCHERHP<=3 || KNIGHTHP<=3){
 			a.action=turn;
