@@ -809,16 +809,15 @@ void autoTourney(Unit *u[],Board& board){
 		board.tla[0]=tlalist[i];	
 		for(j=0;j<AUTONUMMATCHES;++j){
 			numTurns=0;
-			//k=rand()%NUMTLAS;
-			//while(k==i || noPlay[k])k=rand()%NUMTLAS;
-			k=79;
+			k=rand()%NUMTLAS;
+			while(k==i || noPlay[k])k=rand()%NUMTLAS;
 			board.tla[1]=tlalist[k];	
 			w=autoGame(u,board);
-			//cout << "\t"<<tla[0]<<" vs. "<<tla[1]<<": ";
-			//cout << "winner: "<<winner<<"  -- ";
-			//if(w==2)cout<<"win\n";
-			//else if(w==1)cout<<"tie\n";
-			//else cout<<"lose\n";
+			cout << "\t"<<board.tla[0]<<" vs. "<<board.tla[1]<<": ";
+			cout << "winner: "<<winner<<"  -- ";
+			if(w==2)cout<<"win\n";
+			else if(w==1)cout<<"tie\n";
+			else cout<<"lose\n";
 			wins+=w;
 		}
 		cout << i << ": "<<board.tla[0] << " ";

@@ -6,14 +6,14 @@
 //the name of the map file
 const std::string INFILE="forts.in"; 
 //set to true for more real estate and less detail
-const bool TINYMAP = true; 
+const bool TINYMAP = false; 
 //set to true if you want dots to represent open space
 const bool DOTS = false;
 // set to true if you have an ANSI terminal for colored armies, not for WINDOWS console :-(
 const bool ANSI= true;
 
 const bool AUTOTOURNEY = false;
-const int AUTONUMMATCHES = 20;
+const int AUTONUMMATCHES = 5;
 const int MAXTURNS = 500;
 const int INFANTRYHP = 10;
 const int ARCHERHP = 10;
