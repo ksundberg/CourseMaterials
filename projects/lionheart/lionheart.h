@@ -2,11 +2,9 @@
 #define LIONHEART_H
 #include "unit.h"
 
-#include "Player/adc.h"
 #include "Player/adn.h"
 #include "Player/alt.h"
 #include "Player/ben.h"
-#include "Player/bos.h"
 #include "Player/bri.h"
 #include "Player/dww.h"
 #include "Player/ian.h"
@@ -19,26 +17,7 @@
 
 #include "lionheart2.h"
 
-bool noPlay[NUMTLAS]={
-    1,     0,     0,     0,     0,     0,     1,     0,     0,     0,
-    1,     1,     0,     0,     0,     1,     0,     0,     0,     0,
-    1,     0,     0,     0,     0,     0,     0,     0,     0,     1,
-    0,     0,     0,     0,     0,     0,     0,     1,     0,     0,
-    0,     0,     1,     0,     0,     0,     1,     0,     0,     0,
-    1,     0,     0,     0,     0,     0,     0,     0,     0,     1,
-    1,     0,     0,     1,     1,     0,     0,     0,     0,     0,
-    0,     1,     0,     0,     0,     0,     0,     0,     1,     0,
-    1,     0,     0,     0,     0,     0,     1,     1,     0,     1,
-    1,     1,     0,     0,     0,     1,     0,     1,     0,     1,
-    0,     0,     1,     0,     1,     0,     0,     0,     0,     0,
-    0,     1,     0,     0,     0,     0,     0,     0,     0,     0,
-    1,     0,     0,     0,     0,     0,     0,     0,     0,     1,
-    0,     0,     0,     0,     0,     1,     0,     1,     0,     0,
-    1,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-    0,     1,     0,     0,     1,     1,     0,     0,     0,     0,
-    0,     1,     1,     0,     0,     1,     1,     0,     0,     0
-};
-static const string tlalist[NUMTLAS+1]={
-"adc","adn","alt","ben","bos","bri","dww","ian","jcl","jmh","oss","pld","sll","tbb",""
-};
+bool noPlay[NUMTLAS] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+static const string tlalist[NUMTLAS + 1] = {
+  "adn", "alt", "ben", "bri", "dww", "ian", "jcl", "jmh", "oss", "pld", "sll", "tbb", ""};
 #endif

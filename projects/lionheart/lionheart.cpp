@@ -387,11 +387,9 @@ Unit * newUnit(std::string tla, Rank rank){
 	if(tla=="xxx")return new Unit(0,0,hp,up,rank,false,tla);
 
   
-if(tla=="adc") return new adc(0,0,hp,up,rank,false,tla);
 if(tla=="adn") return new adn(0,0,hp,up,rank,false,tla);
 if(tla=="alt") return new alt(0,0,hp,up,rank,false,tla);
 if(tla=="ben") return new ben(0,0,hp,up,rank,false,tla);
-if(tla=="bos") return new bos(0,0,hp,up,rank,false,tla);
 if(tla=="bri") return new bri(0,0,hp,up,rank,false,tla);
 if(tla=="dww") return new dww(0,0,hp,up,rank,false,tla);
 if(tla=="ian") return new ian(0,0,hp,up,rank,false,tla);

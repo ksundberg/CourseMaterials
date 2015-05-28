@@ -35,7 +35,7 @@ endforeach()
 ###############################
 # Student Files
 set(Student_tlas
-    adc adn alt ben bos bri dww ian jcl jmh oss pld sll tbb
+    adn alt ben bri dww ian jcl jmh oss pld sll tbb
 )
 set(tla_includes)
 set(tla_list)
