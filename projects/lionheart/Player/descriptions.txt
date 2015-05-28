@@ -1,0 +1,12 @@
+adn - complex placement, face enemy to attack, prefer attacking crown allow enemy to approach
+alt - placement? crown run, knights charge crown, others charge enemy
+ben - complex placement, crown still, archers attack, others charge
+bri - crown still, archers guard, others charge crown attacking on the way
+dww - default - provided code
+ian - formation placement, analyze state protect crown, archers priority attack, adaptive strategy
+jcl - wait then attack
+jmh - map specific placement, squad based strategy
+oss - charge while avoiding 'danger zones'
+pld - phalanx movement
+sll - don't interfere with king movement (odd map manipulation)
+tbb - complex placement, bodyguards for king, otherwise charge

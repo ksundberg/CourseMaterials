@@ -2,38 +2,49 @@
 #include <cmath>
 #include <iostream>
 
-
-void adc::Place(int minR,int maxR,int minC,int maxC, SitRep sitrep){
-	bool done=false;
-	int tr,tc;
-	Dir td;
-	while(!done){
-        if(rank==crown){
-                tr=(maxR-minR)/2;
-            tc=(maxC-minC)/2;
-            if(sitrep.thing[tr][tc].what==space){done=true;}
-            else { tr=((maxR-minR)/2)+1;
-                tc=((maxC-minC)/2)+1;
-                if(sitrep.thing[tr][tc].what==space)done=true;
-            } 
-		tr=minR+rand()%(maxR-minR);	
-		tc=minC+rand()%(maxC-minC);	
-		if(sitrep.thing[tr][tc].what==space)done=true;
-            }}
-	int rdist=ROWS/2-tr;
-	int cdist=COLS/2-tc;
-	if(abs(rdist)<abs(cdist)){
-		if(cdist>0)td=rt;
-		else td=lt;
-	}else{
-		if(rdist>0)td=up;
-		else td=dn;
-	}
-	r=tr;
-	c=tc;
-	dir=td;
+void adc::Place(int minR, int maxR, int minC, int maxC, SitRep sitrep)
+{
+  bool done = false;
+  int tr, tc;
+  Dir td;
+  while (!done)
+  {
+    if (rank == crown) {
+      tr = (maxR - minR) / 2;
+      tc = (maxC - minC) / 2;
+      if (sitrep.thing[tr][tc].what == space) {
+        done = true;
+      }
+      else
+      {
+        tr = ((maxR - minR) / 2) + 1;
+        tc = ((maxC - minC) / 2) + 1;
+        if (sitrep.thing[tr][tc].what == space) done = true;
+      }
+      tr = minR + rand() % (maxR - minR);
+      tc = minC + rand() % (maxC - minC);
+      if (sitrep.thing[tr][tc].what == space) done = true;
+    }
+  }
+  int rdist = ROWS / 2 - tr;
+  int cdist = COLS / 2 - tc;
+  if (abs(rdist) < abs(cdist)) {
+    if (cdist > 0)
+      td = rt;
+    else
+      td = lt;
+  }
+  else
+  {
+    if (rdist > 0)
+      td = up;
+    else
+      td = dn;
+  }
+  r = tr;
+  c = tc;
+  dir = td;
 }
-
 
 // tell someone what you want to do
 Action adc::Recommendation(SitRep sitrep){

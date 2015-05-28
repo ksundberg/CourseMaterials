@@ -6,60 +6,53 @@
 #include "lionheart.h"
 
 // A few globals, just to be Old School
-Thing b[ROWS][COLS];
-char c[ROWS][COLS];
+
 int numplayers;
 int numTurns;
-string tla[4];
-string color[4];
-Box startBox[4];
-stringstream sout;
-string winner;
-
-
+std::string winner;
 			
-void unit2thing(Unit *u, int r, int c){
-	if(!u){b[r][c].what=space; return;}
-	if(u->getDead()){b[r][c].what=space; return;}
-	b[r][c].what = unit;
-	b[r][c].rank = u->getRank();
-	b[r][c].tla = u->getTla();
-	b[r][c].dir = u->getDir();
-	b[r][c].hp = u->getHp();
+void unit2thing(Unit *u, int r, int c,Board& board){
+	if(!u){board.things[r][c].what=space; return;}
+	if(u->getDead()){board.things[r][c].what=space; return;}
+	board.things[r][c].what = unit;
+	board.things[r][c].rank = u->getRank();
+	board.things[r][c].tla = u->getTla();
+	board.things[r][c].dir = u->getDir();
+	board.things[r][c].hp = u->getHp();
 }
 
-void makeB(Unit *u[NUM]){
+void makeB(Unit *u[NUM],Board& board){
 	int i,j;
 	for(i=0;i<ROWS;++i){
 		for(j=0;j<COLS;++j){
-			b[i][j].what=space;
-			if(c[i][j]=='X')b[i][j].what = rock; 
+			board.things[i][j].what=space;
+			if(board.c[i][j]=='X')board.things[i][j].what = rock; 
 		}
 	}
 			
 	for(i=0;i<NUM;++i){
-		if(u[i])unit2thing(u[i],u[i]->getR(),u[i]->getC());
+		if(u[i])unit2thing(u[i],u[i]->getR(),u[i]->getC(),board);
 	}
 }
 
-bool nextToBarrier(Unit *u){
+bool nextToBarrier(Unit *u,Board const & board){
 	int r,c;
 	r=u->getR();
 	c=u->getC();
-	if(r-1>0     && c-1>0     && b[r-1][c-1].what == rock)return true;
-	if(r-1>0                  && b[r-1][c  ].what == rock)return true;
-	if(r-1>0     && c+1<=COLS && b[r-1][c+1].what == rock)return true;
-	if(             c-1>0     && b[r  ][c-1].what == rock)return true;
-	if(             c+1<=COLS && b[r  ][c+1].what == rock)return true;
-	if(r+1<=ROWS && c-1>0     && b[r+1][c-1].what == rock)return true;
-	if(r+1<=ROWS              && b[r+1][c  ].what == rock)return true;
-	if(r+1<=ROWS && c+1<=COLS && b[r+1][c+1].what == rock)return true;
+	if(r-1>0     && c-1>0     && board.things[r-1][c-1].what == rock)return true;
+	if(r-1>0                  && board.things[r-1][c  ].what == rock)return true;
+	if(r-1>0     && c+1<=COLS && board.things[r-1][c+1].what == rock)return true;
+	if(             c-1>0     && board.things[r  ][c-1].what == rock)return true;
+	if(             c+1<=COLS && board.things[r  ][c+1].what == rock)return true;
+	if(r+1<=ROWS && c-1>0     && board.things[r+1][c-1].what == rock)return true;
+	if(r+1<=ROWS              && board.things[r+1][c  ].what == rock)return true;
+	if(r+1<=ROWS && c+1<=COLS && board.things[r+1][c+1].what == rock)return true;
 	return false;
 }
 
-bool localSearch(Dir map[ROWS][COLS], Dir map2[ROWS][COLS],int r, int c){
+bool localSearch(Dir map[ROWS][COLS], Dir map2[ROWS][COLS],int r, int c,Board const & board){
 	if(map[r][c]!=none)return false;
-	if(b[r][c].what==rock)return false;
+	if(board.things[r][c].what==rock)return false;
 
 	if(r-1>=0  &&map2[r-1][c  ]!=none){map[r][c]=up;return true;}
 	if(c+1<COLS&&map2[r  ][c+1]!=none){map[r][c]=rt;return true;}
@@ -71,7 +64,7 @@ bool localSearch(Dir map[ROWS][COLS], Dir map2[ROWS][COLS],int r, int c){
 
 
 
-Dir pathDirFor(int sr, int sc, int er, int ec){
+Dir pathDirFor(int sr, int sc, int er, int ec,Board const & board){
 	Dir map[ROWS][COLS],map2[ROWS][COLS];
 	
 	int i,j;
@@ -92,7 +85,7 @@ Dir pathDirFor(int sr, int sc, int er, int ec){
 
 		for(i=0;i<ROWS;++i){
 			for(j=0;j<COLS;++j){
-				if(localSearch(map,map2,i,j))changes=true;
+				if(localSearch(map,map2,i,j,board))changes=true;
 			}
 		}
 		for(i=0;i<ROWS;++i){
@@ -109,10 +102,10 @@ float getDist(int r,int c,int tr,int tc){
 	return sqrt((double)(tr-r)*(tr-r)+(tc-c)*(tc-c));
 }
 
-Location getNearestEnemyCrown(Unit *u[], int m){
+Location getNearestEnemyCrown(Unit *u[], int m,Board const & board){
 	int r,c;
 	int tr,tc;
-	string tla;
+  std::string tla;
 	int i;
 	float minDist=ROWS*COLS;
 	Location l;
@@ -132,14 +125,14 @@ Location getNearestEnemyCrown(Unit *u[], int m){
 	}
 	l.r=u[mini]->getR();	
 	l.c=u[mini]->getC();	
-	l.dirFor=pathDirFor(r,c,l.r,l.c);
+	l.dirFor=pathDirFor(r,c,l.r,l.c,board);
 	return l;
 }
 
-Location getNearestEnemy(Unit *u[], int m){
+Location getNearestEnemy(Unit *u[], int m,Board& board){
 	int r,c;
 	int tr,tc;
-	string tla;
+  std::string tla;
 	int i;
 	float minDist=ROWS*COLS;
 	Location l;
@@ -159,7 +152,7 @@ Location getNearestEnemy(Unit *u[], int m){
 	}
 	l.r=u[mini]->getR();	
 	l.c=u[mini]->getC();	
-	l.dirFor=pathDirFor(r,c,l.r,l.c);
+	l.dirFor=pathDirFor(r,c,l.r,l.c,board);
 	return l;
 
 }
@@ -177,39 +170,39 @@ Dir manhattenDirFor(Unit *u, int tr, int tc){
 	}
 }
 
-Dir anyDir(Unit *u){
+Dir anyDir(Unit *u,Board& board){
 	int r,c;
 	int tr,tc;
 	r=u->getR();
 	c=u->getC();
-	tr=r-1;tc=c  ;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&b[tr][tc].what==space)return up;
-	tr=r+1;tc=c  ;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&b[tr][tc].what==space)return dn;
-	tr=r  ;tc=c-1;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&b[tr][tc].what==space)return lt;
-	tr=r  ;tc=c+1;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&b[tr][tc].what==space)return rt;
+	tr=r-1;tc=c  ;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&board.things[tr][tc].what==space)return up;
+	tr=r+1;tc=c  ;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&board.things[tr][tc].what==space)return dn;
+	tr=r  ;tc=c-1;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&board.things[tr][tc].what==space)return lt;
+	tr=r  ;tc=c+1;if(tr>=0&&tr<ROWS&&tc>=0&&tc<COLS&&board.things[tr][tc].what==space)return rt;
 	return none;
 }
 		
 	
 
-SitRep makeSitRep(Unit *u[NUM],int m){
+SitRep makeSitRep(Unit *u[NUM],int m,Board& board){
 	if(!u[m])exit(5);
 	SitRep s;
 	int i,j;
-	for(i=0;i<ROWS;++i)for(j=0;j<COLS;++j)s.thing[i][j]=b[i][j];
-	s.nearestEnemyCrown = getNearestEnemyCrown(u,m);
-	s.nearestEnemy = getNearestEnemy(u,m);
-	s.anyOpenSpace = anyDir(u[m]);
+	for(i=0;i<ROWS;++i)for(j=0;j<COLS;++j)s.thing[i][j]=board.things[i][j];
+	s.nearestEnemyCrown = getNearestEnemyCrown(u,m,board);
+	s.nearestEnemy = getNearestEnemy(u,m,board);
+	s.anyOpenSpace = anyDir(u[m],board);
 	s.turnNumber = numTurns;
 	return s;
 }
 
-int totalHp(Unit *u[], int m){
+int totalHp(Unit *u[], int m,Board const & board){
 	int i,sum=0;
-	for(i=0;i<NUM;++i)if(u[i]&&u[i]->getTla()==tla[m]) sum+=u[i]->getHp();
+	for(i=0;i<NUM;++i)if(u[i]&&u[i]->getTla()==board.tla[m]) sum+=u[i]->getHp();
 	return sum;
 }
 
-void display(Unit *u[]){
+void display(Unit *u[],Board& board,std::ostringstream& sout){
 	int i,j;
 	int lsize;
 	int rsize;
@@ -221,21 +214,21 @@ void display(Unit *u[]){
 	// don't display anything if we are doing the rankings
 	if(AUTOTOURNEY)return;
 
-	for(i=0;i<NUM;++i)if(u[i])unit2thing(u[i],u[i]->getR(),u[i]->getC());
+	for(i=0;i<NUM;++i)if(u[i])unit2thing(u[i],u[i]->getR(),u[i]->getC(),board);
 
 	// throw a legend out at the top
 	sout << "\n";
 	sout << "\n";
-	color[0]="\033[0;31m";
-	color[1]="\033[0;35m";
-	color[2]="\033[0;36m";
-	color[3]="\033[0;37m";
+	board.color[0]="\033[0;31m";
+	board.color[1]="\033[0;35m";
+	board.color[2]="\033[0;36m";
+	board.color[3]="\033[0;37m";
 	sout<<"turn: "<<numTurns<<"  ";
 	if(numTurns>9)rsize--;
 	if(numTurns>99)rsize--;
 	for(i=0;i<rsize-9;++i)sout<<" ";
-	if(ANSI) for(i=0;i<numplayers;++i) sout <<color[i]<<tla[i]<<" "<<totalHp(u,i)<<"\033[0m     ";
-	else     sout <<tla[0]<<" (lowercase) "<<totalHp(u,0)<<"   "<<tla[1]<<" (ALLCAPS) "<<totalHp(u,1);
+	if(ANSI) for(i=0;i<numplayers;++i) sout <<board.color[i]<<board.tla[i]<<" "<<totalHp(u,i,board)<<"\033[0m     ";
+	else     sout <<board.tla[0]<<" (lowercase) "<<totalHp(u,0,board)<<"   "<<board.tla[1]<<" (ALLCAPS) "<<totalHp(u,1,board);
 	sout << "\n ";
 	for(i=0;i<COLS;++i)sout<<"-";
 	if(!TINYMAP) for(i=0;i<COLS;++i)sout<<"-";
@@ -246,7 +239,7 @@ void display(Unit *u[]){
 		sout<<"|";
 		for(j=0;j<COLS;++j){
 			// if it's open space
-			if(b[i][j].what==space){
+			if(board.things[i][j].what==space){
 				if(DOTS) sout<<".";
 				else     sout<<" ";
 				if(!TINYMAP)sout<<" ";
@@ -254,7 +247,7 @@ void display(Unit *u[]){
 			}
 			
 			// if it's a rock
-			if(b[i][j].what==rock){
+			if(board.things[i][j].what==rock){
 				sout<<"X";
 				if(!TINYMAP)sout<<" ";
 				continue;
@@ -263,15 +256,15 @@ void display(Unit *u[]){
 			//else it's a unit
 			//turn on some colors if ANSI set
 			if(ANSI){
-				if(b[i][j].tla==tla[0]) sout << "\033[0;31m";
-				if(b[i][j].tla==tla[1]) sout << "\033[0;35m";
-				if(b[i][j].tla==tla[2]) sout << "\033[0;36m";
-				if(b[i][j].tla==tla[3]) sout << "\033[0;37m";
+				if(board.things[i][j].tla==board.tla[0]) sout << "\033[0;31m";
+				if(board.things[i][j].tla==board.tla[1]) sout << "\033[0;35m";
+				if(board.things[i][j].tla==board.tla[2]) sout << "\033[0;36m";
+				if(board.things[i][j].tla==board.tla[3]) sout << "\033[0;37m";
 			}
 
-			//spit out the appropirate unit character
-			if(ANSI || b[i][j].tla==tla[0]){
-				switch(b[i][j].rank){
+			//spit out the appropriate unit character
+			if(ANSI || board.things[i][j].tla==board.tla[0]){
+				switch(board.things[i][j].rank){
 				case infantry: sout<<"i";break;
 				case archer:   sout<<"a";break;
 				case knight:   sout<<"k";break;
@@ -279,7 +272,7 @@ void display(Unit *u[]){
 				default:       sout<<"?";break;
 				}
 			}else{
-				switch(b[i][j].rank){
+				switch(board.things[i][j].rank){
 				case infantry: sout<<"I";break;
 				case archer:   sout<<"A";break;
 				case knight:   sout<<"K";break;
@@ -290,7 +283,7 @@ void display(Unit *u[]){
 
 			//indicate direction if there is space
 			if(!TINYMAP){
-				switch(b[i][j].dir){
+				switch(board.things[i][j].dir){
 				case up:  sout<<"^";break;
 				case dn:  sout<<"v";break;
 				case rt:  sout<<">";break;
@@ -313,7 +306,7 @@ void display(Unit *u[]){
 }
 
 
-void readMap(){
+void readMap(Board& board){
 	int i,j,rows,cols;
 	ifstream  fin;
 	fin.open(INFILE);
@@ -338,10 +331,10 @@ void readMap(){
 		exit(3);
 	}
 	for(i=0;i<numplayers;++i){
-		fin>>startBox[i].minr;
-		fin>>startBox[i].maxr;
-		fin>>startBox[i].minc;
-		fin>>startBox[i].maxc;
+		fin>>board.startBox[i].minr;
+		fin>>board.startBox[i].maxr;
+		fin>>board.startBox[i].minc;
+		fin>>board.startBox[i].maxc;
 	}
 	
 	// max 2 players for non-ANSI terminal
@@ -349,11 +342,11 @@ void readMap(){
 
 	for(i=0;i<ROWS;++i){
 		for(j=0;j<COLS;++j){
-			b[i][j].what=space;
-			fin >> c[i][j];
-			if(c[i][j]=='X'){
-				b[i][j].dir = none; 
-				b[i][j].what = rock; 
+			board.things[i][j].what=space;
+			fin >> board.c[i][j];
+			if(board.c[i][j]=='X'){
+				board.things[i][j].dir = none; 
+				board.things[i][j].what = rock; 
 			}
 		}
 	//cout << endl;
@@ -372,7 +365,7 @@ void printTlaList(){
 }
 
 
-bool checksOut(string tla){
+bool checksOut(std::string tla){
 	int i;
 	for(i=0;i<NUMTLAS;++i){
 		if(tlalist[i]==tla)return true;
@@ -380,7 +373,7 @@ bool checksOut(string tla){
 	return false;
 }
 
-Unit * newUnit(string tla, Rank rank){
+Unit * newUnit(std::string tla, Rank rank){
 	int hp;
 	switch(rank){
 	case infantry:	hp=INFANTRYHP;	break;
@@ -393,32 +386,32 @@ Unit * newUnit(string tla, Rank rank){
 
   ${tla_create};
 
-	cout << "error making soldier.  quitting.\n";
+ 	cout << "error making soldier.  quitting.\n";
 	exit(0);
 }
 
-void updateB(Unit *u){
+void updateB(Unit *u,Board& board){
 	if(!u)exit(5);
-	b[u->getR()][u->getC()].what=unit;
-	b[u->getR()][u->getC()].rank=u->getRank();
-	b[u->getR()][u->getC()].tla=u->getTla();
-	b[u->getR()][u->getC()].dir=u->getDir();
-	b[u->getR()][u->getC()].hp=u->getHp();
+	board.things[u->getR()][u->getC()].what=unit;
+	board.things[u->getR()][u->getC()].rank=u->getRank();
+	board.things[u->getR()][u->getC()].tla=u->getTla();
+	board.things[u->getR()][u->getC()].dir=u->getDir();
+	board.things[u->getR()][u->getC()].hp=u->getHp();
 }
 
 
 
-void checkPlacement(Unit *u,Unit t,int minr,int maxr,int minc,int maxc){
+void checkPlacement(Unit *u,Unit t,int minr,int maxr,int minc,int maxc,Board& board){
 	int tr, tc;
 	tr=u->getR();
 	tc=u->getC();
 	int i;
 	
-	if(b[tr][tc].what==rock){
+	if(board.things[tr][tc].what==rock){
 		cout << "error: "<<u->getTla()<<" placed unit on a rock. exiting.\n";
 		exit (6);
 	}
-	if(b[tr][tc].what==unit){
+	if(board.things[tr][tc].what==unit){
 		cout << "error: "<<u->getTla()<<" placed unit on another unit. exiting.\n";
 		exit (6);
 	}
@@ -447,9 +440,9 @@ void checkNoMods(Unit *u,Unit t){
 
 }
 
-void setUpBoard(Unit *u[NUM]){
+void setUpBoard(Unit *u[NUM],Board& board){
 	Unit t;
-	readMap();
+	readMap(board);
 	bool gotNames=false;
 	int i;
 	int pnum;
@@ -461,9 +454,9 @@ void setUpBoard(Unit *u[NUM]){
 		for(i=0;i<numplayers;++i){
 tryagain:
 			cout<<"tla"<<i<<": ";
-			cin >> tla[i];
-			if(tla[i]=="?"){printTlaList();goto tryagain;}
-			if(!checksOut(tla[i])){
+			cin >> board.tla[i];
+			if(board.tla[i]=="?"){printTlaList();goto tryagain;}
+			if(!checksOut(board.tla[i])){
 				cout << "That tla is not in the list.\n";
 				cout << "type '?' to see a full list.\n";
 				goto tryagain;
@@ -474,55 +467,55 @@ tryagain:
 	// make all the crowns
 	for(i=0;i<numplayers;++i){
 		pnum=i%numplayers;
-		minr=startBox[pnum].minr;
-		maxr=startBox[pnum].maxr;
-		minc=startBox[pnum].minc;
-		maxc=startBox[pnum].maxc;
-		u[i]=newUnit(tla[pnum],crown);
+		minr=board.startBox[pnum].minr;
+		maxr=board.startBox[pnum].maxr;
+		minc=board.startBox[pnum].minc;
+		maxc=board.startBox[pnum].maxc;
+		u[i]=newUnit(board.tla[pnum],crown);
 		t=*u[i];
-		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i));
-		checkPlacement(u[i],t,minr,maxr,minc,maxc);
-		updateB(u[i]);
+		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i,board));
+		checkPlacement(u[i],t,minr,maxr,minc,maxc,board);
+		updateB(u[i],board);
 	}
 	// make all the knights
 	for(;i<(numplayers+NUMKNIGHTS);++i){
 		pnum=i%numplayers;
 		pnum=i%numplayers;
-		minr=startBox[pnum].minr;
-		maxr=startBox[pnum].maxr;
-		minc=startBox[pnum].minc;
-		maxc=startBox[pnum].maxc;
-		u[i]=newUnit(tla[pnum],knight);
+		minr=board.startBox[pnum].minr;
+		maxr=board.startBox[pnum].maxr;
+		minc=board.startBox[pnum].minc;
+		maxc=board.startBox[pnum].maxc;
+		u[i]=newUnit(board.tla[pnum],knight);
 		t=*u[i];
-		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i));
-		checkPlacement(u[i],t,minr,maxr,minc,maxc);
-		updateB(u[i]);
+		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i,board));
+		checkPlacement(u[i],t,minr,maxr,minc,maxc,board);
+		updateB(u[i],board);
 	}
 	// make all the archers
 	for(;i<(numplayers+NUMKNIGHTS+NUMARCHERS);++i){
 		pnum=i%numplayers;
-		minr=startBox[pnum].minr;
-		maxr=startBox[pnum].maxr;
-		minc=startBox[pnum].minc;
-		maxc=startBox[pnum].maxc;
-		u[i]=newUnit(tla[pnum],archer);
+		minr=board.startBox[pnum].minr;
+		maxr=board.startBox[pnum].maxr;
+		minc=board.startBox[pnum].minc;
+		maxc=board.startBox[pnum].maxc;
+		u[i]=newUnit(board.tla[pnum],archer);
 		t=*u[i];
-		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i));
-		checkPlacement(u[i],t,minr,maxr,minc,maxc);
-		updateB(u[i]);
+		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i,board));
+		checkPlacement(u[i],t,minr,maxr,minc,maxc,board);
+		updateB(u[i],board);
 	}
 	// make all the infantry
 	for(;i<NUM;++i){
 		pnum=i%numplayers;
-		minr=startBox[pnum].minr;
-		maxr=startBox[pnum].maxr;
-		minc=startBox[pnum].minc;
-		maxc=startBox[pnum].maxc;
-		u[i]=newUnit(tla[pnum],infantry);
+		minr=board.startBox[pnum].minr;
+		maxr=board.startBox[pnum].maxr;
+		minc=board.startBox[pnum].minc;
+		maxc=board.startBox[pnum].maxc;
+		u[i]=newUnit(board.tla[pnum],infantry);
 		t=*u[i];
-		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i));
-		checkPlacement(u[i],t,minr,maxr,minc,maxc);
-		updateB(u[i]);
+		u[i]->Place(minr,maxr,minc,maxc,makeSitRep(u,i,board));
+		checkPlacement(u[i],t,minr,maxr,minc,maxc,board);
+		updateB(u[i],board);
 	}
 
 	return;
@@ -530,7 +523,7 @@ tryagain:
 
 //return the number of spaces the unit can move without hitting someting,
 //up to dist
-int clear(Unit *u[], int m, int dist){
+int clear(Unit *u[], int m, int dist,Board const& board){
 	if(!u[m])exit(5);
 	int i;
 	int goDist=0;
@@ -552,7 +545,7 @@ int clear(Unit *u[], int m, int dist){
 		if(tr<0||tr>=ROWS||tc<0||tc>=COLS)break;
 	
 		// is there a something there?
-		if(b[tr][tc].what!=space)break;
+		if(board.things[tr][tc].what!=space)break;
 	
 		//nothing there?  bump the goDist
 		++goDist;
@@ -639,10 +632,10 @@ void makeSuffer(Unit *u[], int m, int hits){
 }
 
 
-bool oneLeft(Unit *u[NUM]){
+bool oneLeft(Unit *u[NUM],Board& board){
 	int i,j;
-	string firstTla;
-	string secondTla;
+  std::string firstTla;
+  std::string secondTla;
 	int maxHp=0;
 	int maxPlayer=0;
 	int numWinners=0;
@@ -650,15 +643,15 @@ bool oneLeft(Unit *u[NUM]){
 	// out of time?
 	if(numTurns>MAXTURNS){
 		for(i=0;i<numplayers;++i){
-			if(totalHp(u,i)>maxHp){
-				maxHp=totalHp(u,i);
+			if(totalHp(u,i,board)>maxHp){
+				maxHp=totalHp(u,i,board);
 				maxPlayer=i;
 			}
 		}
 		for(i=0;i<numplayers;++i){
-			if(totalHp(u,i)==maxHp){
-				if(!AUTOTOURNEY)cout << tla[i]<<" has the most armies! ("<<totalHp(u,i)<<")\n";
-				if(AUTOTOURNEY)winner=tla[i];
+			if(totalHp(u,i,board)==maxHp){
+				if(!AUTOTOURNEY)cout << board.tla[i]<<" has the most armies! ("<<totalHp(u,i,board)<<")\n";
+				if(AUTOTOURNEY)winner=board.tla[i];
 				numWinners++;
 			}
 		}
@@ -718,7 +711,7 @@ bool oneLeft(Unit *u[NUM]){
 }
 
 	
-void doTurn(Unit *u[NUM]){
+void doTurn(Unit *u[NUM],Board& board){
 	Unit tu;
 	int m;
     	SitRep sitRep;
@@ -727,7 +720,7 @@ void doTurn(Unit *u[NUM]){
 	int lr,lc;
 	int i,j,t,next[NUM];
 
-	//come up witha a randome ordering of pieces for this turn
+	//come up with a random ordering of pieces for this turn
 	for(i=0;i<NUM;++i)next[i]=i;
 	for(i=NUM-1;i>0;--i){
 		j=rand()%i;
@@ -738,10 +731,10 @@ void doTurn(Unit *u[NUM]){
 
 	for(i=0;i<NUM;++i){
 		m=next[i];
-		if(oneLeft(u))return;;
+		if(oneLeft(u,board))return;;
         	if(u[m]&&!u[m]->getDead()){
-			makeB(u);
-            		sitRep=makeSitRep(u,m);
+			makeB(u,board);
+            		sitRep=makeSitRep(u,m,board);
             		int tseed=rand();  //Save the current state of rand...
 			tu=*u[m];
             		a=u[m]->Recommendation(sitRep);
@@ -754,10 +747,10 @@ void doTurn(Unit *u[NUM]){
 				case fwd:
 					lr=u[m]->getR();
 					lc=u[m]->getC();
-					if(!clear(u,m,a.maxDist))break;
+					if(!clear(u,m,a.maxDist,board))break;
 					if(u[m]->getRank()==archer||u[m]->getRank()==infantry)
 						a.maxDist=1;
-					u[m]->Move(clear(u,m,a.maxDist));
+					u[m]->Move(clear(u,m,a.maxDist,board));
 					break;
 				case attack:
 					hits=u[m]->Attack();
@@ -775,41 +768,41 @@ void doTurn(Unit *u[NUM]){
 
 
 //run an automatic game.  tla1 and tla2 should be set up prior to calling
-int autoGame(Unit *u[]){
+int autoGame(Unit *u[],Board& board){
 	bool done=false;
 
 	// set up the board
-	setUpBoard(u);
+	setUpBoard(u,board);
 	
 	while(!done){
 		// do a turn
 		++numTurns;
-		doTurn(u);	
-		if(oneLeft(u))done=true;
+		doTurn(u,board);	
+		if(oneLeft(u,board))done=true;
 	}
 	if(AUTOTOURNEY){
-		if(winner==tla[0])return 2;
+		if(winner==board.tla[0])return 2;
 		else if(winner=="tie")return 1;
 	}
 	return 0;
 }
 
 //run a whole tournament of each tla against AUTONUMMATCHES random others, output stats on each
-void autoTourney(Unit *u[]){
+void autoTourney(Unit *u[],Board& board){
 	int i,j,k;
 	int wins;
 	int w;
 	for(i=0;i<NUMTLAS;++i){
 		if(noPlay[i])continue;
 		wins=0;
-		tla[0]=tlalist[i];	
+		board.tla[0]=tlalist[i];	
 		for(j=0;j<AUTONUMMATCHES;++j){
 			numTurns=0;
 			//k=rand()%NUMTLAS;
 			//while(k==i || noPlay[k])k=rand()%NUMTLAS;
 			k=79;
-			tla[1]=tlalist[k];	
-			w=autoGame(u);
+			board.tla[1]=tlalist[k];	
+			w=autoGame(u,board);
 			//cout << "\t"<<tla[0]<<" vs. "<<tla[1]<<": ";
 			//cout << "winner: "<<winner<<"  -- ";
 			//if(w==2)cout<<"win\n";
@@ -817,62 +810,51 @@ void autoTourney(Unit *u[]){
 			//else cout<<"lose\n";
 			wins+=w;
 		}
-		cout << i << ": "<<tla[0] << " ";
+		cout << i << ": "<<board.tla[0] << " ";
 		cout << wins;
 		cout << endl;
 	}
 	return;
 }
 
+int main()
+{
 
- 
+  Board board;
 
+  Unit* u[NUM];
+  char line[1024];
+  bool done = false;
+  numTurns = 0;
 
+  srand(time(NULL));
 
+  // if running an auto tourney, just do that and quit
+  if (AUTOTOURNEY) {
+    autoTourney(u,board);
+    return 0;
+  }
 
+  // set up the board
+  setUpBoard(u,board);
+  std::ostringstream sout;
+  display(u,board,sout);
+  cin.getline(line, 1023);
+  cout << sout.str();
+  sout.str("");
 
-int main(){
-
-
-	Unit * u[NUM];
-	char line[1024];
-	bool done=false;
-	numTurns=0;
-	
-	srand(time(NULL));
-
-	// if running an auto tourney, just do that and quit
-	if(AUTOTOURNEY){
-		autoTourney(u);
-		return 0;
-	}
-
-	// set up the board
-	setUpBoard(u);
-	display(u);
-	cin.getline(line,1023);
-	cout<<sout.str();
-	sout.str("");
-	
-	while(!done){
-		// do a turn
-		++numTurns;
-		doTurn(u);	
-        	display(u);
-		cin.getline(line,1023);
-		cout<<sout.str();
-		sout.str("");
-        	if(line[0]=='q')done=true;
-		if(oneLeft(u))done=true;
-	}
-	return 0;
-
-
+  while (!done)
+  {
+    // do a turn
+    ++numTurns;
+    doTurn(u,board);
+    display(u,board,sout);
+    cin.getline(line, 1023);
+    cout << sout.str();
+    sout.str("");
+    if (line[0] == 'q') done = true;
+    if (oneLeft(u,board)) done = true;
+  }
+  return 0;
 }
-	
-
- 
-
-
-
 

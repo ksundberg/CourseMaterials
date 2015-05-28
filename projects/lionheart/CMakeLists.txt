@@ -35,20 +35,7 @@ endforeach()
 ###############################
 # Student Files
 set(Student_tlas
-    adc adi adn akf akf all alt amo ark asd ben
-    boo bos bot bri bro bug bwc cal car cdg cjt
-    ckc clg cls clu cmd cow cra crb crd csq ctu
-    cwc cze dfv die dih djh dkb dkd dlr dlt dnd
-    dos drb drc dre dsc dss dww dxv edb eds emj
-    fed god gst gwh hlz hsa hug ian icl ike
-    ipm jaz jbp jcl jdd jds jen jfr jmf jmh jms
-    jmt jps jrp jrw jta jtd jtg jwl kac kdf kfc
-    klb klh knk lam lav lel lhm lia lmn loz m11
-    maa mad med mjn mlg mlm mlp mmh mos mpf mrr
-    msw mtc nac naw nva ork oss per pez phx pim
-    pld pox psg pts rdt rgw rha roa rob rtb sah
-    sd9 sdw sgj slj sll sps tas tbb tcg tdm tds
-    tgf tgy the thl tlp tom tpa trh tsm usa
+    adc adn alt ben bos bri dww ian jcl jmh oss pld sll tbb
 )
 set(tla_includes)
 set(tla_list)
