@@ -1,5 +1,6 @@
 #include "unit.h"
 #include <cmath>
+#include <random>
 
 float dist(int ar,int ac,int br,int bc){
 	return sqrt((double)(br-ar)*(br-ar)+(bc-ac)*(bc-ac));
@@ -34,6 +35,11 @@ void Unit::Move(int dist){
 int Unit::Attack(){
 	int i=0,hits=0,d;
 	int rolls;
+  static std::random_device rd;
+  static std::mt19937 engine(rd());
+  std::uniform_int_distribution<> die(0,5);
+  std::uniform_int_distribution<> secondChance(0,1);
+
 	rolls=hp;
 	if(rank==crown||rank==knight)rolls*=2;
 
@@ -47,16 +53,17 @@ int Unit::Attack(){
 	}
 
 	for(i=0;i<rolls;++i){
-		d=rand()%6;
+    d=
+		d=die(engine);
 		if(rank==archer&&(d==3||d==4))hits++;
 		else if(d<3)hits++;
 	}
 
 	//if I am an archer or infantry,
 	//and there is only one of me,
-	//and i rolled 1 hit,
-	//then i am allowed to roll again
-	if((rank==archer||rank==infantry)&&hp==1&&hits==1)hits+=rand()%2;
+	//and I rolled 1 hit,
+	//then I am allowed to roll again
+	if((rank==archer||rank==infantry)&&hp==1&&hits==1)hits+=secondChance(engine);
 
 	return hits;
 }
@@ -72,10 +79,15 @@ void Unit::Suffer(int hits){
 void Unit::Place(int minR,int maxR,int minC,int maxC, SitRep sitrep){
 	bool done=false;
 	int tr,tc;
+  static std::random_device rd;
+  static std::mt19937 engine(rd());
+  std::uniform_int_distribution<> rowDist(minR,maxR);
+  std::uniform_int_distribution<> colDist(minC,maxC);
+
 	Dir td;
 	while(!done){
-		tr=minR+rand()%(maxR-minR);	
-		tc=minC+rand()%(maxC-minC);	
+		tr=rowDist(engine);	
+		tc=colDist(engine);	
 		if(sitrep.thing[tr][tc].what==space)done=true;
 	}
 	int rdist=ROWS/2-tr;

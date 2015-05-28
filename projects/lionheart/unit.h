@@ -2,7 +2,6 @@
 #ifndef UNIT_H  // this keeps the classes and structs from being defined more
 #define UNIT_H  // than once, along with the #endif at the bottom
 #include <string>
-#include <cstdlib>
 
 #include "Board.hpp"
 

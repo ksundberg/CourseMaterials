@@ -1,6 +1,5 @@
 #include "ben.h"
 #include "lionheart2.h"
-#include "Player.hpp"
 #include <cmath>
 #include <iostream>
 

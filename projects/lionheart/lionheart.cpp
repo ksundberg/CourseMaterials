@@ -3,6 +3,8 @@
 #include <sstream>
 #include <cmath>
 #include <ctime>
+#include <random>
+#include <algorithm>
 #include "lionheart.h"
 
 // A few globals, just to be Old School
@@ -535,7 +537,7 @@ tryagain:
 	return;
 }
 
-//return the number of spaces the unit can move without hitting someting,
+//return the number of spaces the unit can move without hitting something,
 //up to dist
 int clear(Unit *u[], int m, int dist,Board const& board){
 	if(!u[m])exit(5);
@@ -732,16 +734,15 @@ void doTurn(Unit *u[NUM],Board& board){
     	Action a;
     	int hits;
 	int lr,lc;
-	int i,j,t,next[NUM];
+	int i,j,t;
+  std::array<int,NUM> next;
 
 	//come up with a random ordering of pieces for this turn
 	for(i=0;i<NUM;++i)next[i]=i;
-	for(i=NUM-1;i>0;--i){
-		j=rand()%i;
-		t=next[j];
-		next[j]=next[i];
-		next[i]=t;	
-	}
+  static std::random_device rd;
+  static std::mt19937 engine(rd());
+  std::shuffle(std::begin(next),std::end(next),engine);
+	
 
 	for(i=0;i<NUM;++i){
 		m=next[i];
@@ -749,11 +750,9 @@ void doTurn(Unit *u[NUM],Board& board){
         	if(u[m]&&!u[m]->getDead()){
 			makeB(u,board);
             		sitRep=makeSitRep(u,m,board);
-            		int tseed=rand();  //Save the current state of rand...
 			tu=*u[m];
             		a=u[m]->Recommendation(sitRep);
 			checkNoMods(u[m],tu);
-            		srand(tseed);  //...and reset it.
             		switch(a.action){
 				case turn:
 					u[m]->Turn(a.dir);
@@ -841,7 +840,6 @@ int main()
   bool done = false;
   numTurns = 0;
 
-  srand(time(NULL));
 
   // if running an auto tourney, just do that and quit
   if (AUTOTOURNEY) {
