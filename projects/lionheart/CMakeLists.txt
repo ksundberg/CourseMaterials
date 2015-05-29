@@ -39,6 +39,7 @@ set(Student_tlas
 )
 set(tla_includes)
 set(tla_list)
+list(LENGTH Student_tlas tla_count)
 foreach(tla ${Student_tlas})
   set(tla_includes "${tla_includes}\n#include \"Player/${tla}.h\"")
   set(tla_list "${tla_list}\"${tla}\",")

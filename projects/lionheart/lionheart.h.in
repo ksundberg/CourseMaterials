@@ -1,9 +1,10 @@
 #ifndef LIONHEART_H
 #define LIONHEART_H
 #include "unit.h"
+#include "lionheart2.h"
 ${tla_includes}
 
-#include "lionheart2.h"
+const int NUMTLAS     =   ${tla_count};
 
 bool noPlay[NUMTLAS] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 

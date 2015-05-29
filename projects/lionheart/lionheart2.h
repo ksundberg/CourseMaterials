@@ -24,6 +24,5 @@ const int CROWNHP = 1;
 const int NUM         =    60;
 const int NUMKNIGHTS  =    12;
 const int NUMARCHERS  =    16;
-const int NUMTLAS     =   12;
 
 #endif
