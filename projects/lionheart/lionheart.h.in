@@ -28,4 +28,22 @@ Unit * newUnit(std::string tla, Rank rank){
  	cout << "error making soldier.  quitting.\n";
 	exit(0);
 }
+
+inline void printTlaList(){
+	int i;
+	for(i=0;i<NUMTLAS;++i){
+		cout << tlalist[i]<<" ";
+		if((i+1)%11==0)cout<<endl;
+	}
+	cout<< endl;
+}
+
+inline bool checksOut(std::string tla){
+	int i;
+	for(i=0;i<NUMTLAS;++i){
+		if(tlalist[i]==tla)return true;
+	}
+	return false;
+}
+
 #endif

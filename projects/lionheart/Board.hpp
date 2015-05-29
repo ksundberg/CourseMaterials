@@ -38,5 +38,12 @@ struct Board
   Box startBox[4];
 };
 
+bool localSearch(Dir map[ROWS][COLS], Dir map2[ROWS][COLS],int r, int c,Board const & board);
+
+Dir pathDirFor(int sr, int sc, int er, int ec,Board const & board);
+
+float getDist(int r,int c,int tr,int tc);
+
+void readMap(Board& board);
 #endif
 
