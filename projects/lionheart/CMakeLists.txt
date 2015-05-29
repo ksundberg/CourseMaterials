@@ -52,8 +52,7 @@ list(APPEND lionheart_srcs ${student_sources})
 
 ################################
 # Provided Sources
-#configure_file(lionheart.h.in lionheart.h)
-#configure_file(lionheart.cpp.in lionheart.cpp)
+configure_file(lionheart.h.in lionheart.h)
 set(Provided_srcs
     lionheart.cpp
     lionheart2.h

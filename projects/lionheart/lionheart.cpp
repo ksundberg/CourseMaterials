@@ -375,35 +375,6 @@ bool checksOut(std::string tla){
 	return false;
 }
 
-Unit * newUnit(std::string tla, Rank rank){
-	int hp;
-	switch(rank){
-	case infantry:	hp=INFANTRYHP;	break;
-	case archer:	hp=ARCHERHP;	break;
-	case knight:	hp=KNIGHTHP;	break;
-	case crown:	hp=CROWNHP;	break;
-	}
-
-	if(tla=="xxx")return new Unit(0,0,hp,up,rank,false,tla);
-
-  
-if(tla=="adn") return new adn(0,0,hp,up,rank,false,tla);
-if(tla=="alt") return new alt(0,0,hp,up,rank,false,tla);
-if(tla=="ben") return new ben(0,0,hp,up,rank,false,tla);
-if(tla=="bri") return new bri(0,0,hp,up,rank,false,tla);
-if(tla=="dww") return new dww(0,0,hp,up,rank,false,tla);
-if(tla=="ian") return new ian(0,0,hp,up,rank,false,tla);
-if(tla=="jcl") return new jcl(0,0,hp,up,rank,false,tla);
-if(tla=="jmh") return new jmh(0,0,hp,up,rank,false,tla);
-if(tla=="oss") return new oss(0,0,hp,up,rank,false,tla);
-if(tla=="pld") return new pld(0,0,hp,up,rank,false,tla);
-if(tla=="sll") return new sll(0,0,hp,up,rank,false,tla);
-if(tla=="tbb") return new tbb(0,0,hp,up,rank,false,tla);
-
- 	cout << "error making soldier.  quitting.\n";
-	exit(0);
-}
-
 void updateB(Unit *u,Board& board){
 	if(!u)exit(5);
 	board.things[u->getR()][u->getC()].what=unit;
@@ -413,14 +384,12 @@ void updateB(Unit *u,Board& board){
 	board.things[u->getR()][u->getC()].hp=u->getHp();
 }
 
-
-
 void checkPlacement(Unit *u,Unit t,int minr,int maxr,int minc,int maxc,Board& board){
 	int tr, tc;
 	tr=u->getR();
 	tc=u->getC();
 	int i;
-	
+
 	if(board.things[tr][tc].what==rock){
 		cout << "error: "<<u->getTla()<<" placed unit on a rock. exiting.\n";
 		exit (6);
