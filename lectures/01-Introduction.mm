@@ -75,8 +75,8 @@
 <node TEXT="Keep It Simple ..." ID="ID_1897207451" CREATED="1430766532936" MODIFIED="1430766547292"/>
 </node>
 <node TEXT="Explicit v. Implicit" ID="ID_992880961" CREATED="1430767013681" MODIFIED="1430767023735">
-<node TEXT="Much more time is spent reading/understanding code than writing" ID="ID_1458600406" CREATED="1430767023736" MODIFIED="1430767041547"/>
-<node TEXT="Clarity and Correctness trump almost all other concerns" ID="ID_1309610245" CREATED="1430767042129" MODIFIED="1430767069169"/>
+<node TEXT="Much more time is spent reading/understanding code than writing" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1458600406" CREATED="1430767023736" MODIFIED="1433011301895"/>
+<node TEXT="Clarity and Correctness trump almost all other concerns" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1309610245" CREATED="1430767042129" MODIFIED="1433011164032"/>
 <node TEXT="It is usually clearer to be explicit and detailed than to assume that the reader knows what is going on" ID="ID_573137599" CREATED="1430767070001" MODIFIED="1430767091976"/>
 </node>
 <node TEXT="Reduce Coupling" ID="ID_1122115901" CREATED="1430767093504" MODIFIED="1430767097392">
