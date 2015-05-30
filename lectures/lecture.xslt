@@ -30,6 +30,17 @@
       \begin{itemize}
   <xsl:for-each select="node">
     \item <xsl:value-of select="@TEXT"/>
+<xsl:if test="node">
+      \begin{itemize}
+  <xsl:for-each select="node">
+    \item <xsl:value-of select="@TEXT"/>
+      <xsl:if test="@LOCALIZED_STYLE_REF='styles.topic'">
+        \pause
+      </xsl:if>
+</xsl:for-each>
+      \end{itemize}
+    </xsl:if>
+
       <xsl:if test="@LOCALIZED_STYLE_REF='styles.topic'">
         \pause
       </xsl:if>
