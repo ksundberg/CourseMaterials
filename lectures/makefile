@@ -16,5 +16,5 @@ clean:
 	xsltproc lecture.xslt $< > $@
 
 %.pdf : %.tex
-	pdflatex $< -interaction=nonstopmode
-	pdflatex $< -interaction=nonstopmode
+	pdflatex -halt-on-error $<
+	pdflatex -halt-on-error $<
