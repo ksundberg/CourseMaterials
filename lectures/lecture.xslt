@@ -4,6 +4,7 @@
   <xsl:template match="map/node">
 \documentclass[usepdftitle=false,professionalfonts,compress]{beamer}
 \usepackage{hyperref}
+\usepackage{listings}
 
 \usetheme[]{Warsaw}
 
@@ -24,6 +25,19 @@
   <xsl:for-each select="node">
   \subsection{<xsl:value-of select="@TEXT"/>}
   <xsl:for-each select="node">
+    <xsl:choose>
+      <xsl:when test="@LOCALIZED_STYLE_REF='styles.important'">
+\begin{frame}[fragile]
+\frametitle{<xsl:value-of select="@TEXT"/>}
+\begin{lstlisting}[language=C++]
+<xsl:for-each select="node">
+<xsl:value-of select="@TEXT"/>
+<xsl:text>&#xa;</xsl:text>
+</xsl:for-each>
+\end{lstlisting}    
+\end{frame}
+      </xsl:when>
+      <xsl:otherwise>
     \begin{frame}
     \frametitle{<xsl:value-of select="@TEXT"/>}
     <xsl:if test="node">
@@ -48,6 +62,8 @@
       \end{itemize}
     </xsl:if>
     \end{frame}
+  </xsl:otherwise>
+  </xsl:choose>
 </xsl:for-each>
 </xsl:for-each>
 </xsl:for-each>

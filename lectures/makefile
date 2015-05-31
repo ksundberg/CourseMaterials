@@ -4,13 +4,16 @@ all: 01-Introduction.pdf 02-BasicStatements.pdf 03-SoftwareEngineering.pdf 04-Co
 
 clean:
 	rm -f *.tex
-	rm -f *.pdf
+	rm -f *.vrb
 	rm -f *.aux
 	rm -f *.toc
 	rm -f *.log
 	rm -f *.nav
 	rm -f *.out
 	rm -f *.snm
+
+distclean: clean
+	rm -f *.pdf
 
 %.tex : %.mm lecture.xslt
 	xsltproc lecture.xslt $< > $@
