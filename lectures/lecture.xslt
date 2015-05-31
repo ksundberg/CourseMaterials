@@ -5,6 +5,7 @@
 \documentclass[usepdftitle=false,professionalfonts,compress]{beamer}
 \usepackage{hyperref}
 \usepackage{listings}
+\usepackage{color}
 
 \usetheme[]{Warsaw}
 
@@ -13,13 +14,18 @@
 \subtitle{CS1400}
 \date{}
 
+\lstset{language=C++,
+keywordstyle=\color{blue},
+stringstyle=\color{red},
+commentstyle=\color{green},
+morecomment=[l][\color{magenta}]{\#}
+}
 \begin{document}
 \frame[plain]{
 \frametitle{}
 \titlepage
 }
 
-\frame{\tableofcontents}
 <xsl:for-each select="node">
   \section{<xsl:value-of select="@TEXT"/>}
   <xsl:for-each select="node">
@@ -29,7 +35,7 @@
       <xsl:when test="@LOCALIZED_STYLE_REF='styles.important'">
 \begin{frame}[fragile]
 \frametitle{<xsl:value-of select="@TEXT"/>}
-\begin{lstlisting}[language=C++]
+\begin{lstlisting}
 <xsl:for-each select="node">
 <xsl:value-of select="@TEXT"/>
 <xsl:text>&#xa;</xsl:text>
