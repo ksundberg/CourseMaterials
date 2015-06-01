@@ -119,7 +119,8 @@
 </node>
 <node TEXT="Introduction" POSITION="right" ID="ID_1555719218" CREATED="1430766293248" MODIFIED="1430766339763">
 <node TEXT="Computer Science" ID="ID_1563878077" CREATED="1430766339764" MODIFIED="1430766356052">
-<node TEXT="What is Computer Science?" ID="ID_428361757" CREATED="1430766356053" MODIFIED="1430766368074">
+<node TEXT="What is Computer Science?" ID="ID_428361757" CREATED="1430766356053" MODIFIED="1433197182043">
+<attribute NAME="textbook" VALUE="1.1" OBJECT="org.freeplane.features.format.FormattedNumber|1.1"/>
 <node TEXT="Hint: It has almost nothing to do with computers" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1444580079" CREATED="1433015532257" MODIFIED="1433015721582"/>
 <node TEXT="Science of Problem Solving" ID="ID_512083072" CREATED="1433015560480" MODIFIED="1433015582888"/>
 <node TEXT="Encoding knowledge of how to accomplish tasks into precise and repeatable steps" ID="ID_697270339" CREATED="1433015583575" MODIFIED="1433015680247"/>
@@ -140,7 +141,8 @@
 <node TEXT="Repeatable" LOCALIZED_STYLE_REF="styles.topic" ID="ID_908611489" CREATED="1433015914130" MODIFIED="1433016335463"/>
 <node TEXT="Complexity is the Enemy" ID="ID_270487737" CREATED="1433016324453" MODIFIED="1433016331767"/>
 </node>
-<node TEXT="Turing Machines" ID="ID_1825448329" CREATED="1433015952306" MODIFIED="1433015958834">
+<node TEXT="Turing Machines" ID="ID_1825448329" CREATED="1433015952306" MODIFIED="1433197206982">
+<attribute NAME="textbook" VALUE="1.2" OBJECT="org.freeplane.features.format.FormattedNumber|1.2"/>
 <node TEXT="Mathematics needed a precise mathematical description of an algorithm" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1535639807" CREATED="1433015958855" MODIFIED="1433016279634"/>
 <node TEXT="Lambda calculus, Post machines, Turing machines" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1833105110" CREATED="1433016020072" MODIFIED="1433016279628"/>
 <node TEXT="Church&apos;s Thesis - The three are equivalent and are all that can be computed" ID="ID_1946776199" CREATED="1433016058279" MODIFIED="1433016106775"/>
@@ -182,9 +184,15 @@
 <node TEXT="It is harder to debug a program than it is to write a program" LOCALIZED_STYLE_REF="styles.topic" ID="ID_657783241" CREATED="1430767207592" MODIFIED="1433012636254"/>
 <node TEXT="If you write at the limits of your ability, your code will be beyond your ability to debug" ID="ID_777733953" CREATED="1430767219931" MODIFIED="1430767240146"/>
 </node>
-<node TEXT="Top-down Approach" ID="ID_712677728" CREATED="1430766427512" MODIFIED="1430766932246">
+<node TEXT="Top-down Approach" ID="ID_712677728" CREATED="1430766427512" MODIFIED="1433197636975">
+<attribute NAME="textbook" VALUE="1.5" OBJECT="org.freeplane.features.format.FormattedNumber|1.5"/>
 <node TEXT="Break big problems into smaller problems" ID="ID_763725384" CREATED="1430766589265" MODIFIED="1430766817772"/>
-<node TEXT="Eventually the problems are small enough to be easy" ID="ID_572969213" CREATED="1430766830929" MODIFIED="1430766842603"/>
+<node TEXT="Eventually the problems are small enough to be easy" LOCALIZED_STYLE_REF="styles.topic" ID="ID_572969213" CREATED="1430766830929" MODIFIED="1433197290188"/>
+<node TEXT="Common overall patter is:" ID="ID_1472243504" CREATED="1433197291770" MODIFIED="1433197302443">
+<node TEXT="Input" ID="ID_481652537" CREATED="1433197302453" MODIFIED="1433197304384"/>
+<node TEXT="Process" ID="ID_340773820" CREATED="1433197304786" MODIFIED="1433197306438"/>
+<node TEXT="Output" ID="ID_1159606047" CREATED="1433197306857" MODIFIED="1433197308750"/>
+</node>
 </node>
 <node TEXT="Test Driven Development" ID="ID_144164745" CREATED="1430768039177" MODIFIED="1430768045168">
 <node TEXT="How do you know you are done?" LOCALIZED_STYLE_REF="styles.topic" ID="ID_194770557" CREATED="1430768045168" MODIFIED="1433016624325"/>
@@ -209,7 +217,8 @@
 <node TEXT="Can be written by humans and mechanically translated to machine language" ID="ID_73306193" CREATED="1430767469097" MODIFIED="1430767486330"/>
 </node>
 </node>
-<node TEXT="Some Programming Languages" ID="ID_1448786895" CREATED="1430773888683" MODIFIED="1430773894685">
+<node TEXT="Some Programming Languages" ID="ID_1448786895" CREATED="1430773888683" MODIFIED="1433197678482">
+<attribute NAME="textbook" VALUE="1.3" OBJECT="org.freeplane.features.format.FormattedNumber|1.3"/>
 <node TEXT="BASIC" ID="ID_1735024604" CREATED="1430773936132" MODIFIED="1430773941054"/>
 <node TEXT="C/C++" ID="ID_325730571" CREATED="1430773894685" MODIFIED="1430773897840"/>
 <node TEXT="C\#" ID="ID_1924452264" CREATED="1430773914947" MODIFIED="1432567576336"/>
@@ -221,7 +230,8 @@
 <node TEXT="Python" ID="ID_666901771" CREATED="1430773908315" MODIFIED="1430773910432"/>
 <node TEXT="Ruby" ID="ID_149680642" CREATED="1430773910683" MODIFIED="1430773912976"/>
 </node>
-<node TEXT="Steps in Programming (parts you do)" ID="ID_1592689298" CREATED="1430767491737" MODIFIED="1432568106013">
+<node TEXT="Steps in Programming (parts you do)" ID="ID_1592689298" CREATED="1430767491737" MODIFIED="1433197750385">
+<attribute NAME="textbook" VALUE="1.6" OBJECT="org.freeplane.features.format.FormattedNumber|1.6"/>
 <node TEXT="Design" LOCALIZED_STYLE_REF="styles.topic" ID="ID_955013882" CREATED="1430767504314" MODIFIED="1433016753849">
 <node TEXT="Very important, spend more time than you think you need to here" ID="ID_1434621556" CREATED="1430767507219" MODIFIED="1430767517872"/>
 </node>
