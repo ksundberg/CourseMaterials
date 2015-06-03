@@ -13,9 +13,9 @@ namespace
     return std::make_pair(row,col);
   }
 
-  std::vector<StartBox> readBoxes(std::istream& fin)
+  std::vector<lionheart::StartBox> readBoxes(std::istream& fin)
   {
-    std::vector<StartBox> boxes;
+    std::vector<lionheart::StartBox> boxes;
     int players;
     fin>>players;
     boxes.reserve(players);
@@ -28,14 +28,14 @@ namespace
       fin>>maxr; //max row
       fin>>minc; //min col
       fin>>maxc; //max col
-      boxes.push_back(StartBox{minr,maxr,minc,maxc});
+      boxes.push_back(lionheart::StartBox{minr,maxr,minc,maxc});
     }
     return boxes;
   }
 
-  std::vector<std::vector<Tile>> readTiles(std::istream& fin,int rows,int cols)
+  std::vector<std::vector<lionheart::Tile>> readTiles(std::istream& fin,int rows,int cols)
   {
-    std::vector<std::vector<Tile>> tiles(rows);
+    std::vector<std::vector<lionheart::Tile>> tiles(rows);
     for (int i = 0; i < rows; ++i)
     {
       auto& row = tiles[i];
@@ -46,11 +46,11 @@ namespace
         fin >> space;
         if(space =='X')
         {
-          row[j] = Tile::ROCK;
+          row[j] = lionheart::Tile::ROCK;
         }
         else
         {
-          row[j] = Tile::SPACE;
+          row[j] = lionheart::Tile::SPACE;
         }
       }
     }
@@ -58,7 +58,7 @@ namespace
   }
 }
 
-std::shared_ptr<LionheartMap const> makeMap(std::string filename)
+std::shared_ptr<lionheart::Map const> lionheart::makeMap(std::string filename)
 {
   std::ifstream fin;
   fin.open(filename);
@@ -68,24 +68,24 @@ std::shared_ptr<LionheartMap const> makeMap(std::string filename)
   auto boxes = readBoxes(fin);
   auto tiles = readTiles(fin,extent.first,extent.second);
   fin.close();
-  auto m = std::make_shared<LionheartMap>(tiles,boxes);
+  auto m = std::make_shared<lionheart::Map>(tiles,boxes);
     return m;
 }
 
-LionheartMap::LionheartMap(std::vector<std::vector<Tile>> tiles,
-                           std::vector<StartBox> boxes)
+lionheart::Map::Map(std::vector<std::vector<lionheart::Tile>> tiles,
+                           std::vector<lionheart::StartBox> boxes)
     : tiles(tiles)
     , boxes(boxes)
 {
 }
 
-Tile LionheartMap::operator[](Location const& l) const
+lionheart::Tile lionheart::Map::operator[](Location const& l) const
 {
   if(!l) return Tile::ROCK;
   return tiles[l.row][l.col];
 }
 
-LionheartMap::Location LionheartMap::at(int row,int col) const
+lionheart::Map::Location lionheart::Map::at(int row,int col) const
 {
   if(row < 0) return Location();
   if(col < 0) return Location();
@@ -94,7 +94,7 @@ LionheartMap::Location LionheartMap::at(int row,int col) const
   return Location(row,col);
 }
 
-bool LionheartMap::Location::operator<(Location const & other) const
+bool lionheart::Map::Location::operator<(Location const & other) const
 {
   if(row < other.row) return true;
   if(row > other.row) return false;

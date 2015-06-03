@@ -1,4 +1,5 @@
 #include "Board.hpp"
+#include "Map.hpp"
 #include "lionheart2.h"
 #include <fstream>
 #include <iostream>
@@ -57,50 +58,39 @@ float getDist(int r,int c,int tr,int tc){
 	return sqrt((double)(tr-r)*(tr-r)+(tc-c)*(tc-c));
 }
 
-void readMap(Board& board){
-	int i,j,rows,cols;
-  std::ifstream  fin;
-	fin.open(INFILE);
-	if (fin.fail()){
-    std::cout << "error opening file: check to make sure the map file is in the same\n";
-    std::cout << "directory as the executable.  exiting.\n";
-		exit(3);
-	}
-	fin>>rows;
-	fin>>cols;
-	fin>>numplayers;
-	if(rows!=ROWS || cols!=COLS){
-    std::cout << "error reading map: ROW/COL mismatch with #define in unit.h.  exiting.\n";
-		exit(1);
-	}
-	if(numplayers>4){
-    std::cout << "error reading map: max 4 players (more requested).  exiting.\n";
-		exit(2);
-	}
-	if(NUM%numplayers!=0){
-    std::cout << "error reading map: total number of units can't be evenly divided.  exiting.\n";
-		exit(3);
-	}
-	for(i=0;i<numplayers;++i){
-		fin>>board.startBox[i].minr;
-		fin>>board.startBox[i].maxr;
-		fin>>board.startBox[i].minc;
-		fin>>board.startBox[i].maxc;
-	}
-	
-	// max 2 players for non-ANSI terminal
-	if(numplayers>2&&!ANSI)numplayers=2;
+void readMap(Board &board)
+{
+  auto pMap = lionheart::makeMap(INFILE);
+  auto &map = *pMap;
+  for (int i = 0; i < ROWS; ++i)
+  {
+    for (int j = 0; j < COLS; ++j)
+    {
+      switch (map[map.at(i, j)])
+      {
+      case lionheart::Tile::SPACE:
+        board.things[i][j].what = space;
+        board.c[i][j] = '.';
+        break;
+      case lionheart::Tile::ROCK:
+        board.things[i][j].what = rock;
+        board.c[i][j] = 'X';
+        break;
+      }
+      board.things[i][j].dir = none;
+    }
+  }
+  auto boxes = map.getBoxes();
+  numplayers = boxes.size();
+  int i=0;
+  for(auto&& box:boxes)
+  {
+    board.startBox[i].minr = box.minRow;
+    board.startBox[i].maxr = box.maxRow;
+    board.startBox[i].minc = box.minCol;
+    board.startBox[i].maxc = box.maxCol;
+    ++i;
+  }
 
-	for(i=0;i<ROWS;++i){
-		for(j=0;j<COLS;++j){
-			board.things[i][j].what=space;
-			fin >> board.c[i][j];
-			if(board.c[i][j]=='X'){
-				board.things[i][j].dir = none; 
-				board.things[i][j].what = rock; 
-			}
-		}
-	//std::cout << std::endl;
-	}
-	fin.close();
+
 }
