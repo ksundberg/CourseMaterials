@@ -66,6 +66,14 @@ set(Provided_srcs
     unit.h)
 source_group("" FILES ${Provided_srcs})
 list(APPEND lionheart_srcs ${Provided_srcs})
-
 add_executable(lionheart ${lionheart_srcs})
+###############################
+# Developer Tests
+set(Test_srcs
+  test/catch.hpp
+  test/MapTest.cpp
+  test/test_main.cpp
+  Map.cpp
+  )
+add_executable(test ${Test_srcs})
 

@@ -46,11 +46,11 @@ namespace
         fin >> space;
         if(space =='X')
         {
-          row[j] = lionheart::Tile::ROCK;
+          row.push_back(lionheart::Tile::ROCK);
         }
         else
         {
-          row[j] = lionheart::Tile::SPACE;
+          row.push_back(lionheart::Tile::SPACE);
         }
       }
     }
