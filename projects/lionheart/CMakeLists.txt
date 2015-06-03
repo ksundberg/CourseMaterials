@@ -62,6 +62,13 @@ set(Provided_srcs
     Board.hpp
     Map.cpp
     Map.hpp
+    Unit.hpp
+    Unit.cpp
+    Archer.hpp
+    Archer.cpp
+    Infantry.hpp
+    Knight.hpp
+    Crown.hpp
     unit.cpp
     unit.h)
 source_group("" FILES ${Provided_srcs})
