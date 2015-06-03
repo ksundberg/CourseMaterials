@@ -12,20 +12,6 @@ enum class Tile
   ROCK
 };
 
-enum class Direction
-{
-  NORTH,
-  SOUTH,
-  EAST,
-  WEST
-};
-
-struct PathLeg
-{
-  int length;
-  int Direction;
-};
-
 struct StartBox
 {
   int minRow;
@@ -44,24 +30,21 @@ public:
     Location(Location const &)=default;
     operator bool() const{return isValid;}
     bool operator<(Location const& other) const;
-
+    const int row;
+    const int col;
   private:
     Location(int row, int col):row(row),col(col),isValid(true){}
-    int row;
-    int col;
     bool isValid;
     friend LionheartMap;
   };
-  LionheartMap(std::istream&);
+  LionheartMap(std::vector<std::vector<Tile>> tiles,
+               std::vector<StartBox> boxes);
   Tile operator[](Location const &) const;
   Location at(int row, int col) const;
-  int distance(Location const &, Location const &) const;
-  std::vector<PathLeg> path(Location const &from, Location const &to) const;
 
 private:
   std::vector<std::vector<Tile>> tiles;
   std::vector<StartBox> boxes;
-  std::map<Location,std::map<Location,std::vector<PathLeg>>> paths;
   
 };
 

@@ -68,18 +68,15 @@ std::shared_ptr<LionheartMap const> makeMap(std::string filename)
   auto boxes = readBoxes(fin);
   auto tiles = readTiles(fin,extent.first,extent.second);
   fin.close();
-  auto m = std::make_shared<LionheartMap>(fin);
+  auto m = std::make_shared<LionheartMap>(tiles,boxes);
     return m;
 }
 
-LionheartMap::LionheartMap(std::istream& fin)
-  :tiles()
-   ,boxes()
-   ,paths()
+LionheartMap::LionheartMap(std::vector<std::vector<Tile>> tiles,
+                           std::vector<StartBox> boxes)
+    : tiles(tiles)
+    , boxes(boxes)
 {
-  //Load map from file
-        //read map data
-    //Build all-pairs shortest paths
 }
 
 Tile LionheartMap::operator[](Location const& l) const
@@ -94,30 +91,7 @@ LionheartMap::Location LionheartMap::at(int row,int col) const
   if(col < 0) return Location();
   if(row >= tiles.size()) return Location();
   if(col >= tiles[row].size()) return Location();
-  if(tiles[row][col] == Tile::ROCK) return Location();
   return Location(row,col);
-}
-
-int LionheartMap::distance(Location const & a, Location const & b) const
-{
-  auto pathBetween = path(a,b);
-  return std::accumulate(std::begin(pathBetween),
-                         std::end(pathBetween),
-                         0,
-                         [](int d, PathLeg const &l)
-  { return d + l.length; });
-}
-
-
-  std::vector<PathLeg> LionheartMap::path(Location const &from, Location const &to) const
-{
-  if(!from) return std::vector<PathLeg>();
-  if(!to) return std::vector<PathLeg>();
-  auto fromIter = paths.find(from);
-  if(fromIter == paths.end()) return std::vector<PathLeg>();
-  auto toIter = fromIter->second.find(to);
-  if(toIter == fromIter->second.end()) return std::vector<PathLeg>();
-  return toIter->second;
 }
 
 bool LionheartMap::Location::operator<(Location const & other) const
