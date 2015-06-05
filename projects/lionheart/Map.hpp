@@ -40,6 +40,7 @@ public:
       return isValid;
     }
     bool operator<(Location const &other) const;
+    bool operator==(Location const &other) const;
     const int row;
     const int col;
 

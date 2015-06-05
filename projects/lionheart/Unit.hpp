@@ -27,17 +27,25 @@ public:
   void turn(Direction);
   void move(int dist);
   void attack(Unit &other);
+  int getHp() const
+  {
+    return hp;
+  }
+  Map::Location getLocation() const
+  {
+    return location;
+  }
+  Direction getFacing() const
+  {
+    return facing;
+  }
+
 
 protected:
   Unit(Map::Location l, Direction d, int hp)
       : location(l)
       , facing(d)
       , hp(hp){}
-  int getHp() const
-  {
-    return hp;
-  }
-
 private:
   Map::Location location;
   Direction facing;

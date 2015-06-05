@@ -69,6 +69,11 @@ set(Provided_srcs
     Infantry.hpp
     Knight.hpp
     Crown.hpp
+    Player.hpp
+    Game.hpp
+    Game.cpp
+    Action.hpp
+    Player.hpp
     unit.cpp
     unit.h)
 source_group("" FILES ${Provided_srcs})

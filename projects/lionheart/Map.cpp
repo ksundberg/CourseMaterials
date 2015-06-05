@@ -106,4 +106,10 @@ bool lionheart::Map::Location::operator<(Location const & other) const
   return false;
 }
 
+bool lionheart::Map::Location::operator==(Location const & other) const
+{
+  if(row != other.row) return false;
+  if (col != other.col) return false;
+  return true;
+}
 
