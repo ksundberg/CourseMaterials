@@ -8,6 +8,8 @@
 \usepackage{color}
 
 \usetheme[]{Warsaw}
+\beamertemplatenavigationsymbolsempty
+\setbeamertemplate{footline}[frame number]
 
 \title{<xsl:value-of select="@TEXT"/>}
 \author{Kenneth Sundberg}
