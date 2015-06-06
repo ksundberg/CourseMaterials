@@ -13,6 +13,9 @@ namespace lionheart
       bool hasArmor() const override{return true;}
       AttackType attackType() const override{return AttackType::AXE;}
       int getMoveSpeed() const override{return 5;}
+      UnitType getType() const{return type;}
+      const static UnitType type = CROWN;
+
   };
 }
 

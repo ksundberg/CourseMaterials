@@ -4,6 +4,7 @@
 #include "Knight.hpp"
 #include "Archer.hpp"
 #include "Infantry.hpp"
+#include "SituationReport.hpp"
 
 namespace
 {
@@ -11,15 +12,25 @@ namespace
   const int NUM_ARCHERS = 8;
   const int NUM_INFANTRY = 15;
 
+  lionheart::SituationReport buildReport(std::shared_ptr<lionheart::Map const> const &map,
+                              std::vector<std::shared_ptr<lionheart::Unit>> const &allies,
+                              std::vector<std::shared_ptr<lionheart::Unit>> const &enemies)
+  {
+    lionheart::SituationReport report;
+
+    return report;
+  }
+
 template <typename UnitType>
 std::shared_ptr<lionheart::Unit>
 createUnit(std::shared_ptr<lionheart::Player> const &player,
            std::shared_ptr<lionheart::Map const> const &map,
+           std::vector<std::shared_ptr<lionheart::Unit>> const& units,
            lionheart::StartBox const &box,
            lionheart::Direction const d)
     {
-      auto coords = player->placeUnit(box);
-      auto loc = map->at(coords.first,coords.second);
+      auto coords = player->placeUnit(UnitType::type, box, buildReport(map,units,std::vector<std::shared_ptr<lionheart::Unit>>()));
+      auto loc = map->at(coords.row,coords.col);
       //make sure location is in start box
       if(!loc) return nullptr;
       if(loc.col < box.minCol) return nullptr;
@@ -98,7 +109,7 @@ void lionheart::Game::start()
   {
     // Create crowns
 
-    crown[i] = createUnit<Crown>(player[i], map, boxes[i], facing[i]);
+    crown[i] = createUnit<Crown>(player[i], map, units[i],boxes[i], facing[i]);
     if (!crown[i])
     {
       // invalid crown placement, put in middle
@@ -110,19 +121,19 @@ void lionheart::Game::start()
     // Create knights
     for (int j = 0; j < NUM_KNIGHTS; ++j)
     {
-      auto knight = createUnit<Knight>(player[i], map, boxes[i], facing[i]);
+      auto knight = createUnit<Knight>(player[i], map,units[i], boxes[i], facing[i]);
       addUnit(units[i], knight);
     }
     // Create archers
     for (int j = 0; j < NUM_ARCHERS; ++j)
     {
-      auto archer = createUnit<Archer>(player[i], map, boxes[i], facing[i]);
+      auto archer = createUnit<Archer>(player[i], map,units[i], boxes[i], facing[i]);
       addUnit(units[i], archer);
     }
     // Create infantry
     for (int j = 0; j < NUM_INFANTRY; ++j)
     {
-      auto infantry = createUnit<Infantry>(player[i], map, boxes[i], facing[i]);
+      auto infantry = createUnit<Infantry>(player[i], map,units[i], boxes[i], facing[i]);
       addUnit(units[i], infantry);
     }
   }
@@ -153,7 +164,7 @@ void lionheart::Game::doTurn()
         if (unit.isAlive())
         {
           // get recommendations
-          auto action = p->recommendAction(unit);
+          auto action = p->recommendAction(unit,buildReport(map,allies,enemies));
           // execute valid recommendations
           action(map, unit, allies,enemies);
         }

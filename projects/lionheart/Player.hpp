@@ -4,6 +4,7 @@
 #include <string>
 #include "Map.hpp"
 #include "Action.hpp"
+#include "SituationReport.hpp"
 
 namespace lionheart
 {
@@ -44,8 +45,8 @@ struct Blazon
 class Player
 {
 public:
-  virtual std::pair<int,int> placeUnit(StartBox const &) = 0;
-  virtual Action recommendAction(Unit const &) = 0;
+  virtual Placement placeUnit(UnitType,StartBox const &,SituationReport) = 0;
+  virtual Action recommendAction(Unit const &,SituationReport) = 0;
   virtual Blazon getBlazon() = 0;
 };
 }

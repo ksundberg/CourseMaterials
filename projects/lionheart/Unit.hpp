@@ -16,6 +16,14 @@ enum class AttackType
 {
   ARROW,AXE
 };
+enum UnitType
+{
+  CROWN,
+  KNIGHT,
+  ARCHER,
+  INFANTRY,
+  NONE
+};
 class Unit
 {
 public:
@@ -39,7 +47,7 @@ public:
   {
     return facing;
   }
-
+virtual UnitType getType() const=0;
 
 protected:
   Unit(Map::Location l, Direction d, int hp)

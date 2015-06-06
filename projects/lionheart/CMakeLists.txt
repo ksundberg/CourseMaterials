@@ -74,6 +74,7 @@ set(Provided_srcs
     Game.cpp
     Action.hpp
     Player.hpp
+    SituationReport.hpp
     unit.cpp
     unit.h)
 source_group("" FILES ${Provided_srcs})

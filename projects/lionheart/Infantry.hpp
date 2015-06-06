@@ -13,6 +13,8 @@ namespace lionheart
       bool hasArmor() const override{return false;}
       AttackType attackType() const override{return AttackType::AXE;}
       int getMoveSpeed() const override{return 1;}
+      UnitType getType() const{return type;}
+      const static UnitType type = INFANTRY;
   };
 }
 

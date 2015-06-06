@@ -9,6 +9,11 @@
 #include "Infantry.hpp"
 namespace lionheart
 {
+struct Placement
+{
+  int row;
+  int col;
+};
 class ActionImpl
 {
 };
