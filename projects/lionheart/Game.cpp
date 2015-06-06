@@ -12,12 +12,43 @@ namespace
   const int NUM_ARCHERS = 8;
   const int NUM_INFANTRY = 15;
 
-  lionheart::SituationReport buildReport(std::shared_ptr<lionheart::Map const> const &map,
-                              std::vector<std::shared_ptr<lionheart::Unit>> const &allies,
-                              std::vector<std::shared_ptr<lionheart::Unit>> const &enemies)
+  lionheart::SituationReport
+  buildReport(std::shared_ptr<lionheart::Map const> const &map,
+              std::vector<std::shared_ptr<lionheart::Unit>> const &allies,
+              std::vector<std::shared_ptr<lionheart::Unit>> const &enemies)
   {
     lionheart::SituationReport report;
+    // convert map to report
+    report.things.reserve(map->rows());
+    for (size_t i = 0; i < map->rows(); ++i)
+    {
+      report.things.emplace_back(map->cols());
+      for (size_t j = 0; j < map->cols(); ++j)
+      {
+        auto tile = (*map)[map->at(i, j)];
+        // default constructed things are rocks, so just clear out the spaces
+        if (tile == lionheart::Tile::SPACE)
+        {
+          report.things[i][j].type = lionheart::SituationReport::SPACE;
+        }
+      }
+    }
 
+    //add ally notations
+
+    for(auto&& ally:allies)
+    {
+      auto l = ally->getLocation();
+      report.things[l.row][l.col] = lionheart::SituationReport::Thing(
+          ally, lionheart::SituationReport::ALLY);
+    }
+    //add enemy notations
+    for(auto&& enemy:enemies)
+    {
+      auto l = enemy->getLocation();
+      report.things[l.row][l.col] = lionheart::SituationReport::Thing(
+          enemy, lionheart::SituationReport::ENEMY);
+    }
     return report;
   }
 

@@ -61,6 +61,16 @@ public:
   {
     return boxes;
   }
+  size_t rows() const
+  {
+    return tiles.size();
+  }
+  size_t cols() const
+  {
+    if (tiles.empty())
+      return 0;
+    return tiles[0].size();
+  }
 
 private:
   std::vector<std::vector<Tile>> tiles;
