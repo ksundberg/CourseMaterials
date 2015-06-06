@@ -85,6 +85,13 @@ set(Provided_srcs
 source_group("" FILES ${Provided_srcs})
 list(APPEND lionheart_srcs ${Provided_srcs})
 add_executable(lionheart ${lionheart_srcs})
+##############################
+# Lionheart2
+set(lionheart2_srcs
+  lionheart_main.cpp
+  )
+list(APPEND lionheart2_srcs ${Aux_srcs})
+add_executable(lionheart2 ${lionheart2_srcs})
 ###############################
 # Developer Tests
 set(Test_srcs
