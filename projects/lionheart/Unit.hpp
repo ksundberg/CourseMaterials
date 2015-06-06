@@ -49,6 +49,8 @@ public:
   }
 virtual UnitType getType() const=0;
 
+virtual bool inRange(Map::Location const &) const;
+
 protected:
   Unit(Map::Location l, Direction d, int hp)
       : location(l)
@@ -62,7 +64,6 @@ private:
   int getHits(bool armoredTarget) const;
   virtual AttackType attackType() const=0;
   virtual int getMoveSpeed() const=0;
-  virtual bool inRange(Map::Location const &) const;
 };
 }
 

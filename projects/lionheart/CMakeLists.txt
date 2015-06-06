@@ -53,6 +53,26 @@ list(APPEND lionheart_srcs ${student_sources})
 
 ################################
 # Provided Sources
+set(Aux_srcs
+  Map.cpp
+  Map.hpp
+  Unit.hpp
+  Unit.cpp
+  Archer.hpp
+  Archer.cpp
+  Infantry.hpp
+  Knight.hpp
+  Crown.hpp
+  Player.hpp
+  Game.hpp
+  Game.cpp
+  Action.hpp
+  Player.hpp
+  SituationReport.hpp
+  )
+
+list(APPEND lionheart_srcs ${Aux_srcs})
+
 configure_file(lionheart.h.in lionheart.h)
 set(Provided_srcs
     lionheart.cpp
@@ -60,21 +80,6 @@ set(Provided_srcs
     lionheart.h
     Board.cpp
     Board.hpp
-    Map.cpp
-    Map.hpp
-    Unit.hpp
-    Unit.cpp
-    Archer.hpp
-    Archer.cpp
-    Infantry.hpp
-    Knight.hpp
-    Crown.hpp
-    Player.hpp
-    Game.hpp
-    Game.cpp
-    Action.hpp
-    Player.hpp
-    SituationReport.hpp
     unit.cpp
     unit.h)
 source_group("" FILES ${Provided_srcs})
@@ -85,8 +90,10 @@ add_executable(lionheart ${lionheart_srcs})
 set(Test_srcs
   test/catch.hpp
   test/MapTest.cpp
+  test/UnitTest.cpp
   test/test_main.cpp
   Map.cpp
   )
+list(APPEND Test_srcs ${Aux_srcs})
 add_executable(test ${Test_srcs})
 

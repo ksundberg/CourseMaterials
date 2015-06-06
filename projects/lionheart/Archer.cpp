@@ -29,13 +29,13 @@ bool lionheart::Archer::inRange(Map::Location const & l) const
   switch(getFacing())
   {
     case Direction::NORTH:
-      return checkCols(col,row+1,targetCol,targetRow);
+      return checkCols(targetCol,targetRow,col,row-1);
     case Direction::EAST:
       return checkCols(row,col+1,targetRow,targetCol);
     case Direction::WEST:
       return checkCols(targetRow,targetCol,row,col-1);
     case Direction::SOUTH:
-      return checkCols(targetCol,targetRow,col,row-1);
+      return checkCols(col,row+1,targetCol,targetRow);
   }
   return false;
 }
