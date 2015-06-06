@@ -23,16 +23,36 @@ void lionheart::Unit::turn(Direction d)
 {
   facing = d;
 }
-void lionheart::Unit::move(int dist)
+void lionheart::Unit::move(Map::Location target)
 {
-  if(dist <= getMoveSpeed())
+  if(!target) return;
+  auto rowDist = target.row - location->row;
+  auto colDist = target.col - location->col;
+  //check for valid movements
+  if((rowDist != 0)&&(colDist != 0)){return;}
+  if (abs(rowDist) > getMoveSpeed()){ return;}
+  if (abs(colDist) > getMoveSpeed()){ return;}
+  //check if facing is correct
+  switch (facing)
   {
-    //TODO apply movement (check for intervening units and rocks)
+    case Direction::NORTH:
+      if(rowDist >= 0) return;
+      break;
+    case Direction::SOUTH:
+      if(rowDist <= 0) return;
+      break;
+    case Direction::WEST:
+      if(colDist >= 0) return;
+      break;
+    case Direction::EAST:
+      if(colDist <= 0) return;
+      break;
   }
+  location.reset(new Map::Location(target));
 }
 void lionheart::Unit::attack(Unit &other)
 {
-  if(inRange(other.location))
+  if(inRange(*(other.location)))
   {
     auto hits = getHits(other.hasArmor());
     other.hp -= hits;
@@ -73,8 +93,8 @@ int lionheart::Unit::getHits(bool armoredTarget) const
 bool lionheart::Unit::inRange(Map::Location const &target) const
 {
   // Default inRange implementation for melee units
-  auto targetRow = location.row;
-  auto targetCol = location.col;
+  auto targetRow = location->row;
+  auto targetCol = location->col;
   switch (facing)
   {
     case Direction::NORTH:

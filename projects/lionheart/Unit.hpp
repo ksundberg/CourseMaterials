@@ -33,7 +33,7 @@ public:
     return hp > 0;
   }
   void turn(Direction);
-  void move(int dist);
+  void move(Map::Location);
   void attack(Unit &other);
   int getHp() const
   {
@@ -41,7 +41,7 @@ public:
   }
   Map::Location getLocation() const
   {
-    return location;
+    return *location;
   }
   Direction getFacing() const
   {
@@ -53,11 +53,11 @@ virtual bool inRange(Map::Location const &) const;
 
 protected:
   Unit(Map::Location l, Direction d, int hp)
-      : location(l)
+      : location(new Map::Location(l))
       , facing(d)
       , hp(hp){}
 private:
-  Map::Location location;
+  std::unique_ptr<Map::Location> location;
   Direction facing;
   int hp;
   virtual bool hasArmor() const=0;
