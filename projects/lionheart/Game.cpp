@@ -229,3 +229,8 @@ void lionheart::Game::doTurn()
     state = FINISHED;
   }
 }
+
+lionheart::SituationReport lionheart::Game::getReport()const
+{
+  return buildReport(map,units[0],units[1]);
+}

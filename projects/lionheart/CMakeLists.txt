@@ -68,6 +68,9 @@ set(Aux_srcs
   Game.cpp
   Action.hpp
   Player.hpp
+  Display.hpp
+  ConsoleDisplay.hpp
+  ConsoleDisplay.cpp
   SituationReport.hpp
   )
 

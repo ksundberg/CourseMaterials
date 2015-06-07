@@ -34,6 +34,7 @@ namespace lionheart
       bool canContinue()const;
       void start();
       void doTurn();
+      lionheart::SituationReport getReport() const;
     private:
       std::shared_ptr<const Map> map;
       std::array<std::shared_ptr<Player>,2> player;
