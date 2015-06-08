@@ -50,7 +50,11 @@ endforeach(tla)
 
 source_group("Player" FILES ${student_sources})
 list(APPEND lionheart_srcs ${student_sources})
-
+###############################
+#
+set(new_players
+  Player/SittingDuck.hpp
+  )
 ################################
 # Provided Sources
 set(Aux_srcs
@@ -94,6 +98,7 @@ set(lionheart2_srcs
   lionheart_main.cpp
   )
 list(APPEND lionheart2_srcs ${Aux_srcs})
+list(APPEND lionheart2_srcs ${new_players})
 add_executable(lionheart2 ${lionheart2_srcs})
 ###############################
 # Developer Tests

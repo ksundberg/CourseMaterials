@@ -8,7 +8,7 @@ namespace lionheart
   {
     public:
     ~Display()=default;
-    virtual void show(SituationReport const &)=0;
+    virtual void show(SituationReport const &,Blazon const&,Blazon const&)=0;
   };
 }
 
