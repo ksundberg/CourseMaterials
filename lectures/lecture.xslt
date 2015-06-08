@@ -22,6 +22,9 @@ stringstyle=\color{red},
 commentstyle=\color{green},
 morecomment=[l][\color{magenta}]{\#}
 }
+
+\newcommand{\writeTextBookRefs}{}
+
 \begin{document}
 \frame[plain]{
 \frametitle{}
@@ -48,9 +51,14 @@ morecomment=[l][\color{magenta}]{\#}
       <xsl:otherwise>
     \begin{frame}
     \frametitle{<xsl:value-of select="@TEXT"/>}
+<xsl:for-each select="attribute">
+      <xsl:if test="@NAME='textbook'">
+\label{textbook:<xsl:value-of select="@VALUE"/>}
+      </xsl:if>
+      </xsl:for-each>
     <xsl:if test="node">
       \begin{itemize}
-  <xsl:for-each select="node">
+        <xsl:for-each select="node">
     \item <xsl:value-of select="@TEXT"/>
 <xsl:if test="node">
       \begin{itemize}
@@ -75,8 +83,16 @@ morecomment=[l][\color{magenta}]{\#}
 </xsl:for-each>
 </xsl:for-each>
 </xsl:for-each>
-    <xsl:text>
+\appendix
+\begin{frame}
+\frametitle{Textbook sections covered:}
+\begin{itemize}
+<xsl:for-each select="node/node/node/attribute">
+<xsl:sort select="@VALUE"/>
+\item Section <xsl:value-of select="@VALUE"/> (frame \ref{textbook:<xsl:value-of select="@VALUE"/>})
+</xsl:for-each>
+\end{itemize}
+\end{frame}
 \end{document}
-</xsl:text>
   </xsl:template>
 </xsl:stylesheet>
