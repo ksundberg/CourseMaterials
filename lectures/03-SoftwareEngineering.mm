@@ -219,7 +219,8 @@
 </node>
 </node>
 <node TEXT="Design Tools" ID="ID_1424652943" CREATED="1430952458531" MODIFIED="1431977654265">
-<node TEXT="Psuedocode" ID="ID_169736980" CREATED="1430952464478" MODIFIED="1430952467790">
+<node TEXT="Psuedocode" ID="ID_169736980" CREATED="1430952464478" MODIFIED="1433809543463">
+<attribute NAME="textbook" VALUE="1.6" OBJECT="org.freeplane.features.format.FormattedNumber|1.6"/>
 <node TEXT="Use english to describe the steps of your algorithim" ID="ID_1550703231" CREATED="1431978432123" MODIFIED="1431978444211"/>
 <node TEXT="You can do this with comments, then fill out the code below" ID="ID_372903971" CREATED="1431978444610" MODIFIED="1431978452668"/>
 <node TEXT="Helps you to think through the problem" ID="ID_285502207" CREATED="1431978462163" MODIFIED="1431978468675"/>
