@@ -74,7 +74,7 @@
 </node>
 <node TEXT="Uses" ID="ID_1213476708" CREATED="1433018264633" MODIFIED="1433018272044">
 <node TEXT="Literals" ID="ID_1111859255" CREATED="1430848852085" MODIFIED="1433825590539">
-<attribute NAME="textbook" VALUE="2.10" OBJECT="org.freeplane.features.format.FormattedNumber|2.10"/>
+<attribute NAME="textbook" VALUE="2-10" OBJECT="org.freeplane.features.format.FormattedNumber|2.10"/>
 <node TEXT="Temporary unnamed variables" LOCALIZED_STYLE_REF="styles.topic" ID="ID_127573664" CREATED="1430849558855" MODIFIED="1433036056773"/>
 <node TEXT="Just the value" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1022425597" CREATED="1430849569046" MODIFIED="1433036056777">
 <node TEXT="2" ID="ID_1495978005" CREATED="1430849578507" MODIFIED="1430849579798"/>
@@ -89,7 +89,7 @@
 <node TEXT="Consider a const variable instead of raw literal" ID="ID_971016785" CREATED="1430952169411" MODIFIED="1430952186019"/>
 </node>
 <node TEXT="AAA Style" ID="ID_33830707" CREATED="1430848862149" MODIFIED="1433199118734">
-<attribute NAME="textbook" VALUE="2.13" OBJECT="org.freeplane.features.format.FormattedNumber|2.13"/>
+<attribute NAME="textbook" VALUE="2-13" OBJECT="org.freeplane.features.format.FormattedNumber|2.13"/>
 <node TEXT="Every value has a type" ID="ID_1567410869" CREATED="1430849646951" MODIFIED="1430849656062"/>
 <node TEXT="The compiler knows what this type is" ID="ID_709696092" CREATED="1430849656263" MODIFIED="1430849663902"/>
 <node TEXT="The auto keyword says to create a variable of the type used to initailize it" ID="ID_977347332" CREATED="1430849664158" MODIFIED="1430849679870"/>
@@ -99,23 +99,23 @@
 </node>
 <node TEXT="Built-in Types" ID="ID_1883719503" CREATED="1430848968557" MODIFIED="1430848978970">
 <node TEXT="Integral Types" ID="ID_1183787921" CREATED="1430849407429" MODIFIED="1433198905760">
-<attribute NAME="textbook" VALUE="2.7" OBJECT="org.freeplane.features.format.FormattedNumber|2.7"/>
+<attribute NAME="textbook" VALUE="2-07" OBJECT="org.freeplane.features.format.FormattedNumber|2.7"/>
 <node TEXT="int" ID="ID_139288236" CREATED="1430849419903" MODIFIED="1430849421706"/>
 <node TEXT="short" ID="ID_1761514118" CREATED="1430849422397" MODIFIED="1430849424154"/>
 <node TEXT="long" ID="ID_242313242" CREATED="1430849425957" MODIFIED="1430849428682"/>
 <node TEXT=". . . others" ID="ID_410541151" CREATED="1430849428933" MODIFIED="1430849431722"/>
 </node>
 <node TEXT="Boolean" ID="ID_864682886" CREATED="1430849445239" MODIFIED="1433198984679">
-<attribute NAME="textbook" VALUE="2.11" OBJECT="org.freeplane.features.format.FormattedNumber|2.11"/>
+<attribute NAME="textbook" VALUE="2-11" OBJECT="org.freeplane.features.format.FormattedNumber|2.11"/>
 <node TEXT="bool" ID="ID_1370445460" CREATED="1430849475319" MODIFIED="1430849476726"/>
 </node>
 <node TEXT="Floating Point Types" ID="ID_6319210" CREATED="1430849463238" MODIFIED="1433198932544">
-<attribute NAME="textbook" VALUE="2.8" OBJECT="org.freeplane.features.format.FormattedNumber|2.8"/>
+<attribute NAME="textbook" VALUE="2-08" OBJECT="org.freeplane.features.format.FormattedNumber|2.8"/>
 <node TEXT="float" ID="ID_661038441" CREATED="1430849470308" MODIFIED="1430849472852"/>
 <node TEXT="double" ID="ID_836796537" CREATED="1430849473303" MODIFIED="1430849474349"/>
 </node>
 <node TEXT="char" ID="ID_1028421417" CREATED="1430849424501" MODIFIED="1433199178155">
-<attribute NAME="textbook" VALUE="2.9" OBJECT="org.freeplane.features.format.FormattedNumber|2.9"/>
+<attribute NAME="textbook" VALUE="2-09" OBJECT="org.freeplane.features.format.FormattedNumber|2.9"/>
 </node>
 </node>
 <node TEXT="User Defined Types" ID="ID_1442041922" CREATED="1430848979413" MODIFIED="1430848983466">
@@ -123,7 +123,7 @@
 <node TEXT="User Defined Classes" ID="ID_1364852540" CREATED="1430849491535" MODIFIED="1430849498133"/>
 <node TEXT="Standard Library Types" ID="ID_756618633" CREATED="1430849498431" MODIFIED="1430849504582"/>
 <node TEXT="include directive" ID="ID_1068870467" CREATED="1430848983901" MODIFIED="1433198723137">
-<attribute NAME="textbook" VALUE="2.3" OBJECT="org.freeplane.features.format.FormattedNumber|2.3"/>
+<attribute NAME="textbook" VALUE="2-03" OBJECT="org.freeplane.features.format.FormattedNumber|2.3"/>
 <node TEXT="A preprocessor directive to include a source file" ID="ID_230191244" CREATED="1430849508463" MODIFIED="1430849526989"/>
 <node TEXT="Used to access library types" ID="ID_1178858501" CREATED="1430849527380" MODIFIED="1430849533261"/>
 <node TEXT="Used to organize code" ID="ID_1377522220" CREATED="1430849533607" MODIFIED="1430849541598"/>
@@ -222,7 +222,7 @@
 </node>
 </node>
 <node TEXT="Standard C Streams" ID="ID_473004819" CREATED="1433036470881" MODIFIED="1433198671836">
-<attribute NAME="textbook" VALUE="2.2" OBJECT="org.freeplane.features.format.FormattedNumber|2.2"/>
+<attribute NAME="textbook" VALUE="2-02" OBJECT="org.freeplane.features.format.FormattedNumber|2.2"/>
 <node TEXT="C Defines three standard streams" ID="ID_940881319" CREATED="1433036479937" MODIFIED="1433036489018"/>
 <node TEXT="cin - standard input" ID="ID_739093299" CREATED="1433036489576" MODIFIED="1433036505328"/>
 <node TEXT="cout - standard output" ID="ID_172695063" CREATED="1433036505823" MODIFIED="1433036511520"/>
@@ -258,7 +258,7 @@
 <node TEXT="Expressions" POSITION="right" ID="ID_1122016196" CREATED="1430848753701" MODIFIED="1433034938689">
 <node TEXT="Arithmetic" ID="ID_1168993721" CREATED="1430858833852" MODIFIED="1433034950509">
 <node TEXT="Math Operations" ID="ID_258988317" CREATED="1430858845807" MODIFIED="1433199047119">
-<attribute NAME="textbook" VALUE="2.15" OBJECT="org.freeplane.features.format.FormattedNumber|2.15"/>
+<attribute NAME="textbook" VALUE="2-15" OBJECT="org.freeplane.features.format.FormattedNumber|2.15"/>
 <node TEXT="Addition" ID="ID_1441618913" CREATED="1430858861049" MODIFIED="1433017958941"/>
 <node TEXT="Subtraction" ID="ID_109058690" CREATED="1430858864961" MODIFIED="1433017956077"/>
 <node TEXT="Multiplication" ID="ID_295547503" CREATED="1430858868458" MODIFIED="1433017953119"/>
@@ -312,7 +312,7 @@
 </node>
 <node TEXT="Assignment" ID="ID_659934936" CREATED="1433035020484" MODIFIED="1433035026374">
 <node TEXT="Assignment" ID="ID_855519749" CREATED="1433035026387" MODIFIED="1433198767539">
-<attribute NAME="textbook" VALUE="2.5" OBJECT="org.freeplane.features.format.FormattedNumber|2.5"/>
+<attribute NAME="textbook" VALUE="2-05" OBJECT="org.freeplane.features.format.FormattedNumber|2.5"/>
 <node TEXT="It would be nice to actually do something with results" ID="ID_269040519" CREATED="1433035029171" MODIFIED="1433035038357"/>
 <node TEXT="Assignment is how" LOCALIZED_STYLE_REF="styles.topic" ID="ID_153271807" CREATED="1433035038827" MODIFIED="1433035112455"/>
 <node TEXT="Assignment is destructive" ID="ID_532305566" CREATED="1433035081010" MODIFIED="1433035086195"/>
