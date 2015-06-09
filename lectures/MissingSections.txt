@@ -1,13 +1,11 @@
-1.4
+##### deliberately left out #######3
+2.1  parts of a program (basically useless or wrong)
+2.12 determining size of type
+###############
+not yet determined
 
-2.1
-2.4
-2.6
 2.10
-2.12
 2.14
-2.16
-2.17
 
 3
 

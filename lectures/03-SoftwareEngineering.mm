@@ -56,7 +56,16 @@
 </hook>
 <node TEXT="Principles" POSITION="right" ID="ID_1322895697" CREATED="1431976283378" MODIFIED="1433039189659">
 <node TEXT="Complexity" ID="ID_72778391" CREATED="1431976298898" MODIFIED="1431976313835">
-<node TEXT="The Two Ways" ID="ID_1372040243" CREATED="1431976313835" MODIFIED="1431976322515">
+<node TEXT="Style" ID="ID_256270475" CREATED="1433824953120" MODIFIED="1433824990292">
+<attribute NAME="textbook" VALUE="2.17" OBJECT="org.freeplane.features.format.FormattedNumber|2.17"/>
+<node TEXT="In some ways programming is an art and leaves room for creative style" ID="ID_1807503895" CREATED="1433824996542" MODIFIED="1433825023570"/>
+<node TEXT="Some people refer to style as the use of whitespace" ID="ID_1476288138" CREATED="1433825023942" MODIFIED="1433825047766">
+<node TEXT="This is limiting and without value" ID="ID_1300723518" CREATED="1433825047782" MODIFIED="1433825056744"/>
+<node TEXT="Just use clang-format for whitespace" ID="ID_98502964" CREATED="1433825057188" MODIFIED="1433825066183"/>
+</node>
+<node TEXT="Style is how you communicate semantic intent" ID="ID_1155538215" CREATED="1433825075875" MODIFIED="1433825124068"/>
+</node>
+<node TEXT="The Two Ways" ID="ID_1372040243" CREATED="1431976313835" MODIFIED="1433824960701">
 <node TEXT="&quot;There are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies, and the other way is to make it so complicated that there are no obvious deficiencies.  The first method is far more difficult&quot; --C.A.R. Hoare" ID="ID_1168173989" CREATED="1431542086802" MODIFIED="1431542382162"/>
 </node>
 <node TEXT="Complexity" ID="ID_1515893605" CREATED="1433038914043" MODIFIED="1433038920324">
@@ -240,6 +249,15 @@
 <node TEXT="Take a bit of data&apos;s point of view as it goes through your system" ID="ID_1812559534" CREATED="1431978540834" MODIFIED="1431978559696"/>
 <node TEXT="Where does it enter" ID="ID_174758737" CREATED="1431978559994" MODIFIED="1431978563545"/>
 <node TEXT="How is it transformed from input to output" ID="ID_938557680" CREATED="1431978563826" MODIFIED="1431978571728"/>
+</node>
+<node TEXT="Comments" ID="ID_954427498" CREATED="1433824907032" MODIFIED="1433824929092">
+<attribute NAME="textbook" VALUE="2.16" OBJECT="org.freeplane.features.format.FormattedNumber|2.16"/>
+<node TEXT="Comments are removed during preprocessing" ID="ID_913697769" CREATED="1433825130970" MODIFIED="1433825140317"/>
+<node TEXT="They are only intended for human readers (probably future you)" ID="ID_1430690587" CREATED="1433825140840" MODIFIED="1433825160155"/>
+<node TEXT="Used sparingly a powerful element of style" ID="ID_521567796" CREATED="1433825165713" MODIFIED="1433825185066"/>
+<node TEXT="Lots of comments is symptomatic of bad code" ID="ID_293517347" CREATED="1433825185959" MODIFIED="1433825194705">
+<node TEXT="Why does it need so much explanation?" ID="ID_539873742" CREATED="1433825194712" MODIFIED="1433825202906"/>
+</node>
 </node>
 </node>
 <node TEXT="Refactoring" ID="ID_1652512608" CREATED="1430952411099" MODIFIED="1431976261963">
