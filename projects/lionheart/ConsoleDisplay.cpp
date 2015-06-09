@@ -11,10 +11,12 @@ namespace
   }
 }
 void lionheart::ConsoleDisplay::show(lionheart::SituationReport const &report,
-                                     Blazon const &,
-                                     Blazon const &)
+                                     Blazon const & p1,
+                                     Blazon const & p2)
 {
   if(report.things.empty())return;
+  std::cout << p1.name << " v. " << p2.name << std::endl;
+
   displayHeader(report.things[0].size());
   for(auto&& row:report.things)
   {
