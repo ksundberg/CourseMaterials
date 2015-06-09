@@ -58,16 +58,16 @@
 <node TEXT="Conditionals" ID="ID_1586458337" CREATED="1432062526679" MODIFIED="1432062539246">
 <node TEXT="Conditions" ID="ID_1352809588" CREATED="1432062656280" MODIFIED="1432062660555"/>
 <node TEXT="If Statement" ID="ID_491507986" CREATED="1432062660976" MODIFIED="1433809589647">
-<attribute NAME="textbook" VALUE="4-02" OBJECT="org.freeplane.features.format.FormattedNumber|4.2"/>
+<attribute NAME="textbook" VALUE="4-02" />
 </node>
 <node TEXT="Else Statement" ID="ID_938840437" CREATED="1432062664560" MODIFIED="1433809670564">
-<attribute NAME="textbook" VALUE="4-03" OBJECT="org.freeplane.features.format.FormattedNumber|4.3"/>
+<attribute NAME="textbook" VALUE="4-03" />
 </node>
 <node TEXT="Else If" ID="ID_1860102695" CREATED="1432062672430" MODIFIED="1433809682151">
-<attribute NAME="textbook" VALUE="4-04" OBJECT="org.freeplane.features.format.FormattedNumber|4.4"/>
+<attribute NAME="textbook" VALUE="4-04" />
 </node>
 <node TEXT="Switch" ID="ID_117139533" CREATED="1432062674847" MODIFIED="1433809700012">
-<attribute NAME="textbook" VALUE="4-12" OBJECT="org.freeplane.features.format.FormattedNumber|4.12"/>
+<attribute NAME="textbook" VALUE="4-12" />
 </node>
 </node>
 </node>

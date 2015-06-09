@@ -57,7 +57,7 @@
 <node TEXT="Principles" POSITION="right" ID="ID_1322895697" CREATED="1431976283378" MODIFIED="1433039189659">
 <node TEXT="Complexity" ID="ID_72778391" CREATED="1431976298898" MODIFIED="1431976313835">
 <node TEXT="Style" ID="ID_256270475" CREATED="1433824953120" MODIFIED="1433824990292">
-<attribute NAME="textbook" VALUE="2-17" OBJECT="org.freeplane.features.format.FormattedNumber|2.17"/>
+<attribute NAME="textbook" VALUE="2-17" />
 <node TEXT="In some ways programming is an art and leaves room for creative style" ID="ID_1807503895" CREATED="1433824996542" MODIFIED="1433825023570"/>
 <node TEXT="Some people refer to style as the use of whitespace" ID="ID_1476288138" CREATED="1433825023942" MODIFIED="1433825047766">
 <node TEXT="This is limiting and without value" ID="ID_1300723518" CREATED="1433825047782" MODIFIED="1433825056744"/>
@@ -192,7 +192,7 @@
 <node TEXT="Tools" POSITION="right" ID="ID_1202616080" CREATED="1431976743050" MODIFIED="1431976745564">
 <node TEXT="Functions" ID="ID_462060129" CREATED="1430952407388" MODIFIED="1430952690434">
 <node TEXT="Pure Functions" ID="ID_468530218" CREATED="1430952338919" MODIFIED="1433826259568">
-<attribute NAME="textbook" VALUE="6-01" OBJECT="org.freeplane.features.format.FormattedNumber|6.1"/>
+<attribute NAME="textbook" VALUE="6-01" />
 <node TEXT="The closer your functions are to pure the easier they are to reason about" ID="ID_1224200497" CREATED="1430952898155" MODIFIED="1430952912816"/>
 <node TEXT="Pure functions are like math functions" ID="ID_602135547" CREATED="1430952913355" MODIFIED="1430952919867">
 <node TEXT="Same input results in same output" ID="ID_871422145" CREATED="1430952919867" MODIFIED="1430952928413"/>
@@ -228,7 +228,7 @@
 <node TEXT="This style can help write tests and to think about functions" ID="ID_1285941881" CREATED="1433039956942" MODIFIED="1433039967016"/>
 </node>
 <node TEXT="Scope" ID="ID_1651419366" CREATED="1433826290841" MODIFIED="1433826445926">
-<attribute NAME="textbook" VALUE="6-10" OBJECT="org.freeplane.features.format.FormattedObject|6-10|number:decimal:#0.####"/>
+<attribute NAME="textbook" VALUE="6-10" />
 <node TEXT="Created using { and }" ID="ID_1793526350" CREATED="1433826391422" MODIFIED="1433826423304"/>
 <node TEXT="Local Values" ID="ID_1092413372" CREATED="1433826332325" MODIFIED="1433826360969">
 <node TEXT="Declared in this scope" ID="ID_1048057846" CREATED="1433826360983" MODIFIED="1433826368382"/>
@@ -243,7 +243,7 @@
 </node>
 <node TEXT="Design Tools" ID="ID_1424652943" CREATED="1430952458531" MODIFIED="1431977654265">
 <node TEXT="Psuedocode" ID="ID_169736980" CREATED="1430952464478" MODIFIED="1433809543463">
-<attribute NAME="textbook" VALUE="1-06" OBJECT="org.freeplane.features.format.FormattedNumber|1.6"/>
+<attribute NAME="textbook" VALUE="1-06" />
 <node TEXT="Use english to describe the steps of your algorithim" ID="ID_1550703231" CREATED="1431978432123" MODIFIED="1431978444211"/>
 <node TEXT="You can do this with comments, then fill out the code below" ID="ID_372903971" CREATED="1431978444610" MODIFIED="1431978452668"/>
 <node TEXT="Helps you to think through the problem" ID="ID_285502207" CREATED="1431978462163" MODIFIED="1431978468675"/>
@@ -265,7 +265,7 @@
 <node TEXT="How is it transformed from input to output" ID="ID_938557680" CREATED="1431978563826" MODIFIED="1431978571728"/>
 </node>
 <node TEXT="Comments" ID="ID_954427498" CREATED="1433824907032" MODIFIED="1433824929092">
-<attribute NAME="textbook" VALUE="2-16" OBJECT="org.freeplane.features.format.FormattedNumber|2.16"/>
+<attribute NAME="textbook" VALUE="2-16" />
 <node TEXT="Comments are removed during preprocessing" ID="ID_913697769" CREATED="1433825130970" MODIFIED="1433825140317"/>
 <node TEXT="They are only intended for human readers (probably future you)" ID="ID_1430690587" CREATED="1433825140840" MODIFIED="1433825160155"/>
 <node TEXT="Used sparingly a powerful element of style" ID="ID_521567796" CREATED="1433825165713" MODIFIED="1433825185066"/>
