@@ -8,7 +8,7 @@ namespace lionheart
   class ConsoleDisplay: public Display
   {
     public:
-    void show(SituationReport const &);
+      void show(SituationReport const&, Blazon const&, Blazon const&);
   };
 }
 #endif

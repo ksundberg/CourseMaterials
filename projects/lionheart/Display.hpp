@@ -1,6 +1,7 @@
 #ifndef LIONHEART_DISPLAY_HPP
 #define LIONHEART_DISPLAY_HPP
 #include "SituationReport.hpp"
+#include "Player.hpp"
 
 namespace lionheart
 {
