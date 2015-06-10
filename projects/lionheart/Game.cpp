@@ -74,6 +74,7 @@ createUnit(std::shared_ptr<lionheart::Player> const &player,
     void addUnit(std::vector<std::shared_ptr<lionheart::Unit>> &units,
                  std::shared_ptr<lionheart::Unit> &u)
     {
+      if(!u) return;
       // check that no other unit is already in location
       auto result = std::find_if(std::begin(units),
                                  std::end(units),

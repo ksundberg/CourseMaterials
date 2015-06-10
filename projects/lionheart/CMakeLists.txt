@@ -54,6 +54,7 @@ list(APPEND lionheart_srcs ${student_sources})
 #
 set(new_players
   Player/SittingDuck.hpp
+  Player/Goldfish.hpp
   )
 ################################
 # Provided Sources
