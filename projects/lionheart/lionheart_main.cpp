@@ -1,5 +1,5 @@
 #include "Game.hpp"
-#include "ConsoleDisplay.hpp"
+#include "AnsiDisplay.hpp"
 #include "Player/SittingDuck.hpp"
 
 int main(void)
@@ -8,7 +8,7 @@ int main(void)
   auto p1 = std::make_shared<lionheart::SittingDuck>();
   auto p2 = std::make_shared<lionheart::SittingDuck>();
   lionheart::Game game(p1,p2,fortMap);
-  lionheart::ConsoleDisplay display;
+  lionheart::AnsiDisplay display;
   display.show(game.getReport(),p1->getBlazon(),p2->getBlazon());
   game.start();
   display.show(game.getReport(),p1->getBlazon(),p2->getBlazon());

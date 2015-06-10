@@ -73,6 +73,8 @@ set(Aux_srcs
   Action.hpp
   Player.hpp
   Display.hpp
+  AnsiDisplay.hpp
+  AnsiDisplay.cpp
   ConsoleDisplay.hpp
   ConsoleDisplay.cpp
   SituationReport.hpp

@@ -14,7 +14,7 @@ namespace lionheart
           if (report.things[r][c].type == SituationReport::SPACE) return {r, c};
     }
     Action recommendAction(Unit const&, SituationReport) { return Action(); }
-    Blazon getBlazon() { return {Color::OR, Color::AZURE, Style::BEND, "Sitting Duck"}; }
+    Blazon getBlazon() { return {Color::AZURE, Color::OR, Style::BEND, "Sitting Duck"}; }
   };
 }
 #endif

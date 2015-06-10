@@ -8,7 +8,7 @@ namespace lionheart
   class Infantry:public Unit
   {
     public:
-      const int STARTING_HP = 4;
+      static const int STARTING_HP = 4;
       Infantry(Map::Location l,Direction d):Unit(l,d,STARTING_HP){}
       bool hasArmor() const override{return false;}
       AttackType attackType() const override{return AttackType::AXE;}
