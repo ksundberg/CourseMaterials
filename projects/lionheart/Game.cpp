@@ -14,10 +14,12 @@ namespace
 
   lionheart::SituationReport
   buildReport(std::shared_ptr<lionheart::Map const> const &map,
+              int turns,
               std::vector<std::shared_ptr<lionheart::Unit>> const &allies,
               std::vector<std::shared_ptr<lionheart::Unit>> const &enemies)
   {
     lionheart::SituationReport report;
+    report.turns = turns;
     // convert map to report
     report.things.reserve(map->rows());
     for (size_t i = 0; i < map->rows(); ++i)
@@ -60,7 +62,7 @@ createUnit(std::shared_ptr<lionheart::Player> const &player,
            lionheart::StartBox const &box,
            lionheart::Direction const d)
     {
-      auto coords = player->placeUnit(UnitType::type, box, buildReport(map,units,std::vector<std::shared_ptr<lionheart::Unit>>()));
+      auto coords = player->placeUnit(UnitType::type, box, buildReport(map,0,units,std::vector<std::shared_ptr<lionheart::Unit>>()));
       auto loc = map->at(coords.row,coords.col);
       //make sure location is in start box
       if(!loc) return nullptr;
@@ -196,7 +198,7 @@ void lionheart::Game::doTurn()
         if (unit.isAlive())
         {
           // get recommendations
-          auto action = p->recommendAction(unit,buildReport(map,allies,enemies));
+          auto action = p->recommendAction(unit,buildReport(map,turns,allies,enemies));
           // execute valid recommendations
           action(map, unit, allies,enemies);
         }
@@ -233,5 +235,5 @@ void lionheart::Game::doTurn()
 
 lionheart::SituationReport lionheart::Game::getReport()const
 {
-  return buildReport(map,units[0],units[1]);
+  return buildReport(map,turns,units[0],units[1]);
 }

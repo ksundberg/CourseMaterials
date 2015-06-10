@@ -10,7 +10,8 @@ int main(void)
   auto p2 = std::make_shared<lionheart::Goldfish>();
   lionheart::Game game(p1,p2,fortMap);
   lionheart::AnsiDisplay display;
-  display.show(game.getReport(),p1->getBlazon(),p2->getBlazon());
   game.start();
+  display.show(game.getReport(),p1->getBlazon(),p2->getBlazon());
+  game.doTurn();
   display.show(game.getReport(),p1->getBlazon(),p2->getBlazon());
 }

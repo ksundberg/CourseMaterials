@@ -153,7 +153,7 @@ void lionheart::AnsiDisplay::show(lionheart::SituationReport const& report, Blaz
   if (report.things.empty()) return;
   std::cout << p1.name << "(" << report.getHp(SituationReport::ALLY) << ") v. "
             << p2.name << "(" << report.getHp(SituationReport::ENEMY) << ")"
-            << std::endl;
+            << " Turn : " << report.turns << std::endl;
 
   displayHeader(report.things[0].size());
   for (auto&& row : report.things)

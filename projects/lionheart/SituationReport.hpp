@@ -38,6 +38,7 @@ namespace lionheart
       int hp;
     };
     std::vector<std::vector<Thing>> things;
+    int turns;
     int getHp(ThingType type) const
     {
       int result = 0;
