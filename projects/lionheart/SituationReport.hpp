@@ -38,6 +38,19 @@ namespace lionheart
       int hp;
     };
     std::vector<std::vector<Thing>> things;
+    int getHp(ThingType type) const
+    {
+      int result = 0;
+      for (auto &&row : things)
+        for (auto &&t : row)
+        {
+          if (t.type == type)
+          {
+            result += t.hp;
+          }
+        }
+      return result;
+    }
   };
 }
 
