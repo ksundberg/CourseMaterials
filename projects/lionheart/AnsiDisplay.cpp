@@ -21,29 +21,15 @@ namespace
   {
     thread_local std::random_device rd;
     thread_local std::mt19937 engine(rd());
-    std::uniform_int_distribution<> die(0, 3);
+    const int SIZE = 6;
+    std::uniform_int_distribution<> die(0, SIZE-1);
 
+    const char c[SIZE] = { ',', '.', '~', '`', '"', '\'' };
     std::cout << "\033[32m";
     for(int i=0;i<3;++i)
     {
       auto r = die(engine);
-      switch (r)
-      {
-      case 0:
-        std::cout << ',';
-        break;
-      case 1:
-        std::cout << '.';
-        break;
-      case 2:
-        std::cout << "'"; break;
-      case 3:
-        std::cout << '~';
-        break;
-      default:
-        std::cout << '.';
-        break;
-      }
+      std::cout << c[r];
     }
   }
 
