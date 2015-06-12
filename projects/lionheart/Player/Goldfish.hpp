@@ -25,7 +25,20 @@ namespace lionheart
     }
     return { r, c };
     }
-    Action recommendAction(Unit const&, SituationReport) { return Action(); }
+    Action recommendAction(Unit const&, SituationReport) {
+       thread_local std::random_device rd;
+      thread_local std::mt19937 engine(rd());
+      std::uniform_int_distribution<> act(0,4);
+      switch(act(engine))
+      {
+        case 0:return turn(Direction::NORTH);
+        case 1:return turn(Direction::EAST);
+        case 2:return turn(Direction::SOUTH);
+        case 3:return turn(Direction::WEST);
+        case 4:return move(5);
+      }
+
+    }
     Blazon getBlazon() { return {Color::OR, Color::GULES, Style::BEND, "Goldfish"}; }
   };
 }

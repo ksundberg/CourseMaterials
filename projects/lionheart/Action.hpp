@@ -38,9 +38,9 @@ public:
                   std::vector<std::shared_ptr<Unit>> & allies,
                   std::vector<std::shared_ptr<Unit>> & enemies){}
 };
-Action turn(Direction d);
-Action move(int distance);
-Action wait();
-Action attack();
+inline Action turn(Direction d){return Action();}
+inline Action move(int distance){return Action();}
+inline Action wait(){return Action();}
+inline Action attack(){return Action();}
 }
 #endif
