@@ -71,6 +71,7 @@ set(Aux_srcs
   Player.hpp
   Game.hpp
   Game.cpp
+  Action.cpp
   Action.hpp
   Player.hpp
   Display.hpp

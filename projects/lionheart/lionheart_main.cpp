@@ -12,6 +12,9 @@ int main(void)
   lionheart::AnsiDisplay display;
   game.start();
   display.show(game.getReport(),p1->getBlazon(),p2->getBlazon());
+  for(auto i=0;i<10;++i)
+  {
   game.doTurn();
   display.show(game.getReport(),p1->getBlazon(),p2->getBlazon());
+  }
 }

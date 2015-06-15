@@ -14,33 +14,39 @@ struct Placement
   int row;
   int col;
 };
+
 class ActionImpl
 {
+public:
+  virtual ~ActionImpl()=default;
+  virtual void apply(std::shared_ptr<const Map> const & map,
+                  Unit & actor,
+                  std::vector<std::shared_ptr<Unit>> & allies,
+                  std::vector<std::shared_ptr<Unit>> & enemies)=0;
 };
-class MoveImpl
-{
-};
-class TurnImpl
-{
-};
-class AttackImpl
-{
-};
-class WaitImpl
-{
-};
+
+
+
 class Action
 {
 public:
+  Action():pImpl(nullptr){}
+  Action(std::unique_ptr<ActionImpl>&& impl):pImpl(std::move(impl)){}
   std::unique_ptr<ActionImpl> pImpl;
-  void operator()(std::shared_ptr<const Map> const & map,
-                  Unit & actor,
-                  std::vector<std::shared_ptr<Unit>> & allies,
-                  std::vector<std::shared_ptr<Unit>> & enemies){}
+  void operator()(std::shared_ptr<const Map> const& map,
+                  Unit& actor,
+                  std::vector<std::shared_ptr<Unit>>& allies,
+                  std::vector<std::shared_ptr<Unit>>& enemies)
+  {
+    if (pImpl) {
+      pImpl->apply(map, actor, allies, enemies);
+    }
+  }
 };
-inline Action turn(Direction d){return Action();}
-inline Action move(int distance){return Action();}
-inline Action wait(){return Action();}
-inline Action attack(){return Action();}
+
+Action turn(Direction d);
+Action move(int distance);
+Action wait();
+Action attack();
 }
 #endif
