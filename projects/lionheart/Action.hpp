@@ -3,10 +3,6 @@
 
 #include "Map.hpp"
 #include "Unit.hpp"
-#include "Crown.hpp"
-#include "Knight.hpp"
-#include "Archer.hpp"
-#include "Infantry.hpp"
 namespace lionheart
 {
 struct Placement

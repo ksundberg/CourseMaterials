@@ -198,7 +198,7 @@ void lionheart::Game::doTurn()
         if (unit.isAlive())
         {
           // get recommendations
-          auto action = p->recommendAction(unit,buildReport(map,turns,allies,enemies));
+          auto action = p->recommendAction(unit, buildReport(map, turns, allies, enemies), Plan(unit, allies, enemies));
           // execute valid recommendations
           action(map, unit, allies,enemies);
         }

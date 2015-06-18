@@ -55,31 +55,33 @@ list(APPEND lionheart_srcs ${student_sources})
 set(new_players
   Player/SittingDuck.hpp
   Player/Goldfish.hpp
+  Player/ChargingBadger.hpp
   )
 ################################
 # Provided Sources
 set(Aux_srcs
-  Map.cpp
-  Map.hpp
-  Unit.hpp
-  Unit.cpp
-  Archer.hpp
-  Archer.cpp
-  Infantry.hpp
-  Knight.hpp
-  Crown.hpp
-  Player.hpp
-  Game.hpp
-  Game.cpp
   Action.cpp
   Action.hpp
-  Player.hpp
-  Display.hpp
-  AnsiDisplay.hpp
   AnsiDisplay.cpp
-  ConsoleDisplay.hpp
+  AnsiDisplay.hpp
+  Archer.cpp
+  Archer.hpp
   ConsoleDisplay.cpp
+  ConsoleDisplay.hpp
+  Crown.hpp
+  Display.hpp
+  Game.cpp
+  Game.hpp
+  Infantry.hpp
+  Knight.hpp
+  Map.cpp
+  Map.hpp
+  Plan.cpp
+  Plan.hpp
+  Player.hpp
   SituationReport.hpp
+  Unit.cpp
+  Unit.hpp
   )
 
 list(APPEND lionheart_srcs ${Aux_srcs})

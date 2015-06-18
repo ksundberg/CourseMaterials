@@ -1,10 +1,12 @@
 #ifndef LIONHEART_PLAYER_HPP
 #define LIONHEART_PLAYER_HPP
 
-#include <string>
-#include "Map.hpp"
 #include "Action.hpp"
+#include "Map.hpp"
+#include "Plan.hpp"
 #include "SituationReport.hpp"
+
+#include <string>
 
 namespace lionheart
 {
@@ -46,7 +48,7 @@ class Player
 {
 public:
   virtual Placement placeUnit(UnitType,StartBox const &,SituationReport) = 0;
-  virtual Action recommendAction(Unit const &,SituationReport) = 0;
+  virtual Action recommendAction(Unit const &,SituationReport,Plan) = 0;
   virtual Blazon getBlazon() = 0;
 };
 }

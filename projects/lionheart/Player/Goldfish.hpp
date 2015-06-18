@@ -25,7 +25,7 @@ namespace lionheart
     }
     return { r, c };
     }
-    Action recommendAction(Unit const&, SituationReport) {
+    Action recommendAction(Unit const&, SituationReport,Plan) {
        thread_local std::random_device rd;
       thread_local std::mt19937 engine(rd());
       std::uniform_int_distribution<> act(0,4);
