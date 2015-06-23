@@ -69,6 +69,16 @@
 <node TEXT="Student Objectives" ID="ID_215922869" CREATED="1433013661443" MODIFIED="1433013668735">
 <node TEXT="Develop an ability to design, implement, and evaluate a computer based system, process, component, or program to meet desired needs." ID="ID_1073513133" CREATED="1433013668747" MODIFIED="1433013705039"/>
 </node>
+<node TEXT="Tutor Lab (Summer 2015)" ID="ID_406074160" CREATED="1435092510615" MODIFIED="1435092599489">
+<node TEXT="Tutors are available -- They are a great resource" ID="ID_1061745002" CREATED="1435092515879" MODIFIED="1435092535963"/>
+<node TEXT="Hours" ID="ID_1408748238" CREATED="1435092536438" MODIFIED="1435092546518">
+<node TEXT="M: 1-5" ID="ID_406807394" CREATED="1435092546531" MODIFIED="1435092566889"/>
+<node TEXT="T: 12-4" ID="ID_1384744252" CREATED="1435092567312" MODIFIED="1435092573339"/>
+<node TEXT="W: 1-5" ID="ID_1070594669" CREATED="1435092573719" MODIFIED="1435092578966"/>
+<node TEXT="R: 12-4" ID="ID_1759733098" CREATED="1435092579344" MODIFIED="1435092584564"/>
+<node TEXT="F: 12-4" ID="ID_582445091" CREATED="1435092585015" MODIFIED="1435092592280"/>
+</node>
+</node>
 </node>
 <node TEXT="Policies" ID="ID_1049242193" CREATED="1430766258561" MODIFIED="1430766265555">
 <node TEXT="Academic Honesty" ID="ID_1414885647" CREATED="1433013754576" MODIFIED="1433013775443">
@@ -120,7 +130,7 @@
 <node TEXT="Introduction" POSITION="right" ID="ID_1555719218" CREATED="1430766293248" MODIFIED="1430766339763">
 <node TEXT="Computer Science" ID="ID_1563878077" CREATED="1430766339764" MODIFIED="1430766356052">
 <node TEXT="What is Computer Science?" ID="ID_428361757" CREATED="1430766356053" MODIFIED="1433197182043">
-<attribute NAME="textbook" VALUE="1-01" />
+<attribute NAME="textbook" VALUE="1-01"/>
 <node TEXT="Hint: It has almost nothing to do with computers" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1444580079" CREATED="1433015532257" MODIFIED="1433015721582"/>
 <node TEXT="Science of Problem Solving" ID="ID_512083072" CREATED="1433015560480" MODIFIED="1433015582888"/>
 <node TEXT="Encoding knowledge of how to accomplish tasks into precise and repeatable steps" ID="ID_697270339" CREATED="1433015583575" MODIFIED="1433015680247"/>
@@ -142,7 +152,7 @@
 <node TEXT="Complexity is the Enemy" ID="ID_270487737" CREATED="1433016324453" MODIFIED="1433016331767"/>
 </node>
 <node TEXT="Turing Machines" ID="ID_1825448329" CREATED="1433015952306" MODIFIED="1433197206982">
-<attribute NAME="textbook" VALUE="1-02" />
+<attribute NAME="textbook" VALUE="1-02"/>
 <node TEXT="Mathematics needed a precise mathematical description of an algorithm" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1535639807" CREATED="1433015958855" MODIFIED="1433016279634"/>
 <node TEXT="Lambda calculus, Post machines, Turing machines" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1833105110" CREATED="1433016020072" MODIFIED="1433016279628"/>
 <node TEXT="Church&apos;s Thesis - The three are equivalent and are all that can be computed" ID="ID_1946776199" CREATED="1433016058279" MODIFIED="1433016106775"/>
@@ -185,7 +195,7 @@
 <node TEXT="If you write at the limits of your ability, your code will be beyond your ability to debug" ID="ID_777733953" CREATED="1430767219931" MODIFIED="1430767240146"/>
 </node>
 <node TEXT="Top-down Approach" ID="ID_712677728" CREATED="1430766427512" MODIFIED="1433197636975">
-<attribute NAME="textbook" VALUE="1-05" />
+<attribute NAME="textbook" VALUE="1-05"/>
 <node TEXT="Break big problems into smaller problems" ID="ID_763725384" CREATED="1430766589265" MODIFIED="1430766817772"/>
 <node TEXT="Eventually the problems are small enough to be easy" LOCALIZED_STYLE_REF="styles.topic" ID="ID_572969213" CREATED="1430766830929" MODIFIED="1433197290188"/>
 <node TEXT="Common overall patter is:" ID="ID_1472243504" CREATED="1433197291770" MODIFIED="1433197302443">
@@ -218,7 +228,7 @@
 </node>
 </node>
 <node TEXT="Some Programming Languages" ID="ID_1448786895" CREATED="1430773888683" MODIFIED="1433197678482">
-<attribute NAME="textbook" VALUE="1-03" />
+<attribute NAME="textbook" VALUE="1-03"/>
 <node TEXT="BASIC" ID="ID_1735024604" CREATED="1430773936132" MODIFIED="1430773941054"/>
 <node TEXT="C/C++" ID="ID_325730571" CREATED="1430773894685" MODIFIED="1430773897840"/>
 <node TEXT="C\#" ID="ID_1924452264" CREATED="1430773914947" MODIFIED="1432567576336"/>
@@ -231,7 +241,7 @@
 <node TEXT="Ruby" ID="ID_149680642" CREATED="1430773910683" MODIFIED="1430773912976"/>
 </node>
 <node TEXT="Brief History of C++" ID="ID_303916911" CREATED="1433823642734" MODIFIED="1433824444943">
-<attribute NAME="textbook" VALUE="2-04" />
+<attribute NAME="textbook" VALUE="2-04"/>
 <node TEXT="First developed by Bjarne Stroustrup in 1978" ID="ID_1974454365" CREATED="1433823663701" MODIFIED="1433823736158"/>
 <node TEXT="Decended from:" ID="ID_55564097" CREATED="1433823834495" MODIFIED="1433823840736">
 <node TEXT="ALGOL (By committee 1958)" ID="ID_41368018" CREATED="1433823840750" MODIFIED="1433824414928"/>
@@ -250,7 +260,7 @@
 </node>
 </node>
 <node TEXT="Steps in Programming (parts you do)" ID="ID_1592689298" CREATED="1430767491737" MODIFIED="1433197750385">
-<attribute NAME="textbook" VALUE="1-06" />
+<attribute NAME="textbook" VALUE="1-06"/>
 <node TEXT="Design" LOCALIZED_STYLE_REF="styles.topic" ID="ID_955013882" CREATED="1430767504314" MODIFIED="1433016753849">
 <node TEXT="Very important, spend more time than you think you need to here" ID="ID_1434621556" CREATED="1430767507219" MODIFIED="1430767517872"/>
 </node>
@@ -293,7 +303,7 @@
 </node>
 <node TEXT="Structure" ID="ID_774586976" CREATED="1433823036486" MODIFIED="1433823073517">
 <node TEXT="Lexicon" ID="ID_1985092106" CREATED="1433823073526" MODIFIED="1433823456680">
-<attribute NAME="textbook" VALUE="2-06" />
+<attribute NAME="textbook" VALUE="2-06"/>
 <node TEXT="Word level abstraction" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1697345030" CREATED="1433823102481" MODIFIED="1433823285877"/>
 <node TEXT="Key words" LOCALIZED_STYLE_REF="styles.topic" ID="ID_861770745" CREATED="1433823109505" MODIFIED="1433823285886">
 <node TEXT="Have predefined meaning" ID="ID_1108347314" CREATED="1433823185173" MODIFIED="1433823197697"/>
@@ -308,7 +318,7 @@
 </node>
 </node>
 <node TEXT="Syntax" ID="ID_377175912" CREATED="1433823079184" MODIFIED="1433823470358">
-<attribute NAME="textbook" VALUE="1-04" />
+<attribute NAME="textbook" VALUE="1-04"/>
 <node TEXT="Grammer level abstraction" LOCALIZED_STYLE_REF="styles.topic" ID="ID_681183028" CREATED="1433823211837" MODIFIED="1433823292629"/>
 <node TEXT="The legal ordering of key words, identifiers, and punctuation" ID="ID_600426794" CREATED="1433823218413" MODIFIED="1433823250607"/>
 </node>
