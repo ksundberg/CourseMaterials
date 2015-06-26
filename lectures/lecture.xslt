@@ -89,7 +89,16 @@ morecomment=[l][\color{magenta}]{\#}
 \begin{itemize}
 <xsl:for-each select="node/node/node/attribute">
 <xsl:sort select="@VALUE"/>
+<xsl:if test="position() mod 10 = 0">
+\begin{frame}
+\frametitle{Textbook sections covered:}
+\begin{itemize}
+</xsl:if>
 \item Section <xsl:value-of select="@VALUE"/> (frame \ref{textbook:<xsl:value-of select="@VALUE"/>})
+<xsl:if test="position() mod 10 = 9">
+\end{itemize}
+\end{frame}
+</xsl:if>
 </xsl:for-each>
 \end{itemize}
 \end{frame}
