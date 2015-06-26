@@ -3,15 +3,9 @@
 2.12 determining size of type
 4.11 ternary operator
 5.5 do-while
+5.11 break / continue
 ###############
 not yet determined
-
-5.4
-5.7
-5.8
-5.9
-5.10
-5.11
 
 6.2
 6.4
