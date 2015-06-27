@@ -204,11 +204,13 @@
 <node TEXT="Output" ID="ID_1159606047" CREATED="1433197306857" MODIFIED="1433197308750"/>
 </node>
 </node>
-<node TEXT="Test Driven Development" ID="ID_144164745" CREATED="1430768039177" MODIFIED="1430768045168">
+<node TEXT="Test Driven Development" ID="ID_144164745" CREATED="1430768039177" MODIFIED="1435363644187">
+<attribute NAME="textbook" VALUE="6-16"/>
 <node TEXT="How do you know you are done?" LOCALIZED_STYLE_REF="styles.topic" ID="ID_194770557" CREATED="1430768045168" MODIFIED="1433016624325"/>
 <node TEXT="Make your test plan first" ID="ID_1061242595" CREATED="1430768051457" MODIFIED="1430768060852"/>
 <node TEXT="Convince yourself that any program that can satisfy your test plan is correct" ID="ID_130443352" CREATED="1430768061865" MODIFIED="1430768080199"/>
 <node TEXT="Then write code, when it satisfies the test it is complete" ID="ID_209351331" CREATED="1430768084713" MODIFIED="1430768099656"/>
+<node TEXT="If your test plan is a program then this can be automated" ID="ID_1967480416" CREATED="1435363670259" MODIFIED="1435363681907"/>
 </node>
 </node>
 <node TEXT="Programming" ID="ID_1632116103" CREATED="1430767302425" MODIFIED="1430767320139">

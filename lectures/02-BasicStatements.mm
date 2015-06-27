@@ -156,7 +156,11 @@
 </node>
 </node>
 <node TEXT="Syntax" ID="ID_764326004" CREATED="1433018610245" MODIFIED="1433018612853">
-<node TEXT="Parts of a Function" ID="ID_1838440050" CREATED="1433018621925" MODIFIED="1433018627638">
+<node TEXT="Parts of a Function" ID="ID_1838440050" CREATED="1433018621925" MODIFIED="1435363245975">
+<attribute NAME="textbook" VALUE="6-04"/>
+<attribute NAME="textbook" VALUE="6-06"/>
+<attribute NAME="textbook" VALUE="6-07"/>
+<attribute NAME="textbook" VALUE="6-08"/>
 <node TEXT="Name" LOCALIZED_STYLE_REF="styles.topic" ID="ID_252711940" CREATED="1433018654268" MODIFIED="1433033710820">
 <node TEXT="This should be descriptive" ID="ID_614112670" CREATED="1433033714170" MODIFIED="1433033730420"/>
 <node TEXT="Usually a verb" ID="ID_1255714676" CREATED="1433033730905" MODIFIED="1433033752976"/>
@@ -175,15 +179,27 @@
 <node TEXT="Best if under 7 lines -- at least keep it on a page" ID="ID_377118692" CREATED="1433033906603" MODIFIED="1433033933644"/>
 </node>
 </node>
-<node TEXT="Function Signature" ID="ID_41001307" CREATED="1433018680666" MODIFIED="1433018683979">
+<node TEXT="Call by Value and Reference" ID="ID_1439069818" CREATED="1435363159011" MODIFIED="1435363427991">
+<attribute NAME="textbook" VALUE="6-05"/>
+<attribute NAME="textbook" VALUE="6-13"/>
+<node TEXT="Two ways to pass parameters" ID="ID_265697618" CREATED="1435363434547" MODIFIED="1435363448714">
+<node TEXT="Value" ID="ID_590016458" CREATED="1435363448720" MODIFIED="1435363450098"/>
+<node TEXT="Reference" ID="ID_1553632783" CREATED="1435363450426" MODIFIED="1435363452154"/>
+</node>
+<node TEXT="Value is usually correct" ID="ID_183059191" CREATED="1435363453411" MODIFIED="1435363468154"/>
+<node TEXT="Reference permits side effects" ID="ID_1974695532" CREATED="1435363468395" MODIFIED="1435363491154"/>
+</node>
+<node TEXT="Function Signature" ID="ID_41001307" CREATED="1433018680666" MODIFIED="1435363534055">
+<attribute NAME="textbook" VALUE="6-14"/>
 <node TEXT="The name and parameter list (only the types and their order) are the \emph{signature}" ID="ID_1888667262" CREATED="1433018683987" MODIFIED="1433018719236"/>
 <node TEXT="There can only be one function with a given signature (One Definition Rule)" LOCALIZED_STYLE_REF="styles.topic" ID="ID_600448261" CREATED="1433018719761" MODIFIED="1433018835681"/>
 <node TEXT="You can use the same parameters with a different name" ID="ID_1467416026" CREATED="1433018770383" MODIFIED="1433018781396"/>
 <node TEXT="You can use the same name with different parameters" ID="ID_1198392016" CREATED="1433018760176" MODIFIED="1433018770153"/>
 <node TEXT="Using the same name is a form of \emph{polymorphisim}" ID="ID_942763530" CREATED="1433018786455" MODIFIED="1433018812480"/>
 </node>
-<node TEXT="Defining a function" ID="ID_255558717" CREATED="1433018630404" MODIFIED="1435100327038">
+<node TEXT="Defining a function" ID="ID_255558717" CREATED="1433018630404" MODIFIED="1435363071086">
 <attribute NAME="textbook" VALUE="6-03"/>
+<attribute NAME="textbook" VALUE="6-02"/>
 <node TEXT="Declaration: Promise that a function with a given signature will exist" ID="ID_1752392918" CREATED="1433018861204" MODIFIED="1433018878796"/>
 <node TEXT="Definition: The implementation of a function" ID="ID_599985035" CREATED="1433018879115" MODIFIED="1433018892470"/>
 </node>
