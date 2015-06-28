@@ -99,9 +99,14 @@ morecomment=[l][\color{magenta}]{\#}
 \end{itemize}
 \end{frame}
 </xsl:if>
-</xsl:for-each>
+<xsl:if test="position() mod 10 != 9">
+<xsl:if test="position() = last()">
 \end{itemize}
 \end{frame}
+</xsl:if>
+</xsl:if>
+
+</xsl:for-each>
 \end{document}
   </xsl:template>
 </xsl:stylesheet>

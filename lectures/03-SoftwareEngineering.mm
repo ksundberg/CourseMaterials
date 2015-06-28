@@ -69,7 +69,13 @@
 <node TEXT="&quot;There are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies, and the other way is to make it so complicated that there are no obvious deficiencies.  The first method is far more difficult&quot; --C.A.R. Hoare" ID="ID_1168173989" CREATED="1431542086802" MODIFIED="1431542382162"/>
 </node>
 <node TEXT="Complexity" ID="ID_1515893605" CREATED="1433038914043" MODIFIED="1433038920324">
-<node TEXT="Complexity is the Enemy" ID="ID_509237071" CREATED="1433038920339" MODIFIED="1433038927213"/>
+<node TEXT="Complexity is the Enemy" LOCALIZED_STYLE_REF="styles.topic" ID="ID_509237071" CREATED="1433038920339" MODIFIED="1435466256545"/>
+<node TEXT="Watch out for:" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1216034917" CREATED="1435466177265" MODIFIED="1435466256540">
+<node TEXT="Computational Complexity" ID="ID_794784161" CREATED="1435466195663" MODIFIED="1435466201930"/>
+<node TEXT="Semantic Complexity" ID="ID_319016294" CREATED="1435466202464" MODIFIED="1435466225954"/>
+<node TEXT="Syntactic Complexity" ID="ID_13700322" CREATED="1435466226439" MODIFIED="1435466231506"/>
+</node>
+<node TEXT="Some complexity is irreducible" ID="ID_1251539923" CREATED="1435466236910" MODIFIED="1435466247500"/>
 </node>
 <node TEXT="Humility" ID="ID_541766509" CREATED="1431542470237" MODIFIED="1431542474017">
 <node TEXT="&quot;The competent programmer is fully aware of the strictly limited size of his own skull; therefore he approaches the programming task in full humility, and amoung other things he avoids clever tricks like the plague.&quot; -- Edsger Dijkstra" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1614960218" CREATED="1431542474018" MODIFIED="1433037189751"/>
@@ -114,6 +120,25 @@
 <node TEXT="Solution to the more general case" ID="ID_1965396214" CREATED="1433039076685" MODIFIED="1433039085901"/>
 </node>
 <node TEXT="When debugging don&apos;t assume that some input is special assume that your logic is flawed" ID="ID_591986870" CREATED="1433039119756" MODIFIED="1433039144476"/>
+</node>
+<node TEXT="Priorities" ID="ID_1069837863" CREATED="1435466329132" MODIFIED="1435466334933">
+<node TEXT="Correctness" LOCALIZED_STYLE_REF="styles.topic" ID="ID_236948598" CREATED="1435466334947" MODIFIED="1435466579696">
+<node TEXT="The code must be correct before anything else matters" ID="ID_175697511" CREATED="1435466417257" MODIFIED="1435466426667"/>
+</node>
+<node TEXT="Complexity" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1935287792" CREATED="1435466351866" MODIFIED="1435466579694">
+<node TEXT="The code is a complex as necessary, but no worse" ID="ID_953281033" CREATED="1435466439000" MODIFIED="1435466459287"/>
+</node>
+<node TEXT="Clarity" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1786849546" CREATED="1435466355299" MODIFIED="1435466579691">
+<node TEXT="The code is expressed in the most straightforward and readable way possible" ID="ID_1759500931" CREATED="1435466460591" MODIFIED="1435466477665"/>
+</node>
+<node TEXT="Efficiency" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1161770352" CREATED="1435466433520" MODIFIED="1435466579687">
+<node TEXT="The code performs no unnecessary work" ID="ID_13150369" CREATED="1435466479214" MODIFIED="1435466494025"/>
+<node TEXT="Often a side effect of the first three priorities" ID="ID_1029400371" CREATED="1435466494606" MODIFIED="1435466506264"/>
+</node>
+<node TEXT="Performance" ID="ID_1199125301" CREATED="1435466359819" MODIFIED="1435466415258">
+<node TEXT="The code performs the necessary work as quickly as possible" ID="ID_1382063270" CREATED="1435466507750" MODIFIED="1435466539533"/>
+<node TEXT="Performance is rarely a concern -- but it can trump everything but correctness" ID="ID_117428471" CREATED="1435466539884" MODIFIED="1435466568742"/>
+</node>
 </node>
 </node>
 <node TEXT="Communication" ID="ID_1839035005" CREATED="1431976392066" MODIFIED="1431976397123">
@@ -186,7 +211,11 @@
 <node TEXT="Cross-Platform Make" ID="ID_978714658" CREATED="1431977262706" MODIFIED="1431977273680"/>
 </node>
 </node>
-<node TEXT="CMake Example" ID="ID_944225176" CREATED="1431977280082" MODIFIED="1431977283347"/>
+<node TEXT="CMake Example" LOCALIZED_STYLE_REF="styles.important" ID="ID_944225176" CREATED="1431977280082" MODIFIED="1435466840676">
+<node TEXT="cmake_minimum_required (VERSION 2.8.11)" ID="ID_1134750223" CREATED="1435466729526" MODIFIED="1435466743862"/>
+<node TEXT="project (HELLO)" ID="ID_207362516" CREATED="1435466744222" MODIFIED="1435466752007"/>
+<node TEXT="add_executable(hello hello.cpp)" ID="ID_494623105" CREATED="1435466752493" MODIFIED="1435466778775"/>
+</node>
 </node>
 </node>
 <node TEXT="Tools" POSITION="right" ID="ID_1202616080" CREATED="1431976743050" MODIFIED="1431976745564">
@@ -217,6 +246,16 @@
 <node TEXT="Some functions can not be undone" ID="ID_1298978368" CREATED="1433039870513" MODIFIED="1433039890459"/>
 <node TEXT="Output is critical and destructive" ID="ID_1492296977" CREATED="1433039890977" MODIFIED="1433039909857"/>
 </node>
+</node>
+<node TEXT="Using &lt;random&gt;" LOCALIZED_STYLE_REF="styles.important" ID="ID_1262510173" CREATED="1435465770869" MODIFIED="1435465955371">
+<node TEXT="#include &lt;random&gt;" ID="ID_1506661061" CREATED="1435465806518" MODIFIED="1435465817104"/>
+<node TEXT="int roll()" ID="ID_175156756" CREATED="1435465817710" MODIFIED="1435465848854"/>
+<node TEXT="{" ID="ID_1503923806" CREATED="1435465849373" MODIFIED="1435465850607"/>
+<node TEXT="  static std::random_device rd;" ID="ID_1773997879" CREATED="1435465851285" MODIFIED="1435465894037"/>
+<node TEXT="  static std::mt19937 engine(rd());" ID="ID_1924339745" CREATED="1435465894635" MODIFIED="1435465917276"/>
+<node TEXT="  std::uniform_int_distribution&lt;&gt; die(1,6);" ID="ID_971173036" CREATED="1435465917729" MODIFIED="1435465939908"/>
+<node TEXT="  return die(engine);" ID="ID_271928656" CREATED="1435465940545" MODIFIED="1435465946970"/>
+<node TEXT="}" ID="ID_943100966" CREATED="1435465947345" MODIFIED="1435465950186"/>
 </node>
 <node TEXT="Contract Programming" ID="ID_1870975527" CREATED="1430952813339" MODIFIED="1430952820144">
 <node TEXT="Preconditions" ID="ID_1184112357" CREATED="1430952820987" MODIFIED="1430952823505">
