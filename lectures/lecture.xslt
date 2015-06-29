@@ -3,6 +3,7 @@
   <xsl:output method="text" omit-xml-declaration="yes"/>
   <xsl:template match="map/node">
 \documentclass[usepdftitle=false,professionalfonts,compress]{beamer}
+\usepackage[T1]{fontenc}
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{color}

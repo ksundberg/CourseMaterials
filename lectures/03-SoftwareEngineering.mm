@@ -88,7 +88,7 @@
 <node TEXT="Many good tools exist to work within this limitation" ID="ID_1150884052" CREATED="1431976689122" MODIFIED="1431976702707"/>
 <node TEXT="Functions are your friend" ID="ID_1672733439" CREATED="1433037230325" MODIFIED="1433037236655"/>
 </node>
-<node TEXT="A computer is not nearly so limited use your tools" ID="ID_447217634" CREATED="1431976789498" MODIFIED="1431976796842"/>
+<node TEXT="A computer is not nearly so limited -- use your tools" ID="ID_447217634" CREATED="1431976789498" MODIFIED="1435620924454"/>
 </node>
 <node TEXT="Don&apos;t Repeat Yourself" ID="ID_814408253" CREATED="1431976856234" MODIFIED="1431976871961">
 <node TEXT="Don&apos;t do the same work twice" LOCALIZED_STYLE_REF="styles.topic" ID="ID_141338172" CREATED="1431976871962" MODIFIED="1433038980836">
@@ -104,12 +104,12 @@
 <node TEXT="Don&apos;t build code that you `might&apos; need" ID="ID_1593353391" CREATED="1431976979130" MODIFIED="1431976991563"/>
 </node>
 <node TEXT="Decide at the last responsible moment" ID="ID_409076508" CREATED="1431976155922" MODIFIED="1431976164004">
-<node TEXT="Default decision making is bad" ID="ID_442046447" CREATED="1431976995242" MODIFIED="1431977007176"/>
-<node TEXT="Decide at the moment that continuing to fail to decide would eliminate options" ID="ID_565731085" CREATED="1431977007426" MODIFIED="1431977026833">
+<node TEXT="Default decision making is bad" LOCALIZED_STYLE_REF="styles.topic" ID="ID_442046447" CREATED="1431976995242" MODIFIED="1435620995692"/>
+<node TEXT="Decide at the moment that continuing to fail to decide would eliminate options" LOCALIZED_STYLE_REF="styles.topic" ID="ID_565731085" CREATED="1431977007426" MODIFIED="1435620995695">
 <node TEXT="Lets you make decisions with the most information possible" ID="ID_893944415" CREATED="1431977026834" MODIFIED="1431977041050"/>
 <node TEXT="Inexperience may lead you to need to decide earlier" ID="ID_1058263504" CREATED="1431977041787" MODIFIED="1431977063083"/>
 </node>
-<node TEXT="Some decisions are costly, but not impossible,to unmake" ID="ID_1137126550" CREATED="1431977076274" MODIFIED="1431977115693">
+<node TEXT="Some decisions are costly to unmake -- but not impossible" ID="ID_1137126550" CREATED="1431977076274" MODIFIED="1435620975581">
 <node TEXT="Don&apos;t be afraid to commit" ID="ID_1795114436" CREATED="1431977115694" MODIFIED="1431977124232"/>
 </node>
 </node>
@@ -227,12 +227,13 @@
 <node TEXT="Same input results in same output" ID="ID_871422145" CREATED="1430952919867" MODIFIED="1430952928413"/>
 <node TEXT="No side effects" ID="ID_1193912553" CREATED="1430952928755" MODIFIED="1430952932068"/>
 </node>
-<node TEXT="Some important functions can not be made to be pure" ID="ID_1190006394" CREATED="1430952943691" MODIFIED="1430952951563"/>
+<node TEXT="Some important functions can not be made pure" ID="ID_1190006394" CREATED="1430952943691" MODIFIED="1435621502511"/>
 </node>
 <node TEXT="The Four Horsemen" ID="ID_789441773" CREATED="1430952342691" MODIFIED="1430952348247">
 <node TEXT="Context" LOCALIZED_STYLE_REF="styles.topic" ID="ID_977400696" CREATED="1430952840899" MODIFIED="1433039734230">
 <node TEXT="Some functions rely on context" ID="ID_1758855494" CREATED="1433039740414" MODIFIED="1433039773616"/>
 <node TEXT="This can be eliminated by passing context as a parameter" ID="ID_1861629649" CREATED="1433039774020" MODIFIED="1433039808764"/>
+<node TEXT="Its a judgment call whether the increased interface complexity is worth functional purity" ID="ID_253296630" CREATED="1435621527488" MODIFIED="1435621555253"/>
 </node>
 <node TEXT="Non-determinisim" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1525589247" CREATED="1430952846995" MODIFIED="1433039734234">
 <node TEXT="Some functions don&apos;t always return the same result" ID="ID_936840638" CREATED="1433039818267" MODIFIED="1433039831402"/>
@@ -268,7 +269,7 @@
 </node>
 <node TEXT="Scope" ID="ID_1651419366" CREATED="1433826290841" MODIFIED="1433826445926">
 <attribute NAME="textbook" VALUE="6-10"/>
-<node TEXT="Created using { and }" ID="ID_1793526350" CREATED="1433826391422" MODIFIED="1433826423304"/>
+<node TEXT="Created using \{ and \}" ID="ID_1793526350" CREATED="1433826391422" MODIFIED="1435621880895"/>
 <node TEXT="Local Values" ID="ID_1092413372" CREATED="1433826332325" MODIFIED="1433826360969">
 <node TEXT="Declared in this scope" ID="ID_1048057846" CREATED="1433826360983" MODIFIED="1433826368382"/>
 <node TEXT="Only exist within scope" ID="ID_1780516350" CREATED="1433826369607" MODIFIED="1433826389977"/>
@@ -276,7 +277,14 @@
 <node TEXT="Non-local" ID="ID_317043670" CREATED="1433826455171" MODIFIED="1433826460654">
 <node TEXT="Declared in enclosing scope" ID="ID_796266238" CREATED="1433826460664" MODIFIED="1433826466901"/>
 <node TEXT="The outermost scope is the global scope" ID="ID_185823858" CREATED="1433826467467" MODIFIED="1433826476920"/>
-<node TEXT="" ID="ID_588433262" CREATED="1433826477502" MODIFIED="1433826477502"/>
+<node TEXT="Declaring non-const variables in the global scope is EVIL" ID="ID_588433262" CREATED="1433826477502" MODIFIED="1435621854128"/>
+</node>
+<node TEXT="Static Values" ID="ID_1253064191" CREATED="1435622120675" MODIFIED="1435622127482">
+<node TEXT="Created first time scope is entered" ID="ID_1549783391" CREATED="1435622127489" MODIFIED="1435622137424"/>
+<node TEXT="Not destroyed on exit" ID="ID_1446196726" CREATED="1435622137688" MODIFIED="1435622158217">
+<node TEXT="Implicitly couples every entry of a scope with every other entry" ID="ID_1670166322" CREATED="1435622158222" MODIFIED="1435622175096"/>
+<node TEXT="Should be used with caution -- usually not the right choice" ID="ID_1711071446" CREATED="1435622175400" MODIFIED="1435622192136"/>
+</node>
 </node>
 </node>
 </node>
@@ -297,6 +305,7 @@
 <node TEXT="There is an edge from A to B if A calls B" ID="ID_1921324386" CREATED="1431978517362" MODIFIED="1431978527280"/>
 </node>
 <node TEXT="Help you see the structure of your program" ID="ID_1445516595" CREATED="1431978528266" MODIFIED="1431978538217"/>
+<node TEXT="Top-Down design tends to produce this graph" ID="ID_1779399121" CREATED="1435621949728" MODIFIED="1435621964104"/>
 </node>
 <node TEXT="Data Flow Diagrams" ID="ID_1261287250" CREATED="1430952490012" MODIFIED="1430952495752">
 <node TEXT="Take a bit of data&apos;s point of view as it goes through your system" ID="ID_1812559534" CREATED="1431978540834" MODIFIED="1431978559696"/>
@@ -306,7 +315,7 @@
 <node TEXT="Comments" ID="ID_954427498" CREATED="1433824907032" MODIFIED="1433824929092">
 <attribute NAME="textbook" VALUE="2-16"/>
 <node TEXT="Comments are removed during preprocessing" ID="ID_913697769" CREATED="1433825130970" MODIFIED="1433825140317"/>
-<node TEXT="They are only intended for human readers (probably future you)" ID="ID_1430690587" CREATED="1433825140840" MODIFIED="1433825160155"/>
+<node TEXT="They are only intended for human readers (probably future you)" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1430690587" CREATED="1433825140840" MODIFIED="1435621994499"/>
 <node TEXT="Used sparingly a powerful element of style" ID="ID_521567796" CREATED="1433825165713" MODIFIED="1433825185066"/>
 <node TEXT="Lots of comments is symptomatic of bad code" ID="ID_293517347" CREATED="1433825185959" MODIFIED="1433825194705">
 <node TEXT="Why does it need so much explanation?" ID="ID_539873742" CREATED="1433825194712" MODIFIED="1433825202906"/>
