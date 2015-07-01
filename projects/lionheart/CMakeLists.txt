@@ -26,6 +26,8 @@ set(Map_files
     map4.in
     map6.in
     forts.in
+    tiny.in
+    test.in
     map.in
     navy.in
    )
@@ -111,6 +113,7 @@ add_executable(lionheart2 ${lionheart2_srcs})
 set(Test_srcs
   test/catch.hpp
   test/MapTest.cpp
+  test/PathsTest.cpp
   test/UnitTest.cpp
   test/test_main.cpp
   Map.cpp

@@ -36,7 +36,10 @@ lionheart::Paths::Paths(std::shared_ptr<const Map> const& map, int maxSpeed) : v
       if((*map)[map->at(r,c)] == Tile::SPACE)
       {
         for(auto&& d:dirs)
-          vertex[{{static_cast<int>(r),static_cast<int>(c)},d}] = vNum++;
+        {
+          vertex[{{static_cast<int>(r), static_cast<int>(c)}, d}] = vNum;
+          ++vNum;
+        }
       }
     }
   //create adjacency maps
@@ -47,9 +50,17 @@ lionheart::Paths::Paths(std::shared_ptr<const Map> const& map, int maxSpeed) : v
     for(int j=0;j<vNum;++j)
     {
       nextAction[i].emplace_back();
-      pathLength[i].emplace_back(std::numeric_limits<int>::max());
+      if (j == i)
+      {
+        pathLength[i].emplace_back(0);
+      }
+      else
+      {
+        pathLength[i].emplace_back(vNum*2);
+      }
     }
   }
+
   for(auto&& v:vertex)
   {
     //Add turn based adjacencies
@@ -98,7 +109,7 @@ lionheart::Paths::Paths(std::shared_ptr<const Map> const& map, int maxSpeed) : v
         if(throughMid < direct)
         {
           nextAction[start][stop] = nextAction[start][mid];
-          pathLength[start][stop] = pathLength[start][mid];
+          pathLength[start][stop] = throughMid;
         }
       }
   }

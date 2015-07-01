@@ -18,10 +18,16 @@ namespace lionheart
     return (a.location.row == b.location.row) && (a.location.col == b.location.col) && (a.facing == b.facing);
   }
 
+  inline bool operator!=(PathVertex const & a,PathVertex const & b)
+  {
+    return !(a==b);
+  }
   inline bool operator<(PathVertex const & a,PathVertex const & b)
   {
     if(a.location.row < b.location.row) return true;
-    if(a.location.col < a.location.col) return true;
+    if(a.location.row > b.location.row) return false;
+    if(a.location.col < b.location.col) return true;
+    if(a.location.col > b.location.col) return false;
     return a.facing < b.facing;
   }
 
