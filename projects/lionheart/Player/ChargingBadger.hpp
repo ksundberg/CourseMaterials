@@ -13,7 +13,7 @@ namespace lionheart
         for (int c = box.minCol; c < box.maxCol; ++c)
           if (report.things[r][c].type == SituationReport::SPACE) return {r, c};
     }
-    Action recommendAction(Unit const&, SituationReport,Plan p) { return p.moveToEnemy(); }
+    Action recommendAction(Unit const&, SituationReport,Plan p) { return p.attackEnemy(); }
     Blazon getBlazon() { return {Color::SABLE, Color::GULES, Style::SALTIRE, "Charging Badger"}; }
   };
 }

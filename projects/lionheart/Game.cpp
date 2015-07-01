@@ -197,8 +197,17 @@ void lionheart::Game::doTurn()
     {
         if (unit.isAlive())
         {
+          std::shared_ptr<const Paths> paths = nullptr;
+          if(unit.getMoveSpeed() == 5)
+          {
+            paths = mountedPaths;
+          }
+          else
+          {
+            paths = infantryPaths;
+          }
           // get recommendations
-          auto action = p->recommendAction(unit, buildReport(map, turns, allies, enemies), Plan(unit, allies, enemies));
+          auto action = p->recommendAction(unit, buildReport(map, turns, allies, enemies), Plan(unit, allies, enemies,paths));
           // execute valid recommendations
           action(map, unit, allies,enemies);
         }

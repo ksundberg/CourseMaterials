@@ -2,8 +2,9 @@
 #define LIONHEART_GAME_HPP
 
 #include "Map.hpp"
-#include "Unit.hpp"
+#include "Plan.hpp"
 #include "Player.hpp"
+#include "Unit.hpp"
 #include <memory>
 #include <vector>
 
@@ -22,6 +23,8 @@ namespace lionheart
            std::shared_ptr<Player> p2,
            std::shared_ptr<const Map> map)
           : map(map)
+            ,infantryPaths(std::make_shared<Paths>(map,1))
+            ,mountedPaths(std::make_shared<Paths>(map,5))
           , player({ p1, p2 })
           , units()
           , crown()
@@ -37,6 +40,8 @@ namespace lionheart
       lionheart::SituationReport getReport() const;
     private:
       std::shared_ptr<const Map> map;
+      std::shared_ptr<const Paths> infantryPaths;
+      std::shared_ptr<const Paths> mountedPaths;
       std::array<std::shared_ptr<Player>,2> player;
       std::array<std::vector<std::shared_ptr<Unit>>,2> units;
       std::array<std::shared_ptr<Unit>,2> crown;

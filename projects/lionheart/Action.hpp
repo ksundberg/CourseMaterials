@@ -19,6 +19,7 @@ public:
                   Unit & actor,
                   std::vector<std::shared_ptr<Unit>> & allies,
                   std::vector<std::shared_ptr<Unit>> & enemies)=0;
+  virtual std::unique_ptr<ActionImpl> clone() const =0;
 };
 
 
@@ -28,6 +29,12 @@ class Action
 public:
   Action():pImpl(nullptr){}
   Action(std::unique_ptr<ActionImpl>&& impl):pImpl(std::move(impl)){}
+  Action(Action const & other):pImpl(other.pImpl?other.pImpl->clone():nullptr){}
+  Action& operator=(Action const& other)
+  {
+    if (&other == this) return *this;
+    pImpl = other.pImpl ? other.pImpl->clone() : nullptr;
+  }
   std::unique_ptr<ActionImpl> pImpl;
   void operator()(std::shared_ptr<const Map> const& map,
                   Unit& actor,

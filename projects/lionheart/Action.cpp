@@ -9,6 +9,10 @@ namespace lionheart
   {
     public:
       MoveImpl(int d):ActionImpl(),dist(d){}
+      std::unique_ptr<ActionImpl> clone() const
+      {
+        return std::unique_ptr<ActionImpl>(new MoveImpl(dist));
+      }
       void apply(std::shared_ptr<const Map> const& map,
                  Unit& actor,
                  std::vector<std::shared_ptr<Unit>>& allies,
@@ -66,6 +70,10 @@ namespace lionheart
   {
     public:
       TurnImpl(Direction d):ActionImpl(),dir(d){}
+      std::unique_ptr<ActionImpl> clone() const
+      {
+        return std::unique_ptr<ActionImpl>(new TurnImpl(dir));
+      }
       void apply(std::shared_ptr<const Map> const& map,
                  Unit& actor,
                  std::vector<std::shared_ptr<Unit>>& allies,
@@ -80,6 +88,10 @@ namespace lionheart
   class AttackImpl:public ActionImpl
   {
     public:
+      std::unique_ptr<ActionImpl> clone() const
+      {
+        return std::unique_ptr<ActionImpl>(new AttackImpl());
+      }
       void apply(std::shared_ptr<const Map> const& map,
                  Unit& actor,
                  std::vector<std::shared_ptr<Unit>>& allies,
