@@ -1,7 +1,6 @@
 #include "Action.hpp"
 #include <algorithm>
 
-
 namespace lionheart
 {
 
@@ -88,15 +87,38 @@ namespace lionheart
   class AttackImpl:public ActionImpl
   {
     public:
+      AttackImpl(Placement p):ActionImpl(),target(p){}
       std::unique_ptr<ActionImpl> clone() const
       {
-        return std::unique_ptr<ActionImpl>(new AttackImpl());
+        return std::unique_ptr<ActionImpl>(new AttackImpl(target));
       }
       void apply(std::shared_ptr<const Map> const& map,
                  Unit& actor,
                  std::vector<std::shared_ptr<Unit>>& allies,
                  std::vector<std::shared_ptr<Unit>>& enemies) override
-      {}
+      {
+        // find legal target
+        auto eIter = std::find_if(enemies.begin(),
+                               enemies.end(),
+                               [&](std::shared_ptr<Unit> const& u)
+                                 ->bool
+                               {
+          auto loc = u->getLocation();
+          if ((loc.row == target.row) && (loc.col == target.col)) return true;
+          return false;
+        });
+        if(eIter != enemies.end())
+        {
+          auto& enemy = *eIter;
+          if(actor.inRange(enemy->getLocation()))
+          {
+            actor.attack(*enemy);
+          }
+        }
+      }
+
+    private:
+      Placement target;
   };
 }
 
@@ -116,8 +138,8 @@ lionheart::Action lionheart::wait()
   return Action();
 }
 
-lionheart::Action lionheart::attack()
+lionheart::Action lionheart::attack(Placement p)
 {
-  return Action();
+  return Action(std::unique_ptr<AttackImpl>(new AttackImpl(p)));
 }
 

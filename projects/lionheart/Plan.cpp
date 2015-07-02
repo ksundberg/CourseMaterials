@@ -9,14 +9,27 @@ namespace
   {
     lionheart::PathVertex result;
     auto dist = std::numeric_limits<int>::max();
+    auto l1Dist = std::numeric_limits<int>::max();
     std::vector<lionheart::Direction> const dirs{lionheart::Direction::NORTH, lionheart::Direction::EAST, lionheart::Direction::SOUTH, lionheart::Direction::WEST};
     for(auto&& dir:dirs)
     {
       lionheart::PathVertex loc({u->getLocation().row,u->getLocation().col},dir);
       auto toLoc = paths->distance(start,loc);
+      auto toLocL1 = abs(start.location.row - loc.location.row) + abs(start.location.col - loc.location.col);
+      if(toLoc == dist)
+      {
+        //break ties with L1-norm
+        if(toLocL1 < l1Dist)
+        {
+          dist = toLoc;
+          l1Dist = toLocL1;
+          result = loc;
+        }
+      }
       if(toLoc < dist)
       {
         dist = toLoc;
+        l1Dist = toLocL1;
         result = loc;
       }
     }
@@ -159,6 +172,10 @@ lionheart::Plan::Plan(Unit const& s,
 lionheart::Action lionheart::Plan::attackEnemy()
 {
   //return an attack if legal
+  if(inRange)
+  {
+    return attack(enemy.location);
+  }
 
   //otherwise approach enemy
   return moveToEnemy();

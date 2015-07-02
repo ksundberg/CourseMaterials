@@ -50,6 +50,6 @@ public:
 Action turn(Direction d);
 Action move(int distance);
 Action wait();
-Action attack();
+Action attack(Placement p);
 }
 #endif
