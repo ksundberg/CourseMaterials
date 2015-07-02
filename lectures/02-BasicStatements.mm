@@ -371,7 +371,7 @@
 <node TEXT="It would be nice to actually do something with results" ID="ID_269040519" CREATED="1433035029171" MODIFIED="1433035038357"/>
 <node TEXT="Assignment is how" LOCALIZED_STYLE_REF="styles.topic" ID="ID_153271807" CREATED="1433035038827" MODIFIED="1433035112455"/>
 <node TEXT="Assignment is destructive" LOCALIZED_STYLE_REF="styles.topic" ID="ID_532305566" CREATED="1433035081010" MODIFIED="1435620393040"/>
-<node TEXT="Don&apos;t confuse Assignemnt (=) with Equality (==)" ID="ID_765492585" CREATED="1430859221643" MODIFIED="1430859234443"/>
+<node TEXT="Don&apos;t confuse assignment (=) with equality (==)" ID="ID_765492585" CREATED="1430859221643" MODIFIED="1435873728210"/>
 </node>
 <node TEXT="Example" LOCALIZED_STYLE_REF="styles.important" ID="ID_413852326" CREATED="1433035185750" MODIFIED="1433035292039">
 <node TEXT="#include &lt;cmath&gt;" ID="ID_776126610" CREATED="1433035189890" MODIFIED="1433035204808"/>
