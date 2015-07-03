@@ -48,19 +48,24 @@ public:
     return facing;
   }
 virtual UnitType getType() const=0;
+virtual int getId() const{return id;}
 
 virtual bool inRange(Map::Location const &) const;
 virtual int getMoveSpeed() const = 0;
 
+
 protected:
-  Unit(Map::Location l, Direction d, int hp)
+  Unit(int id, Map::Location l, Direction d, int hp)
       : location(new Map::Location(l))
       , facing(d)
+      , id(id)
       , hp(hp){}
+
 private:
   std::unique_ptr<Map::Location> location;
   Direction facing;
   int hp;
+  const int id;
   virtual bool hasArmor() const=0;
   int getHits(bool armoredTarget) const;
   virtual AttackType attackType() const=0;

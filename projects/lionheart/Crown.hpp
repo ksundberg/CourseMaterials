@@ -9,7 +9,7 @@ namespace lionheart
   {
     public:
       static const int STARTING_HP = 1;
-      Crown(Map::Location l,Direction d):Unit(l,d,STARTING_HP){}
+      Crown(int id, Map::Location l, Direction d) : Unit(id, l, d, STARTING_HP) {}
       bool hasArmor() const override{return true;}
       AttackType attackType() const override{return AttackType::AXE;}
       int getMoveSpeed() const override{return 5;}

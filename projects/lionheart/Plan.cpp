@@ -169,7 +169,7 @@ lionheart::Plan::Plan(Unit const& s,
   }
 }
 
-lionheart::Action lionheart::Plan::attackEnemy()
+lionheart::Action lionheart::Plan::attackEnemy() const
 {
   //return an attack if legal
   if(inRange)
@@ -181,7 +181,7 @@ lionheart::Action lionheart::Plan::attackEnemy()
   return moveToEnemy();
 }
 
-lionheart::Action lionheart::Plan::moveToEnemy()
+lionheart::Action lionheart::Plan::moveToEnemy() const
 {
   if(paths)
   {
@@ -190,7 +190,7 @@ lionheart::Action lionheart::Plan::moveToEnemy()
   return Action();
 }
 
-lionheart::Action lionheart::Plan::moveToEnemyCrown()
+lionheart::Action lionheart::Plan::moveToEnemyCrown() const
 {
   if(paths)
   {
@@ -199,7 +199,7 @@ lionheart::Action lionheart::Plan::moveToEnemyCrown()
   return Action();
 }
 
-lionheart::Action lionheart::Plan::moveToAllyCrown()
+lionheart::Action lionheart::Plan::moveToAllyCrown() const
 {
   if (paths) 
   {
@@ -208,7 +208,7 @@ lionheart::Action lionheart::Plan::moveToAllyCrown()
   return Action();
 }
 
-lionheart::Action lionheart::Plan::moveToLocation(int row,int col)
+lionheart::Action lionheart::Plan::moveToLocation(int row,int col) const
 {
   PathVertex dest({row,col},self.facing);
   if(paths)
@@ -216,4 +216,41 @@ lionheart::Action lionheart::Plan::moveToLocation(int row,int col)
     return paths->next(self,dest);
   }
   return Action();
+}
+
+int lionheart::Plan::movesTo(int row,int col) const
+{
+  PathVertex dest({row,col},self.facing);
+  if(paths)
+  {
+    return paths->distance(self,dest);
+  }
+  return std::numeric_limits<int>::max();
+}
+
+int lionheart::Plan::movesToEnemy() const
+{
+  if(paths)
+  {
+    return paths->distance(self,enemy);
+  }
+  return std::numeric_limits<int>::max();
+}
+
+int lionheart::Plan::movesToEnemyCrown() const
+{
+  if(paths)
+  {
+    return paths->distance(self,enemyCrown);
+  }
+  return std::numeric_limits<int>::max();
+}
+
+int lionheart::Plan::movesToAllyCrown() const
+{
+  if(paths)
+  {
+    return paths->distance(self,allyCrown);
+  }
+  return std::numeric_limits<int>::max();
 }

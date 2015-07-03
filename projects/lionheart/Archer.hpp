@@ -9,7 +9,7 @@ namespace lionheart
   {
     public:
       static const int STARTING_HP = 4;
-      Archer(Map::Location l,Direction d):Unit(l,d,STARTING_HP){}
+      Archer(int id, Map::Location l, Direction d) : Unit(id, l, d, STARTING_HP) {}
       bool hasArmor() const override{return false;}
       AttackType attackType() const override{return AttackType::ARROW;}
       int getMoveSpeed() const override{return 1;}

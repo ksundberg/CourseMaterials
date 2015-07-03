@@ -58,6 +58,7 @@ set(new_players
   Player/SittingDuck.hpp
   Player/Goldfish.hpp
   Player/ChargingBadger.hpp
+  Player/WildBoar.hpp
   )
 ################################
 # Provided Sources

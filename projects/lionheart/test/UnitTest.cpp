@@ -14,14 +14,10 @@ SCENARIO("Units move correctly")
   GIVEN("Any Unit")
   {
     std::vector<std::shared_ptr<lionheart::Unit>> units;
-    units.push_back(std::make_shared<lionheart::Crown>(
-        map->at(ROW, COL), lionheart::Direction::NORTH));
-    units.push_back(std::make_shared<lionheart::Knight>(
-        map->at(ROW, COL), lionheart::Direction::NORTH));
-    units.push_back(std::make_shared<lionheart::Archer>(
-        map->at(ROW, COL), lionheart::Direction::NORTH));
-    units.push_back(std::make_shared<lionheart::Infantry>(
-        map->at(ROW, COL), lionheart::Direction::NORTH));
+    units.push_back(std::make_shared<lionheart::Crown>(0, map->at(ROW, COL), lionheart::Direction::NORTH));
+    units.push_back(std::make_shared<lionheart::Knight>(1, map->at(ROW, COL), lionheart::Direction::NORTH));
+    units.push_back(std::make_shared<lionheart::Archer>(2, map->at(ROW, COL), lionheart::Direction::NORTH));
+    units.push_back(std::make_shared<lionheart::Infantry>(3, map->at(ROW, COL), lionheart::Direction::NORTH));
     THEN("Units can not move more than horses")
     {
       for (auto &&unit : units)
@@ -179,9 +175,9 @@ SCENARIO("Units move correctly")
   GIVEN("Mounted Units")
   {
     std::vector<std::shared_ptr<lionheart::Unit>> units;
-    units.push_back(std::make_shared<lionheart::Crown>(
+    units.push_back(std::make_shared<lionheart::Crown>(0,
         map->at(ROW, COL), lionheart::Direction::NORTH));
-    units.push_back(std::make_shared<lionheart::Knight>(
+    units.push_back(std::make_shared<lionheart::Knight>(1,
         map->at(ROW, COL), lionheart::Direction::NORTH));
     THEN("Unit can move north")
     {
@@ -265,9 +261,9 @@ SCENARIO("Units move correctly")
   GIVEN("Not mounted units")
   {
     std::vector<std::shared_ptr<lionheart::Unit>> units;
-    units.push_back(std::make_shared<lionheart::Archer>(
+    units.push_back(std::make_shared<lionheart::Archer>(0,
         map->at(ROW, COL), lionheart::Direction::NORTH));
-    units.push_back(std::make_shared<lionheart::Infantry>(
+    units.push_back(std::make_shared<lionheart::Infantry>(1,
         map->at(ROW, COL), lionheart::Direction::NORTH));
     const int i = 1; // distance that units can move
     THEN("Unit can move north")
@@ -345,8 +341,8 @@ SCENARIO("Units correctly detect what is in range")
   const int COL = 10;
   GIVEN("A Crown Unit")
   {
-    std::shared_ptr<lionheart::Unit> unit = std::make_shared<lionheart::Crown>(
-        map->at(ROW, COL), lionheart::Direction::NORTH);
+    std::shared_ptr<lionheart::Unit> unit =
+      std::make_shared<lionheart::Crown>(0, map->at(ROW, COL), lionheart::Direction::NORTH);
     THEN("Only adjacent units in front of the unit are in range")
     {
       // check north
@@ -400,7 +396,7 @@ SCENARIO("Units correctly detect what is in range")
   }
   GIVEN("A Knight Unit")
   {
-    std::shared_ptr<lionheart::Unit> unit = std::make_shared<lionheart::Knight>(
+    std::shared_ptr<lionheart::Unit> unit = std::make_shared<lionheart::Knight>(0,
         map->at(ROW, COL), lionheart::Direction::NORTH);
 
     THEN("Only adjacent units in front of the unit are in range")
@@ -457,7 +453,7 @@ SCENARIO("Units correctly detect what is in range")
   GIVEN("An Infantry Unit")
   {
     std::shared_ptr<lionheart::Unit> unit =
-        std::make_shared<lionheart::Infantry>(map->at(ROW, COL),
+        std::make_shared<lionheart::Infantry>(0,map->at(ROW, COL),
                                               lionheart::Direction::NORTH);
 
     THEN("Only adjacent units in front of the unit are in range")
@@ -513,7 +509,7 @@ SCENARIO("Units correctly detect what is in range")
   }
   GIVEN("An Archer Unit")
   {
-    std::shared_ptr<lionheart::Unit> unit = std::make_shared<lionheart::Archer>(
+    std::shared_ptr<lionheart::Unit> unit = std::make_shared<lionheart::Archer>(0,
         map->at(ROW, COL), lionheart::Direction::NORTH);
 
     THEN("Only units in 3x3 box in front of unit are in range")

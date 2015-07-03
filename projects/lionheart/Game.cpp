@@ -54,13 +54,13 @@ namespace
     return report;
   }
 
-template <typename UnitType>
-std::shared_ptr<lionheart::Unit>
-createUnit(std::shared_ptr<lionheart::Player> const &player,
-           std::shared_ptr<lionheart::Map const> const &map,
-           std::vector<std::shared_ptr<lionheart::Unit>> const& units,
-           lionheart::StartBox const &box,
-           lionheart::Direction const d)
+  template <typename UnitType>
+  std::shared_ptr<lionheart::Unit> createUnit(int id,
+                                              std::shared_ptr<lionheart::Player> const& player,
+                                              std::shared_ptr<lionheart::Map const> const& map,
+                                              std::vector<std::shared_ptr<lionheart::Unit>> const& units,
+                                              lionheart::StartBox const& box,
+                                              lionheart::Direction const d)
     {
       auto coords = player->placeUnit(UnitType::type, box, buildReport(map,0,units,std::vector<std::shared_ptr<lionheart::Unit>>()));
       auto loc = map->at(coords.row,coords.col);
@@ -70,7 +70,7 @@ createUnit(std::shared_ptr<lionheart::Player> const &player,
       if(loc.col > box.maxCol) return nullptr;
       if(loc.row < box.minRow) return nullptr;
       if(loc.row > box.maxRow) return nullptr;
-      return std::make_shared<UnitType>(loc,d);
+      return std::make_shared<UnitType>(id,loc,d);
     }
 
     void addUnit(std::vector<std::shared_ptr<lionheart::Unit>> &units,
@@ -90,7 +90,7 @@ createUnit(std::shared_ptr<lionheart::Player> const &player,
 }
 std::shared_ptr<lionheart::Player> lionheart::Game::winner() const
 {
-  if(state!=Game::NOT_STARTED) return nullptr;
+  if(state!=Game::FINISHED) return nullptr;
   //is one crown dead?
   if (!crown[0]->isAlive() && crown[1]->isAlive())
   {
@@ -143,31 +143,32 @@ void lionheart::Game::start()
   {
     // Create crowns
 
-    crown[i] = createUnit<Crown>(player[i], map, units[i],boxes[i], facing[i]);
+    crown[i] = createUnit<Crown>(0,player[i], map, units[i],boxes[i], facing[i]);
     if (!crown[i])
     {
       // invalid crown placement, put in middle
       auto row = (boxes[i].minRow + boxes[i].maxRow) / 2;
       auto col = (boxes[i].minCol + boxes[i].maxCol) / 2;
-      crown[i] = std::make_shared<Crown>(map->at(row, col), facing[i]);
+      crown[i] = std::make_shared<Crown>(0,map->at(row, col), facing[i]);
     }
     units[i].push_back(crown[i]);
     // Create knights
     for (int j = 0; j < NUM_KNIGHTS; ++j)
     {
-      auto knight = createUnit<Knight>(player[i], map,units[i], boxes[i], facing[i]);
+      auto knight = createUnit<Knight>(j+1,player[i], map,units[i], boxes[i], facing[i]);
       addUnit(units[i], knight);
     }
     // Create archers
     for (int j = 0; j < NUM_ARCHERS; ++j)
     {
-      auto archer = createUnit<Archer>(player[i], map,units[i], boxes[i], facing[i]);
+      auto archer = createUnit<Archer>(NUM_KNIGHTS+j+1,player[i], map,units[i], boxes[i], facing[i]);
       addUnit(units[i], archer);
     }
     // Create infantry
     for (int j = 0; j < NUM_INFANTRY; ++j)
     {
-      auto infantry = createUnit<Infantry>(player[i], map,units[i], boxes[i], facing[i]);
+      auto infantry = createUnit<Infantry>(
+        NUM_KNIGHTS + NUM_ARCHERS + NUM_INFANTRY + j + 1, player[i], map, units[i], boxes[i], facing[i]);
       addUnit(units[i], infantry);
     }
   }
