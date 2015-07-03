@@ -21,10 +21,12 @@ namespace lionheart
       };
       Game(std::shared_ptr<Player> p1,
            std::shared_ptr<Player> p2,
-           std::shared_ptr<const Map> map)
+           std::shared_ptr<const Map> map,
+           std::shared_ptr<const Paths> infantryPaths,
+           std::shared_ptr<const Paths> mountedPaths)
           : map(map)
-            ,infantryPaths(std::make_shared<Paths>(map,1))
-            ,mountedPaths(std::make_shared<Paths>(map,5))
+            ,infantryPaths(infantryPaths)
+            ,mountedPaths(mountedPaths)
           , player({ p1, p2 })
           , units()
           , crown()

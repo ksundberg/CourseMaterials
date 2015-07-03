@@ -85,6 +85,9 @@ set(Aux_srcs
   SituationReport.hpp
   Unit.cpp
   Unit.hpp
+  Tournament.hpp
+  SingleElimination.cpp
+  SingleElimination.hpp
   )
 
 list(APPEND lionheart_srcs ${Aux_srcs})
