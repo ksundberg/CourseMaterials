@@ -1,6 +1,7 @@
 #include "AnsiDisplay.hpp"
 #include <iostream>
 #include <random>
+#include <string>
 
 namespace
 {
@@ -168,4 +169,6 @@ void lionheart::AnsiDisplay::show(lionheart::SituationReport const& report, Blaz
     std::cout << '|' << std::endl;
   }
   displayHeader(report.things[0].size());
+  std::string buf;
+  std::getline(std::cin,buf);
 }
