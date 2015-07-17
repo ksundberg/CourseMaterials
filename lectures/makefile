@@ -1,4 +1,4 @@
-all: 01-Introduction.pdf 02-BasicStatements.pdf 03-SoftwareEngineering.pdf 04-ControlFlow.pdf 05-UserDefinedDataTypes.pdf 06-InputOutput.pdf
+all: 01-Introduction.pdf 02-BasicStatements.pdf 03-SoftwareEngineering.pdf 04-ControlFlow.pdf 05-UserDefinedDataTypes.pdf 06-InputOutput.pdf 07-Containers.pdf
 
 .PHONY: clean all
 

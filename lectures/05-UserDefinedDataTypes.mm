@@ -96,6 +96,10 @@
 </node>
 </node>
 <node TEXT="Class Relationships" ID="ID_1129579473" CREATED="1436899406545" MODIFIED="1436899413274">
+<node TEXT="Friendship" ID="ID_573201249" CREATED="1437096180437" MODIFIED="1437096184507">
+<node TEXT="A very strong relation to be used with caution" ID="ID_1442368188" CREATED="1437096184512" MODIFIED="1437096208086"/>
+<node TEXT="Of limited general utility" ID="ID_268832197" CREATED="1437096208386" MODIFIED="1437096232506"/>
+</node>
 <node TEXT="Inheritance" ID="ID_1275056911" CREATED="1436899413281" MODIFIED="1436899422666">
 <node TEXT="More on this next semester" ID="ID_987918726" CREATED="1436899422672" MODIFIED="1436899429070"/>
 <node TEXT="A very strong relation to be used with caution" ID="ID_18452065" CREATED="1436899429295" MODIFIED="1436899436614"/>
@@ -177,73 +181,75 @@
 <node TEXT="using MyInt2 = int;" ID="ID_1541137231" CREATED="1436997064726" MODIFIED="1436997073677"/>
 </node>
 </node>
-</node>
-<node TEXT="Classes" POSITION="right" ID="ID_1884267436" CREATED="1432063021768" MODIFIED="1432063029774">
-<node TEXT="Constructors" ID="ID_134877493" CREATED="1433195776823" MODIFIED="1435363916247">
-<attribute NAME="textbook" VALUE="7-06"/>
-</node>
-<node TEXT="Destructors" ID="ID_385699024" CREATED="1433195792207" MODIFIED="1433195794412"/>
-<node TEXT="Scope" ID="ID_1761296900" CREATED="1433826173051" MODIFIED="1435364168524">
-<attribute NAME="textbook" VALUE="2-14"/>
-<attribute NAME="textbook" VALUE="4-09"/>
-</node>
+<node TEXT="Classes" ID="ID_1884267436" CREATED="1432063021768" MODIFIED="1432063029774">
 <node TEXT="Defining Classes" ID="ID_543411180" CREATED="1433195797031" MODIFIED="1435363985188">
 <attribute NAME="textbook" VALUE="7-01"/>
 <attribute NAME="textbook" VALUE="7-03"/>
+<node TEXT="A class defines a new kind of type" ID="ID_564038045" CREATED="1437096289225" MODIFIED="1437096303873"/>
+<node TEXT="Two parts:" ID="ID_1650544595" CREATED="1437096305617" MODIFIED="1437096351794">
+<node TEXT="Data -- What is stored in memory" ID="ID_449293464" CREATED="1437096351801" MODIFIED="1437096362273"/>
+<node TEXT="Methods -- What actions are defined for this type?" ID="ID_1367325162" CREATED="1437096362744" MODIFIED="1437096381359"/>
 </node>
-<node TEXT="Members" ID="ID_123380946" CREATED="1433195807296" MODIFIED="1433195810301">
+<node TEXT="Parts of a class are called \emph{members} of the class" ID="ID_1787159008" CREATED="1437096403304" MODIFIED="1437096415346"/>
+</node>
+<node TEXT="Access Control" ID="ID_1592366107" CREATED="1433195821975" MODIFIED="1433195830012">
+<node TEXT="Classes provide access control in three levels" ID="ID_427524858" CREATED="1437096452042" MODIFIED="1437096463769">
+<node TEXT="Public -- Any code can access" ID="ID_829925859" CREATED="1433195830013" MODIFIED="1437096478092"/>
+<node TEXT="Protected -- Only member code of this class or any class derived from it can access" ID="ID_1199762848" CREATED="1433195834207" MODIFIED="1437096507569"/>
+<node TEXT="Private -- Only member code can access" ID="ID_659375602" CREATED="1433195832327" MODIFIED="1437096486574"/>
+</node>
+<node TEXT="While not syntactically required the order should be public, protected then private" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1862844231" CREATED="1437097229649" MODIFIED="1437097259060"/>
+<node TEXT="Member functions can be at any access level" ID="ID_52244882" CREATED="1437096513018" MODIFIED="1437096528489"/>
+<node TEXT="Member data should be only at the private access level" ID="ID_699493821" CREATED="1437096528720" MODIFIED="1437096539382"/>
+</node>
+<node TEXT="Constructors" ID="ID_134877493" CREATED="1433195776823" MODIFIED="1435363916247">
+<attribute NAME="textbook" VALUE="7-06"/>
+<node TEXT="Special function called when an instance of a class is created" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1020007836" CREATED="1437096637354" MODIFIED="1437096886435">
+<node TEXT="Insures that all member data is initialized correctly" ID="ID_1554494363" CREATED="1437096652978" MODIFIED="1437096662801"/>
+<node TEXT="Body should be empty" ID="ID_972133961" CREATED="1437096847642" MODIFIED="1437096855305"/>
+<node TEXT="Initialization occurs in member initialization list" ID="ID_1535261480" CREATED="1437096857106" MODIFIED="1437096866994"/>
+</node>
+<node TEXT="There are a number of important variations" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1751375226" CREATED="1437096663273" MODIFIED="1437096886438">
+<node TEXT="Default constructor -- takes no arguments, may not be present" ID="ID_1577638040" CREATED="1437096671570" MODIFIED="1437096688600"/>
+<node TEXT="Copy constructor -- takes another instance of the class, called when class is passed as argument or returned from function" ID="ID_156912287" CREATED="1437096689064" MODIFIED="1437096716065"/>
+<node TEXT="Others ... more on them next semester" ID="ID_970979880" CREATED="1437096725210" MODIFIED="1437096734626"/>
+</node>
+<node TEXT="If your class is \emph{Plain Old Data} (POD) then several of these are provided by default" ID="ID_241115040" CREATED="1437096766906" MODIFIED="1437096793089"/>
+</node>
+<node TEXT="Destructors" ID="ID_385699024" CREATED="1433195792207" MODIFIED="1433195794412">
+<node TEXT="Contains all of the magic of C++" LOCALIZED_STYLE_REF="styles.topic" ID="ID_232100801" CREATED="1437096559218" MODIFIED="1437096628185"/>
+<node TEXT="Destructors are a special function that is called whenever an instance of a class goes out of scope" ID="ID_538926148" CREATED="1437096567850" MODIFIED="1437096587903"/>
+<node TEXT="Used to clean up any resources used by the class" ID="ID_1806878971" CREATED="1437096588369" MODIFIED="1437096612313"/>
+</node>
 <node TEXT="Functions" ID="ID_441223382" CREATED="1433195810695" MODIFIED="1435364027337">
 <attribute NAME="textbook" VALUE="7-08"/>
 <attribute NAME="textbook" VALUE="7-05"/>
+<node TEXT="Member functions are invoked using . operator" ID="ID_1938558335" CREATED="1437096998730" MODIFIED="1437097008094"/>
+<node TEXT="Responsible for maintaining class invariants" ID="ID_576015165" CREATED="1437097053103" MODIFIED="1437097061926"/>
+<node TEXT="Represent the valid actions with this object" ID="ID_999483462" CREATED="1437097008344" MODIFIED="1437097019161"/>
+<node TEXT="Prefer non-member non-friend functions when possible" ID="ID_1969402031" CREATED="1437097019697" MODIFIED="1437097044225"/>
 </node>
 <node TEXT="Variables" ID="ID_560001136" CREATED="1433195812871" MODIFIED="1435364073196">
 <attribute NAME="textbook" VALUE="7-04"/>
 <attribute NAME="textbook" VALUE="7-10"/>
+<node TEXT="Represent the state or value of the object" ID="ID_1856589471" CREATED="1437097064569" MODIFIED="1437097072025"/>
+<node TEXT="State should be private unless all possible combinations of all possible values and all possible transitions between these combinations are acceptable.  If so just use a struct" ID="ID_1827757786" CREATED="1437097076130" MODIFIED="1437097128482"/>
+<node TEXT="Mutator and Accessor functions should be provided to inspect and modify the state of an object" ID="ID_722319905" CREATED="1437097131473" MODIFIED="1437097173565"/>
 </node>
-<node TEXT="Access Control" ID="ID_1592366107" CREATED="1433195821975" MODIFIED="1433195830012">
-<node TEXT="Public:" ID="ID_829925859" CREATED="1433195830013" MODIFIED="1433195832088"/>
-<node TEXT="Private:" ID="ID_659375602" CREATED="1433195832327" MODIFIED="1433195833958"/>
-<node TEXT="Protected:" ID="ID_1199762848" CREATED="1433195834207" MODIFIED="1433195836772"/>
-</node>
-</node>
-</node>
-<node TEXT="Containers" POSITION="right" ID="ID_1712522723" CREATED="1432063018360" MODIFIED="1433195960173">
-<node TEXT="Arrays" ID="ID_1078612147" CREATED="1433195854135" MODIFIED="1435364159367">
-<attribute NAME="textbook" VALUE="8-01"/>
-<node TEXT="Raw" ID="ID_892760664" CREATED="1433195856909" MODIFIED="1433195858102"/>
-<node TEXT="std" ID="ID_1413570777" CREATED="1433195858359" MODIFIED="1433195860157"/>
-</node>
-<node TEXT="Vectors" ID="ID_1412121656" CREATED="1433195868992" MODIFIED="1435364326343">
-<attribute NAME="textbook" VALUE="8-11"/>
-</node>
-<node TEXT="Accessing Elements" ID="ID_750637689" CREATED="1433195886248" MODIFIED="1435364136590">
-<attribute NAME="textbook" VALUE="8-02"/>
-<node TEXT="for each" ID="ID_1755847325" CREATED="1433195908184" MODIFIED="1433195910461"/>
-<node TEXT="operator []" ID="ID_222877013" CREATED="1433195910961" MODIFIED="1433195915365"/>
-<node TEXT="iterators" ID="ID_425956503" CREATED="1433195915863" MODIFIED="1433195919507"/>
-</node>
-<node TEXT="Initialization" ID="ID_567408464" CREATED="1433195934152" MODIFIED="1435364261998">
-<attribute NAME="textbook" VALUE="8-04"/>
-</node>
-<node TEXT="Parallel Arrays" ID="ID_1241117341" CREATED="1433195943120" MODIFIED="1435364207332">
-<attribute NAME="textbook" VALUE="8-06"/>
-<node TEXT="Arrays of Structures" ID="ID_550395041" CREATED="1433195949234" MODIFIED="1433195953868"/>
-<node TEXT="Structures of Arrays" ID="ID_1955957531" CREATED="1433195954103" MODIFIED="1433195958788"/>
-</node>
-<node TEXT="MultiDimensional Arrays" ID="ID_1409765547" CREATED="1433195998504" MODIFIED="1435364239291">
-<attribute NAME="textbook" VALUE="8-09"/>
-<attribute NAME="textbook" VALUE="8-10"/>
+<node TEXT="Circle Example" LOCALIZED_STYLE_REF="styles.important" ID="ID_1131980773" CREATED="1437097277736" MODIFIED="1437097416366">
+<node TEXT="class Circle" ID="ID_1211753363" CREATED="1437097285232" MODIFIED="1437097289096"/>
+<node TEXT="{ public:" ID="ID_1748673526" CREATED="1437097289344" MODIFIED="1437097294073"/>
+<node TEXT="  void setRadius(double radius){m_r2 = radius * radius;}" ID="ID_1590155037" CREATED="1437097294602" MODIFIED="1437097345121"/>
+<node TEXT="  double getArea(){return m_r2 * 3.14159;}" ID="ID_525139746" CREATED="1437097345567" MODIFIED="1437097362583"/>
+<node TEXT="private:" ID="ID_830765245" CREATED="1437097363161" MODIFIED="1437097368110"/>
+<node TEXT="  double m_r2; //radius squared" ID="ID_444390941" CREATED="1437097368826" MODIFIED="1437097378704"/>
+<node TEXT="};" ID="ID_905568414" CREATED="1437097379408" MODIFIED="1437097381530"/>
+<node TEXT="" ID="ID_988959974" CREATED="1437097381986" MODIFIED="1437097381986"/>
+<node TEXT="Circle c;" ID="ID_1345161586" CREATED="1437097382761" MODIFIED="1437097386353"/>
+<node TEXT="c.setRadius(1.0);" ID="ID_1751252698" CREATED="1437097386642" MODIFIED="1437097393593"/>
+<node TEXT="std::cout &lt;&lt; c.getArea() &lt;&lt; std::endl;" ID="ID_1002867438" CREATED="1437097394002" MODIFIED="1437097408808"/>
 </node>
 </node>
-<node TEXT="Processing Array Contents" POSITION="right" ID="ID_846047693" CREATED="1435364408171" MODIFIED="1435364455317">
-<attribute NAME="textbook" VALUE="8-03"/>
-<attribute NAME="textbook" VALUE="8-05"/>
-</node>
-<node TEXT="Passing Arrays to Functions" POSITION="right" ID="ID_686719028" CREATED="1435364465259" MODIFIED="1435364486676">
-<attribute NAME="textbook" VALUE="8-08"/>
-</node>
-<node TEXT="Arrays of Objects" POSITION="right" ID="ID_1121949932" CREATED="1435364496835" MODIFIED="1435364511933">
-<attribute NAME="textbook" VALUE="8-12"/>
 </node>
 </node>
 </map>
