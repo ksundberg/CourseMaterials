@@ -202,6 +202,11 @@
 <node TEXT="Member functions can be at any access level" ID="ID_52244882" CREATED="1437096513018" MODIFIED="1437096528489"/>
 <node TEXT="Member data should be only at the private access level" ID="ID_699493821" CREATED="1437096528720" MODIFIED="1437096539382"/>
 </node>
+<node TEXT="Class v Struct" ID="ID_78780773" CREATED="1437097717106" MODIFIED="1437097721867">
+<node TEXT="The only difference between class and struct is the default access level" ID="ID_172527311" CREATED="1437097721875" MODIFIED="1437097732591"/>
+<node TEXT="The default for struct is public" ID="ID_66462122" CREATED="1437097732840" MODIFIED="1437097738511"/>
+<node TEXT="The default for class is private" ID="ID_813906036" CREATED="1437097738866" MODIFIED="1437097743297"/>
+</node>
 <node TEXT="Constructors" ID="ID_134877493" CREATED="1433195776823" MODIFIED="1435363916247">
 <attribute NAME="textbook" VALUE="7-06"/>
 <node TEXT="Special function called when an instance of a class is created" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1020007836" CREATED="1437096637354" MODIFIED="1437096886435">
