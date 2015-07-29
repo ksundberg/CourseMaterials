@@ -176,7 +176,7 @@ void lionheart::Game::start()
   turns = 0;
 }
 
-void lionheart::Game::doTurn()
+void lionheart::Game::doTurn(std::shared_ptr<Display> display)
 {
   ++turns;
   //determine random turn order
@@ -219,6 +219,11 @@ void lionheart::Game::doTurn()
       auto unit = *u0;
       doAction(*unit,player[0],units[0],units[1]);
       ++u0;
+
+      if(display)
+      {
+        display->show(getReport(),player[0]->getBlazon(),player[1]->getBlazon());
+      }
     }
     // do player 1 unit
     if (u1 != std::end(units[1]))
@@ -226,6 +231,11 @@ void lionheart::Game::doTurn()
       auto unit = *u1;
       doAction(*unit,player[1],units[1],units[0]);
       ++u1;
+
+      if(display)
+      {
+        display->show(getReport(),player[0]->getBlazon(),player[1]->getBlazon());
+      }
     }
   }
   // remove the fallen

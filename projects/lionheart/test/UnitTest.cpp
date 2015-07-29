@@ -727,3 +727,19 @@ SCENARIO("Units correctly detect what is in range")
     }
   }
 }
+
+SCENARIO("Units correctly detect what is in range for problems found in testing")
+{  // units can only be created with a map
+  std::string filename = "forts.in";
+  auto map = lionheart::makeMap(filename);
+  GIVEN("An Archer Unit as 10,3")
+  {
+    std::shared_ptr<lionheart::Unit> unit = std::make_shared<lionheart::Archer>(0,
+        map->at(10, 3), lionheart::Direction::EAST);
+    THEN("These units are not in range")
+    {
+      CHECK(!unit->inRange(map->at(11,24)));
+      CHECK(!unit->inRange(map->at(11,25)));
+    }
+  }
+}

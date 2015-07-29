@@ -5,6 +5,7 @@
 #include "Plan.hpp"
 #include "Player.hpp"
 #include "Unit.hpp"
+#include "Display.hpp"
 #include <memory>
 #include <vector>
 
@@ -38,7 +39,7 @@ namespace lionheart
       State getState()const{return state;}
       bool canContinue()const;
       void start();
-      void doTurn();
+      void doTurn(std::shared_ptr<Display> display = nullptr);
       lionheart::SituationReport getReport() const;
     private:
       std::shared_ptr<const Map> map;

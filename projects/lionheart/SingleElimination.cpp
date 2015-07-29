@@ -24,7 +24,7 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::SingleElimination::ru
       }
       for (auto i = 0; i < 200; ++i)
       {
-        game.doTurn();
+        game.doTurn(display);
         if (display) {
           display->show(game.getReport(), p1->getBlazon(), p2->getBlazon());
         }

@@ -5,7 +5,7 @@ bool checkRow(int r,int c,int tr,int tc)
 {
   if(r!=tr) return false;
   if(tc<c) return false;
-  if(c-tc < 3) return true;
+  if (tc - c < 3) return true;
   return false;
 }
 
