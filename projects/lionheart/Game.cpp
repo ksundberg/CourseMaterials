@@ -124,14 +124,18 @@ std::shared_ptr<lionheart::Player> lionheart::Game::tiebreaker() const
 bool lionheart::Game::canContinue() const
 {
   //If either crown is dead the game is over
-  for(auto&&c:crown)
+  for (auto&& c : crown)
   {
-    if(!c->isAlive()) return false;
+    if (!c->isAlive()) {
+      return false;
+    }
   }
   //If either army is gone the game is over (crown doesn't count)
   for(auto&&u:units)
   {
-    if(u.size() < 2) return false;
+    if (u.size() < 2) {
+      return false;
+    }
   }
 }
 

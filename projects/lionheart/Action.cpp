@@ -48,10 +48,7 @@ namespace lionheart
           //current location okay, iterate to check next location
           curLoc = nextLoc;
         }
-        actor.move(map->at(curLoc.row,curLoc.col));
-        if(curLoc.row != actor.getLocation().row) return true;
-        if(curLoc.col != actor.getLocation().col) return true;
-        return false;
+        return actor.move(map->at(curLoc.row,curLoc.col));
       }
     private:
       Placement getNext(Placement const & old, Unit const & actor)

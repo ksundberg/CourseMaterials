@@ -23,32 +23,33 @@ void lionheart::Unit::turn(Direction d)
 {
   facing = d;
 }
-void lionheart::Unit::move(Map::Location target)
+bool lionheart::Unit::move(Map::Location target)
 {
-  if(!target) return;
+  if(!target) return false;
   auto rowDist = target.row - location->row;
   auto colDist = target.col - location->col;
   //check for valid movements
-  if((rowDist != 0)&&(colDist != 0)){return;}
-  if (abs(rowDist) > getMoveSpeed()){ return;}
-  if (abs(colDist) > getMoveSpeed()){ return;}
+  if((rowDist != 0)&&(colDist != 0)){return false;}
+  if (abs(rowDist) > getMoveSpeed()){ return false;}
+  if (abs(colDist) > getMoveSpeed()){ return false;}
   //check if facing is correct
   switch (facing)
   {
     case Direction::NORTH:
-      if(rowDist >= 0) return;
+      if(rowDist >= 0) return false;
       break;
     case Direction::SOUTH:
-      if(rowDist <= 0) return;
+      if(rowDist <= 0) return false;
       break;
     case Direction::WEST:
-      if(colDist >= 0) return;
+      if(colDist >= 0) return false;
       break;
     case Direction::EAST:
-      if(colDist <= 0) return;
+      if(colDist <= 0) return false;
       break;
   }
   location.reset(new Map::Location(target));
+  return true;
 }
 void lionheart::Unit::attack(Unit &other)
 {

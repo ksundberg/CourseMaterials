@@ -33,7 +33,7 @@ public:
     return hp > 0;
   }
   void turn(Direction);
-  void move(Map::Location);
+  bool move(Map::Location);
   void attack(Unit &other);
   int getHp() const
   {
