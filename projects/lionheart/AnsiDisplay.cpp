@@ -122,9 +122,16 @@ namespace
   void displayUnit(lionheart::SituationReport::Thing const& thing,
                    lionheart::Blazon const& blazon)
   {
-    setUnitColor(blazon);
-    std::cout << displayType(thing.unit) << thing.hp << displayDirection(thing.direction);
-    std::cout << "\033[0m";
+    if(thing.hp <= 0)
+    {
+      displaySpace();
+    }
+    else
+    {
+      setUnitColor(blazon);
+      std::cout << displayType(thing.unit) << thing.hp << displayDirection(thing.direction);
+      std::cout << "\033[0m";
+    }
   }
 
   void displayThing(lionheart::SituationReport::Thing const& thing,

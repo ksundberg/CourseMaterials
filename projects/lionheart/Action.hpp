@@ -15,7 +15,7 @@ class ActionImpl
 {
 public:
   virtual ~ActionImpl()=default;
-  virtual void apply(std::shared_ptr<const Map> const & map,
+  virtual bool apply(std::shared_ptr<const Map> const & map,
                   Unit & actor,
                   std::vector<std::shared_ptr<Unit>> & allies,
                   std::vector<std::shared_ptr<Unit>> & enemies)=0;
@@ -36,14 +36,15 @@ public:
     pImpl = other.pImpl ? other.pImpl->clone() : nullptr;
   }
   std::unique_ptr<ActionImpl> pImpl;
-  void operator()(std::shared_ptr<const Map> const& map,
+  bool operator()(std::shared_ptr<const Map> const& map,
                   Unit& actor,
                   std::vector<std::shared_ptr<Unit>>& allies,
                   std::vector<std::shared_ptr<Unit>>& enemies)
   {
     if (pImpl) {
-      pImpl->apply(map, actor, allies, enemies);
+      return pImpl->apply(map, actor, allies, enemies);
     }
+    return false;
   }
 };
 

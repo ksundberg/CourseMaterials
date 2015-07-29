@@ -12,7 +12,7 @@ namespace lionheart
       {
         return std::unique_ptr<ActionImpl>(new MoveImpl(dist));
       }
-      void apply(std::shared_ptr<const Map> const& map,
+      bool apply(std::shared_ptr<const Map> const& map,
                  Unit& actor,
                  std::vector<std::shared_ptr<Unit>>& allies,
                  std::vector<std::shared_ptr<Unit>>& enemies) override
@@ -49,6 +49,9 @@ namespace lionheart
           curLoc = nextLoc;
         }
         actor.move(map->at(curLoc.row,curLoc.col));
+        if(curLoc.row != actor.getLocation().row) return true;
+        if(curLoc.col != actor.getLocation().col) return true;
+        return false;
       }
     private:
       Placement getNext(Placement const & old, Unit const & actor)
@@ -73,12 +76,13 @@ namespace lionheart
       {
         return std::unique_ptr<ActionImpl>(new TurnImpl(dir));
       }
-      void apply(std::shared_ptr<const Map> const& map,
+      bool apply(std::shared_ptr<const Map> const& map,
                  Unit& actor,
                  std::vector<std::shared_ptr<Unit>>& allies,
                  std::vector<std::shared_ptr<Unit>>& enemies) override
       {
         actor.turn(dir);
+        return true;
       }
 
     private:
@@ -92,7 +96,7 @@ namespace lionheart
       {
         return std::unique_ptr<ActionImpl>(new AttackImpl(target));
       }
-      void apply(std::shared_ptr<const Map> const& map,
+      bool apply(std::shared_ptr<const Map> const& map,
                  Unit& actor,
                  std::vector<std::shared_ptr<Unit>>& allies,
                  std::vector<std::shared_ptr<Unit>>& enemies) override
@@ -113,8 +117,10 @@ namespace lionheart
           if(actor.inRange(enemy->getLocation()))
           {
             actor.attack(*enemy);
+            return true;
           }
         }
+        return false;
       }
 
     private:

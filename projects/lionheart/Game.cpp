@@ -194,7 +194,7 @@ void lionheart::Game::doTurn(std::shared_ptr<Display> display)
     auto doAction = [&](Unit &unit,
                        std::shared_ptr<Player> p,
                        std::vector<std::shared_ptr<Unit>> &allies,
-                       std::vector<std::shared_ptr<Unit>> &enemies)
+                       std::vector<std::shared_ptr<Unit>> &enemies)->bool
     {
         if (unit.isAlive())
         {
@@ -210,17 +210,17 @@ void lionheart::Game::doTurn(std::shared_ptr<Display> display)
           // get recommendations
           auto action = p->recommendAction(unit, buildReport(map, turns, allies, enemies), Plan(unit, allies, enemies,paths));
           // execute valid recommendations
-          action(map, unit, allies,enemies);
+          return action(map, unit, allies,enemies);
         }
     };
     // do player 0 unit
     if (u0 != std::end(units[0]))
     {
       auto unit = *u0;
-      doAction(*unit,player[0],units[0],units[1]);
+      auto result = doAction(*unit,player[0],units[0],units[1]);
       ++u0;
 
-      if(display)
+      if(display&&result)
       {
         display->show(getReport(),player[0]->getBlazon(),player[1]->getBlazon());
       }
@@ -229,10 +229,10 @@ void lionheart::Game::doTurn(std::shared_ptr<Display> display)
     if (u1 != std::end(units[1]))
     {
       auto unit = *u1;
-      doAction(*unit,player[1],units[1],units[0]);
+      auto result = doAction(*unit,player[1],units[1],units[0]);
       ++u1;
 
-      if(display)
+      if(display&&result)
       {
         display->show(getReport(),player[0]->getBlazon(),player[1]->getBlazon());
       }
