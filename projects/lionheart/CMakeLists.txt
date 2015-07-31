@@ -35,26 +35,8 @@ foreach(map ${Map_files})
   configure_file(resources/maps/${map} ${map} COPYONLY)
 endforeach()
 ###############################
-# Student Files
-set(Student_tlas
-    adn alt ben bri dww ian jcl jmh oss pld sll tbb
-)
-set(tla_includes)
-set(tla_list)
-list(LENGTH Student_tlas tla_count)
-foreach(tla ${Student_tlas})
-  set(tla_includes "${tla_includes}\n#include \"Player/${tla}.h\"")
-  set(tla_list "${tla_list}\"${tla}\",")
-  list(APPEND student_sources "Player/${tla}.cpp")
-  list(APPEND student_sources "Player/${tla}.h")
-  list(APPEND tla_create "\nif(tla==\"${tla}\") return new ${tla}(0,0,hp,up,rank,false,tla)")
-endforeach(tla)
-
-source_group("Player" FILES ${student_sources})
-list(APPEND lionheart_srcs ${student_sources})
-###############################
-#
-set(new_players
+# Player files
+set(Player_srcs
   Player/SittingDuck.hpp
   Player/Goldfish.hpp
   Player/ChargingBadger.hpp
@@ -95,27 +77,14 @@ set(Aux_srcs
   )
 
 list(APPEND lionheart_srcs ${Aux_srcs})
-
-configure_file(lionheart.h.in lionheart.h)
-set(Provided_srcs
-    lionheart.cpp
-    lionheart2.h
-    lionheart.h
-    Board.cpp
-    Board.hpp
-    unit.cpp
-    unit.h)
-source_group("" FILES ${Provided_srcs})
-list(APPEND lionheart_srcs ${Provided_srcs})
-add_executable(lionheart ${lionheart_srcs})
 ##############################
-# Lionheart2
-set(lionheart2_srcs
+# Lionheart
+set(lionheart_srcs
   lionheart_main.cpp
   )
-list(APPEND lionheart2_srcs ${Aux_srcs})
-list(APPEND lionheart2_srcs ${new_players})
-add_executable(lionheart2 ${lionheart2_srcs})
+list(APPEND lionheart_srcs ${Aux_srcs})
+list(APPEND lionheart_srcs ${Player_srcs})
+add_executable(lionheart ${lionheart_srcs})
 ###############################
 # Developer Tests
 set(Test_srcs
