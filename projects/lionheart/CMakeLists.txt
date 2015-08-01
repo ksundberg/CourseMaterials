@@ -46,6 +46,18 @@ set(Player_srcs
   Player/CrouchingTiger.hpp
   Player/HiddenDragon.hpp
   )
+
+set(PlayerIncludes)
+set(PlayerPushBacks)
+foreach(p ${Player_srcs})
+  STRING(REGEX MATCH ".+\\.hpp$" header ${p})
+  if(header)
+    set(PlayerIncludes "${PlayerIncludes}\n#include \"${p}\"")
+    string(SUBSTRING ${p} 7 -1  p)
+    string(REGEX REPLACE "\\.hpp$" "" p ${p})
+    set(PlayerPushBacks "${PlayerPushBacks}\n  players.push_back(std::make_shared<lionheart::${p}>());")
+  endif(header)
+endforeach(p)
 ################################
 # Provided Sources
 set(Aux_srcs
@@ -78,9 +90,13 @@ set(Aux_srcs
 
 list(APPEND lionheart_srcs ${Aux_srcs})
 ##############################
+#
+configure_file(getPlayers.hpp.in getPlayers.hpp)
+##############################
 # Lionheart
 set(lionheart_srcs
   lionheart_main.cpp
+  getPlayers.hpp
   )
 list(APPEND lionheart_srcs ${Aux_srcs})
 list(APPEND lionheart_srcs ${Player_srcs})
