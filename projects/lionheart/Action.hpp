@@ -34,6 +34,7 @@ public:
   {
     if (&other == this) return *this;
     pImpl = other.pImpl ? other.pImpl->clone() : nullptr;
+	return *this;
   }
   std::unique_ptr<ActionImpl> pImpl;
   bool operator()(std::shared_ptr<const Map> const& map,

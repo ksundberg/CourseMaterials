@@ -9,8 +9,8 @@ namespace lionheart
   public:
     Placement placeUnit(UnitType, StartBox const& box, SituationReport report)
     {
-      thread_local std::random_device rd;
-      thread_local std::mt19937 engine(rd());
+      static std::random_device rd;
+      static std::mt19937 engine(rd());
 
       std::uniform_int_distribution<> row(box.minRow, box.maxRow);
       std::uniform_int_distribution<> col(box.minCol, box.maxCol);

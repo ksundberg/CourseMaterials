@@ -23,6 +23,7 @@ namespace lionheart
           for (int c = box.maxCol; c >= box.minCol; --c)
             if (report.things[r][c].type == SituationReport::SPACE) return {r, c};
       }
+	  return{ 0, 0 };
     }
     Action recommendAction(Unit const& u, SituationReport, Plan p)
     {

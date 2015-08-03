@@ -10,8 +10,8 @@ namespace lionheart
   public:
     Placement placeUnit(UnitType, StartBox const& box, SituationReport report)
     {
-      thread_local std::random_device rd;
-      thread_local std::mt19937 engine(rd());
+      static std::random_device rd;
+      static std::mt19937 engine(rd());
 
     std::uniform_int_distribution<> row(box.minRow, box.maxRow);
     std::uniform_int_distribution<> col(box.minCol, box.maxCol);
@@ -26,8 +26,8 @@ namespace lionheart
     return { r, c };
     }
     Action recommendAction(Unit const&, SituationReport,Plan) {
-       thread_local std::random_device rd;
-      thread_local std::mt19937 engine(rd());
+       static std::random_device rd;
+      static std::mt19937 engine(rd());
       std::uniform_int_distribution<> act(0,4);
       switch(act(engine))
       {
@@ -37,7 +37,7 @@ namespace lionheart
         case 3:return turn(Direction::WEST);
         case 4:return move(5);
       }
-
+	  return wait();
     }
     Blazon getBlazon() { return {Color::OR, Color::GULES, Style::BEND, "Goldfish"}; }
   };

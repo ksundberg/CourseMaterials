@@ -11,6 +11,7 @@ lionheart::Placement lionheart::ExamplePlayer::placeUnit(UnitType,
     for (int c = box.minCol; c < box.maxCol; ++c)
       if (report.things[r][c].type == SituationReport::SPACE)
         return { r, c };
+  return { 0, 0 };
 }
 
   lionheart::Action

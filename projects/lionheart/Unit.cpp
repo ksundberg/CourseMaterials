@@ -4,8 +4,8 @@ namespace
 {
 bool roll(lionheart::AttackType attackType)
 {
-  thread_local std::random_device rd;
-  thread_local std::mt19937 engine(rd());
+  static std::random_device rd;
+  static std::mt19937 engine(rd());
   std::uniform_int_distribution<> die(1, 6);
   auto result = die(engine);
   switch(attackType)

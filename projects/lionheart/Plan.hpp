@@ -36,11 +36,11 @@ namespace lionheart
     public:
       Paths(std::shared_ptr<const Map> const& map,int maxSpeed);
       Action next(PathVertex start, PathVertex stop) const { return access(nextAction, start, stop, Action()); }
-      int distance(PathVertex start, PathVertex stop) const { return access(pathLength, start, stop, vertex.size()); }
+      int distance(PathVertex start, PathVertex stop) const { return access(pathLength, start, stop, static_cast<int>(vertex.size())); }
 
     private:
       template <typename T,typename U>
-      T access(std::vector<std::vector<T>> const& v, PathVertex start, PathVertex stop,U defaultValue) const
+      U access(std::vector<std::vector<T>> const& v, PathVertex start, PathVertex stop,U defaultValue) const
       {
         auto startIter = vertex.find(start);
         if (startIter == vertex.end()) return defaultValue;

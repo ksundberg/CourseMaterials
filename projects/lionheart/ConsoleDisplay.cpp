@@ -3,9 +3,9 @@
 
 namespace
 {
-  void displayHeader(int length)
+  void displayHeader(size_t length)
   {
-    for(int i=0;i<=length;++i)
+    for(size_t i=0;i<=length;++i)
       std::cout << "-";
     std::cout << std::endl;
   }

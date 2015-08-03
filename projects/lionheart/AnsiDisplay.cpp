@@ -20,8 +20,8 @@ namespace
 
   void displaySpace()
   {
-    thread_local std::random_device rd;
-    thread_local std::mt19937 engine(rd());
+    static std::random_device rd;
+    static std::mt19937 engine(rd());
     const int SIZE = 6;
     std::uniform_int_distribution<> die(0, SIZE-1);
 
@@ -163,7 +163,7 @@ void lionheart::AnsiDisplay::show(lionheart::SituationReport const& report, Blaz
             << p2.name << "(" << report.getHp(SituationReport::ENEMY) << ")"
             << " Turn : " << report.turns << std::endl;
 
-  displayHeader(report.things[0].size());
+  displayHeader(static_cast<int>(report.things[0].size()));
   for (auto&& row : report.things)
   {
     std::cout << '|';
@@ -175,7 +175,7 @@ void lionheart::AnsiDisplay::show(lionheart::SituationReport const& report, Blaz
     std::cout << "\033[0m";
     std::cout << '|' << std::endl;
   }
-  displayHeader(report.things[0].size());
+  displayHeader(static_cast<int>(report.things[0].size()));
   std::string buf;
   std::getline(std::cin,buf);
 }

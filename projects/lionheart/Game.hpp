@@ -8,6 +8,7 @@
 #include "Display.hpp"
 #include <memory>
 #include <vector>
+#include <array>
 
 namespace lionheart
 {

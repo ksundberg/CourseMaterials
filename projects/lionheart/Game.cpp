@@ -5,6 +5,8 @@
 #include "Archer.hpp"
 #include "Infantry.hpp"
 #include "SituationReport.hpp"
+#include <numeric>
+#include <random>
 
 namespace
 {
@@ -22,10 +24,10 @@ namespace
     report.turns = turns;
     // convert map to report
     report.things.reserve(map->rows());
-    for (size_t i = 0; i < map->rows(); ++i)
+    for (int i = 0; i < map->rows(); ++i)
     {
       report.things.emplace_back(map->cols());
-      for (size_t j = 0; j < map->cols(); ++j)
+      for (int j = 0; j < map->cols(); ++j)
       {
         auto tile = (*map)[map->at(i, j)];
         // default constructed things are rocks, so just clear out the spaces
@@ -120,6 +122,7 @@ std::shared_ptr<lionheart::Player> lionheart::Game::tiebreaker() const
   auto p1hits = std::accumulate(std::begin(units[1]),std::end(units[1]),0,sumHp);
   if(p0hits < p1hits) return player[1];
   if(p1hits < p0hits) return player[0];
+  return nullptr;
 }
 bool lionheart::Game::canContinue() const
 {
@@ -137,6 +140,7 @@ bool lionheart::Game::canContinue() const
       return false;
     }
   }
+  return true;
 }
 
 void lionheart::Game::start()
@@ -184,8 +188,8 @@ void lionheart::Game::doTurn(std::shared_ptr<Display> display)
 {
   ++turns;
   //determine random turn order
-  thread_local std::random_device rd;
-  thread_local std::mt19937 engine(rd());
+  static std::random_device rd;
+  static std::mt19937 engine(rd());
   for(auto&& u:units)
   {
     std::shuffle(std::begin(u), std::end(u), engine);
@@ -216,6 +220,7 @@ void lionheart::Game::doTurn(std::shared_ptr<Display> display)
           // execute valid recommendations
           return action(map, unit, allies,enemies);
         }
+		return false;
     };
     // do player 0 unit
     if (u0 != std::end(units[0]))
