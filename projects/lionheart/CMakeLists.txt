@@ -75,6 +75,8 @@ set(Aux_srcs
   Display.hpp
   Game.cpp
   Game.hpp
+  Gauntlet.cpp
+  Gauntlet.hpp
   Infantry.hpp
   Knight.hpp
   Map.cpp

@@ -1,6 +1,7 @@
 #include "Game.hpp"
 #include "Plan.hpp"
 #include "SingleElimination.hpp"
+#include "Gauntlet.hpp"
 #include "AnsiDisplay.hpp"
 #include "ConsoleDisplay.hpp"
 #include "getPlayers.hpp"
@@ -28,14 +29,14 @@ std::shared_ptr<lionheart::Display> getDisplay(std::string name)
 }
 
 std::shared_ptr<lionheart::Tournament> getTournament(std::string name,
-                                                     std::shared_ptr<lionheart::Player> /*keyPlayer*/,
+                                                     std::shared_ptr<lionheart::Player> keyPlayer,
                                                      std::vector<std::shared_ptr<lionheart::Player>> players,
                                                      std::shared_ptr<lionheart::Display> display)
 {
   std::transform(name.begin(), name.end(), name.begin(), ::tolower);
   if (name == "single") return std::make_shared<lionheart::SingleElimination>(players,display);
   if (name == "swiss") return nullptr;
-  if (name == "gauntlet") return nullptr;
+  if (name == "gauntlet") return std::make_shared<lionheart::Gauntlet>(keyPlayer,players,display);
   //default
   return std::make_shared<lionheart::SingleElimination>(players,display);
 }
@@ -57,14 +58,28 @@ int main(int argc, char** argv)
   }
   if (argc >= 4) {
     // set player
+    std::string playerName = "";
+    for(int i=3;i<argc;++i)
+    {
+      playerName += argv[i];
+      if(i!=argc-1)
+      {
+        playerName += " ";
+      }
+    }
     auto found = std::find_if(players.begin(), players.end(), [&](std::shared_ptr<lionheart::Player> p) -> bool
                                                               {
                                                                 if (!p) return false;
-                                                                return p->getBlazon().name == argv[3];
+                                                                return p->getBlazon().name == playerName;
                                                               });
+    
     if(found != players.end())
     {
       keyPlayer = *found;
+    }
+    else
+    {
+      std::cerr << "Could not find player \"" << playerName << '"' << std::endl;
     }
   }
   if(argc >= 3)
