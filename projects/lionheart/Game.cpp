@@ -24,10 +24,10 @@ namespace
     report.turns = turns;
     // convert map to report
     report.things.reserve(map->rows());
-    for (int i = 0; i < map->rows(); ++i)
+    for (int i = 0; i < static_cast<int>(map->rows()); ++i)
     {
       report.things.emplace_back(map->cols());
-      for (int j = 0; j < map->cols(); ++j)
+      for (int j = 0; j < static_cast<int>(map->cols()); ++j)
       {
         auto tile = (*map)[map->at(i, j)];
         // default constructed things are rocks, so just clear out the spaces

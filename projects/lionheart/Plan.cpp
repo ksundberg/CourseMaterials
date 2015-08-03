@@ -43,8 +43,8 @@ lionheart::Paths::Paths(std::shared_ptr<const Map> const& map, int maxSpeed) : v
     lionheart::Direction::NORTH, lionheart::Direction::EAST, lionheart::Direction::SOUTH, lionheart::Direction::WEST};
   //Create all vertexes
   auto vNum = 0;
-  for(int r=0;r<map->rows();++r)
-    for(int c=0;c<map->cols();++c)
+  for (int r = 0; r < static_cast<int>(map->rows()); ++r)
+    for (int c = 0; c < static_cast<int>(map->cols()); ++c)
     {
       if((*map)[map->at(r,c)] == Tile::SPACE)
       {

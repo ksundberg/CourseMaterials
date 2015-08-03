@@ -58,8 +58,8 @@ protected:
   Unit(int id, Map::Location l, Direction d, int hp)
       : location(new Map::Location(l))
       , facing(d)
-      , id(id)
-      , hp(hp){}
+      , hp(hp)
+      , id(id){}
 
 private:
   std::unique_ptr<Map::Location> location;

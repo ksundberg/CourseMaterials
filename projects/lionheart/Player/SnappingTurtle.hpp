@@ -12,7 +12,7 @@ namespace lionheart
     }
     Placement placeUnit(UnitType type, StartBox const& box, SituationReport report)
     {
-      auto useMin = (box.minCol < (report.things[0].size() / 2));
+      auto useMin = (box.minCol < static_cast<int>((report.things[0].size() / 2)));
       if(type == CROWN)
       {
         if(useMin)

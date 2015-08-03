@@ -10,7 +10,7 @@ namespace lionheart
   public:
     Placement placeUnit(UnitType, StartBox const& box, SituationReport report)
     {
-      westFirst = (box.minCol < (report.things[0].size() / 2));
+      westFirst = (box.minCol < static_cast<int>(report.things[0].size() / 2));
       if(!westFirst)
       {
       for (int r = box.minRow; r <= box.maxRow; ++r)

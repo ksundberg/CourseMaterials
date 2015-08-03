@@ -11,7 +11,7 @@ namespace lionheart
     Placement placeUnit(UnitType, StartBox const& box, SituationReport report)
     {
       ++id;
-      westSide = (box.minCol < (report.things[0].size() / 2));
+      westSide = (box.minCol < static_cast<int>(report.things[0].size() / 2));
       if(westSide)
       {
         switch(id)

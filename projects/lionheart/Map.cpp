@@ -89,8 +89,8 @@ lionheart::Map::Location lionheart::Map::at(int row,int col) const
 {
   if(row < 0) return Location();
   if(col < 0) return Location();
-  if(row >= tiles.size()) return Location();
-  if(col >= tiles[row].size()) return Location();
+  if(static_cast<size_t>(row) >= tiles.size()) return Location();
+  if(static_cast<size_t>(col) >= tiles[row].size()) return Location();
   return Location(row,col);
 }
 

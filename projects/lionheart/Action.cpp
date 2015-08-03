@@ -73,10 +73,10 @@ namespace lionheart
       {
         return std::unique_ptr<ActionImpl>(new TurnImpl(dir));
       }
-      bool apply(std::shared_ptr<const Map> const& map,
+      bool apply(std::shared_ptr<const Map> const&,
                  Unit& actor,
-                 std::vector<std::shared_ptr<Unit>>& allies,
-                 std::vector<std::shared_ptr<Unit>>& enemies) override
+                 std::vector<std::shared_ptr<Unit>>&,
+                 std::vector<std::shared_ptr<Unit>>&) override
       {
         actor.turn(dir);
         return true;
@@ -93,9 +93,9 @@ namespace lionheart
       {
         return std::unique_ptr<ActionImpl>(new AttackImpl(target));
       }
-      bool apply(std::shared_ptr<const Map> const& map,
+      bool apply(std::shared_ptr<const Map> const&,
                  Unit& actor,
-                 std::vector<std::shared_ptr<Unit>>& allies,
+                 std::vector<std::shared_ptr<Unit>>&,
                  std::vector<std::shared_ptr<Unit>>& enemies) override
       {
         // find legal target
