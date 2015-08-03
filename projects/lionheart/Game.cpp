@@ -113,6 +113,28 @@ std::shared_ptr<lionheart::Player> lionheart::Game::winner() const
   return nullptr;
 }
 
+std::shared_ptr<lionheart::Player> lionheart::Game::loser() const
+{
+  if(state!=Game::FINISHED) return nullptr;
+  //is one crown dead?
+  if (!crown[0]->isAlive() && crown[1]->isAlive())
+  {
+    return player[0];
+  }if (!crown[1]->isAlive() && crown[0]->isAlive())
+  {
+    return player[1];
+  }
+  //are both gone?
+  if(!crown[0]->isAlive() && !crown[1]->isAlive())
+  {
+    return nullptr;
+  }
+  //is one alone?
+  if(units[0].size() == 1) return player[0];
+  if(units[1].size() == 1) return player[1];
+  //tie game
+  return nullptr;
+}
 std::shared_ptr<lionheart::Player> lionheart::Game::tiebreaker() const
 {
   // who has the most remaining hits?

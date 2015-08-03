@@ -36,6 +36,7 @@ namespace lionheart
       {
       }
       std::shared_ptr<Player> winner()const;
+      std::shared_ptr<Player> loser()const;
       std::shared_ptr<Player> tiebreaker()const;
       State getState()const{return state;}
       bool canContinue()const;

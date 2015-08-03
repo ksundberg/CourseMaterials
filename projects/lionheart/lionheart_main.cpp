@@ -1,6 +1,7 @@
 #include "Game.hpp"
 #include "Plan.hpp"
 #include "SingleElimination.hpp"
+#include "Swiss.hpp"
 #include "Gauntlet.hpp"
 #include "AnsiDisplay.hpp"
 #include "ConsoleDisplay.hpp"
@@ -35,7 +36,7 @@ std::shared_ptr<lionheart::Tournament> getTournament(std::string name,
 {
   std::transform(name.begin(), name.end(), name.begin(), ::tolower);
   if (name == "single") return std::make_shared<lionheart::SingleElimination>(players,display);
-  if (name == "swiss") return nullptr;
+  if (name == "swiss") return std::make_shared<lionheart::Swiss>(players,display);
   if (name == "gauntlet") return std::make_shared<lionheart::Gauntlet>(keyPlayer,players,display);
   //default
   return std::make_shared<lionheart::SingleElimination>(players,display);

@@ -90,6 +90,8 @@ set(Aux_srcs
   Tournament.hpp
   SingleElimination.cpp
   SingleElimination.hpp
+  Swiss.cpp
+  Swiss.hpp
   )
 
 list(APPEND lionheart_srcs ${Aux_srcs})
