@@ -53,4 +53,6 @@ void lionheart::ConsoleDisplay::show(lionheart::SituationReport const &report,
     std::cout << '|' << std::endl;
   }
   displayHeader(report.things[0].size());
+  std::string buf;
+  std::getline(std::cin,buf);
 }
