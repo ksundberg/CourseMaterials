@@ -118,5 +118,5 @@ set(Test_srcs
   Map.cpp
   )
 list(APPEND Test_srcs ${Aux_srcs})
-add_executable(test ${Test_srcs})
+add_executable(lionheart_test ${Test_srcs})
 

@@ -1,5 +1,6 @@
 #include "Swiss.hpp"
 #include <map>
+#include <cmath>
 
 struct Record
 {
@@ -19,6 +20,50 @@ bool operator<(Record const& a, Record const& b)
   return a.rounds() < b.rounds();
 }
 
+struct GameResult
+{
+  std::shared_ptr<lionheart::Player> winner;
+  std::shared_ptr<lionheart::Player> loser;
+  bool draw;
+};
+
+GameResult playGame(std::shared_ptr<lionheart::Player> p1,
+                    std::shared_ptr<lionheart::Player> p2,
+                    std::shared_ptr<const lionheart::Map> map,
+                    std::shared_ptr<const lionheart::Paths> infantryPaths,
+                    std::shared_ptr<const lionheart::Paths> mountedPaths,
+                    std::shared_ptr<lionheart::Display> display)
+{
+  lionheart::Game game(p1, p2, map, infantryPaths, mountedPaths);
+  game.start();
+  std::cout << p1->getBlazon().name << " vs. " << p2->getBlazon().name << ": ";
+  if (display) {
+    display->show(game.getReport(), p1->getBlazon(), p2->getBlazon());
+  }
+  for (auto i = 0; i < 200; ++i)
+  {
+    game.doTurn(display);
+    if (display) {
+      display->show(game.getReport(), p1->getBlazon(), p2->getBlazon());
+    }
+    if (!game.canContinue()) break;
+  }
+  GameResult result;
+  result.winner = game.winner();
+  result.loser = game.loser();
+  if(result.winner)
+  {
+    std::cout << result.winner->getBlazon().name << " wins!" << std::endl;
+    result.draw = false;
+  }
+  else
+  {
+    result.draw = true;
+    std::cout << "draw" << std:: endl;
+  }
+  return result;
+}
+
 std::vector<std::shared_ptr<lionheart::Player>> lionheart::Swiss::run()
 {
   std::map<Record,std::vector<std::shared_ptr<Player>>> oldBrackets;
@@ -26,9 +71,11 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::Swiss::run()
   auto infantryPaths = std::make_shared<lionheart::Paths>(fortMap, 1);
   auto mountedPaths = std::make_shared<lionheart::Paths>(fortMap, 5);
   oldBrackets[Record()] = players;
-  for(auto round=0;round<5;++round)
+  auto rounds = static_cast<int>(std::log2(players.size()) + 1);
+  for(auto round=0;round<rounds;++round)
   {
     std::map<Record, std::vector<std::shared_ptr<Player>>> brackets;
+    std::vector<std::pair<Record, std::shared_ptr<Player>>> byes;
     for(auto&& b:oldBrackets)
     {
       auto record = b.first;
@@ -46,24 +93,11 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::Swiss::run()
         auto p2 = b.second.back();
         b.second.pop_back();
 
-        lionheart::Game game(p1, p2, fortMap, infantryPaths, mountedPaths);
-        game.start();
+        auto result = playGame(p1,p2,fortMap,infantryPaths,mountedPaths,display);
 
-        if (display) {
-          display->show(game.getReport(), p1->getBlazon(), p2->getBlazon());
-        }
-        for (auto i = 0; i < 200; ++i)
-        {
-          game.doTurn(display);
-          if (display) {
-            display->show(game.getReport(), p1->getBlazon(), p2->getBlazon());
-          }
-          if (!game.canContinue()) break;
-        }
-        auto winner = game.winner();
-        if (winner) {
-          brackets[win].push_back(winner);
-          brackets[loss].push_back(game.loser());
+        if (!result.draw) {
+          brackets[win].push_back(result.winner);
+          brackets[loss].push_back(result.loser);
         }
         else
         {
@@ -71,10 +105,59 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::Swiss::run()
           brackets[draw].push_back(p2);
         }
       }
-      //TODO deal with byes
+      while(!b.second.empty())
+      {
+        byes.push_back(std::make_pair(record,b.second.back()));
+        b.second.pop_back();
+      }
+    }
+    while(byes.size() > 1)
+    {
+
+        auto p1 = byes.back();
+        byes.pop_back();
+
+        auto p2 = byes.back();
+        byes.pop_back();
+
+        auto result = playGame(p1.second,p2.second,fortMap,infantryPaths,mountedPaths,display);
+        if(result.draw)
+        {
+          p1.first.draw+=1;
+          brackets[p1.first].push_back(p1.second);
+          p2.first.draw+=1;
+          brackets[p2.first].push_back(p2.second);
+        }
+        else
+        {
+          if (result.winner == p1.second) {
+            p1.first.win += 1;
+            brackets[p1.first].push_back(p1.second);
+            p2.first.loss += 1;
+            brackets[p2.first].push_back(p2.second);
+          }
+          else
+          {
+            p1.first.loss += 1;
+            brackets[p1.first].push_back(p1.second);
+            p2.first.win += 1;
+            brackets[p2.first].push_back(p2.second);
+          }
+        }
     }
     std::swap(brackets,oldBrackets);
+    //Display round results
+
+    std::cout << "Round " << round + 1 <<  " of " << rounds << std::endl;
+    for(auto&& b:oldBrackets)
+    {
+      std::cout << "  Record (" << b.first.win << "-" << b.first.loss << "-" << b.first.draw << "):" << std::endl;
+      for(auto&& p:b.second)
+      {
+        std::cout << "    " << p->getBlazon().name << std::endl;
+      }
+    }
   }
-  
+
   return players;
 }
