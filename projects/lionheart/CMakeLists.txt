@@ -61,32 +61,48 @@ foreach(p ${Player_srcs})
   endif(header)
 endforeach(p)
 ################################
+# Displays
+find_package(PNG)
+set(Display_srcs
+  Display.hpp
+  ConsoleDisplay.cpp
+  ConsoleDisplay.hpp
+  AnsiDisplay.cpp
+  AnsiDisplay.hpp
+  )
+if(PNG_FOUND)
+  list(APPEND Display_srcs PngDisplay.hpp PngDisplay.cpp)
+  add_definitions(-DFOUND_PNG)
+endif(PNG_FOUND)
+
+
+################################
+# Units
+set(Unit_srcs
+  Archer.cpp
+  Archer.hpp
+  Crown.hpp
+  Infantry.hpp
+  Knight.hpp
+  Unit.cpp
+  Unit.hpp
+  )
+
+################################
 # Provided Sources
 set(Aux_srcs
   Action.cpp
   Action.hpp
-  AnsiDisplay.cpp
-  AnsiDisplay.hpp
-  Archer.cpp
-  Archer.hpp
-  ConsoleDisplay.cpp
-  ConsoleDisplay.hpp
-  Crown.hpp
-  Display.hpp
-  Game.cpp
+    Game.cpp
   Game.hpp
   Gauntlet.cpp
   Gauntlet.hpp
-  Infantry.hpp
-  Knight.hpp
   Map.cpp
   Map.hpp
   Plan.cpp
   Plan.hpp
   Player.hpp
   SituationReport.hpp
-  Unit.cpp
-  Unit.hpp
   Tournament.hpp
   SingleElimination.cpp
   SingleElimination.hpp
@@ -94,7 +110,6 @@ set(Aux_srcs
   Swiss.hpp
   )
 
-list(APPEND lionheart_srcs ${Aux_srcs})
 ##############################
 #
 configure_file(getPlayers.hpp.in getPlayers.hpp)
@@ -104,7 +119,10 @@ set(lionheart_srcs
   lionheart_main.cpp
   getPlayers.hpp
   )
+
 list(APPEND lionheart_srcs ${Aux_srcs})
+list(APPEND lionheart_srcs ${Display_srcs})
+list(APPEND lionheart_srcs ${Unit_srcs})
 list(APPEND lionheart_srcs ${Player_srcs})
 add_executable(lionheart ${lionheart_srcs})
 ###############################
@@ -117,6 +135,9 @@ set(Test_srcs
   test/test_main.cpp
   Map.cpp
   )
+
+list(APPEND Test_srcs ${Display_srcs})
+list(APPEND Test_srcs ${Unit_srcs})
 list(APPEND Test_srcs ${Aux_srcs})
 add_executable(lionheart_test ${Test_srcs})
 

@@ -7,6 +7,9 @@
 #include "ConsoleDisplay.hpp"
 #include "getPlayers.hpp"
 
+#if defined(FOUND_PNG)
+#include "PngDisplay.hpp"
+#endif
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -26,6 +29,10 @@ std::shared_ptr<lionheart::Display> getDisplay(std::string name)
   if (name == "ansi") return std::make_shared<lionheart::AnsiDisplay>();
   if (name == "plain") return std::make_shared<lionheart::ConsoleDisplay>();
   if (name == "none") return nullptr;
+
+#if defined(FOUND_PNG)
+  if (name == "png") return std::make_shared<lionheart::PngDisplay>();
+#endif
   return defaultDisplay();
 }
 
