@@ -111,7 +111,7 @@ lionheart::Paths::Paths(std::shared_ptr<const Map> const& map, int maxSpeed) : v
       }
     }
   }
-  //Apply Floyed-Warshall's algorithm with paths
+  //Apply Floyd-Warshall algorithm with paths
   for (int mid = 0; mid < vNum; ++mid)
   {
     for (int start = 0; start < vNum; ++start)

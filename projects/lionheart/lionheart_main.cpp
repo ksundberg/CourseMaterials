@@ -94,6 +94,7 @@ int main(int argc, char** argv)
   }
   if(tournament)
   {
+    std::cout << "Beginning tournament, please wait while paths are pre-computed" << std::endl;
     tournament->run();
   }
 }
