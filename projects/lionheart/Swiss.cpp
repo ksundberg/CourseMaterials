@@ -93,6 +93,11 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::Swiss::run()
         auto p2 = b.second.back();
         b.second.pop_back();
 
+        if (display)
+        {
+          display->setOutput(p1->getBlazon().name + "-" + p2->getBlazon().name +
+                             "round" + std::to_string(round));
+        }
         auto result = playGame(p1,p2,fortMap,infantryPaths,mountedPaths,display);
 
         if (!result.draw) {
@@ -120,6 +125,11 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::Swiss::run()
         auto p2 = byes.back();
         byes.pop_back();
 
+        if (display)
+        {
+          display->setOutput(p1.second->getBlazon().name + "-" + p2.second->getBlazon().name +
+                             "round" + std::to_string(round));
+        }
         auto result = playGame(p1.second,p2.second,fortMap,infantryPaths,mountedPaths,display);
         if(result.draw)
         {

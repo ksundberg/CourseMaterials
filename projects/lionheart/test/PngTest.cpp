@@ -141,6 +141,7 @@ SCENARIO("PNG display creates files")
     THEN("Map is drawn as expected")
     {
       lionheart::PngDisplay d;
+      d.setOutput("pngtest");
       d.show(r,p1,p2);
     }
   }
