@@ -42,7 +42,7 @@ GameResult playGame(std::shared_ptr<lionheart::Player> p1,
   }
   for (auto i = 0; i < 200; ++i)
   {
-    game.doTurn(display);
+    game.doTurn(nullptr);
     if (display) {
       display->show(game.getReport(), p1->getBlazon(), p2->getBlazon());
     }
@@ -95,8 +95,8 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::Swiss::run()
 
         if (display)
         {
-          display->setOutput(p1->getBlazon().name + "-" + p2->getBlazon().name +
-                             "round" + std::to_string(round));
+          display->setOutput(std::string("round") + std::to_string(round) + "-" +
+                             p1->getBlazon().name + "-" + p2->getBlazon().name);
         }
         auto result = playGame(p1,p2,fortMap,infantryPaths,mountedPaths,display);
 
@@ -127,8 +127,9 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::Swiss::run()
 
         if (display)
         {
-          display->setOutput(p1.second->getBlazon().name + "-" + p2.second->getBlazon().name +
-                             "round" + std::to_string(round));
+          display->setOutput(std::string("round") + std::to_string(round) + "-" +
+                             p1.second->getBlazon().name + "-" +
+                             p2.second->getBlazon().name);
         }
         auto result = playGame(p1.second,p2.second,fortMap,infantryPaths,mountedPaths,display);
         if(result.draw)
