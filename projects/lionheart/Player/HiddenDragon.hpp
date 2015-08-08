@@ -50,7 +50,7 @@ namespace lionheart
         case 27: return {13,3};
         case 28: return {16,3};
         case 29: return {13,5};
-        case 30: return {16,5};
+        case 30: id=0;return {16,5};
         }
       }
       else
@@ -91,7 +91,7 @@ namespace lionheart
         case 27: return {13,26};
         case 28: return {16,26};
         case 29: return {13,24};
-        case 30: return {16,24};
+        case 30:id=0; return {16,24};
         }
       }
       return {0,0};
@@ -103,9 +103,23 @@ namespace lionheart
       {
         case 0: return wait();
         case 1:case 2:case 3:
-                return p.moveToLocation(7,15);
+                if(p.movesToEnemy() > 3)
+                {
+                  return p.moveToLocation(7, 15);
+                }
+                else
+                {
+                  return p.attackEnemy();
+                }
         case 4:case 5:case 6:
+                if(p.movesToEnemy() > 3)
+                {
                 return p.moveToLocation(22,15);
+                }
+                else
+                {
+                  return p.attackEnemy();
+                }
         case 7:case 8:
                 return turn(Direction::NORTH);
         case 9:case 12:
