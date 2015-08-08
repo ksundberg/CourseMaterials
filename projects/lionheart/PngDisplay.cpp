@@ -498,6 +498,203 @@ void drawFacing(std::vector<std::vector<png_byte>> & data,
   drawImage(data,top,left,blazon,image);
 }
 
+void drawInfantry(std::vector<std::vector<png_byte>> & data,
+                int top,
+                int left,
+                int hp,
+                lionheart::Blazon const & blazon)
+{
+  std::vector<std::string> image;
+  switch(hp)
+  {
+    case 4:
+image = {
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"   ...    ...   ",
+"  .....  .....  ",
+"  .....  .....  ",
+"  .....  .....  ",
+"   ...    ...   ",
+"                ",
+"                ",
+"   ...    ...   ",
+"  .....  .....  ",
+"  .....  .....  ",
+"  .....  .....  ",
+"   ...    ...   ",
+"                ",
+"                "};
+break;
+    case 3:
+image = {
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"   ...          ",
+"  .....         ",
+"  .....         ",
+"  .....         ",
+"   ...          ",
+"                ",
+"                ",
+"   ...    ...   ",
+"  .....  .....  ",
+"  .....  .....  ",
+"  .....  .....  ",
+"   ...    ...   ",
+"                ",
+"                "};
+break;
+    case 2:
+image = {
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"   ...          ",
+"  .....         ",
+"  .....         ",
+"  .....         ",
+"   ...          ",
+"                ",
+"                ",
+"          ...   ",
+"         .....  ",
+"         .....  ",
+"         .....  ",
+"          ...   ",
+"                ",
+"                "
+};
+break;
+    case 1:
+image = {
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"          ...   ",
+"         .....  ",
+"         .....  ",
+"         .....  ",
+"          ...   ",
+"                ",
+"                "
+};
+break;
+    default:
+image = {
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               "};
+break;
+
+
+
+
+
+
+  }
+  drawImage(data,top,left,blazon,image);
+}
+
+
 void drawArcher(std::vector<std::vector<png_byte>> & data,
                 int top,
                 int left,
@@ -691,6 +888,216 @@ break;
   }
   drawImage(data,top,left,blazon,image);
 }
+
+void drawKnight(std::vector<std::vector<png_byte>> & data,
+                int top,
+                int left,
+                int hp,
+                lionheart::Blazon const & blazon)
+{
+  std::vector<std::string> image;
+  switch(hp)
+  {
+    case 2:
+image = {
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"   ..........   ",
+"  ............  ",
+"  ............  ",
+"  ............  ",
+"  ............  ",
+"  ............  ",
+"   ..........   ",
+"                ",
+"                ",
+"                ",
+"   ..........   ",
+"  ............  ",
+"  ............  ",
+"  ............  ",
+"  ............  ",
+"  ............  ",
+"   ..........   ",
+"                "};
+break;
+    case 1:
+image = {
+
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"   ..........   ",
+"  ............  ",
+"  ............  ",
+"  ............  ",
+"  ............  ",
+"  ............  ",
+"   ..........   ",
+"                "};
+break;
+    default:
+image = {
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               "};
+break;
+
+
+
+
+
+
+  }
+  drawImage(data,top,left,blazon,image);
+}
+
+void drawCrown(std::vector<std::vector<png_byte>> & data,
+                int top,
+                int left,
+                int hp,
+                lionheart::Blazon const & blazon)
+{
+  std::vector<std::string> image;
+  switch(hp)
+  {
+    case 1:
+image = {
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"       ...      ",
+"      .....     ",
+"      .....     ",
+"      .....     ",
+"       ...      ",
+"   ...  .  ...  ",
+"  ..... . ..... ",
+"  ..... . ..... ",
+"  ..... . ..... ",
+"   ...  .  ...  ",
+"   ..  ...  ..  ",
+"   ... ... ...  ",
+"   ...........  ",
+"   ...........  ",
+"   ...........  ",
+"   ...........  ",
+"     .......    ",
+"       ...      ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                ",
+"                "};
+break;
+    default:
+image = {
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               ",
+"               "};
+break;
+  }
+  drawImage(data,top,left,blazon,image);
+}
+
+
 void drawHealth(std::vector<std::vector<png_byte>> & data,
                 int top,
                 int left,
@@ -702,6 +1109,16 @@ void drawHealth(std::vector<std::vector<png_byte>> & data,
     case lionheart::UnitType::ARCHER:
       drawArcher(data,top,left,thing.hp,blazon);
       break;
+    case lionheart::UnitType::INFANTRY:
+      drawInfantry(data,top,left,thing.hp,blazon);
+      break;
+    case lionheart::UnitType::KNIGHT:
+      drawKnight(data,top,left,thing.hp,blazon);
+      break;
+    case lionheart::UnitType::CROWN:
+      drawCrown(data,top,left,thing.hp,blazon);
+      break;
+
     default:break;
   }
 }
