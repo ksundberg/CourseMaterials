@@ -71,7 +71,13 @@ set(Display_srcs
   AnsiDisplay.hpp
   )
 if(PNG_FOUND)
-  list(APPEND Display_srcs PngDisplay.hpp PngDisplay.cpp)
+  set(PngDisplay_srcs
+      PngDisplay.hpp
+      PngDisplay.cpp
+      PngUtils.hpp
+      PngUtils.cpp
+     )
+  list(APPEND Display_srcs ${PngDisplay_srcs})
   add_definitions(-DFOUND_PNG)
 endif(PNG_FOUND)
 
