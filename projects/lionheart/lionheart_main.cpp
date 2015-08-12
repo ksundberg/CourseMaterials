@@ -9,6 +9,7 @@
 
 #if defined(FOUND_PNG)
 #include "PngDisplay.hpp"
+#include "CombinedPngDisplay.hpp"
 #endif
 #include <iostream>
 #include <string>
@@ -32,6 +33,7 @@ std::shared_ptr<lionheart::Display> getDisplay(std::string name)
 
 #if defined(FOUND_PNG)
   if (name == "png") return std::make_shared<lionheart::PngDisplay>();
+  if (name == "combined") return std::make_shared<lionheart::CombinedPngDisplay>();
 #endif
   return defaultDisplay();
 }

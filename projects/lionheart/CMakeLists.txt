@@ -72,6 +72,8 @@ set(Display_srcs
   )
 if(PNG_FOUND)
   set(PngDisplay_srcs
+      CombinedPngDisplay.hpp
+      CombinedPngDisplay.cpp
       PngDisplay.hpp
       PngDisplay.cpp
       PngUtils.hpp
