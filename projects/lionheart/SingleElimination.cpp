@@ -20,6 +20,8 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::SingleElimination::ru
       lionheart::Game game(p1, p2, fortMap, infantryPaths, mountedPaths);
       game.start();
 
+      std::cout << p1->getBlazon().name << " vs. " << p2->getBlazon().name
+                << ": ";
       if (display) {
         display->setOutput(std::string("se") + p1->getBlazon().name + "-" +
                            p2->getBlazon().name);
@@ -37,14 +39,26 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::SingleElimination::ru
       auto winner = game.winner();
       if (winner) {
         winners.push_back(winner);
+        std::cout << winner->getBlazon().name << " wins!" << std::endl;
       }
       else
       {
         auto tie = game.tiebreaker();
         if (tie) {
+        std::cout << winner->getBlazon().name << " wins by tie break!" << std::endl;
           winners.push_back(tie);
         }
+        else
+        {
+          winners.push_back(p1);
+          std::cout << p1->getBlazon().name << " moves on." << std::endl;
+        }
       }
+    }
+    if(!players.empty())
+    {
+      std::cout << players.front()->getBlazon().name << " advances with buy." << std::endl;
+      winners.push_back(players.front());
     }
     std::swap(players, winners);
     ++round;
