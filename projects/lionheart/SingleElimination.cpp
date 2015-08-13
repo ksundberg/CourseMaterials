@@ -6,6 +6,7 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::SingleElimination::ru
   auto fortMap = lionheart::makeMap("forts.in");
   auto infantryPaths = std::make_shared<lionheart::Paths>(fortMap, 1);
   auto mountedPaths = std::make_shared<lionheart::Paths>(fortMap, 5);
+  auto round = 0;
   while (players.size() > 1)
   {
     winners.clear();
@@ -20,11 +21,14 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::SingleElimination::ru
       game.start();
 
       if (display) {
+        display->setOutput(std::string("se") + p1->getBlazon().name + "-" +
+                           p2->getBlazon().name);
+
         display->show(game.getReport(), p1->getBlazon(), p2->getBlazon());
       }
       for (auto i = 0; i < 200; ++i)
       {
-        game.doTurn(display);
+        game.doTurn(nullptr);
         if (display) {
           display->show(game.getReport(), p1->getBlazon(), p2->getBlazon());
         }
@@ -43,6 +47,12 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::SingleElimination::ru
       }
     }
     std::swap(players, winners);
+    ++round;
+    std::cout << "Single Elimination Round " << round << std::endl;
+    for(auto&& p:players)
+    {
+      std::cout << "     " << p->getBlazon().name << std::endl;
+    }
   }
   return players;
 }

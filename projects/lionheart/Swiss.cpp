@@ -1,4 +1,5 @@
 #include "Swiss.hpp"
+#include "SingleElimination.hpp"
 #include <map>
 #include <cmath>
 
@@ -169,6 +170,22 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::Swiss::run()
       }
     }
   }
+  std::cout << "Cut to top 8" << std::endl;
+  auto best = oldBrackets.rbegin();
+  std::vector<std::shared_ptr<lionheart::Player>> top8;
+  while(top8.size() < 8)
+  {
+    top8.insert(top8.begin(),best->second.begin(),best->second.end());
+    ++best;
+  }
+  for(auto&& p:top8)
+    {
+      std::cout << "     " << p->getBlazon().name << std::endl;
+    }
+  SingleElimination top8Tournament(top8,display);
+  top8Tournament.run();
+  
+
 
   return players;
 }

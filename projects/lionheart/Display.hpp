@@ -11,7 +11,7 @@ namespace lionheart
     Display() : output()
     {
     }
-    ~Display() = default;
+    virtual ~Display() = default;
     virtual void
     show(SituationReport const &, Blazon const &, Blazon const &) = 0;
     void setOutput(std::string o)

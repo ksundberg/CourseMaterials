@@ -12,6 +12,7 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::Gauntlet::run()
       game.start();
 
       if (display) {
+        display->setOutput(keyPlayer->getBlazon().name+"-"+p->getBlazon().name);
         display->show(game.getReport(), keyPlayer->getBlazon(), p->getBlazon());
       }
       for (auto i = 0; i < 200; ++i)
