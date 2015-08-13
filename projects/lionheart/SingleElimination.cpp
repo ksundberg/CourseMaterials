@@ -55,11 +55,7 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::SingleElimination::ru
         }
       }
     }
-    if(!players.empty())
-    {
-      std::cout << players.front()->getBlazon().name << " advances with buy." << std::endl;
-      winners.push_back(players.front());
-    }
+    
     std::swap(players, winners);
     ++round;
     std::cout << "Single Elimination Round " << round << std::endl;
