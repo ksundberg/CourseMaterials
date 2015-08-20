@@ -1,4 +1,4 @@
-all: 01-Introduction.pdf 02-Recursion.pdf
+all: 01-Introduction.pdf 02-Recursion.pdf 03-SortingSearching.pdf
 
 .PHONY: clean all
 
