@@ -1,4 +1,4 @@
-all: 01-Introduction.pdf 02-Recursion.pdf 03-SortingSearching.pdf 04-AdvancedFileIO.pdf
+all: 01-Introduction.pdf 02-Recursion.pdf 03-SortingSearching.pdf AdvancedFileIO.pdf
 
 .PHONY: clean all
 
