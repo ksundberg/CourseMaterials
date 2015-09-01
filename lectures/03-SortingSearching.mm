@@ -257,8 +257,59 @@
 </node>
 </node>
 <node TEXT="Loglinear Sorts" ID="ID_1095982368" CREATED="1440104732218" MODIFIED="1440104748597">
-<node TEXT="Recursive Sorting" ID="ID_1028691405" CREATED="1440106826745" MODIFIED="1440106838933"/>
-<node TEXT="Merge Sort" ID="ID_1643196750" CREATED="1440106181135" MODIFIED="1440106183952"/>
+<node TEXT="Lower Bound on Comparison Sorts" ID="ID_692758713" CREATED="1441143223154" MODIFIED="1441143230223">
+<node TEXT="We can model all possible comparison based sorting algorithms" ID="ID_329870897" CREATED="1441143393802" MODIFIED="1441143414343"/>
+<node TEXT="This allows us to prove what the best possible algorithm for sorting might look like" LOCALIZED_STYLE_REF="styles.topic" ID="ID_28117016" CREATED="1441143415434" MODIFIED="1441143513076"/>
+<node TEXT="The model is a decision tree" ID="ID_783055373" CREATED="1441143480306" MODIFIED="1441143486666">
+<node TEXT="Nodes of the tree are possible states" ID="ID_578308770" CREATED="1441143486670" MODIFIED="1441143497199"/>
+<node TEXT="Edges are possible actions" ID="ID_1149532887" CREATED="1441143497682" MODIFIED="1441143504799"/>
+<node TEXT="Each node has at most two possible actions (the comparison is true or false)" ID="ID_1573566909" CREATED="1441143579914" MODIFIED="1441143595511"/>
+</node>
+<node TEXT="The states of sorting are permutations of the input" ID="ID_952301601" CREATED="1441143517090" MODIFIED="1441143535719"/>
+<node TEXT="A general algorithm must contain every permutation" ID="ID_139307323" CREATED="1441143536290" MODIFIED="1441143554175"/>
+<node TEXT="The height of the tree is the number of steps necessary" ID="ID_161250644" CREATED="1441143554474" MODIFIED="1441143565200"/>
+</node>
+<node TEXT="Lower Bound Proof" ID="ID_1533097159" CREATED="1441143597986" MODIFIED="1441143609443">
+<node TEXT="A sequence of $n$ elements has $n!$ permutations" ID="ID_485990460" CREATED="1441143609447" MODIFIED="1441143675616"/>
+<node TEXT="The height of a binary tree is $\log_2 n$ if it has $n$ elements" ID="ID_147071014" CREATED="1441143636466" MODIFIED="1441143664665"/>
+<node TEXT="$n! &lt; n^n$" ID="ID_412061012" CREATED="1441143676690" MODIFIED="1441143702279"/>
+<node TEXT="$\log_2 n! = O(n \log_2 n)$" ID="ID_1331538893" CREATED="1441143704402" MODIFIED="1441143733679"/>
+<node TEXT="The best possible comparison based sorting algorithm is $O(n \log n)$" ID="ID_348506021" CREATED="1441143734930" MODIFIED="1441143756719"/>
+<node TEXT="All of the algorithms we have looked at so far are $O(n^2)$" ID="ID_228686122" CREATED="1441143757394" MODIFIED="1441143775263"/>
+</node>
+<node TEXT="Recursive Sorting" ID="ID_1028691405" CREATED="1440106826745" MODIFIED="1440106838933">
+<node TEXT="The $O(n \log n)$ algorithms are recursive" ID="ID_1986553341" CREATED="1441144574330" MODIFIED="1441144592603"/>
+<node TEXT="Recursive algorithms need a base case" ID="ID_96640019" CREATED="1441144593098" MODIFIED="1441144624421"/>
+<node TEXT="What should we use for sorting?" ID="ID_913667060" CREATED="1441144624970" MODIFIED="1441144700200"/>
+<node TEXT="Base cases should have no work left -- a single item is trivially sorted" ID="ID_899261141" CREATED="1441144700898" MODIFIED="1441144714631"/>
+</node>
+<node TEXT="Merge Sort" ID="ID_1643196750" CREATED="1440106181135" MODIFIED="1440106183952">
+<node TEXT="A list can be divided into two lists in $O(1)$ time" ID="ID_1327347254" CREATED="1441144750362" MODIFIED="1441145091767"/>
+<node TEXT="Two sorted lists can be merged into one sorted list in $O(n)$ time" ID="ID_1780513199" CREATED="1441144720914" MODIFIED="1441144747408"/>
+<node TEXT="A list of size 1 is sorted" ID="ID_532070350" CREATED="1441145098959" MODIFIED="1441145106191"/>
+</node>
+<node TEXT="Merge Sort Code" ID="ID_543007703" CREATED="1441145107698" MODIFIED="1441145111786">
+<node TEXT="Use these ideas to build a $O(n \log n)$ sorting algorithm" ID="ID_368181274" CREATED="1441145111790" MODIFIED="1441145133647"/>
+</node>
+<node TEXT="Merge Sort Code - merge" LOCALIZED_STYLE_REF="styles.important" ID="ID_1736599870" CREATED="1441145147275" MODIFIED="1441145225433">
+<node TEXT="std::vector&lt;int&gt; merge(" ID="ID_1754614027" CREATED="1441145154359" MODIFIED="1441145276851"/>
+<node TEXT="  std::vector&lt;int&gt;&amp; a,std::vector&lt;int&gt;&amp; b) {" ID="ID_1637401712" CREATED="1441145277354" MODIFIED="1441148933489"/>
+<node TEXT="  auto i = 0; auto j=0; std::vector&lt;int&gt; res;" ID="ID_1375424501" CREATED="1441145322322" MODIFIED="1441148903236"/>
+<node TEXT="  res.reserve(a.size() + b.size());" ID="ID_1366450736" CREATED="1441145424018" MODIFIED="1441145434936"/>
+<node TEXT="  while(i&lt;a.size() &amp;&amp; j&lt;b.size()) {" ID="ID_1461283174" CREATED="1441145337386" MODIFIED="1441148938317"/>
+<node TEXT="    if(a[i] &lt; b[j])" ID="ID_1083451760" CREATED="1441145473674" MODIFIED="1441145486360"/>
+<node TEXT="    { res.push_back(a[i]); ++i; }" ID="ID_629163846" CREATED="1441145486963" MODIFIED="1441148983842"/>
+<node TEXT="    else" ID="ID_1469426574" CREATED="1441145500466" MODIFIED="1441145510474"/>
+<node TEXT="    { res.push_back(b[j]);  ++j; }" ID="ID_255148006" CREATED="1441145503114" MODIFIED="1441148690408"/>
+<node TEXT="  }" ID="ID_240011615" CREATED="1441148695595" MODIFIED="1441148701219"/>
+<node TEXT="  if(i&lt;a.size()) {" ID="ID_1758841988" CREATED="1441148766421" MODIFIED="1441148997629"/>
+<node TEXT="    for(auto k=i;k&lt;a.size();++k)" ID="ID_1863577928" CREATED="1441148853307" MODIFIED="1441149091661"/>
+<node TEXT="    res.push_back(a[k]); }" ID="ID_1653491438" CREATED="1441149000493" MODIFIED="1441149031643"/>
+<node TEXT="  else {" ID="ID_1383803284" CREATED="1441148868524" MODIFIED="1441149070091"/>
+<node TEXT="    for(auto k=j;k&lt;b.size();++k)" ID="ID_255758608" CREATED="1441148853307" MODIFIED="1441149088218"/>
+<node TEXT="    res.push_back(b[k]); }" ID="ID_149615417" CREATED="1441149000493" MODIFIED="1441149079777"/>
+<node TEXT="}" ID="ID_1672939529" CREATED="1441148712123" MODIFIED="1441148713216"/>
+</node>
 <node TEXT="Quick Sort" ID="ID_602844682" CREATED="1440106184222" MODIFIED="1440106186552"/>
 </node>
 </node>
