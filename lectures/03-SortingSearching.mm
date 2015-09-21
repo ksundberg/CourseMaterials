@@ -105,7 +105,8 @@
 <node TEXT="Imagine: If I think of an integer 0-100 what strategy should you use to guess the number?" LOCALIZED_STYLE_REF="styles.topic" ID="ID_771640838" CREATED="1440105692752" MODIFIED="1441131766206"/>
 <node TEXT="This requires that a collection is sorted but allows faster searching" ID="ID_661626515" CREATED="1440105736375" MODIFIED="1440105907056"/>
 </node>
-<node TEXT="Recursive Algorithm" ID="ID_329091957" CREATED="1440105913505" MODIFIED="1440105937565">
+<node TEXT="Recursive Algorithm" ID="ID_329091957" CREATED="1440105913505" MODIFIED="1442843019769">
+<attribute NAME="textbook" VALUE="14-05"/>
 <node TEXT="Divide collection in half" ID="ID_1309268189" CREATED="1440105930326" MODIFIED="1440105947547"/>
 <node TEXT="Use sorted condition to determine which half must contain value" ID="ID_586991987" CREATED="1440105947976" MODIFIED="1440105967858"/>
 <node TEXT="Recurse into selected half" ID="ID_1521020827" CREATED="1440105968294" MODIFIED="1440105973759"/>
@@ -310,7 +311,29 @@
 <node TEXT="    res.push_back(b[k]); }" ID="ID_149615417" CREATED="1441149000493" MODIFIED="1441149079777"/>
 <node TEXT="}" ID="ID_1672939529" CREATED="1441148712123" MODIFIED="1441148713216"/>
 </node>
-<node TEXT="Quick Sort" ID="ID_602844682" CREATED="1440106184222" MODIFIED="1440106186552"/>
+<node TEXT="Merge Sort Analysis" ID="ID_721502050" CREATED="1442362404488" MODIFIED="1442362411272">
+<node TEXT="Is the sort stable?" ID="ID_339129832" CREATED="1442362411281" MODIFIED="1442362417283"/>
+<node TEXT="Is the sort in place?" ID="ID_1930037412" CREATED="1442362417781" MODIFIED="1442362421862"/>
+<node TEXT="What order is the algorithm?" ID="ID_931881745" CREATED="1442362425316" MODIFIED="1442362431184"/>
+</node>
+<node TEXT="Quick Sort" ID="ID_602844682" CREATED="1440106184222" MODIFIED="1442843041893">
+<attribute NAME="textbook" VALUE="14-06"/>
+<node TEXT="A \emph{pivot} can be chosen in $O(1)$ time" ID="ID_705647566" CREATED="1442362572750" MODIFIED="1442362620968"/>
+<node TEXT="A list can be partitioned into the set less than the pivot and the set greater than the pivot in $O(n)$ time" ID="ID_957851132" CREATED="1442362621861" MODIFIED="1442362797643"/>
+<node TEXT="A list of size  is sorted" ID="ID_928723622" CREATED="1442362691611" MODIFIED="1442362741333"/>
+</node>
+<node TEXT="Quick Sort Code" ID="ID_86743615" CREATED="1442362742393" MODIFIED="1442362747138">
+<node TEXT="Use these ideas to build a $O(n \log n)$ algorithm" ID="ID_1289966357" CREATED="1442362747149" MODIFIED="1442362769373"/>
+<node TEXT="If you don&apos;t choose the pivot well this is $O(n^2)$" ID="ID_512675177" CREATED="1442362769855" MODIFIED="1442362789941"/>
+</node>
+<node TEXT="Quick Sort Code - Choose Pivot" ID="ID_1080338287" CREATED="1442362799839" MODIFIED="1442362809961"/>
+<node TEXT="Quick Sort Code - Partition" ID="ID_1422787578" CREATED="1442362810742" MODIFIED="1442362820753"/>
+<node TEXT="Quick Sort Code" ID="ID_1311511960" CREATED="1442362825558" MODIFIED="1442362828888"/>
+<node TEXT="Quick Sort Analysis" ID="ID_1935187692" CREATED="1442377664814" MODIFIED="1442377681168">
+<node TEXT="Is the sort stable?" ID="ID_1682685243" CREATED="1442377681183" MODIFIED="1442377686355"/>
+<node TEXT="Is the sort in place?" ID="ID_612155386" CREATED="1442377687366" MODIFIED="1442377691295"/>
+<node TEXT="What order is the algorithm?" ID="ID_837878380" CREATED="1442377691782" MODIFIED="1442377696894"/>
+</node>
 </node>
 </node>
 </node>
