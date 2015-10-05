@@ -95,6 +95,10 @@
 </node>
 </node>
 <node TEXT="Possible Methods (in C++)" ID="ID_887862921" CREATED="1440539530731" MODIFIED="1440539546259">
+<node TEXT="Overloading" ID="ID_1695323696" CREATED="1444050302459" MODIFIED="1444050314532">
+<node TEXT="Have multiple calls for the same function" ID="ID_1279328599" CREATED="1444050314542" MODIFIED="1444050328293"/>
+<node TEXT="Especially useful for operators" ID="ID_569773117" CREATED="1444050328783" MODIFIED="1444050341107"/>
+</node>
 <node TEXT="Template programming" LOCALIZED_STYLE_REF="styles.topic" ID="ID_1144395011" CREATED="1440539546264" MODIFIED="1440541149723">
 <node TEXT="A way to instruct the compiler how to create a container for any given type" ID="ID_542212647" CREATED="1440539554232" MODIFIED="1440539571977"/>
 <node TEXT="This is the technique used in the Standard Template Library" ID="ID_541726780" CREATED="1440539572251" MODIFIED="1440539588568"/>
