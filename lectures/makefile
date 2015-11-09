@@ -1,4 +1,4 @@
-all: 01-Introduction.pdf 02-Recursion.pdf 03-SortingSearching.pdf AdvancedFileIO.pdf 04-DataStructureConcepts.pdf
+all: 01-Introduction.pdf 02-Recursion.pdf 03-SortingSearching.pdf AdvancedFileIO.pdf 04-DataStructureConcepts.pdf 05-OtherLinearDataStructures.pdf
 
 .PHONY: clean all
 
