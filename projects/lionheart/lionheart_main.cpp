@@ -55,6 +55,7 @@ int main(int argc, char** argv)
 {
 
   auto players = lionheart::getPlayers();
+  std::cout << "Tournament will have " << players.size() << " players" << std::endl;
   std::shared_ptr<lionheart::Tournament> tournament;
   std::shared_ptr<lionheart::Player> keyPlayer;
 

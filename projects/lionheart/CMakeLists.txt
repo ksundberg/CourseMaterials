@@ -47,7 +47,14 @@ set(Player_srcs
   Player/HiddenDragon.hpp
   Player/ExamplePlayer.hpp
   Player/ExamplePlayer.cpp
-  )
+
+  Player/ChrisIrvine.cpp
+  Player/ChrisIrvine.hpp
+  Player/BrandonSmith.hpp
+  Player/BrandonSmith.cpp
+
+
+)
 
 set(PlayerIncludes)
 set(PlayerPushBacks)
