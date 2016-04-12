@@ -26,13 +26,13 @@ namespace lionheart
            std::shared_ptr<const Map> map,
            std::shared_ptr<const Paths> infantryPaths,
            std::shared_ptr<const Paths> mountedPaths)
-          : map(map)
-            ,infantryPaths(infantryPaths)
-            ,mountedPaths(mountedPaths)
-          , player({ p1, p2 })
-          , units()
-          , crown()
-          , state(NOT_STARTED)
+        : map(map),
+          infantryPaths(infantryPaths),
+          mountedPaths(mountedPaths),
+          player({{p1, p2}}),
+          units(),
+          crown(),
+          state(NOT_STARTED)
       {
       }
       std::shared_ptr<Player> winner()const;

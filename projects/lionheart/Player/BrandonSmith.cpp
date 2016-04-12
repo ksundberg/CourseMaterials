@@ -33,8 +33,8 @@ namespace
     {
       for (int j = 0; j < 11; ++j)
       {
-        if ((report.things[valid_loc((row - 1) + i)][valid_loc((col - 5) + j)]
-               .type == lionheart::SituationReport::ENEMY))
+        if (report.things[valid_loc((row - 1) + i)][valid_loc((col - 5) + j)]
+               .type == lionheart::SituationReport::ENEMY)
           return false;
       }
     }
@@ -43,8 +43,8 @@ namespace
     {
       for (int j = 0; j < 3; ++j)
       {
-        if ((report.things[valid_loc((row - 5) + i)][valid_loc((col - 1) + j)]
-               .type == lionheart::SituationReport::ENEMY))
+        if (report.things[valid_loc((row - 5) + i)][valid_loc((col - 1) + j)]
+               .type == lionheart::SituationReport::ENEMY)
           return false;
       }
     }

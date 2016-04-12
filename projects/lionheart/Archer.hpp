@@ -14,7 +14,7 @@ namespace lionheart
       AttackType attackType() const override{return AttackType::ARROW;}
       int getMoveSpeed() const override{return 1;}
       virtual bool inRange(Map::Location const &) const override;
-      UnitType getType() const{return type;}
+      UnitType getType() const override {return type;}
       const static UnitType type = ARCHER;
   };
 }

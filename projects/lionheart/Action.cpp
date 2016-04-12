@@ -8,7 +8,7 @@ namespace lionheart
   {
     public:
       MoveImpl(int d):ActionImpl(),dist(d){}
-      std::unique_ptr<ActionImpl> clone() const
+      std::unique_ptr<ActionImpl> clone() const override
       {
         return std::unique_ptr<ActionImpl>(new MoveImpl(dist));
       }

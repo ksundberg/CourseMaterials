@@ -168,7 +168,7 @@ bool lionheart::Game::canContinue() const
 void lionheart::Game::start()
 {
   auto boxes = map->getBoxes();
-  std::array<Direction,2> facing = {Direction::EAST,Direction::WEST};
+  std::array<Direction,2> facing = {{Direction::EAST,Direction::WEST}};
   for(int i=0;i<2;++i)
   {
     // Create crowns
