@@ -72,7 +72,7 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::Swiss::run()
   auto infantryPaths = std::make_shared<lionheart::Paths>(fortMap, 1);
   auto mountedPaths = std::make_shared<lionheart::Paths>(fortMap, 5);
   oldBrackets[Record()] = players;
-  auto rounds = static_cast<int>(std::log2(players.size()) + 1);
+  auto rounds = static_cast<int>(log2(players.size()) + 1);
   for(auto round=0;round<rounds;++round)
   {
     std::map<Record, std::vector<std::shared_ptr<Player>>> brackets;

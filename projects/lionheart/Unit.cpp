@@ -118,3 +118,38 @@ bool lionheart::Unit::inRange(Map::Location const &target) const
   return true;
 }
 
+
+std::ostream &::lionheart::serialize(std::ostream& os, const Direction& placement) {
+  switch(placement){
+    case Direction::NORTH:
+      return os << 0;
+    case Direction::EAST:
+      return os << 1;
+    case Direction::SOUTH:
+      return os << 2;
+    case Direction::WEST:
+      return os << 3;
+  }
+  return os;
+}
+
+std::istream &::lionheart::deserialize(std::istream& is, Direction& placement) {
+  int dir;
+  is >> dir;
+  switch(dir){
+    case 0:
+      placement = Direction::NORTH;
+      break;
+    case 1:
+      placement = Direction::EAST;
+      break;
+    case 2:
+      placement = Direction::SOUTH;
+      break;
+    case 3:
+      placement = Direction::WEST;
+      break;
+    default:break;
+  }
+  return is;
+}

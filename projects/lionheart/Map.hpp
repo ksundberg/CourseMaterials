@@ -54,7 +54,7 @@ public:
     bool isValid;
     friend Map;
   };
-  Map(std::vector<std::vector<Tile>> tiles, std::vector<StartBox> boxes);
+  Map(std::string name, std::vector<std::vector<Tile>> tiles, std::vector<StartBox> boxes);
   Tile operator[](Location const &) const;
   Location at(int row, int col) const;
   std::vector<StartBox> getBoxes() const
@@ -71,10 +71,12 @@ public:
       return 0;
     return tiles[0].size();
   }
+  std::string getName() const { return name; }
 
 private:
   std::vector<std::vector<Tile>> tiles;
   std::vector<StartBox> boxes;
+  std::string name;
 };
 
 std::shared_ptr<Map const> makeMap(std::string);
