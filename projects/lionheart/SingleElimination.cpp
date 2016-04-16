@@ -45,7 +45,7 @@ std::vector<std::shared_ptr<lionheart::Player>> lionheart::SingleElimination::ru
       {
         auto tie = game.tiebreaker();
         if (tie) {
-        std::cout << winner->getBlazon().name << " wins by tie break!" << std::endl;
+        std::cout << tie->getBlazon().name << " wins by tie break!" << std::endl;
           winners.push_back(tie);
         }
         else
