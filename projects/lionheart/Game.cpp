@@ -198,7 +198,7 @@ void lionheart::Game::start()
     for (int j = 0; j < NUM_INFANTRY; ++j)
     {
       auto infantry = createUnit<Infantry>(
-        NUM_KNIGHTS + NUM_ARCHERS + NUM_INFANTRY + j + 1, player[i], map, units[i], boxes[i], facing[i]);
+        NUM_KNIGHTS + NUM_ARCHERS  + j + 1, player[i], map, units[i], boxes[i], facing[i]);
       addUnit(units[i], infantry);
     }
   }
