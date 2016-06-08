@@ -116,8 +116,6 @@ lionheart::Paths::Paths(std::shared_ptr<const Map> const& map, int maxSpeed) : v
       outFile << " " << entry.second << std::endl;
     }
 
-    std::cout << "vertex finished" << std::endl;
-
     //nextAction
     outFile << nextAction.size() << std::endl;
     for(auto list : nextAction){
@@ -128,8 +126,6 @@ lionheart::Paths::Paths(std::shared_ptr<const Map> const& map, int maxSpeed) : v
       outFile << std::endl;
     }
 
-    std::cout << "nextAction finished" << std::endl;
-
     //pathLength
     outFile << pathLength.size() << std::endl;
     for(auto list : pathLength){
@@ -139,8 +135,6 @@ lionheart::Paths::Paths(std::shared_ptr<const Map> const& map, int maxSpeed) : v
       }
       outFile << std::endl;
     }
-
-    std::cout << "pathLength finished" << std::endl;
 
     outFile.close();
   }

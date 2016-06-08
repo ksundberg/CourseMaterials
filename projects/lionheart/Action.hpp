@@ -3,6 +3,8 @@
 
 #include "Map.hpp"
 #include "Unit.hpp"
+#include <iostream>
+
 namespace lionheart
 {
 struct Placement
@@ -16,12 +18,13 @@ std::istream & deserialize(std::istream& is, Placement& placement);
 class ActionImpl
 {
 public:
-  virtual ~ActionImpl()=default;
-  virtual bool apply(std::shared_ptr<const Map> const & map,
-                  Unit & actor,
-                  std::vector<std::shared_ptr<Unit>> & allies,
-                  std::vector<std::shared_ptr<Unit>> & enemies)=0;
-  virtual std::unique_ptr<ActionImpl> clone() const =0;
+  virtual ~ActionImpl() = default;
+  virtual bool apply(std::shared_ptr<const Map> const &map,
+                     Unit &actor,
+                     std::vector<std::shared_ptr<Unit>> &allies,
+                     std::vector<std::shared_ptr<Unit>> &enemies) = 0;
+  virtual std::unique_ptr<ActionImpl> clone() const = 0;
+  virtual void serialize(std::ostream &) const = 0;
 };
 
 
