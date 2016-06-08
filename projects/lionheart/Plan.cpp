@@ -1,6 +1,8 @@
 #include "Plan.hpp"
 #include <limits>
+#include <fstream>
 #include <algorithm>
+#include <iostream>
 
 namespace
 {
@@ -37,10 +39,118 @@ namespace
   }
 }
 
+std::ostream& lionheart::serialize(std::ostream& os, const PathVertex& pathVertex){
+  serialize(os, pathVertex.location);
+  os << " ";
+  serialize(os, pathVertex.facing);
+  return os;
+}
+std::istream& lionheart::deserialize(std::istream& is, PathVertex& pathVertex){
+  deserialize(is, pathVertex.location);
+  deserialize(is, pathVertex.facing);
+  return is;
+}
+
 lionheart::Paths::Paths(std::shared_ptr<const Map> const& map, int maxSpeed) : vertex(), nextAction(), pathLength()
 {
+  auto pathDataFilename = map->getName() + "." + std::to_string(maxSpeed) + ".path";
+
+  //Check for cached data and load
+  std::ifstream pathDataFile(pathDataFilename);
+  if (pathDataFile.is_open()) {
+    //load the data
+    std::cout << "Reading path data from " << pathDataFilename << std::endl;
+
+    //vertex
+    int numVertexes;
+    pathDataFile >> numVertexes;
+    for(int i = 0; i < numVertexes; i++){
+      PathVertex pathVertex;
+      deserialize(pathDataFile, pathVertex);
+      int num;
+      pathDataFile >> num;
+      vertex[pathVertex] = num;
+    }
+
+    //nextAction
+    int numActionLists;
+    pathDataFile >> numActionLists;
+    for(int i = 0; i < numActionLists; i++){
+      nextAction.emplace_back();
+      int length;
+      pathDataFile >> length;
+      for(int j = 0; j < length; j++){
+        Action action;
+        deserialize(pathDataFile, action);
+        nextAction[i].push_back(action);
+      }
+    }
+
+    //pathLength
+    int numPathLengthLists;
+    pathDataFile >> numPathLengthLists;
+    for(int i = 0; i < numPathLengthLists; i++){
+      pathLength.emplace_back();
+      int length;
+      pathDataFile >> length;
+      for(int j = 0; j < length; j++){
+        int dist;
+        pathDataFile >> dist;
+        pathLength[i].push_back(dist);
+      }
+    }
+
+    pathDataFile.close();
+  } else {
+    calculate(map, maxSpeed);
+
+    //Save cached data
+
+    std::cout << "Writing path data to " << pathDataFilename << std::endl;
+    std::ofstream outFile(pathDataFilename);
+
+    //vertex
+    outFile << vertex.size() << std::endl;
+    for(auto entry : vertex){
+      serialize(outFile, entry.first);
+      outFile << " " << entry.second << std::endl;
+    }
+
+    std::cout << "vertex finished" << std::endl;
+
+    //nextAction
+    outFile << nextAction.size() << std::endl;
+    for(auto list : nextAction){
+      outFile << list.size() << " ";
+      for(auto action : list){
+        serialize(outFile, action) << " ";
+      }
+      outFile << std::endl;
+    }
+
+    std::cout << "nextAction finished" << std::endl;
+
+    //pathLength
+    outFile << pathLength.size() << std::endl;
+    for(auto list : pathLength){
+      outFile << list.size() << " ";
+      for(auto length : list){
+        outFile << length << " ";
+      }
+      outFile << std::endl;
+    }
+
+    std::cout << "pathLength finished" << std::endl;
+
+    outFile.close();
+  }
+}
+
+
+void lionheart::Paths::calculate(std::shared_ptr<const Map> const &map, int maxSpeed){
+  //calculate the data
   std::vector<lionheart::Direction> const dirs{
-    lionheart::Direction::NORTH, lionheart::Direction::EAST, lionheart::Direction::SOUTH, lionheart::Direction::WEST};
+      lionheart::Direction::NORTH, lionheart::Direction::EAST, lionheart::Direction::SOUTH, lionheart::Direction::WEST};
   //Create all vertexes
   auto vNum = 0;
   for (int r = 0; r < static_cast<int>(map->rows()); ++r)

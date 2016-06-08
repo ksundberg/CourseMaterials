@@ -12,6 +12,8 @@ namespace lionheart
         Placement location;
         Direction facing;
       };
+  std::ostream& serialize(std::ostream& os, const PathVertex& pathVertex);
+  std::istream& deserialize(std::istream& is, PathVertex& pathVertex);
 
   inline bool operator==(PathVertex const & a,PathVertex const & b)
   {
@@ -56,6 +58,8 @@ namespace lionheart
       std::map<PathVertex,int> vertex;
       std::vector<std::vector<Action>> nextAction;
       std::vector<std::vector<int>> pathLength;
+
+    void calculate(const std::shared_ptr<const Map> &map, int maxSpeed);
   };
   class Plan
   {

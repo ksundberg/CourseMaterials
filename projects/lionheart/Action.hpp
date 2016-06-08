@@ -10,6 +10,8 @@ struct Placement
   int row;
   int col;
 };
+std::ostream & serialize(std::ostream& os, const Placement& placement);
+std::istream & deserialize(std::istream& is, Placement& placement);
 
 class ActionImpl
 {
@@ -48,6 +50,8 @@ public:
     return false;
   }
 };
+std::ostream& serialize(std::ostream& os, const Action& action);
+std::istream& deserialize(std::istream& is, Action& placement);
 
 Action turn(Direction d);
 Action move(int distance);

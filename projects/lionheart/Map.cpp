@@ -68,14 +68,15 @@ std::shared_ptr<lionheart::Map const> lionheart::makeMap(std::string filename)
   auto boxes = readBoxes(fin);
   auto tiles = readTiles(fin,extent.first,extent.second);
   fin.close();
-  auto m = std::make_shared<lionheart::Map>(tiles,boxes);
+  auto m = std::make_shared<lionheart::Map>(filename,tiles,boxes);
     return m;
 }
 
-lionheart::Map::Map(std::vector<std::vector<lionheart::Tile>> tiles,
+lionheart::Map::Map(std::string name, std::vector<std::vector<lionheart::Tile>> tiles,
                            std::vector<lionheart::StartBox> boxes)
     : tiles(tiles)
     , boxes(boxes)
+    , name(name)
 {
 }
 

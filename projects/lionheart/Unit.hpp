@@ -12,6 +12,9 @@ enum class Direction
   SOUTH,
   WEST
 };
+std::ostream & serialize(std::ostream& os, const Direction& placement);
+std::istream & deserialize(std::istream& is, Direction& placement);
+
 enum class AttackType
 {
   ARROW,AXE
