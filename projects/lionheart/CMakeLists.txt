@@ -52,6 +52,8 @@ set(Player_srcs
   Player/ChrisIrvine.hpp
   Player/BrandonSmith.hpp
   Player/BrandonSmith.cpp
+  Player/MathewWarenski.hpp
+  Player/MathewWarenski.cpp
 
 
 )
