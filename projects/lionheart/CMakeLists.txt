@@ -150,6 +150,7 @@ set(Test_srcs
   test/MapTest.cpp
   test/PathsTest.cpp
   test/UnitTest.cpp
+  test/UniqueBlazonTest.cpp
   test/test_main.cpp
   Map.cpp
   )
@@ -160,6 +161,7 @@ endif(PNG_FOUND)
 list(APPEND Test_srcs ${Display_srcs})
 list(APPEND Test_srcs ${Unit_srcs})
 list(APPEND Test_srcs ${Aux_srcs})
+list(APPEND Test_srcs ${Player_srcs})
 add_executable(lionheart_test ${Test_srcs})
 target_link_libraries(lionheart_test ${PNG_LIBRARIES})
 
