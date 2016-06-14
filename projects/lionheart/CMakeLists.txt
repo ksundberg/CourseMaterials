@@ -142,7 +142,9 @@ list(APPEND lionheart_srcs ${Display_srcs})
 list(APPEND lionheart_srcs ${Unit_srcs})
 list(APPEND lionheart_srcs ${Player_srcs})
 add_executable(lionheart ${lionheart_srcs})
-target_link_libraries(lionheart ${PNG_LIBRARIES})
+if(PNG_FOUND)
+  target_link_libraries(lionheart ${PNG_LIBRARIES})
+endif()
 ###############################
 # Developer Tests
 set(Test_srcs
@@ -163,5 +165,7 @@ list(APPEND Test_srcs ${Unit_srcs})
 list(APPEND Test_srcs ${Aux_srcs})
 list(APPEND Test_srcs ${Player_srcs})
 add_executable(lionheart_test ${Test_srcs})
-target_link_libraries(lionheart_test ${PNG_LIBRARIES})
+if(PNG_FOUND)
+  target_link_libraries(lionheart_test ${PNG_LIBRARIES})
+endif()
 
