@@ -3,618 +3,627 @@
 
 namespace
 {
-  // globals
-  auto id = 0;
-  bool west = true; // what side of the game board am I playing on
-  int numberofturns = 0;
-  auto whattodo = 0;
-  lionheart::Placement ekingloc;
-  lionheart::Placement akingloc;
-  lionheart::Placement defloc;
-  lionheart::Direction defdir;
+// globals
+auto id = 0;
+bool west = true; // what side of the game board am I playing on
+int numberofturns = 0;
+auto whattodo = 0;
+lionheart::Placement ekingloc;
+lionheart::Placement akingloc;
+lionheart::Placement defloc;
+lionheart::Direction defdir;
 
-  // helper functions
-  // makes sure you don't call for information outside the report
-  int valid_loc(int y)
+// helper functions
+// makes sure you don't call for information outside the report
+int valid_loc(int y)
+{
+  if (y < 0)
+    return 0;
+  else if (y > 29)
+    return 29;
+  else
+    return y;
+}
+
+// check area for enemies
+bool safe(int row, int col, struct lionheart::SituationReport report)
+{
+  // checks vertical space for enemies
+  for (int i = 0; i < 3; ++i)
   {
-    if (y < 0)
-      return 0;
-    else if (y > 29)
-      return 29;
-    else
-      return y;
+    for (int j = 0; j < 11; ++j)
+    {
+      if (report.things[valid_loc((row - 1) + i)][valid_loc((col - 5) + j)]
+              .type == lionheart::SituationReport::ENEMY)
+        return false;
+    }
   }
-
-  // check area for enemies
-  bool safe(int row, int col, struct lionheart::SituationReport report)
+  // checks horizontal space for enemies
+  for (int i = 0; i < 11; ++i)
   {
-    // checks vertical space for enemies
-    for (int i = 0; i < 3; ++i)
+    for (int j = 0; j < 3; ++j)
     {
-      for (int j = 0; j < 11; ++j)
-      {
-        if (report.things[valid_loc((row - 1) + i)][valid_loc((col - 5) + j)]
-               .type == lionheart::SituationReport::ENEMY)
-          return false;
-      }
+      if (report.things[valid_loc((row - 5) + i)][valid_loc((col - 1) + j)]
+              .type == lionheart::SituationReport::ENEMY)
+        return false;
     }
-    // checks horizontal space for enemies
-    for (int i = 0; i < 11; ++i)
-    {
-      for (int j = 0; j < 3; ++j)
-      {
-        if (report.things[valid_loc((row - 5) + i)][valid_loc((col - 1) + j)]
-               .type == lionheart::SituationReport::ENEMY)
-          return false;
-      }
-    }
+  }
+  return true;
+}
+
+// checks for enemy archers
+bool check4archer(int r, int c, struct lionheart::SituationReport report)
+{
+  if ((report.things[r][c].unit == lionheart::UnitType::ARCHER) &&
+      (report.things[r][c].type == lionheart::SituationReport::ENEMY))
+  {
     return true;
   }
+  else
+    return false;
+}
+// is enemy king next to the wall
 
-  // checks for enemy archers
-  bool check4archer(int r, int c, struct lionheart::SituationReport report)
+bool eking_stupid() // is the enemy king right by the wall
+{
+  if ((west) && ((ekingloc.col == 27) || (ekingloc.col == 22)))
+    return true;
+  if ((!west) && ((ekingloc.col == 2) || (ekingloc.col == 7)))
+    return true;
+  else
+    return false;
+}
+
+// can I shoot the enemy king over the wall
+bool eking_indanger() // is the enemy king close enough to the wall to shoot?
+{
+  if (west)
   {
-    if ((report.things[r][c].unit == lionheart::UnitType::ARCHER) &&
-        (report.things[r][c].type == lionheart::SituationReport::ENEMY))
-    {
+    if (ekingloc.col == 26)
       return true;
-    }
+    if ((ekingloc.col == 23) && ((ekingloc.row != 14) || (ekingloc.row != 15)))
+      return true;
     else
       return false;
   }
-  // is enemy king next to the wall
-
-  bool eking_stupid() // is the enemy king right by the wall
+  if (!west)
   {
-    if ((west) && ((ekingloc.col == 27) || (ekingloc.col == 22))) return true;
-    if ((!west) && ((ekingloc.col == 2) || (ekingloc.col == 7)))
+    if (ekingloc.col == 3)
+      return true;
+    if ((ekingloc.col == 6) && ((ekingloc.row != 14) || (ekingloc.row != 15)))
       return true;
     else
       return false;
   }
-
-  // can I shoot the enemy king over the wall
-  bool eking_indanger() // is the enemy king close enough to the wall to shoot?
+  return false;
+}
+// is there an archer by my back wall
+bool mykingstupid(struct lionheart::SituationReport report) // this function
+                                                            // helps if
+                                                            // someone else
+                                                            // knows how to
+                                                            // shoot over
+                                                            // walls
+{
+  for (auto j = 8; j < 21; ++j)
   {
-    if (west)
+    if ((west) && (check4archer(j, 0, report)))
     {
-      if (ekingloc.col == 26) return true;
-      if ((ekingloc.col == 23) &&
-          ((ekingloc.row != 14) || (ekingloc.row != 15)))
-        return true;
-      else
-        return false;
+      return true;
     }
+    if ((!west) && (check4archer(j, 29, report)))
+    {
+      return true;
+    }
+  }
+  for (auto i = 1; i < 4; ++i)
+  {
+    if ((west) && (check4archer(8, i, report)))
+    {
+      return true;
+    }
+    if ((!west) && (check4archer(8, (i + 25), report)))
+    {
+      return true;
+    }
+    if ((west) && (check4archer(21, i, report)))
+    {
+      return true;
+    }
+    if ((!west) && (check4archer(21, (i + 25), report)))
+    {
+      return true;
+    }
+  }
+  return false;
+}
+// is there an enemy in my fort
+bool enemyinthebox(struct lionheart::SituationReport report)
+{
+
+  for (auto i = 0; i < 10; ++i)
+  {
     if (!west)
     {
-      if (ekingloc.col == 3) return true;
-      if ((ekingloc.col == 6) && ((ekingloc.row != 14) || (ekingloc.row != 15)))
-        return true;
-      else
-        return false;
-    }
-    return false;
-  }
-  // is there an archer by my back wall
-  bool mykingstupid(struct lionheart::SituationReport report) // this function
-                                                              // helps if
-                                                              // someone else
-                                                              // knows how to
-                                                              // shoot over
-                                                              // walls
-  {
-    for (auto j = 8; j < 21; ++j)
-    {
-      if ((west) && (check4archer(j, 0, report)))
+      for (auto j = 0; j < 6; ++j)
       {
-        return true;
-      }
-      if ((!west) && (check4archer(j, 29, report)))
-      {
-        return true;
-      }
-    }
-    for (auto i = 1; i < 4; ++i)
-    {
-      if ((west) && (check4archer(8, i, report)))
-      {
-        return true;
-      }
-      if ((!west) && (check4archer(8, (i + 25), report)))
-      {
-        return true;
-      }
-      if ((west) && (check4archer(21, i, report)))
-      {
-        return true;
-      }
-      if ((!west) && (check4archer(21, (i + 25), report)))
-      {
-        return true;
-      }
-    }
-    return false;
-  }
-  // is there an enemy in my fort
-  bool enemyinthebox(struct lionheart::SituationReport report)
-  {
-
-    for (auto i = 0; i < 10; ++i)
-    {
-      if (!west)
-      {
-        for (auto j = 0; j < 6; ++j)
+        if (report.things[(i + 10)][(j + 22)].type ==
+            lionheart::SituationReport::ENEMY)
         {
-          if (report.things[(i + 10)][(j + 22)].type ==
-              lionheart::SituationReport::ENEMY)
-          {
-            return true;
-          }
-        }
-      }
-      else if (west)
-      {
-        for (auto j = 0; j < 6; ++j)
-        {
-          if (report.things[(i + 10)][(j + 2)].type ==
-              lionheart::SituationReport::ENEMY)
-            return true;
+          return true;
         }
       }
     }
-    return false;
-  }
-
-  // archers shoot over wall
-  lionheart::Action shootoverwall(lionheart::Unit const& u,
-                                  lionheart::SituationReport report,
-                                  lionheart::Plan p)
-  {
-    auto l = u.getLocation();
-    auto c = l.col;
-    auto r = l.row;
-
-    if (p.hasAttack()) return p.attackEnemy();
-    if (enemyinthebox(report))
+    else if (west)
     {
-      if ((west) && (c < 10)) return p.attackEnemy();
-      if ((!west && (c > 20))) return p.attackEnemy();
-    }
-    if (eking_stupid() || eking_indanger())
-    {
-      if (west == true)
+      for (auto j = 0; j < 6; ++j)
       {
-        if ((ekingloc.col == 26) || (ekingloc.col == 27))
+        if (report.things[(i + 10)][(j + 2)].type ==
+            lionheart::SituationReport::ENEMY)
+          return true;
+      }
+    }
+  }
+  return false;
+}
+
+// archers shoot over wall
+lionheart::Action shootoverwall(lionheart::Unit const &u,
+                                lionheart::SituationReport report,
+                                lionheart::Plan p)
+{
+  auto l = u.getLocation();
+  auto c = l.col;
+  auto r = l.row;
+
+  if (p.hasAttack())
+    return p.attackEnemy();
+  if (enemyinthebox(report))
+  {
+    if ((west) && (c < 10))
+      return p.attackEnemy();
+    if ((!west && (c > 20)))
+      return p.attackEnemy();
+  }
+  if (eking_stupid() || eking_indanger())
+  {
+    if (west == true)
+    {
+      if ((ekingloc.col == 26) || (ekingloc.col == 27))
+      {
+        if ((c != 29) || (r != ekingloc.row))
         {
-          if ((c != 29) || (r != ekingloc.row))
+          if ((r > 14) && (c < 26))
           {
-            if ((r > 14) && (c < 26))
-            {
-              return p.moveToLocation(23, 27);
-            }
-            else if ((r < 15) && (c < 26))
-            {
-              return p.moveToLocation(4, 27);
-            }
-            else
-              return p.moveToLocation(ekingloc.row, 29);
+            return p.moveToLocation(23, 27);
           }
-          else if (u.getFacing() != lionheart::Direction::WEST)
+          else if ((r < 15) && (c < 26))
           {
-            return turn(lionheart::Direction::WEST);
+            return p.moveToLocation(4, 27);
           }
           else
-            return lionheart::attack(ekingloc);
+            return p.moveToLocation(ekingloc.row, 29);
         }
-        else if ((ekingloc.col == 22) || (ekingloc.col == 23))
+        else if (u.getFacing() != lionheart::Direction::WEST)
         {
-          if ((c != 20) || (r != ekingloc.row))
-          {
-            return p.moveToLocation(ekingloc.row, 20);
-          }
-          if (u.getFacing() != lionheart::Direction::EAST)
-          {
-            return turn(lionheart::Direction::EAST);
-          }
-          return lionheart::attack(ekingloc);
+          return turn(lionheart::Direction::WEST);
         }
+        else
+          return lionheart::attack(ekingloc);
       }
-      else if (!west)
+      else if ((ekingloc.col == 22) || (ekingloc.col == 23))
       {
-        if ((ekingloc.col == 2) || (ekingloc.col == 3))
+        if ((c != 20) || (r != ekingloc.row))
         {
-          if ((c != 0) || (r != ekingloc.row))
-          {
-            if ((r >= 15) && (c > 2))
-            {
-              return p.moveToLocation(25, 2);
-            }
-            else if ((r < 15) && (c > 2))
-            {
-              return p.moveToLocation(4, 2);
-            }
-            else
-              return p.moveToLocation(ekingloc.row, 0);
-          }
-          if (u.getFacing() != lionheart::Direction::EAST)
-          {
-            return turn(lionheart::Direction::EAST);
-          }
-          return lionheart::attack(ekingloc);
+          return p.moveToLocation(ekingloc.row, 20);
         }
-        if ((ekingloc.col == 6) || (ekingloc.col == 8))
+        if (u.getFacing() != lionheart::Direction::EAST)
         {
-          if ((c != 9) || (r != ekingloc.row))
-          {
-            return p.moveToLocation(ekingloc.row, 9);
-          }
-          if (u.getFacing() != lionheart::Direction::WEST)
-          {
-            return turn(lionheart::Direction::WEST);
-          }
-          return lionheart::attack(ekingloc);
+          return turn(lionheart::Direction::EAST);
         }
+        return lionheart::attack(ekingloc);
       }
     }
-    if (p.hasAttack()) return p.attackEnemy();
-    if (enemyinthebox(report)) return p.attackEnemy();
-    return p.moveToEnemyCrown();
-  }
-  // finds location of both kings
-  void find_kings(struct lionheart::SituationReport report)
-  {
-    for (auto i = 0; i < 30; ++i)
+    else if (!west)
     {
-      for (auto j = 0; j < 30; ++j)
+      if ((ekingloc.col == 2) || (ekingloc.col == 3))
       {
-        if (report.things[i][j].unit == lionheart::UnitType::CROWN)
+        if ((c != 0) || (r != ekingloc.row))
         {
-          if (report.things[i][j].type == lionheart::SituationReport::ENEMY)
+          if ((r >= 15) && (c > 2))
           {
-            ekingloc.row = i;
-            ekingloc.col = j;
+            return p.moveToLocation(25, 2);
           }
-          if (report.things[i][j].type == lionheart::SituationReport::ALLY)
+          else if ((r < 15) && (c > 2))
           {
-            akingloc.row = i;
-            akingloc.col = j;
+            return p.moveToLocation(4, 2);
           }
+          else
+            return p.moveToLocation(ekingloc.row, 0);
         }
+        if (u.getFacing() != lionheart::Direction::EAST)
+        {
+          return turn(lionheart::Direction::EAST);
+        }
+        return lionheart::attack(ekingloc);
+      }
+      if ((ekingloc.col == 6) || (ekingloc.col == 8))
+      {
+        if ((c != 9) || (r != ekingloc.row))
+        {
+          return p.moveToLocation(ekingloc.row, 9);
+        }
+        if (u.getFacing() != lionheart::Direction::WEST)
+        {
+          return turn(lionheart::Direction::WEST);
+        }
+        return lionheart::attack(ekingloc);
       }
     }
   }
-
-  // sets the defensive position for each piece
-  void defpos(lionheart::Unit const& u, lionheart::SituationReport)
+  if (p.hasAttack())
+    return p.attackEnemy();
+  if (enemyinthebox(report))
+    return p.attackEnemy();
+  return p.moveToEnemyCrown();
+}
+// finds location of both kings
+void find_kings(struct lionheart::SituationReport report)
+{
+  for (auto i = 0; i < 30; ++i)
   {
-    if (!west)
+    for (auto j = 0; j < 30; ++j)
     {
-      switch (u.getId())
+      if (report.things[i][j].unit == lionheart::UnitType::CROWN)
       {
-      case 0:
-        defloc.row = 14;
-        defloc.col = 27;
-        break;
-
-      case 1:
-        defloc.row = 11;
-        defloc.col = 25;
-        break;
-      case 2:
-        defloc.row = 14;
-        defloc.col = 23;
-        break;
-      case 3:
-        defloc.row = 18;
-        defloc.col = 25;
-        break;
-      case 4:
-        defloc.row = 15;
-        defloc.col = 23;
-        break;
-      case 5:
-        defloc.row = 12;
-        defloc.col = 25;
-        break;
-      case 6:
-        defloc.row = 17;
-        defloc.col = 25;
-        break;
-
-      case 7:
-        defloc.row = 11;
-        defloc.col = 26;
-        break;
-      case 8:
-        defloc.row = 11;
-        defloc.col = 24;
-        break;
-      case 9:
-        defloc.row = 13;
-        defloc.col = 22;
-        break;
-      case 10:
-        defloc.row = 12;
-        defloc.col = 22;
-        break;
-      case 11:
-        defloc.row = 17;
-        defloc.col = 22;
-        break;
-      case 12:
-        defloc.row = 16;
-        defloc.col = 22;
-        break;
-      case 13:
-        defloc.row = 18;
-        defloc.col = 26;
-        break;
-      case 14:
-        defloc.row = 18;
-        defloc.col = 24;
-        break;
-
-      case 30:
-        defloc.row = 10;
-        defloc.col = 26;
-        break;
-      case 31:
-        defloc.row = 10;
-        defloc.col = 24;
-        break;
-      case 32:
-        defloc.row = 10;
-        defloc.col = 25;
-        break;
-      case 33:
-        defloc.row = 19;
-        defloc.col = 26;
-        break;
-      case 34:
-        defloc.row = 19;
-        defloc.col = 24;
-        break;
-      case 35:
-        defloc.row = 19;
-        defloc.col = 25;
-        break;
-      case 36:
-        defloc.row = 12;
-        defloc.col = 26;
-        break;
-      case 37:
-        defloc.row = 12;
-        defloc.col = 24;
-        break;
-
-      case 38:
-        defloc.row = 13;
-        defloc.col = 23;
-        break;
-      case 39:
-        defloc.row = 14;
-        defloc.col = 22;
-        break;
-      case 40:
-        defloc.row = 15;
-        defloc.col = 22;
-        break;
-      case 41:
-        defloc.row = 16;
-        defloc.col = 23;
-        break;
-      case 42:
-        defloc.row = 17;
-        defloc.col = 24;
-        break;
-      case 43:
-        defloc.row = 17;
-        defloc.col = 26;
-        break;
-      case 44:
-        defloc.row = 13;
-        defloc.col = 26;
-        break;
+        if (report.things[i][j].type == lionheart::SituationReport::ENEMY)
+        {
+          ekingloc.row = i;
+          ekingloc.col = j;
+        }
+        if (report.things[i][j].type == lionheart::SituationReport::ALLY)
+        {
+          akingloc.row = i;
+          akingloc.col = j;
+        }
       }
-    }
-    if (west) switch (u.getId())
-      {
-      case 0:
-        defloc.row = 14;
-        defloc.col = 2;
-        break;
-
-      case 1:
-        defloc.row = 11;
-        defloc.col = 4;
-        break;
-      case 2:
-        defloc.row = 14;
-        defloc.col = 6;
-        break;
-      case 3:
-        defloc.row = 18;
-        defloc.col = 4;
-        break;
-      case 4:
-        defloc.row = 15;
-        defloc.col = 6;
-        break;
-      case 5:
-        defloc.row = 12;
-        defloc.col = 4;
-        break;
-      case 6:
-        defloc.row = 17;
-        defloc.col = 4;
-        break;
-
-      case 7:
-        defloc.row = 11;
-        defloc.col = 3;
-        break;
-      case 8:
-        defloc.row = 11;
-        defloc.col = 5;
-        break;
-      case 9:
-        defloc.row = 13;
-        defloc.col = 7;
-        break;
-      case 10:
-        defloc.row = 12;
-        defloc.col = 7;
-        break;
-      case 11:
-        defloc.row = 17;
-        defloc.col = 7;
-        break;
-      case 12:
-        defloc.row = 16;
-        defloc.col = 7;
-        break;
-      case 13:
-        defloc.row = 18;
-        defloc.col = 3;
-        break;
-      case 14:
-        defloc.row = 18;
-        defloc.col = 5;
-        break;
-
-      case 30:
-        defloc.row = 10;
-        defloc.col = 3;
-        break;
-      case 31:
-        defloc.row = 10;
-        defloc.col = 5;
-        break;
-      case 32:
-        defloc.row = 10;
-        defloc.col = 4;
-        break;
-      case 33:
-        defloc.row = 19;
-        defloc.col = 3;
-        break;
-      case 34:
-        defloc.row = 19;
-        defloc.col = 5;
-        break;
-      case 35:
-        defloc.row = 19;
-        defloc.col = 4;
-        break;
-      case 36:
-        defloc.row = 12;
-        defloc.col = 3;
-        break;
-      case 37:
-        defloc.row = 12;
-        defloc.col = 5;
-        break;
-
-      case 38:
-        defloc.row = 13;
-        defloc.col = 6;
-        break;
-      case 39:
-        defloc.row = 14;
-        defloc.col = 7;
-        break;
-      case 40:
-        defloc.row = 15;
-        defloc.col = 7;
-        break;
-      case 41:
-        defloc.row = 16;
-        defloc.col = 6;
-        break;
-      case 42:
-        defloc.row = 17;
-        defloc.col = 5;
-        break;
-      case 43:
-        defloc.row = 17;
-        defloc.col = 3;
-        break;
-      case 44:
-        defloc.row = 13;
-        defloc.col = 3;
-        break;
-      }
-  }
-  // sets the defensive direction for each piece
-  void setdefdir(lionheart::Unit const& u, lionheart::SituationReport)
-  {
-    switch (u.getId())
-    {
-    case 1:
-    case 5:
-    case 7:
-    case 8:
-    case 32:
-      defdir = lionheart::Direction::NORTH;
-      break;
-    case 31:
-    case 34:
-    case 37:
-    case 42:
-      if (west)
-      {
-        defdir = lionheart::Direction::WEST;
-      }
-      if (!west)
-      {
-        defdir = lionheart::Direction::EAST;
-      }
-      break;
-    case 0:
-    case 3:
-    case 6:
-    case 13:
-    case 14:
-    case 35:
-      defdir = lionheart::Direction::SOUTH;
-      break;
-    case 30:
-    case 36:
-    case 10:
-    case 9:
-    case 38:
-    case 2:
-    case 4:
-    case 41:
-    case 39:
-    case 40:
-    case 12:
-    case 11:
-    case 43:
-    case 33:
-    case 44:
-      if (!west)
-      {
-        defdir = lionheart::Direction::WEST;
-      }
-      if (west)
-      {
-        defdir = lionheart::Direction::EAST;
-      }
-      break;
     }
   }
 }
 
+// sets the defensive position for each piece
+void defpos(lionheart::Unit const &u, lionheart::SituationReport)
+{
+  if (!west)
+  {
+    switch (u.getId())
+    {
+    case 0:
+      defloc.row = 14;
+      defloc.col = 27;
+      break;
+
+    case 1:
+      defloc.row = 11;
+      defloc.col = 25;
+      break;
+    case 2:
+      defloc.row = 14;
+      defloc.col = 23;
+      break;
+    case 3:
+      defloc.row = 18;
+      defloc.col = 25;
+      break;
+    case 4:
+      defloc.row = 15;
+      defloc.col = 23;
+      break;
+    case 5:
+      defloc.row = 12;
+      defloc.col = 25;
+      break;
+    case 6:
+      defloc.row = 17;
+      defloc.col = 25;
+      break;
+
+    case 7:
+      defloc.row = 11;
+      defloc.col = 26;
+      break;
+    case 8:
+      defloc.row = 11;
+      defloc.col = 24;
+      break;
+    case 9:
+      defloc.row = 13;
+      defloc.col = 22;
+      break;
+    case 10:
+      defloc.row = 12;
+      defloc.col = 22;
+      break;
+    case 11:
+      defloc.row = 17;
+      defloc.col = 22;
+      break;
+    case 12:
+      defloc.row = 16;
+      defloc.col = 22;
+      break;
+    case 13:
+      defloc.row = 18;
+      defloc.col = 26;
+      break;
+    case 14:
+      defloc.row = 18;
+      defloc.col = 24;
+      break;
+
+    case 15:
+      defloc.row = 10;
+      defloc.col = 26;
+      break;
+    case 16:
+      defloc.row = 10;
+      defloc.col = 24;
+      break;
+    case 17:
+      defloc.row = 10;
+      defloc.col = 25;
+      break;
+    case 18:
+      defloc.row = 19;
+      defloc.col = 26;
+      break;
+    case 19:
+      defloc.row = 19;
+      defloc.col = 24;
+      break;
+    case 20:
+      defloc.row = 19;
+      defloc.col = 25;
+      break;
+    case 21:
+      defloc.row = 12;
+      defloc.col = 26;
+      break;
+    case 22:
+      defloc.row = 12;
+      defloc.col = 24;
+      break;
+
+    case 23:
+      defloc.row = 13;
+      defloc.col = 23;
+      break;
+    case 24:
+      defloc.row = 14;
+      defloc.col = 22;
+      break;
+    case 25:
+      defloc.row = 15;
+      defloc.col = 22;
+      break;
+    case 26:
+      defloc.row = 16;
+      defloc.col = 23;
+      break;
+    case 27:
+      defloc.row = 17;
+      defloc.col = 24;
+      break;
+    case 28:
+      defloc.row = 17;
+      defloc.col = 26;
+      break;
+    case 29:
+      defloc.row = 13;
+      defloc.col = 26;
+      break;
+    }
+  }
+  if (west)
+    switch (u.getId())
+    {
+    case 0:
+      defloc.row = 14;
+      defloc.col = 2;
+      break;
+
+    case 1:
+      defloc.row = 11;
+      defloc.col = 4;
+      break;
+    case 2:
+      defloc.row = 14;
+      defloc.col = 6;
+      break;
+    case 3:
+      defloc.row = 18;
+      defloc.col = 4;
+      break;
+    case 4:
+      defloc.row = 15;
+      defloc.col = 6;
+      break;
+    case 5:
+      defloc.row = 12;
+      defloc.col = 4;
+      break;
+    case 6:
+      defloc.row = 17;
+      defloc.col = 4;
+      break;
+
+    case 7:
+      defloc.row = 11;
+      defloc.col = 3;
+      break;
+    case 8:
+      defloc.row = 11;
+      defloc.col = 5;
+      break;
+    case 9:
+      defloc.row = 13;
+      defloc.col = 7;
+      break;
+    case 10:
+      defloc.row = 12;
+      defloc.col = 7;
+      break;
+    case 11:
+      defloc.row = 17;
+      defloc.col = 7;
+      break;
+    case 12:
+      defloc.row = 16;
+      defloc.col = 7;
+      break;
+    case 13:
+      defloc.row = 18;
+      defloc.col = 3;
+      break;
+    case 14:
+      defloc.row = 18;
+      defloc.col = 5;
+      break;
+
+    case 15:
+      defloc.row = 10;
+      defloc.col = 3;
+      break;
+    case 16:
+      defloc.row = 10;
+      defloc.col = 5;
+      break;
+    case 17:
+      defloc.row = 10;
+      defloc.col = 4;
+      break;
+    case 18:
+      defloc.row = 19;
+      defloc.col = 3;
+      break;
+    case 19:
+      defloc.row = 19;
+      defloc.col = 5;
+      break;
+    case 20:
+      defloc.row = 19;
+      defloc.col = 4;
+      break;
+    case 21:
+      defloc.row = 12;
+      defloc.col = 3;
+      break;
+    case 22:
+      defloc.row = 12;
+      defloc.col = 5;
+      break;
+
+    case 23:
+      defloc.row = 13;
+      defloc.col = 6;
+      break;
+    case 24:
+      defloc.row = 14;
+      defloc.col = 7;
+      break;
+    case 25:
+      defloc.row = 15;
+      defloc.col = 7;
+      break;
+    case 26:
+      defloc.row = 16;
+      defloc.col = 6;
+      break;
+    case 27:
+      defloc.row = 17;
+      defloc.col = 5;
+      break;
+    case 28:
+      defloc.row = 17;
+      defloc.col = 3;
+      break;
+    case 29:
+      defloc.row = 13;
+      defloc.col = 3;
+      break;
+    }
+}
+// sets the defensive direction for each piece
+void setdefdir(lionheart::Unit const &u, lionheart::SituationReport)
+{
+  switch (u.getId())
+  {
+  case 1:
+  case 5:
+  case 7:
+  case 8:
+  case 17:
+    defdir = lionheart::Direction::NORTH;
+    break;
+  case 16:
+  case 19:
+  case 22:
+  case 27:
+    if (west)
+    {
+      defdir = lionheart::Direction::WEST;
+    }
+    if (!west)
+    {
+      defdir = lionheart::Direction::EAST;
+    }
+    break;
+  case 0:
+  case 3:
+  case 6:
+  case 13:
+  case 14:
+  case 20:
+    defdir = lionheart::Direction::SOUTH;
+    break;
+  case 15:
+  case 21:
+  case 10:
+  case 9:
+  case 23:
+  case 2:
+  case 4:
+  case 26:
+  case 24:
+  case 25:
+  case 12:
+  case 11:
+  case 28:
+  case 18:
+  case 29:
+    if (!west)
+    {
+      defdir = lionheart::Direction::WEST;
+    }
+    if (west)
+    {
+      defdir = lionheart::Direction::EAST;
+    }
+    break;
+  }
+}
+}
+
 // placement function
 lionheart::Placement lionheart::BrandonSmith::placeUnit(UnitType,
-                                                        StartBox const& box,
+                                                        StartBox const &box,
                                                         SituationReport report)
 {
   whattodo = 0;      // resets kings decision switch for each game.
   numberofturns = 0; // resets turns for each new game
   ++id;
-  if (id > 30) id = 1; // resets id for each new game
+  if (id > 30)
+    id = 1; // resets id for each new game
   auto westSide = (box.minCol < static_cast<int>(report.things[0].size() / 2));
   if (westSide)
   {
@@ -623,69 +632,69 @@ lionheart::Placement lionheart::BrandonSmith::placeUnit(UnitType,
     {
     // CROWN
     case 1:
-      return {14, 2};
+      return { 14, 2 };
     // KNIGHTS
     case 2:
-      return {11, 4};
+      return { 11, 4 };
     case 3:
-      return {14, 6};
+      return { 14, 6 };
     case 4:
-      return {18, 4};
+      return { 18, 4 };
     case 5:
-      return {15, 6};
+      return { 15, 6 };
     case 6:
-      return {12, 4};
+      return { 12, 4 };
     case 7:
-      return {17, 4};
+      return { 17, 4 };
     // ARCHERS
     case 8:
-      return {11, 3};
+      return { 11, 3 };
     case 9:
-      return {11, 5};
+      return { 11, 5 };
     case 10:
-      return {13, 7};
+      return { 13, 7 };
     case 11:
-      return {12, 7};
+      return { 12, 7 };
     case 12:
-      return {17, 7};
+      return { 17, 7 };
     case 13:
-      return {16, 7};
+      return { 16, 7 };
     case 14:
-      return {18, 3};
+      return { 18, 3 };
     case 15:
-      return {18, 5};
+      return { 18, 5 };
     // INFANTRY
     case 16:
-      return {10, 3};
+      return { 10, 3 };
     case 17:
-      return {10, 5};
+      return { 10, 5 };
     case 18:
-      return {10, 4};
+      return { 10, 4 };
     case 19:
-      return {19, 3};
+      return { 19, 3 };
     case 20:
-      return {19, 5};
+      return { 19, 5 };
     case 21:
-      return {19, 4};
+      return { 19, 4 };
     case 22:
-      return {12, 3};
+      return { 12, 3 };
     case 23:
-      return {12, 5};
+      return { 12, 5 };
 
     case 24:
-      return {13, 6};
+      return { 13, 6 };
     case 25:
-      return {14, 7};
+      return { 14, 7 };
     case 26:
-      return {15, 7};
+      return { 15, 7 };
     case 27:
-      return {16, 6};
+      return { 16, 6 };
     case 28:
-      return {17, 5};
+      return { 17, 5 };
     case 29:
-      return {17, 3};
+      return { 17, 3 };
     case 30:
-      return {13, 3};
+      return { 13, 3 };
     }
   }
   else
@@ -695,83 +704,85 @@ lionheart::Placement lionheart::BrandonSmith::placeUnit(UnitType,
     {
     // CROWN
     case 1:
-      return {14, 27};
+      return { 14, 27 };
     // KNIGHTS
     case 2:
-      return {11, 25};
+      return { 11, 25 };
     case 3:
-      return {14, 22};
+      return { 14, 22 };
     case 4:
-      return {18, 25};
+      return { 18, 25 };
     case 5:
-      return {15, 22};
+      return { 15, 22 };
     case 6:
-      return {12, 25};
+      return { 12, 25 };
     case 7:
-      return {17, 25};
+      return { 17, 25 };
     // ARCHERS
     case 8:
-      return {11, 24};
+      return { 11, 24 };
     case 9:
-      return {11, 26};
+      return { 11, 26 };
     case 10:
-      return {13, 22};
+      return { 13, 22 };
     case 11:
-      return {12, 22};
+      return { 12, 22 };
     case 12:
-      return {17, 22};
+      return { 17, 22 };
     case 13:
-      return {16, 22};
+      return { 16, 22 };
     case 14:
-      return {18, 26};
+      return { 18, 26 };
     case 15:
-      return {18, 24};
+      return { 18, 24 };
     // INFANTRY
     case 16:
-      return {10, 24};
+      return { 10, 24 };
     case 17:
-      return {10, 26};
+      return { 10, 26 };
     case 18:
-      return {10, 25};
+      return { 10, 25 };
     case 19:
-      return {19, 24};
+      return { 19, 24 };
     case 20:
-      return {19, 26};
+      return { 19, 26 };
     case 21:
-      return {19, 25};
+      return { 19, 25 };
     case 22:
-      return {12, 26};
+      return { 12, 26 };
     case 23:
-      return {12, 24};
+      return { 12, 24 };
 
     case 24:
-      return {13, 23};
+      return { 13, 23 };
     case 25:
-      return {14, 23};
+      return { 14, 23 };
     case 26:
-      return {15, 23};
+      return { 15, 23 };
     case 27:
-      return {16, 23};
+      return { 16, 23 };
     case 28:
-      return {17, 26};
+      return { 17, 26 };
     case 29:
-      return {17, 24};
+      return { 17, 24 };
     case 30:
-      return {13, 26};
+      return { 13, 26 };
     }
   }
-  return {0, 0};
+  return { 0, 0 };
 }
 
 // function for game play
 lionheart::Action lionheart::BrandonSmith::recommendAction(
-  Unit const& u, SituationReport report, Plan p)
+    Unit const &u, SituationReport report, Plan p)
 {
   ++numberofturns;
   auto loc = u.getLocation();
   find_kings(report);
-  if (akingloc.col < 15) west = true;
-  if (akingloc.col > 15) west = false;
+  if (akingloc.col < 15)
+    west = true;
+  if (akingloc.col > 15)
+    west = false;
   defpos(u, report);
   setdefdir(u, report);
   auto row = loc.row;
@@ -782,10 +793,12 @@ lionheart::Action lionheart::BrandonSmith::recommendAction(
   if (u.getId() ==
       44) // give king bodyguard and prevents draw with non attacking armies
   {
-    if (p.hasAttack()) return p.attackEnemy();
+    if (p.hasAttack())
+      return p.attackEnemy();
     if ((p.movesToAllyCrown() > 2) && (p.movesToEnemy() < 2))
       return p.moveToEnemy();
-    if (p.movesToAllyCrown() > 2) return p.moveToAllyCrown();
+    if (p.movesToAllyCrown() > 2)
+      return p.moveToAllyCrown();
   }
 
   if (u.getType() == CROWN) // rules for the king
@@ -904,15 +917,18 @@ lionheart::Action lionheart::BrandonSmith::recommendAction(
   if ((numberofturns / 30) <
       50) // this will stall in defense for half the game then attack
   {
-    if (p.hasAttack()) return p.attackEnemy();
+    if (p.hasAttack())
+      return p.attackEnemy();
     if (enemyinthebox(report))
     {
       return p.attackEnemy();
     }
     if ((u.getId() == 39) || (u.getId() == 40))
     {
-      if (p.movesToEnemy() < 3) return p.moveToEnemy();
-      if ((row != drow) || (col != dcol)) return p.moveToLocation(drow, dcol);
+      if (p.movesToEnemy() < 3)
+        return p.moveToEnemy();
+      if ((row != drow) || (col != dcol))
+        return p.moveToLocation(drow, dcol);
       if ((u.getFacing()) != defdir)
         return turn(defdir);
       else
@@ -922,7 +938,8 @@ lionheart::Action lionheart::BrandonSmith::recommendAction(
       return p.moveToEnemy();
     if ((u.getType() != KNIGHT) && (p.movesToEnemy() < 5))
       return p.moveToEnemy();
-    if ((row != drow) || (col != dcol)) return p.moveToLocation(drow, dcol);
+    if ((row != drow) || (col != dcol))
+      return p.moveToLocation(drow, dcol);
     if ((u.getFacing()) != defdir)
       return turn(defdir);
     else
@@ -936,8 +953,10 @@ lionheart::Action lionheart::BrandonSmith::recommendAction(
   }
 
   // tells everyone to attack
-  if (p.hasAttack()) return p.attackEnemy();
-  if (enemyinthebox(report)) return p.attackEnemy();
+  if (p.hasAttack())
+    return p.attackEnemy();
+  if (enemyinthebox(report))
+    return p.attackEnemy();
   if (p.movesToEnemyCrown() < 2)
     return p.moveToEnemyCrown();
   else
@@ -947,10 +966,7 @@ lionheart::Action lionheart::BrandonSmith::recommendAction(
 // third function to return colors and name
 lionheart::Blazon lionheart::BrandonSmith::getBlazon()
 {
-  return {Color::OR,
-          Color::GULES,
-          Style::QUARTERLY,
-          "Brandon Smith's Pawn Sacrifice"};
+  return { Color::OR, Color::GULES, Style::QUARTERLY, "Brandon Smith" };
 }
 
 // sets the defensive direction for players

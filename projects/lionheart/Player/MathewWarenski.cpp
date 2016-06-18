@@ -5,7 +5,7 @@
 // sets the defensive direction for each piece
 lionheart::Direction
 lionheart::MathewWarenski::setdefdir(lionheart::Unit const &u,
-                                      lionheart::SituationReport)
+                                     lionheart::SituationReport)
 {
   switch (u.getId())
   {
@@ -13,13 +13,13 @@ lionheart::MathewWarenski::setdefdir(lionheart::Unit const &u,
   case 5:
   case 7:
   case 8:
-  case 32:
+  case 17:
     return lionheart::Direction::NORTH;
     break;
-  case 31:
-  case 34:
-  case 37:
-  case 42:
+  case 16:
+  case 19:
+  case 22:
+  case 27:
     if (facingEast)
     {
       return lionheart::Direction::WEST;
@@ -34,24 +34,24 @@ lionheart::MathewWarenski::setdefdir(lionheart::Unit const &u,
   case 6:
   case 13:
   case 14:
-  case 35:
+  case 20:
     return lionheart::Direction::SOUTH;
     break;
-  case 30:
-  case 36:
+  case 15:
+  case 21:
   case 10:
   case 9:
-  case 38:
+  case 23:
   case 2:
   case 4:
-  case 41:
-  case 39:
-  case 40:
+  case 26:
+  case 24:
+  case 25:
   case 12:
   case 11:
-  case 43:
-  case 33:
-  case 44:
+  case 28:
+  case 18:
+  case 29:
     if (facingEast)
     {
       return lionheart::Direction::WEST;
