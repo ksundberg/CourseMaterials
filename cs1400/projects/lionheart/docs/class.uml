@@ -1,0 +1,81 @@
+@startuml
+class Player {
+{abstract} place()
+{abstract} recommend()
+}
+
+class Unit
+class Crown
+class Knight
+class Archer
+class Infantry
+
+Unit <|-- Crown
+Unit <|-- Knight
+Unit <|-- Archer
+Unit <|-- Infantry
+
+Unit o-- Player
+
+class Game
+Game *-- Unit
+
+
+class Tournament
+Tournament *-- Game
+
+class Gauntlet
+class Swiss
+
+Tournament <|-- Gauntlet
+Tournament <|-- Swiss
+
+Player <|-- SetPlayer
+
+Gauntlet *-- SetPlayer
+Gauntlet o-- StudentPlayer
+
+class Display {
+{abstract} void render(Game)
+}
+
+class Console {
+bool ANSI
+}
+
+Display <|-- Console
+Display <|-- NullDisplay
+
+class Video
+Display <|-- Video
+
+Tournament *-- Display
+
+class Map {
+load(filename)
+}
+
+class Tile
+
+Game o-- Player
+Game *-- Map
+Map *-- Tile
+
+class Blazon {
+color primary
+color secondary
+style style
+string name
+}
+
+Player *-- Blazon
+
+class StudentPlayer
+class StudentRepository
+Player <|-- StudentPlayer
+StudentRepository *-- StudentPlayer
+
+Tournament o-- StudentRepository
+
+@enduml
+

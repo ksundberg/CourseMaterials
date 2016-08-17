@@ -1,0 +1,10 @@
+##### deliberately left out #######
+2.1  parts of a program (basically useless or wrong)
+2.12 determining size of type
+4.11 ternary operator
+5.5 do-while
+5.11 break / continue
+6.11 static variables
+6.12 default parameters
+6.15 exit()
+
