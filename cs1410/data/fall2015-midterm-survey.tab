@@ -1,0 +1,105 @@
+cC#score	D#semesters ago	D#instructor	D#grade	D#want lab	D#topic1	D#topic2	D#topic3	C#preparation	C#programming skill	C#debugging skill	mS#comment1	mS#comment2	mS#comment3
+83	2	Dan Watson	C					1	3	2	"I didn't take a CS1 Lab"	"My high school version of C++ class was better."
+20	1	James Decker	B-	yes	design			3	3	3	
+65	1	James Decker	A	yes	classes	recursion	scope	3	2	3
+56	1	Amanda Hughes	A	no	simplicity			3.5	3.5	3.5	"I never learned anything in that lab."	"A lab might help if it wasn't similar to the CS1 lab"	"I felt like the topics were covered very well in CS 1 and at a very good pace."
+65	1	Amanda Hughes	A		logic	algorithms		2	2	1	"I got so caught up on syntax that problem solving doesn't make sense to me."
+81	1	James Decker	A	yes	syntax			4	3	2
+73	1	James Decker	A	yes	algorithms	design		5	2	4
+69	1	Amanda Hughes	B	yes	classes	functions		2	2	2	"More practice / instruction would be super helpful"	"I feel like I've been thrown into the fire here."
+75	2	James Decker	A	yes	classes			4	4	3	
+58	1	Amanda Hughes	A	yes	functions	loops		3	4	3
+38	1	Amanda Hughes	A-	yes	vectors			2	2	1
+90	8	Linda Duhadway	A	maybe	classes			3	4	4
+73	3		A	yes	basic concepts			2	3	4
+40	1	James Decker	A	yes	classes	constructors	references	4	4	3	"I am already using the tutoring center like a lab"
+52	1	Amanda Hughes	A	yes	classes	public / private	recursion	4	3	4
+34	2	Dan Watson	C+	yes	vectors	arrays		4	2.2	3
+77	1	James Decker	A	yes	debugging	public / private		3	3	2
+35		Dan Watson	C	yes	vectors	structures	header files	3	2.5	2
+60	1	James Decker	B	yes	arrays	vectors	pointers	3	2	2
+54	6	Dan Watson	A-	yes	classes			3	3	3	"It would be nice if the lab was optional"	"I remember being so confused because it was taught as if it was 'easy'"
+65	1		B	yes	debugging	compile errors		3.5	2.5	2	"I think that it[the lab] would be at least an optional structured supplement, perhaps online vidoes we could access and see well enough to work through."
+68	6	Dan Watson	B	maybe				3	4	3	"Labs are kind of a pain but they do get you to practice coding"
+38	1	Amanda Hughes	B	yes	functions	references	vectors	3	2	3
+57	1		B-	yes	classes			3	3	2
+86	1	Kenneth Sundberg	A-	no	recursion			4.5	4	3
+100	1	Kenneth Sundberg	A	maybe				5	4	4	"I enjoy having less classes on my plate."
+48	5		B	yes	vectors	classes	header files	3	3	2	"Having someone there to help me and guide as I practice the code and ideas would be helpful."
+33	3	James Decker	B+	yes	recursion	design		3.5	3.5	5
+57	1		A	yes	classes	vectors		4	3	2
+81	1	James Decker	A	yes	classes	enums	structs	4	3	4	"I feel like this class is significantly more challenging and sometimes actually a lot of the time, over my head"
+80	1	James Decker	A-	yes	design			4	3	3	"I feel like there is a large gap between where CS 1 left off and CS 2 began"
+50	1	Kenneth Sundberg	B+	no	basics			4	3	2
+60	1	Amanda Hughes	A	no	classes	functions	loops	2	3	2
+72	4	Weber State	A	yes	constructors	parameters	OO	2	2	1	"Learned Java at Weber State"
+73	1	Amanda Hughes	A	no	classes			3	3	3
+43	1	Amanda Hughes	B		classes	vectors	arrays	3	3	2.5
+78	1		B	yes	classes			4	3	3
+42	3	Scott Cannon	B-	yes				3	2	3
+67	1	Amanda Hughes	B+	yes	vectors	design	constructors	2	2.5	2.5	"I felt like I was always trying to memorize rather than learn the material"
+93	1		A	yes				5	4	4
+76	2	Dan Watson	A	yes	pointers	memory		2	2.5	2.5
+50	1	James Decker	B	yes	vectors			3	2	1
+95	1	James Decker	A	yes	vectors			4	4	4
+52	1	Amanda Hughes	A-	yes	vector	references		3	3	4
+24	1	Kenneth Sundberg	A	no				4	3	3
+51	1	Kenneth Sundberg	B-	yes	syntax		3	2	1
+78	2	Dan Watson	A	yes	classes	functions	loops	3	3	3
+64	3	Amanda Hughes	B-	yes				2	3	2
+82	1	James Decker	A	no				5	4.5	4.5
+89	1	Amanda Hughes	A-	yes	vectors	design	arrays	2	3	3
+68	1	Amanda Hughes	A	yes	classes	vectors	scope	1	2.5	2
+69	1	James Decker	A	no	theory			4	3	3	"SI (optional) would be better [than a lab]"
+68	1	Amanda Hughes	A	yes	terms			3.5	2.5	3
+85	1	Amanda Hughes	A	yes	classes	functions	file io	1.5	2	1.5	"I understand the material conceptually much better than I can implement it in code. I need to be walked through code very slowly and in little pieces to understand what's going on."
+75	1		C+	no	classes			2.5	2	2
+39	1	Amanda Hughes	A	yes	recursion	vectors	stacks	3	2.5	2
+59	1	James Decker	A-	yes	vectors			3	2	2
+68	1	James Decker	A	yes					3	2	2
+75	7	Linda Duhadway	A	yes	vectors	design	recursion	2	2	2
+87	1	James Decker	A	yes	functions	classes		4	4	3
+28	1	Kenneth Sundberg	B	yes	recursion	references		5	3	3
+41	1	James Decker	B	yes				4	3.5	2
+85	1	James Decker	A-	yes	classes			4	3	3
+78				yes				5	3	3
+50	1	James Decker	A	yes				3	3	2	"I think [the lab] would have been more helpful [now] than in CS 1"
+76	1	James Decker	C	yes	classes	objects		3.5	3	2
+49	1	James Decker	A	yes	algorithms			3	4	3
+69	6	Dan Watson	A	yes	vectors			4	3.5	4
+73	4	Dan Watson	B	yes	vectors	classes		4	3.75	4
+80	1	James Decker	A-	yes				4	3	2	"I think [a lab] would help but I am not sure if it is worth the time"
+64	1	Kenneth Sundberg	C	yes				4	2	2
+73	2	USU Eastern	C+	yes	recursion			2	2	2
+55	1	Amanda Hughes	B+	yes	classes	functions	references	3	2	2
+51	1	Kenneth Sundberg	A-	yes				1.5	1.5	1.5
+69	1	Amanda Hughes	B	yes	classes			3	3	3
+35	3	Price	C	yes	functions			2	2	1
+96	1		A	no	classes	file io	enums	4	5	4
+86	1	James Decker	A	yes	design			4	3	3
+81	1	Amanda Hughes	A	yes	classes			3	3	3
+88	1	James Decker	A	no	classes			3.5	3.5	2.5
+70	1	James Decker	A	yes	classes	functions		3	2.5	2
+68	1	James Decker	B+	yes	recursion			4	3.5	4
+76	1		A	yes	scope	classes		3	4	4
+68	2		A-	yes	references	public / private		3	3	2
+63	1	James Decker	B+	yes	recursion	vectors	references	2	2.5	3
+86	1	Don Cooley	A	no				2	2	1
+35	1	James Decker	C+		auto	references		4	3	0
+95	1	Amanda Hughes	A	yes	references pointers		3	4	4
+50	1	James Decker	A-	yes	classes	public / private		3	3	3
+46	1	James Decker	A	yes	reference	classes	vectors	3.5	4	3
+69	1	James Decker	A	yes	terms			5	4	4
+42	1		C	yes				3	3	2
+88	2	Dan Watson	B	yes	classes			3.5	3	3
+39	1	James Decker	A	yes	classes			5	4	3
+57	1		A-	yes	classes	header files		2.5	2	1
+75	1	James Decker	A	yes	operators			4	5	4
+71	1	James Decker	A-	yes				3	2	2
+73	1	Kenneth Sundberg	A	yes	vectors	functions	header files	5	4	3.5
+48	1	James Decker	A	yes	classes			4	3	1
+88			B	maybe	syntax	references	const	4	2	3
+48	1	Kenneth Sundberg		yes				5	3	3
+75	1	Amanda Hughes	A	yes	vectors			3	3	3
+87	1	James Decker	A	yes	classes	constructors	4	3	3
+
