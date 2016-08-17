@@ -1,6 +1,7 @@
 # CS 3450 Outline
 
 |Week|Task|Assignment|
+|----|----|----------|
 |1|Lecture Ch. 1-4|Form Groups and GitHub Setup|
 |2|Lecture Ch. 5|SRS Draft - Requirements and ATP cases|
 |3|Lecture Ch. 6|SRS Draft - High Level Design|
