@@ -7,3 +7,4 @@ Course materials for various computer science courses I have taught at Utah Stat
 |1410|Introduction to CS II|
 |3100|Operating Systems and Concurrency|
 |3450|Software Engineering|
+|5400|Computer Graphics I|
