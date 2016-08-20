@@ -1,4 +1,4 @@
-<map version="freeplane 1.3.0">
+<map version="freeplane 1.2.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
 <node TEXT="01- Introduction" ID="ID_729166855" CREATED="1430766178119" MODIFIED="1471555533840">
 <attribute NAME="author" VALUE="Kenneth Sundberg"/>
@@ -204,7 +204,16 @@
 </node>
 </node>
 </node>
-<node TEXT="Requirements (For Now ...)" ID="ID_1890060243" CREATED="1471557266579" MODIFIED="1471557282103"/>
+<node TEXT="Requirements (For Now ...)" ID="ID_1890060243" CREATED="1471557266579" MODIFIED="1471557282103">
+<node TEXT="Create a Card Game system" ID="ID_39395999" CREATED="1471652099094" MODIFIED="1471652117039">
+<node TEXT="Server component" ID="ID_1027418466" CREATED="1471652117052" MODIFIED="1471652125437"/>
+<node TEXT="Human Client with GUI" ID="ID_1142830009" CREATED="1471652125860" MODIFIED="1471652134066"/>
+<node TEXT="AI Client" ID="ID_1210840842" CREATED="1471652134556" MODIFIED="1471652142884"/>
+</node>
+<node TEXT="Implement 2 of the following games:" ID="ID_1653917177" CREATED="1471652157585" MODIFIED="1471652176417">
+<node TEXT="Hearts, Spades, Crazy Eights, Gin, Other(with approval)" ID="ID_1817449053" CREATED="1471652176429" MODIFIED="1471653639271"/>
+</node>
+</node>
 </node>
 </node>
 </map>
