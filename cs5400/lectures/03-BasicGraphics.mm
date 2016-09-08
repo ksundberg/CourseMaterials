@@ -70,14 +70,14 @@
 </node>
 <node TEXT="Lines" ID="ID_203501174" CREATED="1473353241323" MODIFIED="1473353243439">
 <node TEXT="gl\_LINES draws a line between pairs" ID="ID_1844018213" CREATED="1473353246839" MODIFIED="1473353276272"/>
-<node TEXT="gl\_LINE_STRIP draws a line between adjacent points" ID="ID_270585651" CREATED="1473353276645" MODIFIED="1473353301379"/>
-<node TEXT="gl\_LINE_LOOP draws a line between adjacent points and between the first and last" ID="ID_241559736" CREATED="1473353301833" MODIFIED="1473353322774"/>
+<node TEXT="gl\_LINE\_STRIP draws a line between adjacent points" ID="ID_270585651" CREATED="1473353276645" MODIFIED="1473355366328"/>
+<node TEXT="gl\_LINE\_LOOP draws a line between adjacent points and between the first and last" ID="ID_241559736" CREATED="1473353301833" MODIFIED="1473355374530"/>
 </node>
 <node TEXT="Triangles" ID="ID_1925892520" CREATED="1473353363110" MODIFIED="1473354838546">
 <attribute NAME="textbook" VALUE="2.4.2"/>
 <node TEXT="gl\_TRIANGLES draws a triangle between triples" ID="ID_1390165280" CREATED="1473353416037" MODIFIED="1473353447946"/>
-<node TEXT="gl\_TRIANGLE_STRIP draws a triangle between all adjacent triples" ID="ID_1574033978" CREATED="1473353448555" MODIFIED="1473353476591"/>
-<node TEXT="gl\_TRIANGLE_FAN draws a triangle with the first point and all adjacent pairs" ID="ID_1810297067" CREATED="1473353476932" MODIFIED="1473353505650"/>
+<node TEXT="gl\_TRIANGLE\_STRIP draws a triangle between all adjacent triples" ID="ID_1574033978" CREATED="1473353448555" MODIFIED="1473355381915"/>
+<node TEXT="gl\_TRIANGLE\_FAN draws a triangle with the first point and all adjacent pairs" ID="ID_1810297067" CREATED="1473353476932" MODIFIED="1473355393035"/>
 </node>
 </node>
 <node TEXT="Others" ID="ID_804385823" CREATED="1473353638655" MODIFIED="1473353680309">
