@@ -1,4 +1,4 @@
-<map version="freeplane 1.2.0">
+<map version="freeplane 1.3.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
 <node TEXT="Threads" ID="ID_1224319479" CREATED="1389467818499" MODIFIED="1389506560738"><hook NAME="MapStyle">
     <properties show_icon_for_attributes="true"/>
@@ -103,7 +103,9 @@
 </node>
 </node>
 <node TEXT="Syntax" ID="ID_963265821" CREATED="1389469874164" MODIFIED="1389469879578">
-<node TEXT="std::thread" ID="ID_338675411" CREATED="1389469974641" MODIFIED="1389469977045"/>
+<node TEXT="std::thread" ID="ID_338675411" CREATED="1389469974641" MODIFIED="1473449264802">
+<attribute NAME="textbook" VALUE="4.4" OBJECT="org.freeplane.features.format.FormattedNumber|4.4"/>
+</node>
 </node>
 <node TEXT="Race Conditions" ID="ID_593024967" CREATED="1389469880076" MODIFIED="1389469885922">
 <node TEXT="Data Race" ID="ID_1432955987" CREATED="1389505643191" MODIFIED="1389505658415">
@@ -116,7 +118,8 @@
 </node>
 </node>
 <node TEXT="Synchronization" ID="ID_144797526" CREATED="1389469886300" MODIFIED="1389469892689">
-<node TEXT="Critical-Section Problem" ID="ID_777547602" CREATED="1389482989244" MODIFIED="1389482995520">
+<node TEXT="Critical-Section Problem" ID="ID_777547602" CREATED="1389482989244" MODIFIED="1473449287263">
+<attribute NAME="textbook" VALUE="5.2" OBJECT="org.freeplane.features.format.FormattedNumber|5.2"/>
 <node TEXT="If two or more threads must access the same memory, and one of them must write" ID="ID_1332102238" CREATED="1389506140645" MODIFIED="1389506159698"/>
 <node TEXT="Then they must not use the memory at the same time" ID="ID_30874359" CREATED="1389506159996" MODIFIED="1389506169736"/>
 <node TEXT="This conflicted access is the a \emph{critical section}" ID="ID_458453913" CREATED="1389506170124" MODIFIED="1389506188329"/>
