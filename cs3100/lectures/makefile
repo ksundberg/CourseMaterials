@@ -1,4 +1,4 @@
-all: 01-Introduction.pdf 
+all: 01-Introduction.pdf 02-Threads.pdf
 
 .PHONY: clean all
 

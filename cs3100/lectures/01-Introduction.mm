@@ -1,4 +1,4 @@
-<map version="freeplane 1.2.0">
+<map version="freeplane 1.3.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
 <node TEXT="Introduction" ID="ID_192476694" CREATED="1388881465436" MODIFIED="1388881511876"><hook NAME="MapStyle">
     <properties show_icon_for_attributes="true"/>
@@ -129,23 +129,13 @@
 </node>
 <node TEXT="Build System" ID="ID_76247371" CREATED="1389467843077" MODIFIED="1389467862306">
 <node TEXT="GCC" ID="ID_1717797151" CREATED="1389469302552" MODIFIED="1389469304086">
-<node TEXT="We will use GNU Compiler Collection version 4.8" ID="ID_1548804792" CREATED="1389487455988" MODIFIED="1451516395821"/>
+<node TEXT="We will use GNU Compiler Collection version 5.4" ID="ID_1548804792" CREATED="1389487455988" MODIFIED="1472499089933"/>
 <node TEXT="g++ \emph{flags} \emph{sourcefiles}" ID="ID_519419115" CREATED="1389487472267" MODIFIED="1389487494736"/>
 <node TEXT="O\{s,0,1,\emph{2},3\} Optimization level" ID="ID_1191964504" CREATED="1389487495515" MODIFIED="1389487557454"/>
 <node TEXT="g\{1,2,\emph{3}\} Debug symbol level" ID="ID_1843714871" CREATED="1389487525522" MODIFIED="1389487546723"/>
 <node TEXT="-Wall -Wextra -Werror  Turn on most warnings and treat them as errors" ID="ID_1466326809" CREATED="1389487559209" MODIFIED="1389487597860"/>
 <node TEXT="-o Specify output file name" ID="ID_1904960579" CREATED="1389487609599" MODIFIED="1389487621412"/>
 <node TEXT="-c Compile only, no link step" ID="ID_44959841" CREATED="1389487621646" MODIFIED="1389487627499"/>
-</node>
-<node TEXT="Make" ID="ID_206163145" CREATED="1389469304320" MODIFIED="1389469305822">
-<node TEXT="make utility used to build multi file projects" ID="ID_24545267" CREATED="1389488631301" MODIFIED="1389488650887"/>
-<node TEXT="Depends on a relationship file (default makefile)" ID="ID_1981153185" CREATED="1389488651378" MODIFIED="1389488662951"/>
-<node TEXT="Rules are of the form" ID="ID_1732862103" CREATED="1389488663553" MODIFIED="1389505503414">
-<node TEXT="Target - the file to be created" ID="ID_581819961" CREATED="1389505509724" MODIFIED="1389505519841"/>
-<node TEXT="Prerequisites - files that must exist" ID="ID_1795747199" CREATED="1389505520139" MODIFIED="1389505532808"/>
-<node TEXT="Actions - commands to be executed" ID="ID_1735606967" CREATED="1389505533131" MODIFIED="1389505540912"/>
-</node>
-<node TEXT="Actions must begin with a tab" ID="ID_753068445" CREATED="1389505542138" MODIFIED="1389505548119"/>
 </node>
 <node TEXT="CMake" ID="ID_1144136961" CREATED="1451516423250" MODIFIED="1451516426475">
 <node TEXT="Cross-Platform Make" ID="ID_149548826" CREATED="1451516426491" MODIFIED="1451516536726"/>

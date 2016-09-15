@@ -1,4 +1,4 @@
-<map version="freeplane 1.2.0">
+<map version="freeplane 1.3.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
 <node TEXT="01- Introduction" ID="ID_729166855" CREATED="1430766178119" MODIFIED="1471555533840">
 <attribute NAME="author" VALUE="Kenneth Sundberg"/>
@@ -55,19 +55,28 @@
 </map_styles>
 </hook>
 <node TEXT="Syllabus" POSITION="right" ID="ID_405778426" CREATED="1430766242153" MODIFIED="1432567614206">
-<node TEXT="Topic Overview" ID="ID_1478149906" CREATED="1430766266105" MODIFIED="1430766274717">
-<node TEXT="Course Description" ID="ID_1245100126" CREATED="1433013226707" MODIFIED="1433013240413">
-<node TEXT="Introduction to science of problem solving, programming, program development, algorithm analysis, and data structures. Students will learn to develop correct software in a current programming language environment." ID="ID_1608230200" CREATED="1433013260065" MODIFIED="1433013341110"/>
+<node TEXT="Overview" ID="ID_1563878077" CREATED="1430766339764" MODIFIED="1471556194271">
+<node TEXT="What is Software Engineering?" ID="ID_428361757" CREATED="1430766356053" MODIFIED="1471556345017">
+<node TEXT="Computer Science is Problem Solving" LOCALIZED_STYLE_REF="styles.topic" ID="ID_512083072" CREATED="1433015560480" MODIFIED="1471556023868"/>
+<node TEXT="Software Engineering is Problem Solving" ID="ID_218608151" CREATED="1471555975338" MODIFIED="1471556067170">
+<node TEXT="On Time" ID="ID_1909221364" CREATED="1471556040132" MODIFIED="1471556043568"/>
+<node TEXT="Within Budget" ID="ID_480350137" CREATED="1471556044307" MODIFIED="1471556051183"/>
+<node TEXT="Quality Assurance" ID="ID_264588606" CREATED="1471556068363" MODIFIED="1471556080609"/>
+</node>
 </node>
 <node TEXT="Textbook" ID="ID_787170715" CREATED="1433014013454" MODIFIED="1433014016745">
 <node TEXT="Beginning Software Engineering" ID="ID_382147496" CREATED="1433014016765" MODIFIED="1471555570047"/>
 <node TEXT="ISBN: 978-1-118-96914-4" ID="ID_1932376874" CREATED="1433014065333" MODIFIED="1471555595529"/>
 </node>
-<node TEXT="Course Objectives" ID="ID_1253672214" CREATED="1433013240962" MODIFIED="1433013246132">
-<node TEXT="To develop mastery level of proficiency in: data types, conditional operations, looping structures, functions, classes, objects and arrays" ID="ID_1462950834" CREATED="1433013620304" MODIFIED="1433013660111"/>
+<node TEXT="What do you expect to get out of this course?" ID="ID_284384720" CREATED="1430766388776" MODIFIED="1430766398589"/>
+<node TEXT="What do I expect you to get out of this course?" ID="ID_1332364881" CREATED="1430766399080" MODIFIED="1430766408608">
+<node TEXT="Focus on Principles" LOCALIZED_STYLE_REF="styles.topic" ID="ID_311307422" CREATED="1431978643619" MODIFIED="1471556139535"/>
+<node TEXT="Understand tools used in real world" ID="ID_1304693410" CREATED="1471556104787" MODIFIED="1471556123591"/>
+<node TEXT="Work in effective teams" ID="ID_781767369" CREATED="1471556145219" MODIFIED="1471556172903"/>
 </node>
-<node TEXT="Student Objectives" ID="ID_215922869" CREATED="1433013661443" MODIFIED="1433013668735">
-<node TEXT="Develop an ability to design, implement, and evaluate a computer based system, process, component, or program to meet desired needs." ID="ID_1073513133" CREATED="1433013668747" MODIFIED="1433013705039"/>
+<node TEXT="The Two Ways" ID="ID_1784964871" CREATED="1471556212763" MODIFIED="1471556243542">
+<attribute NAME="textbook" VALUE="01-003"/>
+<node TEXT="There are two ways of constructing a software design.  One way is to make it so simple that there are obviously no deficiencies.  The other way is to make it so complicated that there are no obvious deficiencies.  The first method is far more difficult. --C.A.R. Hoare" ID="ID_912659319" CREATED="1471556258099" MODIFIED="1471556334248"/>
 </node>
 </node>
 <node TEXT="Policies" ID="ID_1049242193" CREATED="1430766258561" MODIFIED="1430766265555">
@@ -120,26 +129,6 @@
 </node>
 </node>
 <node TEXT="Introduction" POSITION="right" ID="ID_1555719218" CREATED="1430766293248" MODIFIED="1430766339763">
-<node TEXT="Overview" ID="ID_1563878077" CREATED="1430766339764" MODIFIED="1471556194271">
-<node TEXT="What is Software Engineering?" ID="ID_428361757" CREATED="1430766356053" MODIFIED="1471556345017">
-<node TEXT="Computer Science is Problem Solving" LOCALIZED_STYLE_REF="styles.topic" ID="ID_512083072" CREATED="1433015560480" MODIFIED="1471556023868"/>
-<node TEXT="Software Engineering is Problem Solving" ID="ID_218608151" CREATED="1471555975338" MODIFIED="1471556067170">
-<node TEXT="On Time" ID="ID_1909221364" CREATED="1471556040132" MODIFIED="1471556043568"/>
-<node TEXT="Within Budget" ID="ID_480350137" CREATED="1471556044307" MODIFIED="1471556051183"/>
-<node TEXT="Quality Assurance" ID="ID_264588606" CREATED="1471556068363" MODIFIED="1471556080609"/>
-</node>
-</node>
-<node TEXT="What do you expect to get out of this course?" ID="ID_284384720" CREATED="1430766388776" MODIFIED="1430766398589"/>
-<node TEXT="What do I expect you to get out of this course?" ID="ID_1332364881" CREATED="1430766399080" MODIFIED="1430766408608">
-<node TEXT="Focus on Principles" LOCALIZED_STYLE_REF="styles.topic" ID="ID_311307422" CREATED="1431978643619" MODIFIED="1471556139535"/>
-<node TEXT="Understand tools used in real world" ID="ID_1304693410" CREATED="1471556104787" MODIFIED="1471556123591"/>
-<node TEXT="Work in effective teams" ID="ID_781767369" CREATED="1471556145219" MODIFIED="1471556172903"/>
-</node>
-<node TEXT="The Two Ways" ID="ID_1784964871" CREATED="1471556212763" MODIFIED="1471556243542">
-<attribute NAME="textbook" VALUE="01-003"/>
-<node TEXT="There are two ways of constructing a software design.  One way is to make it so simple that there are obviously no deficiencies.  The other way is to make it so complicated that there are no obvious deficiencies.  The first method is far more difficult. --C.A.R. Hoare" ID="ID_912659319" CREATED="1471556258099" MODIFIED="1471556334248"/>
-</node>
-</node>
 <node TEXT="Phases" ID="ID_935329290" CREATED="1471556354155" MODIFIED="1471556359909">
 <node TEXT="Requirements Gathering" ID="ID_1705144862" CREATED="1471556359912" MODIFIED="1471556499368">
 <attribute NAME="textbook" VALUE="01-004"/>
