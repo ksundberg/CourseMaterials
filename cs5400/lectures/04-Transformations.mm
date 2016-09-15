@@ -56,8 +56,8 @@
 </hook>
 <node TEXT="Coordinates" POSITION="right" ID="ID_477006610" CREATED="1473900977496" MODIFIED="1473901004425">
 <node TEXT="Homogeneous Coordinates" ID="ID_964333491" CREATED="1473901226987" MODIFIED="1473901240275">
-<node TEXT="Homogeneous Coordinates" ID="ID_361378674" CREATED="1473901240280" MODIFIED="1473903911458">
-<attribute NAME="textbook" VALUE="4" OBJECT="org.freeplane.features.format.FormattedNumber|4"/>
+<node TEXT="Homogeneous Coordinates" ID="ID_361378674" CREATED="1473901240280" MODIFIED="1473973662042">
+<attribute NAME="textbook" VALUE="4.3.4" OBJECT="org.freeplane.features.format.FormattedObject|4.3.4|number:decimal:#0.####"/>
 <node TEXT="Sometimes called projective coordinates" ID="ID_325322025" CREATED="1473901250476" MODIFIED="1473901262084"/>
 <node TEXT="Multiplying coordinates by a scalar does not change the meaning of the coordinates" ID="ID_768065314" CREATED="1473901262335" MODIFIED="1473901305925"/>
 <node TEXT="Require one extra coordinate than the number of dimensions that can be represented" ID="ID_644033171" CREATED="1473901307694" MODIFIED="1473901327200"/>
@@ -68,7 +68,8 @@
 <node TEXT="Additional coordinate w distinguishes between directions (w=0) and lines" ID="ID_1966853051" CREATED="1473901372492" MODIFIED="1473901400674"/>
 <node TEXT="As multipling by scalars does not change the point w is always normalized to 0 or 1" ID="ID_408279392" CREATED="1473901401078" MODIFIED="1473901423581"/>
 </node>
-<node TEXT="Barycentric Coordinates" ID="ID_1615879293" CREATED="1473901426946" MODIFIED="1473901434658">
+<node TEXT="Barycentric Coordinates" ID="ID_1615879293" CREATED="1473901426946" MODIFIED="1473973636051">
+<attribute NAME="textbook" VALUE="4.1.10"/>
 <node TEXT="Two dimensional projective coordinate system for triangles" ID="ID_497681405" CREATED="1473901435272" MODIFIED="1473901455384"/>
 <node TEXT="Used to interpolate values in fragment shader" ID="ID_1185450374" CREATED="1473901456552" MODIFIED="1473901495370"/>
 </node>
@@ -76,12 +77,31 @@
 </node>
 <node TEXT="Linear Tranforamations" POSITION="right" ID="ID_1572309426" CREATED="1473901004739" MODIFIED="1473901010890">
 <node TEXT="Primitives" ID="ID_270436693" CREATED="1473901648892" MODIFIED="1473901658269">
-<node TEXT="Scale" ID="ID_43570947" CREATED="1473901658273" MODIFIED="1473901664451"/>
 <node TEXT="Translation" ID="ID_558634934" CREATED="1473901664871" MODIFIED="1473901669684"/>
+<node TEXT="Rotation in 2-D" ID="ID_1106115969" CREATED="1473973953596" MODIFIED="1473974277366">
+<attribute NAME="textbook" VALUE="4.8.2"/>
+<node TEXT="$x&apos;=x \cos \theta - y \sin \theta$" ID="ID_1284354090" CREATED="1473973959548" MODIFIED="1473973975745"/>
+<node TEXT="$y&apos; = y \sin \theta + y \cos \theta$" ID="ID_1067152322" CREATED="1473973976083" MODIFIED="1473973997729"/>
+</node>
 <node TEXT="Rotation around x-axis" ID="ID_1132362849" CREATED="1473901670071" MODIFIED="1473901687670"/>
 <node TEXT="Rotation around y-axis" ID="ID_1935543045" CREATED="1473901687981" MODIFIED="1473901692804"/>
 <node TEXT="Rotation around z-axis" ID="ID_204956212" CREATED="1473901693191" MODIFIED="1473901698679"/>
-<node TEXT="Reflection" ID="ID_1956164566" CREATED="1473901700940" MODIFIED="1473901707340"/>
+<node TEXT="Ridged Body Tranformations" ID="ID_1803417569" CREATED="1473973794052" MODIFIED="1473973819268">
+<node TEXT="Translation and Rotation are Ridged Body Transformations" ID="ID_958957531" CREATED="1473973819274" MODIFIED="1473973841361"/>
+<node TEXT="In no combination can the change:" ID="ID_752264994" CREATED="1473973874244" MODIFIED="1473973881793">
+<node TEXT="Shape" ID="ID_291296250" CREATED="1473973882283" MODIFIED="1473973883968"/>
+<node TEXT="Volume" ID="ID_381205593" CREATED="1473973884243" MODIFIED="1473973885849"/>
+</node>
+</node>
+<node TEXT="Scale" ID="ID_43570947" CREATED="1473901658273" MODIFIED="1473901664451"/>
+<node TEXT="Reflection" ID="ID_1956164566" CREATED="1473901700940" MODIFIED="1473974260261">
+<attribute NAME="textbook" VALUE="4.8.3"/>
+<node TEXT="Negative scaling gives reflection" ID="ID_1095581870" CREATED="1473974051548" MODIFIED="1473974063626"/>
+</node>
+<node TEXT="Shear" ID="ID_709426676" CREATED="1473974118588" MODIFIED="1473974223237">
+<attribute NAME="textbook" VALUE="4.9.4"/>
+<node TEXT="$x&apos; = x + y \cot \theta$" ID="ID_1762873706" CREATED="1473974128769" MODIFIED="1473974149249"/>
+</node>
 <node TEXT="Projection" ID="ID_1411059053" CREATED="1473901945930" MODIFIED="1473901949570"/>
 </node>
 <node TEXT="Compositing" ID="ID_1858238687" CREATED="1473901724607" MODIFIED="1473901733454">
@@ -93,7 +113,8 @@
 <node TEXT="The transformation BA is the same as applying A and then B" ID="ID_333637138" CREATED="1473901819604" MODIFIED="1473901828941"/>
 </node>
 </node>
-<node TEXT="Rotation about a point" ID="ID_1143540578" CREATED="1473901837935" MODIFIED="1473901855373">
+<node TEXT="Rotation about a point" ID="ID_1143540578" CREATED="1473901837935" MODIFIED="1473974321285">
+<attribute NAME="textbook" VALUE="4.10.1"/>
 <node TEXT="How can we rotate an object around an arbitrary point?" ID="ID_1273403144" CREATED="1473901914354" MODIFIED="1473901936021"/>
 </node>
 </node>
@@ -111,7 +132,8 @@
 </node>
 <node TEXT="Quaternions" POSITION="right" ID="ID_724228516" CREATED="1473901011146" MODIFIED="1473901015407">
 <node TEXT="Problems with Rotations" ID="ID_735279264" CREATED="1473902957421" MODIFIED="1473902970394">
-<node TEXT="Gimbal Lock" ID="ID_226662553" CREATED="1473902970399" MODIFIED="1473902978650">
+<node TEXT="Gimbal Lock" ID="ID_226662553" CREATED="1473902970399" MODIFIED="1473974452077">
+<attribute NAME="textbook" VALUE="4.14.3"/>
 <node TEXT="Gimbals are circles mounted within each other and able to spin freely on some axis" ID="ID_1132842780" CREATED="1473902978654" MODIFIED="1473903032509"/>
 <node TEXT="If the gimbal axis align then the degrees of freedom in the system drops" ID="ID_1018263147" CREATED="1473903032857" MODIFIED="1473903055591"/>
 </node>
@@ -122,7 +144,8 @@
 </node>
 </node>
 <node TEXT="Definitions" ID="ID_1932634953" CREATED="1473903147172" MODIFIED="1473903151165">
-<node TEXT="Extension of complex numbers" ID="ID_20888771" CREATED="1473903499226" MODIFIED="1473903508030">
+<node TEXT="Extension of complex numbers" ID="ID_20888771" CREATED="1473903499226" MODIFIED="1473974393997">
+<attribute NAME="textbook" VALUE="4.14.1"/>
 <node TEXT="$i^2=j^2=k^2=ijk=-1$" ID="ID_1674892560" CREATED="1473903510314" MODIFIED="1473903539872"/>
 <node TEXT="Each quaternion has four components, one real and three imaginary" ID="ID_682079436" CREATED="1473903540969" MODIFIED="1473903561071"/>
 <node TEXT="Quaternion multiplication does not commute" ID="ID_1083440923" CREATED="1473904718043" MODIFIED="1473904726424"/>
