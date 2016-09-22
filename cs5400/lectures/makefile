@@ -1,4 +1,4 @@
-all: 01-Introduction.pdf 03-BasicGraphics.pdf 02-SystemsAndModels.pdf 03-BasicGraphics.pdf 04-Transformations.pdf 06-Viewing.pdf 07-Lighting.pdf 08-Textures.pdf 09-Modeling.pdf 10-SceneGraphs.pdf 11-ParticleSystems.pdf 12-RecursiveMethods.pdf
+all: 01-Introduction.pdf 03-BasicGraphics.pdf 02-SystemsAndModels.pdf 03-BasicGraphics.pdf 04-Transformations.pdf 05-Viewing.pdf 07-Lighting.pdf 08-Textures.pdf 09-Modeling.pdf 10-SceneGraphs.pdf 11-ParticleSystems.pdf 12-RecursiveMethods.pdf
 
 .PHONY: clean all
 
