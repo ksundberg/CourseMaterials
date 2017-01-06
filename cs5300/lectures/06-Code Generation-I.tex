@@ -1,0 +1,353 @@
+
+
+
+\documentclass[usepdftitle=false,professionalfonts,compress ]{beamer}
+
+%Packages to be included
+\usepackage[latin1]{inputenc}
+\usepackage{graphics,epsfig, subfigure}
+\usepackage{url}
+\usepackage[T1]{fontenc}
+%\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% PDF meta data inserted here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+	pdftitle={Code Generation - Part I},
+	pdfauthor={Kenneth Sundberg}
+}
+
+
+
+
+
+%%%%%% Beamer Theme %%%%%%%%%%%%%
+
+\usetheme[]{Warsaw}
+		
+\title{Code Generation - Part I}
+\subtitle{CS 5300}
+\author{Kenneth Sundberg}
+\date{}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Begin Document  %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\begin{document}
+\frame[plain]{
+	\frametitle{}
+	\titlepage
+	\vspace{-0.5cm}
+	\begin{center}
+	%\frontpagelogo
+	\end{center}
+}
+\frame{
+	\tableofcontents[hideallsubsections]
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+%%%%%%%%%% Content starts here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+\section{General Tools}
+		
+\subsection{Variable Declarations}
+
+{
+\begin{frame}\frametitle{Memory Allocation}
+
+	\begin{itemize}
+	\item Variable declaration determines:
+
+	\begin{itemize}
+	\item size of variable
+			\item location of variable (local or global)
+			\item offset to variable
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+{
+\begin{frame}\frametitle{Example:}
+
+\end{frame}}
+
+\subsection{Register Allocation}
+
+{
+\begin{frame}\frametitle{Register Pool}
+
+	\begin{itemize}
+	\item Generates bad code -- but its simple
+			\item At the end of every statement the pool is cleared
+			\item Registers can be requested from pool and released back to pool
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+\subsection{Boilerplate}
+
+{
+\begin{frame}\frametitle{Initial Code}
+
+	\begin{itemize}
+	\item Declare text segment
+
+	\begin{itemize}
+	\item .text
+				\end{itemize}
+
+			\item Declare global symbol main
+
+	\begin{itemize}
+	\item .globl main
+				\end{itemize}
+
+			\item Initialize global, frame, and stack pointers
+			\item Jump to main program
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{String Area}
+
+	\begin{itemize}
+	\item Declare data segment
+
+	\begin{itemize}
+	\item .data
+				\end{itemize}
+
+			\item Output labled list of strings
+
+	\begin{itemize}
+	\item .asciiz "string"
+				\end{itemize}
+
+			\item End with label for global area
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+\section{Simple Statements}
+		
+\subsection{Expressions}
+
+{
+\begin{frame}\frametitle{L-Values}
+
+	\begin{itemize}
+	\item Look up name in symbol table
+			\item Request register
+			\item Load value from memory into register
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Constant Expressions}
+
+	\begin{itemize}
+	\item Constant Folding
+			\item Return new constant expression
+			\item No register is allocated
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Non Constant Expressions}
+
+	\begin{itemize}
+	\item Each operand is in a register
+			\item Request register
+			\item Generate code to put result in register
+			\item Release operand's registers
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Mixed Expressions}
+
+	\begin{itemize}
+	\item One operand in register
+			\item One operand is constant
+			\item Generate immediate mode code to put result in register
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+\subsection{Assignment}
+
+{
+\begin{frame}\frametitle{Assignment}
+
+	\begin{itemize}
+	\item Inverse of L-Value expressions
+			\item Look up name
+			\item Store value of right hand side expression into location
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+\subsection{Intrinsic Functions}
+
+{
+\begin{frame}\frametitle{Write}
+
+	\begin{itemize}
+	\item Based on expression type:
+
+	\begin{itemize}
+	\item Move value of expression to proper register
+			\item Make write system call
+				\end{itemize}
+
+			\item Each argument can be handled independently
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Read}
+
+	\begin{itemize}
+	\item Like Write done individually on each argument
+			\item Based on type of expression (L-Value)
+
+	\begin{itemize}
+	\item Make read system call
+			\item Move value to proper memory location
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Char}
+
+	\begin{itemize}
+	\item Changes type of expression
+			\item Does not emit code
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Ord}
+
+	\begin{itemize}
+	\item Like Char - Changes type
+			\item No code emitted
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Prec}
+
+	\begin{itemize}
+	\item Emit code based on type to increment value
+				\end{itemize}
+
+\end{frame}}
+
+
+
+{
+\begin{frame}\frametitle{Succ}
+
+	\begin{itemize}
+	\item Emit code based on type to decrement value
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+\end{document}

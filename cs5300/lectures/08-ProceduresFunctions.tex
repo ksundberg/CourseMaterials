@@ -1,0 +1,253 @@
+
+
+
+\documentclass[usepdftitle=false,professionalfonts,compress ]{beamer}
+
+%Packages to be included
+\usepackage[latin1]{inputenc}
+\usepackage{graphics,epsfig, subfigure}
+\usepackage{url}
+\usepackage[T1]{fontenc}
+%\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% PDF meta data inserted here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+	pdftitle={Procedures and Functions},
+	pdfauthor={Kenneth Sundberg}
+}
+
+
+
+
+
+%%%%%% Beamer Theme %%%%%%%%%%%%%
+
+\usetheme[]{Warsaw}
+		
+\title{Procedures and Functions}
+\subtitle{CS 5300}
+\author{Kenneth Sundberg}
+\date{}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Begin Document  %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\begin{document}
+\frame[plain]{
+	\frametitle{}
+	\titlepage
+	\vspace{-0.5cm}
+	\begin{center}
+	%\frontpagelogo
+	\end{center}
+}
+\frame{
+	\tableofcontents[hideallsubsections]
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+%%%%%%%%%% Content starts here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+\section{Activation Record}
+		
+\subsection{Contents}
+
+{
+\begin{frame}\frametitle{Contents of activation record}
+
+	\begin{itemize}
+	\item Saved local registers
+			\item Actual parameters
+			\item Return address
+			\item Old frame pointer
+			\item Local variables
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Calling Conventions}
+
+	\begin{itemize}
+	\item Calling Conventions determine who builds what parts of activation record
+			\item Caller portion must be lower on stack than callee portion
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+\section{Functions}
+		
+\subsection{Code}
+
+{
+\begin{frame}\frametitle{Prolog Code}
+
+	\begin{itemize}
+	\item Save local registers
+			\item Generate label for procedure
+			\item Push return address on stack
+			\item Push frame pointer on stack
+			\item Update the frame pointer to point to new record
+			\item Allocate space for local variables
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Epilog Code}
+
+	\begin{itemize}
+	\item Generate epilog label
+			\item Update frame pointer
+			\item Replace value of return address from stack
+			\item Deallocate parameters
+			\item Restore local registers
+			\item jump to return address
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Return Statement}
+
+	\begin{itemize}
+	\item Put return value in register
+			\item Jump to epilog label
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Formal Parameters}
+
+	\begin{itemize}
+	\item Dual definitions
+
+	\begin{itemize}
+	\item Part of signature
+			\item Identifiers at local scope
+				\end{itemize}
+
+			\item Identifiers have positive offsets from frame pointer
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Actual Parameters}
+
+	\begin{itemize}
+	\item Found at call site
+			\item Add to top of stack then move frame pointer
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+\subsection{Step by Step}
+
+{
+\begin{frame}\frametitle{Current Record}
+\begin{figure}
+	\includegraphics[width=.97\textwidth]{figures/Call-01.png}\end{figure}
+\end{frame}}
+
+
+
+{
+\begin{frame}\frametitle{Spill Registers}
+\begin{figure}
+	\includegraphics[width=.97\textwidth]{figures/Call-02.png}\end{figure}
+\end{frame}}
+
+
+
+{
+\begin{frame}\frametitle{Set Parameters}
+\begin{figure}
+	\includegraphics[width=.97\textwidth]{figures/Call-03.png}\end{figure}
+\end{frame}}
+
+
+
+{
+\begin{frame}\frametitle{Call Function}
+\begin{figure}
+	\includegraphics[width=.97\textwidth]{figures/Call-04.png}\end{figure}
+\end{frame}}
+
+
+
+{
+\begin{frame}\frametitle{Build new Activation Record}
+\begin{figure}
+	\includegraphics[width=.97\textwidth]{figures/Call-05.png}\end{figure}
+\end{frame}}
+
+
+
+
+
+
+
+\end{document}

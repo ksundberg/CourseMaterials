@@ -1,0 +1,689 @@
+
+
+
+\documentclass[usepdftitle=false,professionalfonts,compress ]{beamer}
+
+%Packages to be included
+\usepackage[latin1]{inputenc}
+\usepackage{graphics,epsfig, subfigure}
+\usepackage{url}
+\usepackage[T1]{fontenc}
+%\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% PDF meta data inserted here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+	pdftitle={Syntax Analysis},
+	pdfauthor={Kenneth Sundberg}
+}
+
+
+
+
+
+%%%%%% Beamer Theme %%%%%%%%%%%%%
+
+\usetheme[]{Warsaw}
+		
+\title{Syntax Analysis}
+\subtitle{CS 5300}
+\author{Kenneth Sundberg}
+\date{}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Begin Document  %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\begin{document}
+\frame[plain]{
+	\frametitle{}
+	\titlepage
+	\vspace{-0.5cm}
+	\begin{center}
+	%\frontpagelogo
+	\end{center}
+}
+\frame{
+	\tableofcontents[hideallsubsections]
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+%%%%%%%%%% Content starts here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+\section{CFG}
+		
+\subsection{Context Free Grammars}
+
+{
+\begin{frame}\frametitle{Definitions}
+
+	\begin{itemize}
+	\item Terminals
+
+	\begin{itemize}
+	\item Basic symbols of language
+			\item Tokens from scanner
+				\end{itemize}
+
+			\item Nonterminals
+
+	\begin{itemize}
+	\item Named groups of terminal and nonterminal symbols
+			\item Impose structure on language
+			\item One is the start symbol, traditionally listed first
+				\end{itemize}
+
+			\item Productions
+
+	\begin{itemize}
+	\item Rules of language
+			\item Define Nonterminals meaning
+			\item Express a rewriting relation between a single nonterminal and a sequence of terminals and nonterminal symbols
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Derivation}
+
+	\begin{itemize}
+	\item A \textit{sentence} is a sequence of terminals that can be produced by a grammar
+			\item A sequence of terminals and nonterminals that can be produced by a grammer is in setential form
+			\item Setential forms are produced by rewriting a nonterminal in a setential form using a production from the grammar
+			\item The start symbol alone is in setential form
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Leftmost and Rightmost}
+
+	\begin{itemize}
+	\item Derivations can replace any symbol
+			\item Usually the leftmost or the rightmost symbol is chosen
+			\item If always the leftmost then the sequence of productions is a leftmost derivation
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Parse Trees}
+
+	\begin{itemize}
+	\item Represent derivations, without regard to replacement order
+			\item A sentance with more than one parse tree is ambiguous
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Stronger than RE}
+
+	\begin{itemize}
+	\item $a^nb^n$
+			\item Supports nested structures
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Example}
+
+	\begin{itemize}
+	\item E -> E + T
+			\item E -> E - T
+			\item E -> T
+			\item T -> T * F
+			\item T -> T / F
+			\item T -> F
+			\item F -> ( E )
+			\item F -> id
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Pumping Lemma}
+
+	\begin{itemize}
+	\item All context free langauges (L) have some number $p \geq 1$ such that:
+			\item $\forall s = uvxyz \in L \rightarrow s = uv^nxy^nz \in L$
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Example}
+
+	\begin{itemize}
+	\item Consider language $a^ib^ic^i$
+			\item Consider string $a^pb^pc^p$
+			\item vxy =
+
+	\begin{itemize}
+	\item $a^j$
+			\item $a^jb^k$
+			\item $b^j$
+			\item $b^jc^k$
+			\item $c^j$
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Programming Languages are not Context Free}
+
+	\begin{itemize}
+	\item $ L = {wcw | w \in (a|b)*}$
+				\end{itemize}
+
+\end{frame}}
+
+
+
+\subsection{Transformations}
+
+{
+\begin{frame}\frametitle{Eliminating Left Recursion}
+
+	\begin{itemize}
+	\item A grammar is left recursive if it contains a production $A \rightarrow A\alpha$
+			\item Replace $A_i \rightarrow A_j \gamma$ with $A_i \rightarrow \delta_1 \gamma | ... | \delta_n \gamma$
+			\item Example
+
+	\begin{itemize}
+	\item $A\rightarrow Ac|Aad|bd|\epsilon$
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Left Factoring}
+
+	\begin{itemize}
+	\item Helps with predictive parsing
+			\item Replace $A \rightarrow \alpha \beta_1 | \alpha \beta_2$
+			\item With
+
+	\begin{itemize}
+	\item $A \rightarrow \alpha A'$
+			\item $A' \rightarrow \beta_1 | \beta_2$
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Eliminating Ambiguity}
+
+	\begin{itemize}
+	\item $S \rightarrow i E t S$
+			\item $S \rightarrow i E t S e S$
+			\item $S \rightarrow a$
+			\item $E \rightarrow b$
+			\item Consider: i b t a e i b t a e a
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+
+\section{Parsing}
+		
+\subsection{Top Down Parsing}
+
+{
+\begin{frame}\frametitle{Top Down Parsing}
+
+	\begin{itemize}
+	\item Staring from the root, construct a parse tree for a given string
+			\item Equivalent to finding the leftmost derivation
+			\item Can not handle left recursion
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Recursive Descent}
+
+	\begin{itemize}
+	\item Simple way to write parser by hand
+			\item Suitable for many languages (including C++)
+			\item Each Nonterminal is a recursive function
+
+	\begin{itemize}
+	\item In the order of the production rule
+			\item Nonterminals are called
+			\item Terminals are consumed from input stream
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+\subsection{Bottom Up}
+
+{
+\begin{frame}\frametitle{Bottom Up Parsing}
+
+	\begin{itemize}
+	\item Staring from leaves construct a parse tree
+			\item Equivalent to finding the rightmost derivation
+			\item Commonly generate rightmost derivation in reverse (left to right)
+			\item Generated parsers
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{LR(k) Parsing}
+
+	\begin{itemize}
+	\item Left to Right Parse
+			\item Rightmost Derivation
+			\item k-Token Look-ahead
+			\item Most general algorithm (among practical choices)
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{LR(k) Grammar}
+
+	\begin{itemize}
+	\item Given Production $A \rightarrow B$
+			\item Given Derivation step $\alpha A \gamma \Rightarrow \alpha B \gamma$
+			\item Grammar only needs to scan $\alpha B$ and at most k tokens of $\gamma$
+			\item Grammar can detect boundary between $B$ and $\gamma$
+			\item Grammar can detect $B$
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Model of LR(k) Parser}
+
+	\begin{itemize}
+	\item Input
+			\item Stack -- Essential for PDA
+			\item Parse Table -- Action and Goto portion
+			\item Program -- Independent of language
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Example}
+
+	\begin{itemize}
+	\item Grammar
+
+	\begin{itemize}
+	\item $S \rightarrow S'$
+			\item $S \rightarrow aSbS$
+			\item $S \rightarrow a$
+				\end{itemize}
+
+			\item Input
+
+	\begin{itemize}
+	\item aaababa
+				\end{itemize}
+
+			\item Table
+			\end{itemize}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Item:& a  & b & \$ & S \\
+\hline
+0    & S2 &   &    & 1 \\
+1    &    &   & acc&  \\
+2    & S2 & R2& R2 & 3 \\
+3    &    & S4  &    &  \\
+4    & S2   &   &    & 5 \\
+5    &    & R1  & R1   &  \\
+\hline
+\end{tabular}
+				
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{FIRST}
+
+	\begin{itemize}
+	\item FIRST($\alpha$) is the set of tokens that can be first in any derivation of $\alpha$
+			\item Look at productions of $\alpha$
+
+	\begin{itemize}
+	\item If they begin with a terminal add it to FIRST($\alpha$)
+			\item If they begin with a non-terminal $\beta$ add FIRST($\beta$) to FIRST($\alpha$)
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{FOLLOW}
+
+	\begin{itemize}
+	\item FOLLOW($\alpha$) is the set of tokens that can follow any derivation of $\alpha$
+			\item Used to determine which production to use based on look ahead
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{LR(0) Item sets}
+
+	\begin{itemize}
+	\item Set of productions with a dot
+			\item $A -> \alpha \circ \beta$
+			\item Means we are deriving A and have seen $\alpha$
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{LR(1) item sets}
+
+	\begin{itemize}
+	\item Augmented LR(0) items, also include next input token
+				\end{itemize}
+
+\end{frame}}
+
+
+
+{
+\begin{frame}\frametitle{Parse Table Construction}
+
+	\begin{itemize}
+	\item Start with $S' \rightarrow \dot S$
+			\item If the dot is before a non-terminal  add items for all productions of that non-terminal
+			\item Make new states by reading next symbol and adding transition
+			\item Repeat until no new states are formed
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Conflicts}
+
+	\begin{itemize}
+	\item Reduce - Reduce
+
+	\begin{itemize}
+	\item Grammar is not representable as table
+				\end{itemize}
+
+			\item Shift - Reduce
+
+	\begin{itemize}
+	\item Should be cleaned up, but Reduce takes priority
+				\end{itemize}
+
+			\item May be resolved by associativity
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+\subsection{Error Handling}
+
+{
+\begin{frame}\frametitle{Types of Errors}
+
+	\begin{itemize}
+	\item Lexical
+
+	\begin{itemize}
+	\item Mistyped keywords
+			\item Mismatched string delimiters
+				\end{itemize}
+
+			\item Syntactic
+
+	\begin{itemize}
+	\item Missing semicolons
+			\item else without if
+				\end{itemize}
+
+			\item Semantic
+
+	\begin{itemize}
+	\item Type mismatch errors
+			\item Context sensitive
+				\end{itemize}
+
+			\item Logical
+
+	\begin{itemize}
+	\item Run-time errors
+			\item Program is valid but not intended
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Recovery Strategies}
+
+	\begin{itemize}
+	\item None
+
+	\begin{itemize}
+	\item Give up after first error
+				\end{itemize}
+
+			\item Panic-Mode
+
+	\begin{itemize}
+	\item Give up on current parse
+			\item Discard tokens until a synchronizing token is found
+
+	\begin{itemize}
+	\item Typically a delimiter
+				\end{itemize}
+
+			\item Continue from synchronizing token
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Recovery Strategies}
+
+	\begin{itemize}
+	\item Phrase Level Corrections
+
+	\begin{itemize}
+	\item Insert or Delete tokens to correct parse
+			\item Add semicolon
+			\item Correct mis-spelled identifiers
+			\item Must avoid infinite loops
+				\end{itemize}
+
+			\item Error Productions
+
+	\begin{itemize}
+	\item Augment grammar with anticipated erroneous constructs
+			\item Generate appropriate error message when detected
+				\end{itemize}
+
+			\item Global Correction
+
+	\begin{itemize}
+	\item Of theoretical interest, not currently practical
+			\item Can be used to inform phrase level recovery
+			\item Given:
+
+	\begin{itemize}
+	\item Token string
+			\item Grammer
+				\end{itemize}
+
+			\item Find:
+
+	\begin{itemize}
+	\item A Token string that the grammer parses with a minimal edit distance from the given string
+				\end{itemize}
+
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,407 @@
+
+
+
+\documentclass[usepdftitle=false,professionalfonts,compress ]{beamer}
+
+%Packages to be included
+\usepackage[latin1]{inputenc}
+\usepackage{graphics,epsfig, subfigure}
+\usepackage{url}
+\usepackage[T1]{fontenc}
+%\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% PDF meta data inserted here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+	pdftitle={Introduction},
+	pdfauthor={Kenneth Sundberg}
+}
+
+
+
+
+
+%%%%%% Beamer Theme %%%%%%%%%%%%%
+
+\usetheme[]{Warsaw}
+		
+\title{Introduction}\subtitle{CS 5300}\author{Kenneth Sundberg}\date{}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Begin Document  %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\begin{document}
+\frame[plain]{
+	\frametitle{}
+	\titlepage
+	\vspace{-0.5cm}
+	\begin{center}
+	%\frontpagelogo
+	\end{center}
+}
+\frame{
+	\tableofcontents[hideallsubsections]
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+%%%%%%%%%% Content starts here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+\section{Syllabus}
+		
+\subsection{Policies}
+{\begin{frame}\frametitle{Late Policy}
+	\begin{itemize}
+	\item 10\% off per day late
+			\item Not accepted more than 3 days late
+				\end{itemize}
+\end{frame}}
+
+
+
+{\begin{frame}\frametitle{Grading Weights}
+	\begin{itemize}
+	\item Exams - 30\%
+			\item Compiler Project - 70\%
+				\end{itemize}
+\end{frame}}
+
+
+
+{\begin{frame}\frametitle{ADA}
+	\begin{itemize}
+	\item Course is ADA compliant
+			\item If necessary get me paperwork from the DRC
+				\end{itemize}
+\end{frame}}
+
+
+
+{\begin{frame}\frametitle{Cheating}
+	\begin{itemize}
+	\item Don't do it
+			\item Group Work
+				\end{itemize}
+\end{frame}}
+
+
+
+
+\subsection{Tool Chain}
+{\begin{frame}\frametitle{Compilers}
+	\begin{itemize}
+	\item gcc 4.8.1
+			\item flex 2.5.4
+			\item bison 2.5
+				\end{itemize}
+\end{frame}}
+
+
+
+
+{\begin{frame}\frametitle{Build Tools}
+	\begin{itemize}
+	\item CMake
+	\begin{itemize}
+	\item Cross Platform Make
+				\end{itemize}
+
+			\item gmake
+			\item Either is fine
+				\end{itemize}
+\end{frame}}
+
+
+
+
+{\begin{frame}\frametitle{MIPS Simulator}
+	\begin{itemize}
+	\item Mars
+			\item SPIM also available but not fully compatible
+				\end{itemize}
+\end{frame}}
+
+
+
+
+\subsection{CPSL}
+{\begin{frame}\frametitle{Compiler Project Source Language}
+	\begin{itemize}
+	\item We are building a simple compiler
+			\item Language is PASCAL-like
+			\item Only integral types and string constants
+			\item MIPS is the target archetecture
+			\item Beware - sometimes the dragon wins.
+				\end{itemize}
+\end{frame}}
+
+
+
+
+
+
+{\begin{frame}\frametitle{GitHub}
+	\begin{itemize}
+	\item https://github.com/ksundberg/CS5300
+			\item Documentation
+	\begin{itemize}
+	\item Also available on Canvas as a .pdf
+			\item Further sections and clarifications may be added as course progresses
+				\end{itemize}
+
+			\item Test Files
+	\begin{itemize}
+	\item Correct processing of these files is the goal of compiler project
+				\end{itemize}
+
+			\item Feel free to make pull requests, especially for more test files
+				\end{itemize}
+\end{frame}}
+
+
+
+
+
+
+
+\section{C++}
+		
+\subsection{RAII}
+{\begin{frame}\frametitle{Resource acquisition Is Initialization}
+	\begin{itemize}
+	\item Possibly most important C++ idiom
+			\item Everything is owned by something
+			\item If ownership is complex then that should be a classes only task
+				\end{itemize}
+\end{frame}}
+
+
+
+
+
+\subsection{C++ 11}
+{\begin{frame}\frametitle{Smart Pointers}
+	\begin{itemize}
+	\item new and delete are radioactive
+			\item shared\_ptr
+			\item unique\_ptr
+			\item weak\_ptr
+			\item make\_shared
+			\item make\_unique (C++ 14)
+				\end{itemize}
+\end{frame}}
+
+
+
+
+
+
+
+{\begin{frame}\frametitle{Lambda}
+	\begin{itemize}
+	\item Short anonymous functions
+			\item Capture List
+			\item Parameter List
+			\item Return Type
+			\item Body
+				\end{itemize}
+\end{frame}}
+
+
+
+
+
+
+{\begin{frame}\frametitle{Auto}
+	\begin{itemize}
+	\item AAA style (Almost Always Auto)
+			\item Let the compiler worry about types
+			\item Still strongly typed and safe
+				\end{itemize}
+\end{frame}}
+
+
+
+
+{\begin{frame}\frametitle{Range based for}
+	\begin{itemize}
+	\item Simple iterating syntax
+			\item For more complex things use algorithims
+			\item Avoid raw loops
+				\end{itemize}
+\end{frame}}
+
+
+
+
+
+
+\section{Compilers}
+		
+\subsection{Purpose}
+{\begin{frame}\frametitle{Language Processors}
+	\begin{itemize}
+	\item Compilers convert from source languages to target languages
+			\item An important side job is error detection
+				\end{itemize}
+\end{frame}}
+
+
+
+{\begin{frame}\frametitle{Processing Chain}
+	\begin{itemize}
+	\item Preprocessor
+			\item Compiler
+			\item Assembler
+			\item Linker
+			\item Loader
+				\end{itemize}
+\end{frame}}
+
+
+
+
+
+
+
+\subsection{Structure}
+{\begin{frame}\frametitle{Symbol Table}
+	\begin{itemize}
+	\item All parts access the Symbol Table
+			\item Stores type and location information
+				\end{itemize}
+\end{frame}}
+
+
+
+{\begin{frame}\frametitle{Front End}
+	\begin{itemize}
+	\item Responsible for language dependent portions
+			\item Lexical, syntax, and semantic analysis
+			\item Intermediate code generation
+				\end{itemize}
+\end{frame}}
+
+
+
+
+{\begin{frame}\frametitle{Optimizer}
+	\begin{itemize}
+	\item Most work done here
+			\item Intermediate code to better intermediate code
+			\item Independent of both source and target language
+				\end{itemize}
+\end{frame}}
+
+
+
+
+{\begin{frame}\frametitle{Back End}
+	\begin{itemize}
+	\item Responsible for target dependent portions
+			\item Code generator and machine dependent optimization
+				\end{itemize}
+\end{frame}}
+
+
+
+{\begin{frame}\frametitle{Compiler Collection}
+	\begin{itemize}
+	\item Mix and Match front ends and back ends
+			\item New languages only require a front end
+			\item New machines only require a back end
+				\end{itemize}
+\end{frame}}
+
+
+
+
+
+\subsection{Compiler Phases}
+{\begin{frame}\frametitle{Scanning}
+	\begin{itemize}
+	\item Lexical Analysis
+			\item Regular Language
+			\item Transform character stream into tokens
+				\end{itemize}
+\end{frame}}
+
+
+
+
+{\begin{frame}\frametitle{Parsing}
+	\begin{itemize}
+	\item Syntax Analysis
+			\item Context Free Grammar
+			\item Transform token stream to syntax tree
+				\end{itemize}
+\end{frame}}
+
+
+
+
+{\begin{frame}\frametitle{Code Generation}
+	\begin{itemize}
+	\item May include optimization
+			\item Transform syntax tree to executable code
+				\end{itemize}
+\end{frame}}
+
+
+
+
+\subsection{History and Evolution}
+{\begin{frame}\frametitle{Generations}
+	\begin{itemize}
+	\item First generation - machine code
+			\item Second generation - assembly code
+			\item Third generation - general purpose languages
+			\item Fourth generation - special purpose languages
+				\end{itemize}
+\end{frame}}
+
+
+
+
+
+{\begin{frame}\frametitle{Types of Languages}
+	\begin{itemize}
+	\item Imperative vs. Declarative
+			\item High Level vs. Low Level
+				\end{itemize}
+\end{frame}}
+
+
+
+
+
+
+
+
+\end{document}

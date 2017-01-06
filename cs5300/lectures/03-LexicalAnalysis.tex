@@ -1,0 +1,689 @@
+
+
+
+\documentclass[usepdftitle=false,professionalfonts,compress ]{beamer}
+
+%Packages to be included
+\usepackage[latin1]{inputenc}
+\usepackage{graphics,epsfig, subfigure}
+\usepackage{url}
+\usepackage[T1]{fontenc}
+%\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% PDF meta data inserted here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+	pdftitle={Lexical Analysis},
+	pdfauthor={KennethSundberg}
+}
+
+
+
+
+
+%%%%%% Beamer Theme %%%%%%%%%%%%%
+
+\usetheme[]{Warsaw}
+		
+\title{Lexical Analysis}
+\subtitle{CS 5300}
+\author{KennethSundberg}
+\date{}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Begin Document  %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\begin{document}
+\frame[plain]{
+	\frametitle{}
+	\titlepage
+	\vspace{-0.5cm}
+	\begin{center}
+	%\frontpagelogo
+	\end{center}
+}
+\frame{
+	\tableofcontents[hideallsubsections]
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+%%%%%%%%%% Content starts here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+\section{Role}
+		
+\subsection{Overview}
+
+{
+\begin{frame}\frametitle{Features of Lexical Analyzer}
+
+	\begin{itemize}
+	\item Groups characters into tokens for syntax analyzer
+			\item Strips white space
+			\item Keeps track of line numbers (for diagnostics)
+			\item Generates output listing with errors marked
+			\item Delete comments
+			\item Converts numbers to binary form
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Microsyntax}
+
+	\begin{itemize}
+	\item Scanner recognizes rule for the words of the language
+			\item Type of word -- Part of speach can be determined by scanner
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Input}
+
+	\begin{itemize}
+	\item Sequence of characters
+			\item Lexer takes file of characters produces tokens
+			\item Parser calls scanner which returns next token
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Output}
+
+	\begin{itemize}
+	\item Sequence of tokens
+
+	\begin{itemize}
+	\item Operators
+			\item puctuation
+			\item keywords
+			\item identifiers
+			\item string literals
+			\item character literals
+			\item numeric literals
+
+	\begin{itemize}
+	\item base 10
+			\item octal
+			\item hex
+			\item floating point
+				\end{itemize}
+
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+{
+\begin{frame}\frametitle{Terminology}
+
+	\begin{itemize}
+	\item Token
+
+	\begin{itemize}
+	\item Type of word
+			\item Part of Speech
+			\item Implemented as enumeration
+				\end{itemize}
+
+			\item Lexeme
+
+	\begin{itemize}
+	\item Some Kinds of token need associated data
+			\item Value derived from matched text
+				\end{itemize}
+
+			\item Pattern
+
+	\begin{itemize}
+	\item Regular expressions used to recognize tokens
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Recognizing Words}
+
+	\begin{itemize}
+	\item Part of Speech
+				\end{itemize}
+
+\end{frame}}
+
+
+
+{
+\begin{frame}\frametitle{Keywords}
+
+	\begin{itemize}
+	\item Reserved identifiers
+			\item Only token kind is significant
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Literals}
+
+	\begin{itemize}
+	\item String, character, or numeric
+			\item Both token kind and lexem are significant
+			\item lexeme may be interpreted first
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Operators}
+
+	\begin{itemize}
+	\item Like separators
+			\item No real difference for lexical analyzer
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Identifiers}
+
+	\begin{itemize}
+	\item Rules for identifiers vary by language
+			\item length, allowed characters, separators
+			\item Both toekn kind and lexeme are significant
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Comments}
+
+	\begin{itemize}
+	\item No syntatic meaning
+			\item No token
+			\item Scanner (Lexer) skips over comments
+			\item Detect errors open comment, no close
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Puntuation}
+
+	\begin{itemize}
+	\item Separators
+			\item Typically single special characters
+			\item Sometimes a short sequence.  i.e. comment operators
+			\item Lexer returns longest match
+			\item Only token kind (type) is significant
+			\item May include location for error reporting
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+
+\subsection{Variations}
+
+{
+\begin{frame}\frametitle{Free Form v Fixed Form}
+
+	\begin{itemize}
+	\item Free form
+
+	\begin{itemize}
+	\item White space doesn't matter
+			\item Only token order
+				\end{itemize}
+
+			\item Fixed form
+
+	\begin{itemize}
+	\item Layout is critical
+			\item primariy used in historical languages
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Ways to construct}
+
+	\begin{itemize}
+	\item Scanner generator - flex
+			\item Hand written
+
+	\begin{itemize}
+	\item Performance
+
+	\begin{itemize}
+	\item Lexical Analysis can be bottleneck
+			\item Minimize processing per character
+			\item Large I/O reads
+			\item We compile frequently so performance is important
+				\end{itemize}
+
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Case Equivalance}
+
+	\begin{itemize}
+	\item Some languages are case insensitive
+
+	\begin{itemize}
+	\item Pascal, Ada
+				\end{itemize}
+
+			\item Some are not
+
+	\begin{itemize}
+	\item Java, C, C++
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+\section{Generators}
+		
+\subsection{Regular Expressions}
+
+{
+\begin{frame}\frametitle{Specifiying REs in Unix Tools}
+
+	\begin{itemize}
+	\item alternation [xy] x|y
+			\item any character .
+			\item Sequence abc
+			\item Repition x*
+			\item Optional x?y+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+\subsection{Using Flex}
+
+{
+\begin{frame}\frametitle{Help}
+
+	\begin{itemize}
+	\item http://flex.sourceforge.net/manual/index.html
+				\end{itemize}
+
+\end{frame}}
+
+
+
+{
+\begin{frame}\frametitle{File Structure}
+
+	\begin{itemize}
+	\item Definitions
+
+	\begin{itemize}
+	\item Sub-expressions like character
+			\item include files for rules
+				\end{itemize}
+
+			\item Rules
+
+	\begin{itemize}
+	\item Regular Expression
+			\item Action
+			\item Precedence of expressions by order
+				\end{itemize}
+
+			\item Code
+
+	\begin{itemize}
+	\item Helper code
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+\section{Finite Automata}
+		
+\subsection{Definitions}
+
+{
+\begin{frame}\frametitle{Defined by alphabet and three operators}
+
+	\begin{itemize}
+	\item Precedence
+
+	\begin{itemize}
+	\item Kleene Closure (Repetition)
+			\item Concatenation
+			\item Alternation
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+{
+\begin{frame}\frametitle{Regular Expressions = Finite Automata}
+
+	\begin{itemize}
+	\item Proof by construction to follow
+				\end{itemize}
+
+\end{frame}}
+
+
+
+{
+\begin{frame}\frametitle{Nondeterministic Finite Automata (NFA)}
+
+	\begin{itemize}
+	\item $\epsilon$ transitions
+
+	\begin{itemize}
+	\item Don't consume input
+				\end{itemize}
+
+			\item Equivalence
+
+	\begin{itemize}
+	\item NFA = FA
+			\item Proof by construction to follow
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+\subsection{Limitations}
+
+{
+\begin{frame}\frametitle{Pumping Lemma}
+
+\end{frame}}
+
+
+\section{Scanner Generation}
+		
+\subsection{Overview}
+
+{
+\begin{frame}\frametitle{Automatic Generation}
+
+	\begin{itemize}
+	\item RE -> NFA
+			\item NFA -> DFA
+			\item DFA -> MFA
+			\item MFA -> LA
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+\subsection{Algorithims}
+
+{
+\begin{frame}\frametitle{Thompson's Construction}
+
+	\begin{itemize}
+	\item RE to NFA
+
+	\begin{itemize}
+	\item Base Case
+			\item Alternation
+			\item Concatenation
+			\item Closure
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+{
+\begin{frame}\frametitle{Evaluating Thompson's Construction}
+
+	\begin{itemize}
+	\item RE to NFA
+
+	\begin{itemize}
+	\item Base Case
+			\item Alternation
+			\item Concatenation
+			\item Closure
+				\end{itemize}
+
+			\item Simple transformations for each operator
+
+	\begin{itemize}
+	\item Preserved Properties
+			\item One start state
+			\item One end state
+			\item No transitions from end state
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Subset Construction}
+
+	\begin{itemize}
+	\item NFA to DFA
+				\end{itemize}
+
+\end{frame}}
+
+
+
+{
+\begin{frame}\frametitle{Hopcroft's Algorithim}
+
+	\begin{itemize}
+	\item DFA to Minimal DFA
+			\item Find a set partion of states
+
+	\begin{itemize}
+	\item each set in state must have the same behavior on each input
+				\end{itemize}
+
+			\item start with start state in one partition and all others in a second
+			\item find input for which states have different behavior
+			\item continue
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+\subsection{Scanner Construction}
+
+{
+\begin{frame}\frametitle{Recognizing multiple patterns}
+
+	\begin{itemize}
+	\item Multiple FA's
+			\item Slightly different accept
+			\item Back tracking
+			\item Priority
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Table Driven}
+
+	\begin{itemize}
+	\item One row per state
+			\item One column per character
+			\item Entries are next state
+			\item Identical columns can be merged into a classifier
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Direct Scanners}
+
+	\begin{itemize}
+	\item Replace each row (state) in table with code fragment
+			\item transfer control to correct fragment based on input
+			\item Violates structured programming, but it is generated
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Hand-Code}
+
+	\begin{itemize}
+	\item Hand-written to optimize for I/O
+				\end{itemize}
+
+\end{frame}}
+
+
+
+{
+\begin{frame}\frametitle{Example: a(b|c)*}
+
+\end{frame}}
+
+
+
+
+
+\end{document}

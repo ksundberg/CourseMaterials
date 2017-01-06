@@ -1,0 +1,336 @@
+
+
+
+\documentclass[usepdftitle=false,professionalfonts,compress ]{beamer}
+
+%Packages to be included
+\usepackage[latin1]{inputenc}
+\usepackage{graphics,epsfig, subfigure}
+\usepackage{url}
+\usepackage[T1]{fontenc}
+%\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% PDF meta data inserted here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+	pdftitle={Semantic Analysis},
+	pdfauthor={Kenneth Sundberg}
+}
+
+
+
+
+
+%%%%%% Beamer Theme %%%%%%%%%%%%%
+
+\usetheme[]{Warsaw}
+		
+\title{Semantic Analysis}
+\subtitle{CS 5300}
+\author{Kenneth Sundberg}
+\date{}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Begin Document  %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\begin{document}
+\frame[plain]{
+	\frametitle{}
+	\titlepage
+	\vspace{-0.5cm}
+	\begin{center}
+	%\frontpagelogo
+	\end{center}
+}
+\frame{
+	\tableofcontents[hideallsubsections]
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+%%%%%%%%%% Content starts here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+\section{Symbol Table}
+		
+\subsection{Semantic Questions}
+
+{
+\begin{frame}\frametitle{Given an Identifier}
+
+	\begin{itemize}
+	\item What kind of value is stored in x
+			\item How big is x
+			\item If x is a procedure what is its signature
+			\item What is the lifetime of x
+			\item Where and how is x allocated
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+\subsection{Structure}
+
+{
+\begin{frame}\frametitle{Scope}
+
+	\begin{itemize}
+	\item Symbol Table needs to accomodate scope rules
+			\item Inner scope names eclipse outer scope names
+			\item Names in disjoint scopes do not conflict
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Lexical Scope}
+
+	\begin{itemize}
+	\item Code is organized into a tree structure
+			\item Tree can be traversed with a stack
+			\item Enter a scope $\rightarrow$ Push a table
+			\item Exit a scope $\rightarrow$ Pop a table
+			\item Lookup names in successive scopes until found
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Scope in CPSL}
+
+	\begin{itemize}
+	\item Three levels - Maximum size of symbol table stack is 3
+			\item Local
+			\item Global
+			\item Predefined
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+\section{Type System}
+		
+\subsection{Purpose}
+
+{
+\begin{frame}\frametitle{Runtime Safety}
+
+	\begin{itemize}
+	\item Fail to compile for some types of errors
+			\item Add runtime checks if needed
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Expressiveness}
+
+	\begin{itemize}
+	\item Quantities with units are more expressive
+			\item Type can provide a unit
+
+	\begin{itemize}
+	\item Especially with general type construction
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Generate Better Code}
+
+	\begin{itemize}
+	\item Type can inform code generation
+			\item Type can inform optimization
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+\subsection{Components}
+
+{
+\begin{frame}\frametitle{Base Types}
+
+	\begin{itemize}
+	\item Numbers
+			\item Characters
+			\item Boolean
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Compound Types}
+
+	\begin{itemize}
+	\item Arrays
+			\item Strings
+			\item Enumerated Types
+			\item Structures
+			\item Variants
+			\item Pointers
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Type Constructors}
+
+	\begin{itemize}
+	\item Decorators
+			\item Generics
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+\subsection{Inference}
+
+{
+\begin{frame}\frametitle{Type Checking}
+
+	\begin{itemize}
+	\item Central to Semantic analysis
+			\item Strongly typed languages do not compile in presence of type errors
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Type Equivalence}
+
+	\begin{itemize}
+	\item By Name
+
+	\begin{itemize}
+	\item Types are identical only if names are identical
+				\end{itemize}
+
+			\item By Structure
+
+	\begin{itemize}
+	\item Types are identical if structure is identical
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Inference Rules}
+
+	\begin{itemize}
+	\item Operators of a type system
+			\item Implicit v. Explicit
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Declarations}
+
+	\begin{itemize}
+	\item Give names to types
+			\item Give types to variables
+			\item Add to symbol table
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Expressions}
+
+	\begin{itemize}
+	\item Type of expressions inferred from components and operators
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+\end{document}

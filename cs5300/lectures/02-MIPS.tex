@@ -1,0 +1,347 @@
+
+
+
+\documentclass[usepdftitle=false,professionalfonts,compress ]{beamer}
+
+%Packages to be included
+\usepackage[latin1]{inputenc}
+\usepackage{graphics,epsfig, subfigure}
+\usepackage{url}
+\usepackage[T1]{fontenc}
+%\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% PDF meta data inserted here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+	pdftitle={02-MIPS},
+	pdfauthor={}
+}
+
+
+
+
+
+%%%%%% Beamer Theme %%%%%%%%%%%%%
+
+\usetheme[]{Warsaw}
+		
+\title{02-MIPS}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Begin Document  %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\begin{document}
+\frame[plain]{
+	\frametitle{}
+	\titlepage
+	\vspace{-0.5cm}
+	\begin{center}
+	%\frontpagelogo
+	\end{center}
+}
+\frame{
+	\tableofcontents[hideallsubsections]
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+%%%%%%%%%% Content starts here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+\section{MIPS}
+		
+\subsection{Overview}
+
+{
+\begin{frame}\frametitle{MIPS}
+
+	\begin{itemize}
+	\item Microprocessor without Interlocked Pipeline Stages
+			\item Developed in 1981 by John L. Hennessy
+			\item One of the first RISC archetectures
+			\item Common in embedded systems
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+\subsection{Instructions}
+
+{
+\begin{frame}\frametitle{Signed v. Unsigned}
+
+	\begin{itemize}
+	\item Signed integers are stored as 2's complement
+			\item Unsigned integers are stored as binary
+			\item The different formats can not be
+
+	\begin{itemize}
+	\item compared
+			\item used in the same expression
+			\item safely converted
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Co-processor}
+
+	\begin{itemize}
+	\item Floating point instructions on floating point co-processor
+			\item Co-processor has a separate set of instructions
+			\item For simplicity CPSL does not have floating point support
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Load / Store}
+
+	\begin{itemize}
+	\item li
+			\item la
+			\item lw
+			\item sw
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Arithmetic}
+
+	\begin{itemize}
+	\item add, addi, addu, addiu
+			\item sub, subu
+			\item mult, multu
+			\item div, divu
+			\item mfhi, mflo -- Used to get results of mult and div
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Conditionals}
+
+	\begin{itemize}
+	\item slt, sltu, slti, sltiu
+			\item and, andi
+			\item or, ori
+			\item nor
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Branching}
+
+	\begin{itemize}
+	\item beq, bne
+			\item j, jr, jal
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+\subsection{Registers}
+
+{
+\begin{frame}\frametitle{Types}
+
+	\begin{itemize}
+	\item 32 registers \$0 - \$31
+			\item mnemonic names to help remember usage
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Reserved}
+
+	\begin{itemize}
+	\item \$zero - Always 0
+			\item \$at - Assembler Temporary
+			\item \$k0, \$k1 - Reserved for Kernal
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Variables}
+
+	\begin{itemize}
+	\item \$s0-\$s7 - Saved Registers
+			\item \$t0-\$t9 - Temporary Registers
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Function Calls}
+
+	\begin{itemize}
+	\item \$v0, \$v1 - Return values
+			\item \$a0-\$a3 - Arguments
+			\item \$ra - return address - set by jal
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Memory Management}
+
+	\begin{itemize}
+	\item \$gp - Global pointer
+			\item \$sp - Stack pointer
+			\item \$fp - Frame pointer
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Conventions}
+
+	\begin{itemize}
+	\item The following registers must have the same value after a function call returns as they had before the function call:
+
+	\begin{itemize}
+	\item Saved registers
+			\item Global pointer
+			\item Stack pointer
+			\item Frame pointer
+			\item Return address
+				\end{itemize}
+
+			\item All other registers are in an unknown state after a function call
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+\subsection{System Calls}
+
+{
+\begin{frame}\frametitle{syscall}
+
+	\begin{itemize}
+	\item I/O provided by simulator
+			\item put system call number into \$v0
+			\item 1 -- print integer -- \$a0 contains integer to print
+			\item 4 -- print string -- \$a0 contains address of string
+			\item 5 -- read integer -- \$v0 contains integer value
+			\item 8 -- read string -- \$a0 contains buffer, \$a1 contains length
+			\item 10 -- exit
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+
+
+
+\section{Exercises}
+		
+\subsection{Expression}
+
+{
+\begin{frame}\frametitle{$Distance^2$}
+
+\end{frame}}
+
+\subsection{Loop}
+
+{
+\begin{frame}\frametitle{Sum of an Array}
+
+\end{frame}}
+
+\subsection{Function Call}
+
+{
+\begin{frame}\frametitle{Recursive Factorial}
+
+\end{frame}}
+
+
+
+
+
+\end{document}

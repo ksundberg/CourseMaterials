@@ -1,0 +1,445 @@
+
+
+
+\documentclass[usepdftitle=false,professionalfonts,compress ]{beamer}
+
+%Packages to be included
+\usepackage[latin1]{inputenc}
+\usepackage{graphics,epsfig, subfigure}
+\usepackage{url}
+\usepackage[T1]{fontenc}
+%\usepackage{listings}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% PDF meta data inserted here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+	pdftitle={Optimizations},
+	pdfauthor={Kenneth Sundberg}
+}
+
+
+
+
+
+%%%%%% Beamer Theme %%%%%%%%%%%%%
+
+\usetheme[]{Warsaw}
+		
+\title{Optimizations}
+\subtitle{CS 5300}
+\author{Kenneth Sundberg}
+\date{}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Begin Document  %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\begin{document}
+\frame[plain]{
+	\frametitle{}
+	\titlepage
+	\vspace{-0.5cm}
+	\begin{center}
+	%\frontpagelogo
+	\end{center}
+}
+\frame{
+	\tableofcontents[hideallsubsections]
+}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+%%%%%%%%%% Content starts here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+\section{Basic Blocks}
+		
+\subsection{Definition}
+
+{
+\begin{frame}\frametitle{Basic Block}
+
+	\begin{itemize}
+	\item A basic block is a sequence of statements
+			\item Control flow can only enter the block at its first instruction
+			\item Control will not halt, jump, or branch except at the last instruction
+			\item If one statement in block executes all statements will execute
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Block Leaders}
+
+	\begin{itemize}
+	\item A statement is a block leader if:
+
+	\begin{itemize}
+	\item It is the first instruction in the program
+			\item It is the target of a jump or branch
+			\item It immediately follows a jump or branch
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+{
+\begin{frame}\frametitle{Control Flow Graph}
+
+	\begin{itemize}
+	\item Nodes in graph are basic blocks
+			\item Edges $A \rightarrow B$ if the first statement in B can immediately follow last statement in A
+
+	\begin{itemize}
+	\item A jumps to B
+			\item A branches to B
+			\item B follows after A in code
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Example}
+\scriptsize
+	\begin{itemize}
+	\item 1) i = 1
+			\item 2) j = 1
+			\item 3) t1 = 10 * i
+			\item 4) t2 = t1 + j
+			\item 5) t3 = 8 * t2
+			\item 6) t4 = t3 - 88
+			\item 7) a[t4] = 0.0
+			\item 8) j = j + 1
+			\item 9) if j <= 10 goto 3
+			\item 10) i = i + 1
+			\item 11) if i <= 10 goto 2
+			\item 12) i = 1
+			\item 13) t5 = i - 1
+			\item 14) t6 = 88 * t5
+			\item 15) a[t6] = 1.0
+			\item 16) i = i + 1
+			\item 17 if i <= 10 goto 13
+				\end{itemize}
+\normalsize
+\end{frame}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{DU-chains and live variables}
+
+	\begin{itemize}
+	\item A Definition is where a name is assigned a value
+			\item A Use is where a value is retrieved from a name
+			\item A name is live on all control paths between its definition and any of its uses
+			\item Single static assignment simplifies this analysis
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+\subsection{Optimizations}
+
+{
+\begin{frame}\frametitle{Local vs Global Optimizations}
+
+	\begin{itemize}
+	\item A fair amount of improvement can be obtained by optimizing each basic block independently
+			\item Global optimizations look between blocks and are much more complex
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{DAG representation}
+
+	\begin{itemize}
+	\item A basic block can be represented by a DAG
+			\item A node for each live variable at the beginning of the block
+			\item A node for each statement in the block
+
+	\begin{itemize}
+	\item The most recent definition of the operands are the children of these nodes
+				\end{itemize}
+
+			\item A node for each live variable at the end of the block
+			\item Variable names are attached to nodes representing their last definitions
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{Common Subexpressions}
+
+	\begin{itemize}
+	\item If two nodes in the basic block:
+
+	\begin{itemize}
+	\item Have the same operator
+			\item Have the same operands
+			\item In the same order
+				\end{itemize}
+
+			\item Then they can be merged into one node
+			\item Example:
+
+	\begin{itemize}
+	\item a = b + c
+			\item b = a - d
+			\item c = b + c
+			\item d = a - d
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Dead Code Elimination}
+
+	\begin{itemize}
+	\item Any root node with no attached live variables can be removed
+			\item This can often leave more nodes that are subject to dead code elimination
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Strength Reduction}
+
+	\begin{itemize}
+	\item Replace Node with simpler node
+			\item 2 * x = x + x
+			\item $x^2 = x * x$
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+\section{Peephole Optimization}
+		
+\subsection{Peephole Optimization}
+
+{
+\begin{frame}\frametitle{Peephole Optimization}
+
+	\begin{itemize}
+	\item Some very local optimizations can be made
+			\item Only a small sliding window of instructions considered
+			\item Called peephole optimizations
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Redundant Loads and Stores}
+
+	\begin{itemize}
+	\item Remove redundant stores that immediately follow loads
+			\item lw \$t0, 0(\$gp)
+			\item sw \$t0, 0(\$gp)
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+{
+\begin{frame}\frametitle{Jumps Over Jumps}
+
+	\begin{itemize}
+	\item Sometime jumps jump to jump instructions
+			\item First jump can target the target of the second
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+{
+\begin{frame}\frametitle{Machine Idioms}
+
+	\begin{itemize}
+	\item Some machines have special instructions
+			\item div \$t0, \$t1
+			\item mflo \$t2
+			\item div \$t0, \$t1
+			\item mfhi \$t3
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+
+\section{Register Allocation}
+		
+\subsection{Graph Coloring}
+
+{
+\begin{frame}\frametitle{Graph Coloring}
+
+	\begin{itemize}
+	\item Write intermediate code as if infinite registers are available
+			\item Build a register interference graph
+
+	\begin{itemize}
+	\item Nodes are definitions
+			\item Edges between nodes that are both live at any point in program
+				\end{itemize}
+
+			\item Color graph with register assignments
+
+	\begin{itemize}
+	\item Graph coloring is NP-complete
+			\item Practical heuristics exist
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+\subsection{Expressions}
+
+{
+\begin{frame}\frametitle{Ershov Numbers}
+
+	\begin{itemize}
+	\item Number of registers needed to evaluate an expression tree without temporaries
+			\item All leaves are labeled 1
+			\item Interior nodes with one child have the same number as their child
+			\item Interior nodes with two children has the number
+
+	\begin{itemize}
+	\item of its largest child if they are different
+			\item one more than its children if they are the same
+				\end{itemize}
+
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+{
+\begin{frame}\frametitle{General DP}
+
+	\begin{itemize}
+	\item This can be generalized to a DP alogrithim
+			\item Compute a cost vector
+
+	\begin{itemize}
+	\item V[0] is the cost to compute into memory
+			\item V[1] is the cost to compute into a register (1 available)
+			\item V[n] is the cost to compute into a register (n available)
+				\end{itemize}
+
+			\item P[n] = min(A[i] + A[j]) where i+j = n
+				\end{itemize}
+
+\end{frame}}
+
+
+
+
+
+
+
+
+
+\end{document}
