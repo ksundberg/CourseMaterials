@@ -1,6 +1,6 @@
 <map version="freeplane 1.3.0">
 <!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
-<node TEXT="Introduction" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1483743537208"><hook NAME="MapStyle">
+<node TEXT="Introduction" ID="ID_1723255651" CREATED="1283093380553" MODIFIED="1484347803202"><hook NAME="MapStyle">
     <properties show_icon_for_attributes="true"/>
 
 <map_styles>
@@ -53,7 +53,7 @@
 <hook NAME="AutomaticEdgeColor" COUNTER="2"/>
 <attribute NAME="author" VALUE="Kenneth Sundberg"/>
 <attribute NAME="date" VALUE=""/>
-<attribute NAME="subtitle" VALUE=""/>
+<attribute NAME="subtitle" VALUE="CS 6400"/>
 <node TEXT="Sylabus" POSITION="right" ID="ID_1893758557" CREATED="1388724830529" MODIFIED="1483743557752">
 <edge COLOR="#ff0000"/>
 <node TEXT="Topic" ID="ID_1859463312" CREATED="1388724860429" MODIFIED="1388724875730">
@@ -66,6 +66,7 @@
 <node TEXT="Text is annotated source code for a fully functional ray tracer called pbrt" ID="ID_1731531756" CREATED="1483743752386" MODIFIED="1483743909334"/>
 <node TEXT="You are responsible for all algorithms covered, even if we don&apos;t do an assignment on them" ID="ID_557394204" CREATED="1483743780705" MODIFIED="1483743798702"/>
 <node TEXT="We will be modifying and extending existing code." ID="ID_323138638" CREATED="1483743801217" MODIFIED="1483743891422"/>
+<node TEXT="Be sure to read and understand all code covered so far" ID="ID_383252150" CREATED="1484347621585" MODIFIED="1484347642908"/>
 </node>
 </node>
 <node TEXT="Grading" ID="ID_1678855989" CREATED="1388724876309" MODIFIED="1388724885234">
@@ -122,7 +123,7 @@
 <node TEXT="Energy sources in scene" ID="ID_1515190394" CREATED="1483745047995" MODIFIED="1483745055926"/>
 <node TEXT="Light sources have power $\Phi$" ID="ID_445833719" CREATED="1483745056386" MODIFIED="1483745162511"/>
 <node TEXT="We usually care about differential irradiance" ID="ID_1270977360" CREATED="1483745162930" MODIFIED="1483745199807"/>
-<node TEXT="$dE = \frac{\Phi \cost \theta}{4 \pi r^2}$" ID="ID_1324489494" CREATED="1483745200250" MODIFIED="1483745230511"/>
+<node TEXT="$dE = \frac{\Phi \cos \theta}{4 \pi r^2}$" ID="ID_1324489494" CREATED="1483745200250" MODIFIED="1484342779554"/>
 <node TEXT="Illumination is \emph{linear}" ID="ID_945033342" CREATED="1483745421053" MODIFIED="1483745432071"/>
 </node>
 <node TEXT="Visibility" ID="ID_1964562904" CREATED="1483745440011" MODIFIED="1483745444867">
@@ -143,7 +144,26 @@
 <node TEXT="Light can be added (i.e. flame)" ID="ID_1575758734" CREATED="1483745941418" MODIFIED="1483745959232"/>
 </node>
 </node>
-<node TEXT="pbrt Overview" ID="ID_787065034" CREATED="1483743841417" MODIFIED="1483743847006"/>
+<node TEXT="pbrt Overview" ID="ID_787065034" CREATED="1483743841417" MODIFIED="1483743847006">
+<node TEXT="Main Abstractions" ID="ID_905192406" CREATED="1484342171515" MODIFIED="1484342248506">
+<attribute NAME="textbook" VALUE="01-03"/>
+<node TEXT="Shape" ID="ID_1637950983" CREATED="1484342187519" MODIFIED="1484342190451"/>
+<node TEXT="Aggregate" ID="ID_1205002066" CREATED="1484342190881" MODIFIED="1484342194729"/>
+<node TEXT="Camera" ID="ID_1447547931" CREATED="1484342195008" MODIFIED="1484342196383"/>
+<node TEXT="Sampler" ID="ID_768899596" CREATED="1484342196616" MODIFIED="1484342198975"/>
+<node TEXT="Filter" ID="ID_1810180086" CREATED="1484342199229" MODIFIED="1484342202233"/>
+<node TEXT="Material" ID="ID_530799852" CREATED="1484342202499" MODIFIED="1484342205414"/>
+<node TEXT="Texture" ID="ID_1801663009" CREATED="1484342205635" MODIFIED="1484342208417"/>
+<node TEXT="Medium" ID="ID_874652134" CREATED="1484342208677" MODIFIED="1484342211752"/>
+<node TEXT="Light" ID="ID_1266624244" CREATED="1484342212002" MODIFIED="1484342214683"/>
+<node TEXT="Integrator" ID="ID_866816480" CREATED="1484342214938" MODIFIED="1484342218506"/>
+</node>
+<node TEXT="Thread Safety" ID="ID_1839013838" CREATED="1484342294627" MODIFIED="1484342308301">
+<node TEXT="pbrt is multi-threaded" ID="ID_1559624168" CREATED="1484342309721" MODIFIED="1484342315912"/>
+<node TEXT="Be sure when modifying to not introduce a data race" ID="ID_646390968" CREATED="1484342316353" MODIFIED="1484342401068"/>
+<node TEXT="Most objects are read only to avoid this problem" ID="ID_1902807238" CREATED="1484342412907" MODIFIED="1484342442540"/>
+</node>
+</node>
 </node>
 </node>
 </map>
