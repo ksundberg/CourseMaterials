@@ -155,6 +155,8 @@ Procedure and Function Declarations have the following structure:
 Notice that procedure and function definitions \textit{cannot} be nested.
 In other words, we have only a global environment and a local environment. 
 Procedures and functions can only be defined in the global environment.
+The signature of every procedure and function must be unique.
+The signature consists of the name of the function as well as the number, type, and order of the parameters.
 In the local environment we can only define constants, types, and variables.
 Notice also the provision for accommodating \textbf{forward} references to procedures and functions.
 Notice also that both procedures and functions requires parentheses
@@ -381,8 +383,7 @@ Introduces a new variable which takes on each value in a range of values.
 Either in an monotonically increasing or decreasing fashion depending on whether the keyword to or downto was used.  For each value of the new variable a list of statements is executed.
 \section{Function and Procedure Calls}
 \subsection{Parameters}
-Parameters in CPSL are always passed by value.
-No function or procedure can have side effects, except for output or through global variables.
+Parameters in CPSL are marked with the keyword ref if they are passed by reference and keyword var if they are passed by value.
 \subsection{Return}
 The return statement passes control back to a function or procedure caller.  If it is a function the expression returned becomes the expression of the function call in the callers scope.
 \section{User Defined Types}
