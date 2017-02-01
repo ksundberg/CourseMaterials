@@ -1,4 +1,4 @@
-all: 01-Introduction.pdf 02-Geometry.pdf 03-Shapes.pdf
+all: 01-Introduction.pdf 02-Geometry.pdf 03-Shapes.pdf 04-ColorAndCamera.pdf
 
 .PHONY: clean all
 
