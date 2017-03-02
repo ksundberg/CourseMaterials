@@ -1,0 +1,35 @@
+\documentclass{USUexam}
+\usepackage{listings}
+\setheader{CS3100}{OS and Concurrency}{Midterm Exam}
+\date{March 3, 2016}
+
+\begin{document}
+
+
+\shortanswer{10}{What three conditions are necessary and sufficient for a race condition?}
+\shortanswer{10}{List the contents of a process control block.}
+\shortanswer{10}{What does the system call dup2 do?}
+\shortanswer{10}{What does fork do? What return values are possible and what do they mean?}
+\longanswer{20}{Write enqueue for a thread safe queue that uses condition variables.}
+\programming{20}{Write parallel quicksort.  You may assume the following functions: partition, medianOfThree, and post.}
+\begin{lstlisting}
+const int n; //An arbitrary number of threads
+std::vector<std::mutex> g_mutex(n);
+void foo(int id) {
+  while(true) {
+    /*TODO aquire lock id and (id + 1)%n*/
+    doWork()
+    //Locks released here via RAII
+  }
+}
+int main {
+  std::vector<std::thread> threads(n);
+  for(int i=0;i<n;++i) {
+    threads.emplace_back([i](){foo(i);});
+  }
+}
+\end{lstlisting}
+
+\longanswer{20}{Fill in the TODO section so that there is no deadlock.}
+    
+\end{document}
