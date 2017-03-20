@@ -2,15 +2,16 @@
 
 class Task
 {
-float duration;
+const float duration;
 float progress;
-int device;
+const int device;
 enum Type
 {
 CPU,IO
 };
-Type type;
+const Type type;
 bool isDone(){return progress >= duration;}
+Task(float dur,int dev,type t):duration(dur),progress(0.0f),device(dev),type(t){}
 };
 
 struct Job
