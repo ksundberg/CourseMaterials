@@ -1,6 +1,6 @@
 struct Event
 {
-virtual void process() = 0;
+  std::function<void(void)> process;
 float const time;
 };
 
