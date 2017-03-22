@@ -3,6 +3,12 @@
 #include <memory>
 #include <vector>
 
+struct Device
+{
+  bool busy;
+  FifoReadyQueue queue;
+};
+
 class Simulation
 {
 Simulation();
@@ -15,4 +21,5 @@ int cpu;
 float curTime;
 const float timeSlice;
 const float contextSwitchPenalty;
+std::vector<Device> devices;
 }
