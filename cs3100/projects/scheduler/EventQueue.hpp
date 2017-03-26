@@ -1,17 +1,24 @@
-#include <queue>
+#ifndef CS3100_SCHEDULER_EVENT_QUEUE_HPP
+#define CS3100_SCHEDULER_EVENT_QUEUE_HPP
+
 #include <memory>
+#include <queue>
 
 #include "Event.hpp"
-
-class EventQueue
+namespace cs3100
 {
-public: 
-static EventQueue& get();
-void add(std::unique_ptr<Event>);
-std::unique_ptr<Event> next();
+  class EventQueue
+  {
+  public:
+    static EventQueue& get();
+    void add(std::unique_ptr<Event>);
+    std::unique_ptr<Event> next();
 
-private:
-EventQueue();
-static std::unique_ptr<EventQueue> instance;
-std::priority_queue<Event> queue;
+  private:
+    EventQueue();
+    static std::unique_ptr<EventQueue> instance;
+    std::priority_queue<Event> queue;
+  };
 }
+
+#endif

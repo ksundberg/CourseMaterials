@@ -1,12 +1,11 @@
-void FifoReadyQueue::add(int x) 
+void FifoReadyQueue::add(int x)
 {
-queue.push_back(x);
+  queue.push_back(x);
 }
 
-int FifoReadyQueue::next() 
+int FifoReadyQueue::next()
 {
-auto result = queue.front();
-queue.pop_front();
-return result;
+  auto result = queue.front();
+  queue.pop_front();
+  return result;
 }
-

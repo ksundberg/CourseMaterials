@@ -1,10 +1,20 @@
+#ifndef CS3100_SCHEDULER_FIFO_READY_QUEUE_HPP
+#define CS3100_SCHEDULER_FIFO_READY_QUEUE_HPP
+
 #include "ReadyQueue.hpp"
 #include <queue>
 
-class FifoReadyQueue: public ReadyQueue
+namespace cs3100
 {
-void add(int) override;
-int next() override;
-private:
-std::queue<int> queue;
-};
+
+  class FifoReadyQueue : public ReadyQueue
+  {
+    void add(int) override;
+    int next() override;
+
+  private:
+    std::queue<int> queue;
+  };
+}
+
+#endif
