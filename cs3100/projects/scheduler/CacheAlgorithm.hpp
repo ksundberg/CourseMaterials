@@ -6,8 +6,8 @@ namespace cs3100
   {
   public:
     CacheAlgorithm();
-    bool in(int) = 0;
-    void load(int) = 0;
+    virtual bool in(int) = 0;
+    virtual void load(int) = 0;
   };
 }
 #endif

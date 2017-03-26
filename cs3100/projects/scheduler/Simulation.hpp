@@ -3,7 +3,9 @@
 
 #include "CacheAlgorithm.hpp"
 #include "EventQueue.hpp"
+#include "FifoReadyQueue.hpp"
 #include "ReadyQueue.hpp"
+#include "Task.hpp"
 #include <memory>
 #include <vector>
 
@@ -28,9 +30,20 @@ namespace cs3100
 
   class Simulation
   {
+  public:
     Simulation(SimulationParameters p,
-               std::unique_ptr<ReadyQueue>,
-               std::unique_ptr<CacheAlgorithm>);
+               std::unique_ptr<ReadyQueue>&& r,
+               std::unique_ptr<CacheAlgorithm>&& c)
+      : queue(),
+        ready(std::move(r)),
+        cache(std::move(c)),
+        jobs(),
+        devices(),
+        idleCpu(0),
+        curTime(0.0f),
+        parameters(p)
+    {
+    }
     void run();
     float getEfficiency();
     size_t getJobs() { return jobs.size(); }
@@ -40,6 +53,13 @@ namespace cs3100
     float adjustedResponseTime(int);
 
   private:
+    void createJob();
+    void scheduleJob();
+    void scheduleIo(int);
+    void jobDone(int,float);
+    void ioDone(int,float);
+
+
     EventQueue queue;
     std::unique_ptr<ReadyQueue> ready;
     std::unique_ptr<CacheAlgorithm> cache;

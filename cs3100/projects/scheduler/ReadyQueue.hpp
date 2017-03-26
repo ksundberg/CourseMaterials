@@ -6,8 +6,8 @@ namespace cs3100
   {
   public:
     ReadyQueue();
-    void add(int) = 0;
-    int next() = 0;
-  }
+    virtual void add(int) = 0;
+    virtual int next() = 0;
+  };
 }
 #endif

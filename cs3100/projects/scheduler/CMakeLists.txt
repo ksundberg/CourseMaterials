@@ -13,6 +13,19 @@ else()
 endif()
 ################################
 set(scheduler_srcs
+  AlwaysInCache.hpp
+  CacheAlgorithm.hpp
+  Event.hpp
+  EventQueue.cpp
+  EventQueue.hpp
+  FifoReadyQueue.cpp
+  FifoReadyQueue.hpp
+  ReadyQueue.hpp
+  ShortestJobFirstReadyQueue.cpp
+  ShortestJobFirstReadyQueue.hpp
+  Simulation.cpp
+  Simulation.hpp
+  Task.hpp
   scheduler_main.cpp
   )
 add_executable(scheduler ${scheduler_srcs})

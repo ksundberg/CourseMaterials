@@ -18,7 +18,7 @@ namespace cs3100
     };
     const Type type;
     bool isDone() { return progress >= duration; }
-    Task(float dur, int dev, type t)
+    Task(float dur, int dev, Type t)
       : duration(dur), progress(0.0f), device(dev), type(t)
     {
     }

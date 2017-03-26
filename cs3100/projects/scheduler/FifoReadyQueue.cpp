@@ -1,11 +1,13 @@
-void FifoReadyQueue::add(int x)
-{
-  queue.push_back(x);
-}
+#include "FifoReadyQueue.hpp"
 
-int FifoReadyQueue::next()
+namespace cs3100
 {
-  auto result = queue.front();
-  queue.pop_front();
-  return result;
+  void FifoReadyQueue::add(int x) { queue.push(x); }
+
+  int FifoReadyQueue::next()
+  {
+    auto result = queue.front();
+    queue.pop();
+    return result;
+  }
 }
