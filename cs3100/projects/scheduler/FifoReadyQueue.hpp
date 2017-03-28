@@ -9,6 +9,7 @@ namespace cs3100
 
   class FifoReadyQueue : public ReadyQueue
   {
+  public:
     void add(int) override;
     int next() override;
 

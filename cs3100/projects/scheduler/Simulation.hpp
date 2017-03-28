@@ -2,12 +2,13 @@
 #define CS3100_SCHEDULER_SIMULATION_HPP
 
 #include "CacheAlgorithm.hpp"
-#include "EventQueue.hpp"
 #include "FifoReadyQueue.hpp"
 #include "ReadyQueue.hpp"
 #include "Task.hpp"
 #include <memory>
 #include <vector>
+#include <queue>
+#include "Event.hpp"
 
 namespace cs3100
 {
@@ -26,6 +27,9 @@ namespace cs3100
     float contextSwitchCost;
     float cacheMissCost;
     float maximumTimeSlice;
+    int jobs;
+    float meanTimeBetweenJobs;
+    float stddevTimeBetweenJobs;
   };
 
   class Simulation
@@ -59,8 +63,7 @@ namespace cs3100
     void jobDone(int,float);
     void ioDone(int,float);
 
-
-    EventQueue queue;
+    std::priority_queue<Event> queue;
     std::unique_ptr<ReadyQueue> ready;
     std::unique_ptr<CacheAlgorithm> cache;
     std::vector<Job> jobs;

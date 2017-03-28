@@ -16,15 +16,16 @@ set(scheduler_srcs
   AlwaysInCache.hpp
   CacheAlgorithm.hpp
   Event.hpp
-  EventQueue.cpp
-  EventQueue.hpp
   FifoReadyQueue.cpp
   FifoReadyQueue.hpp
   ReadyQueue.hpp
   ShortestJobFirstReadyQueue.cpp
   ShortestJobFirstReadyQueue.hpp
+  ApproximateShortestJobFirstReadyQueue.cpp
+  ApproximateShortestJobFirstReadyQueue.hpp
   Simulation.cpp
   Simulation.hpp
+  Task.cpp
   Task.hpp
   scheduler_main.cpp
   )

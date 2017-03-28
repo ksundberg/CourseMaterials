@@ -5,18 +5,18 @@
 namespace cs3100
 {
 
-  class Task
+  struct Task
   {
-    const float duration;
+    float duration;
     float progress;
     float completionTime;
-    const int device;
+    int device;
     enum Type
     {
       CPU,
       IO
     };
-    const Type type;
+    Type type;
     bool isDone() { return progress >= duration; }
     Task(float dur, int dev, Type t)
       : duration(dur), progress(0.0f), device(dev), type(t)
@@ -26,6 +26,7 @@ namespace cs3100
 
   struct Job
   {
+    Job(float, int, int);
     const float creationTime;
     std::vector<Task>::iterator cur;
     std::vector<Task> tasks;

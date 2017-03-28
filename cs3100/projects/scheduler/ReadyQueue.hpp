@@ -5,7 +5,7 @@ namespace cs3100
   class ReadyQueue
   {
   public:
-    ReadyQueue();
+    ReadyQueue(){}
     virtual void add(int) = 0;
     virtual int next() = 0;
   };

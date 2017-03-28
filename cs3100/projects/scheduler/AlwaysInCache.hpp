@@ -7,6 +7,7 @@ namespace cs3100
 
   class AlwaysInCache : public CacheAlgorithm
   {
+  public:
     AlwaysInCache() {}
     bool in(int)override { return true; }
     void load(int) override {}

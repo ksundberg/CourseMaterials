@@ -5,7 +5,7 @@ namespace cs3100
   class CacheAlgorithm
   {
   public:
-    CacheAlgorithm();
+    CacheAlgorithm(){};
     virtual bool in(int) = 0;
     virtual void load(int) = 0;
   };

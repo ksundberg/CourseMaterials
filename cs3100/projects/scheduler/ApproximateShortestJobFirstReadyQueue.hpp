@@ -4,12 +4,12 @@ namespace cs3100
 {
   class Simulation;
 
-  class ShortestJobFirstReadyQueue : public ReadyQueue
+  class ApproximateShortestJobFirstReadyQueue : public ReadyQueue
   {
-  public:
-    ShortestJobFirstReadyQueue();
-    //Shortest Job First needs to be able to look inside current simulation
+    ApproximateShortestJobFirstReadyQueue();
+    //Approximate Shortest Job First needs to be able to look inside current simulation
     void associateSimulator(Simulation* s);
+
     void add(int) override;
     int next() override;
 
