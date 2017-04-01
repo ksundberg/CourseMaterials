@@ -100,6 +100,7 @@ namespace cs3100
 
   void Simulation::run()
   {
+    idleCpu = parameters.cpus;
     auto startTime = 0.0f;
     for (int i = 0; i < parameters.jobs; ++i)
     {
