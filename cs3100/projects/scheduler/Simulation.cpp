@@ -19,7 +19,7 @@ namespace cs3100
   {
     Job j(curTime,parameters.devices,parameters.cacheSize);
     jobs.push_back(j);
-    ready->add(jobs.size());
+    ready->add(jobs.size()-1);
     scheduleJob();
   }
 
