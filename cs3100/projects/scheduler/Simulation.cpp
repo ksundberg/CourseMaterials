@@ -60,6 +60,7 @@ namespace cs3100
     }
     else
     {
+      jobs[job].cur->completionTime = curTime;
       ++(jobs[job].cur);
       if (jobs[job].cur != jobs[job].tasks.end())
       {
@@ -83,6 +84,7 @@ namespace cs3100
     auto next = devices[dev].queue.next();
     if (next >= 0) scheduleIo(next);
     jobs[job].cur->progress += time;
+    jobs[job].cur->completionTime = curTime;
     ++(jobs[job].cur);
     if (jobs[job].cur != jobs[job].tasks.end())
     {

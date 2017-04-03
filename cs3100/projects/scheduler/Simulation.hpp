@@ -42,7 +42,7 @@ namespace cs3100
         ready(std::move(r)),
         cache(std::move(c)),
         jobs(),
-        devices(),
+        devices(p.devices),
         idleCpu(0),
         curTime(0.0f),
         parameters(p)
@@ -63,7 +63,7 @@ namespace cs3100
     void jobDone(int,float);
     void ioDone(int,float);
 
-    std::priority_queue<Event> queue;
+    std::priority_queue<Event,std::vector<Event>,std::greater<Event>> queue;
     std::unique_ptr<ReadyQueue> ready;
     std::unique_ptr<CacheAlgorithm> cache;
     std::vector<Job> jobs;

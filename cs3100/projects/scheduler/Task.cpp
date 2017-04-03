@@ -41,13 +41,19 @@ namespace cs3100
 {
   Job::Job(float t,int devices,int pages):creationTime(t),cur(),tasks()
   {
-    //jobs might be cpu or io bound, we choose evenly between the two options
     auto bindType = getType();
+    //start with CPU
+    tasks.push_back(getTask(Task::Type::CPU,bindType,devices,pages));
+    //jobs might be cpu or io bound, we choose evenly between the two options
     auto numTasks = getInt(10,100);
     for(int i=0;i<numTasks;++i)
     {
-       tasks.push_back(getTask(bindType,devices,pages));
+       tasks.push_back(getTask(getType(),bindType,devices,pages));
     }
-    cur = tasks.begin();
+   //end with CPU
+   tasks.push_back(getTask(Task::Type::CPU,bindType,devices,pages));
+
+   cur = tasks.begin();
   }
+
 }
