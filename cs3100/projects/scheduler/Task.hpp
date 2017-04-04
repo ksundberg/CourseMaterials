@@ -29,7 +29,7 @@ namespace cs3100
   {
     Job(float, int, int);
     const float creationTime;
-    std::vector<Task>::iterator cur;
+    unsigned int cur;
     std::vector<Task> tasks;
   };
 }

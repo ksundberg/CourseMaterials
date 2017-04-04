@@ -36,13 +36,13 @@ namespace
 
 namespace cs3100
 {
-  Job::Job(float t, int devices, int pages) : creationTime(t), cur(), tasks()
+  Job::Job(float t, int devices, int pages) : creationTime(t), cur(0), tasks()
   {
     auto bindType = getType();
     // start with CPU
     tasks.push_back(getTask(Task::Type::CPU, bindType, devices, pages));
     // jobs might be cpu or io bound, we choose evenly between the two options
-    auto numTasks = getInt(10, 100);
+    auto numTasks = getInt(5, 10);
     for (int i = 0; i < numTasks; ++i)
     {
       tasks.push_back(getTask(getType(), bindType, devices, pages));
@@ -50,6 +50,5 @@ namespace cs3100
     // end with CPU
     tasks.push_back(getTask(Task::Type::CPU, bindType, devices, pages));
 
-    cur = tasks.begin();
-  }
+     }
 }

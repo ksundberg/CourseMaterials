@@ -31,7 +31,7 @@ namespace cs3100
     // Allocate cpu
     --idleCpu;
     // Add cpu done event
-    auto timeToFinish = jobs[next].cur->duration - jobs[next].cur->progress;
+    auto timeToFinish = jobs[next].tasks[jobs[next].cur].duration - jobs[next].tasks[jobs[next].cur].progress;
     auto timeAllocated = std::min(parameters.maximumTimeSlice, timeToFinish);
     queue.push(
       Event([this, next, timeAllocated] { jobDone(next, timeAllocated); },
@@ -40,31 +40,31 @@ namespace cs3100
 
   void Simulation::scheduleIo(int job)
   {
-    auto dev = jobs[job].cur->device;
+    auto dev = jobs[job].tasks[jobs[job].cur].device;
     if (devices[dev].busy)
     {
       devices[dev].queue.add(job);
     }
-    auto finishTime = jobs[job].cur->duration;
+    auto finishTime = jobs[job].tasks[jobs[job].cur].duration;
     queue.push(Event([this, job, finishTime]() { ioDone(job, finishTime); },
                      curTime + finishTime));
   }
 
   void Simulation::jobDone(int job, float time)
   {
-    jobs[job].cur->progress += time;
-    ++idleCpu;
-    if (jobs[job].cur->progress < jobs[job].cur->duration)
+    jobs[job].tasks[jobs[job].cur].progress += time;
+  ++idleCpu;
+    if (jobs[job].tasks[jobs[job].cur].progress < jobs[job].tasks[jobs[job].cur].duration)
     {
       ready->add(job);
     }
     else
     {
-      jobs[job].cur->completionTime = curTime;
-      ++(jobs[job].cur);
-      if (jobs[job].cur != jobs[job].tasks.end())
+      jobs[job].tasks[jobs[job].cur].completionTime = curTime;
+      jobs[job].cur+=1;
+      if (jobs[job].cur < jobs[job].tasks.size())
       {
-        if (jobs[job].cur->type == Task::Type::CPU)
+        if (jobs[job].tasks[jobs[job].cur].type == Task::Type::CPU)
         {
           ready->add(job);
         }
@@ -73,22 +73,22 @@ namespace cs3100
           scheduleIo(job);
         }
       }
-    }
+         }
     scheduleJob();
   }
 
   void Simulation::ioDone(int job, float time)
   {
-    auto dev = jobs[job].cur->device;
+    auto dev = jobs[job].tasks[jobs[job].cur].device;
     devices[dev].busy = false;
     auto next = devices[dev].queue.next();
     if (next >= 0) scheduleIo(next);
-    jobs[job].cur->progress += time;
-    jobs[job].cur->completionTime = curTime;
-    ++(jobs[job].cur);
-    if (jobs[job].cur != jobs[job].tasks.end())
+    jobs[job].tasks[jobs[job].cur].progress += time;
+    jobs[job].tasks[jobs[job].cur].completionTime = curTime;
+    jobs[job].cur+=1;
+    if (jobs[job].cur < jobs[job].tasks.size())
     {
-      if (jobs[job].cur->type == Task::Type::CPU)
+      if (jobs[job].tasks[jobs[job].cur].type == Task::Type::CPU)
       {
         ready->add(job);
         scheduleJob();
@@ -98,7 +98,7 @@ namespace cs3100
         scheduleIo(job);
       }
     }
-  }
+        }
 
   void Simulation::run()
   {

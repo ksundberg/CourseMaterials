@@ -14,7 +14,7 @@ int main()
   p.contextSwitchCost = 0.1f;
   p.cacheMissCost = 1.0f;
   p.maximumTimeSlice = std::numeric_limits<float>::max();
-  p.jobs = 100;
+  p.jobs = 10;
   p.meanTimeBetweenJobs = 10.0f;
   p.stddevTimeBetweenJobs = 2.0f;
   // create simulation with specific parameters and algorithms
