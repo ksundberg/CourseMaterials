@@ -17,9 +17,9 @@ namespace cs3100
 
   void Simulation::createJob()
   {
-    Job j(curTime,parameters.devices,parameters.cacheSize);
+    Job j(curTime, parameters.devices, parameters.cacheSize);
     jobs.push_back(j);
-    ready->add(jobs.size()-1);
+    ready->add(jobs.size() - 1);
     scheduleJob();
   }
 
@@ -46,8 +46,8 @@ namespace cs3100
       devices[dev].queue.add(job);
     }
     auto finishTime = jobs[job].cur->duration;
-    queue.push(
-      Event([this,job,finishTime]() { ioDone(job, finishTime); }, curTime + finishTime));
+    queue.push(Event([this, job, finishTime]() { ioDone(job, finishTime); },
+                     curTime + finishTime));
   }
 
   void Simulation::jobDone(int job, float time)
@@ -121,16 +121,16 @@ namespace cs3100
 
   float Simulation::rawLatency(int)
   {
-    //TODO Assignment 1: Fill out this calculation
+    // TODO Assignment 1: Fill out this calculation
     return 0.0f;
   }
-  
+
   float Simulation::adjustedLatency(int job)
   {
-    //start with raw latency
+    // start with raw latency
     auto adj = rawLatency(job);
-    //remove latency time that is not due to scheduling
-    for(auto&& t:jobs[job].tasks)
+    // remove latency time that is not due to scheduling
+    for (auto&& t : jobs[job].tasks)
     {
       adj -= t.duration;
     }
@@ -154,7 +154,4 @@ namespace cs3100
     // TODO Assignment 1: Fill out this calculation
     return 0.0f;
   }
-
-
 }
-

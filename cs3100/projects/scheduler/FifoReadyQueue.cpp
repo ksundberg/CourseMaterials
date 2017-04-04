@@ -6,6 +6,7 @@ namespace cs3100
 
   int FifoReadyQueue::next()
   {
+    if(queue.empty()) return -1;
     auto result = queue.front();
     queue.pop();
     return result;

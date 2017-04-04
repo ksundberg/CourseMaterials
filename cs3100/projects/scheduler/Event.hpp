@@ -11,7 +11,13 @@ namespace cs3100
     float time;
   };
 
-  inline bool operator<(Event const& a, Event const& b) { return a.time < b.time; }
-  inline bool operator>(Event const& a, Event const& b) { return a.time > b.time; }
+  inline bool operator<(Event const& a, Event const& b)
+  {
+    return a.time < b.time;
+  }
+  inline bool operator>(Event const& a, Event const& b)
+  {
+    return a.time > b.time;
+  }
 }
 #endif

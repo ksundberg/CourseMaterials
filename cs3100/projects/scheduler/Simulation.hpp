@@ -2,13 +2,13 @@
 #define CS3100_SCHEDULER_SIMULATION_HPP
 
 #include "CacheAlgorithm.hpp"
+#include "Event.hpp"
 #include "FifoReadyQueue.hpp"
 #include "ReadyQueue.hpp"
 #include "Task.hpp"
 #include <memory>
-#include <vector>
 #include <queue>
-#include "Event.hpp"
+#include <vector>
 
 namespace cs3100
 {
@@ -60,10 +60,10 @@ namespace cs3100
     void createJob();
     void scheduleJob();
     void scheduleIo(int);
-    void jobDone(int,float);
-    void ioDone(int,float);
+    void jobDone(int, float);
+    void ioDone(int, float);
 
-    std::priority_queue<Event,std::vector<Event>,std::greater<Event>> queue;
+    std::priority_queue<Event, std::vector<Event>, std::greater<Event>> queue;
     std::unique_ptr<ReadyQueue> ready;
     std::unique_ptr<CacheAlgorithm> cache;
     std::vector<Job> jobs;

@@ -7,21 +7,22 @@ namespace cs3100
 
   struct Task
   {
-    float duration;
+    const float duration;
     float progress;
     float completionTime;
-    int device;
+    const int device;
     enum Type
     {
       CPU,
       IO
     };
-    Type type;
+    const Type type;
     bool isDone() { return progress >= duration; }
     Task(float dur, int dev, Type t)
-      : duration(dur), progress(0.0f), device(dev), type(t)
+      : duration(dur), progress(0.0f), completionTime(-1.0f),device(dev), type(t)
     {
     }
+    Task(Task const& o)=default;
   };
 
   struct Job
