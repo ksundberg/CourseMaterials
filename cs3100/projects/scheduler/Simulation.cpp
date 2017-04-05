@@ -31,17 +31,17 @@ namespace cs3100
     // Allocate cpu
     --idleCpu;
     // Add cpu done event
-    auto & task = jobs[next].tasks[jobs[next].cur];
+    auto& task = jobs[next].tasks[jobs[next].cur];
     auto timeToFinish = task.duration - task.progress;
     auto timeAllocated = std::min(parameters.maximumTimeSlice, timeToFinish);
     auto jobDoneTime = curTime + timeAllocated + parameters.contextSwitchCost;
     // Check for page in cache
     auto page = task.device;
-    if(!cache->in(page))
+    if (!cache->in(page))
     {
-      queue.push(Event([this,page]{
-      cache->load(page);},curTime+parameters.cacheMissCost));
-      jobDoneTime+=parameters.cacheMissCost;
+      queue.push(Event([this, page] { cache->load(page); },
+                       curTime + parameters.cacheMissCost));
+      jobDoneTime += parameters.cacheMissCost;
     }
 
     queue.push(
@@ -64,15 +64,16 @@ namespace cs3100
   void Simulation::jobDone(int job, float time)
   {
     jobs[job].tasks[jobs[job].cur].progress += time;
-  ++idleCpu;
-    if (jobs[job].tasks[jobs[job].cur].progress < jobs[job].tasks[jobs[job].cur].duration)
+    ++idleCpu;
+    if (jobs[job].tasks[jobs[job].cur].progress <
+        jobs[job].tasks[jobs[job].cur].duration)
     {
       ready->add(job);
     }
     else
     {
       jobs[job].tasks[jobs[job].cur].completionTime = curTime;
-      jobs[job].cur+=1;
+      jobs[job].cur += 1;
       if (jobs[job].cur < jobs[job].tasks.size())
       {
         if (jobs[job].tasks[jobs[job].cur].type == Task::Type::CPU)
@@ -84,7 +85,7 @@ namespace cs3100
           scheduleIo(job);
         }
       }
-         }
+    }
     scheduleJob();
   }
 
@@ -96,7 +97,7 @@ namespace cs3100
     if (next >= 0) scheduleIo(next);
     jobs[job].tasks[jobs[job].cur].progress += time;
     jobs[job].tasks[jobs[job].cur].completionTime = curTime;
-    jobs[job].cur+=1;
+    jobs[job].cur += 1;
     if (jobs[job].cur < jobs[job].tasks.size())
     {
       if (jobs[job].tasks[jobs[job].cur].type == Task::Type::CPU)
@@ -109,7 +110,7 @@ namespace cs3100
         scheduleIo(job);
       }
     }
-        }
+  }
 
   void Simulation::run()
   {

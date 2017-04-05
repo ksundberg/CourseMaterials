@@ -8,21 +8,21 @@ namespace
 {
   void report(cs3100::Simulation& s)
   {
-  /*TODO create a report based on the results in s*/
+    /*TODO create a report based on the results in s*/
     std::cout << "Efficiency : " << s.getEfficiency() << std::endl;
-  std::cout << "Task\tLatency\tResponseTime" << std::endl;
-  for (size_t i = 0; i < s.getJobs(); ++i)
-  {
-    std::cout << i << "\t" << s.rawLatency(i) << "\t" << s.rawResponseTime(i)
-              << std::endl;
+    std::cout << "Task\tLatency\tResponseTime" << std::endl;
+    for (size_t i = 0; i < s.getJobs(); ++i)
+    {
+      std::cout << i << "\t" << s.rawLatency(i) << "\t" << s.rawResponseTime(i)
+                << std::endl;
+    }
   }
 
-  }
-
-  template<typename ReadyType, typename CacheType>
-  void runSimulation(cs3100::SimulationParameters const &p)
+  template <typename ReadyType, typename CacheType>
+  void runSimulation(cs3100::SimulationParameters const& p)
   {
-    cs3100::Simulation s(p,std::make_unique<ReadyType>(),std::make_unique<CacheType>());
+    cs3100::Simulation s(
+      p, std::make_unique<ReadyType>(), std::make_unique<CacheType>());
     s.run();
     report(s);
   }
@@ -42,9 +42,9 @@ int main()
   fifo.meanTimeBetweenJobs = 10.0f;
   fifo.stddevTimeBetweenJobs = 2.0f;
   // create simulation with specific parameters and algorithms
-    runSimulation<cs3100::FifoReadyQueue,cs3100::AlwaysInCache>(fifo);
+  runSimulation<cs3100::FifoReadyQueue, cs3100::AlwaysInCache>(fifo);
 
-   cs3100::SimulationParameters roundRobin;
+  cs3100::SimulationParameters roundRobin;
   roundRobin.cpus = 4;
   roundRobin.devices = 2;
   roundRobin.cacheSize = 0;
@@ -55,5 +55,5 @@ int main()
   roundRobin.meanTimeBetweenJobs = 10.0f;
   roundRobin.stddevTimeBetweenJobs = 2.0f;
   // create simulation with specific parameters and algorithms
-    runSimulation<cs3100::FifoReadyQueue,cs3100::AlwaysInCache>(roundRobin);
-  }
+  runSimulation<cs3100::FifoReadyQueue, cs3100::AlwaysInCache>(roundRobin);
+}

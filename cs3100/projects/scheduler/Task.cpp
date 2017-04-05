@@ -25,7 +25,10 @@ namespace
     return t == 0 ? cs3100::Task::Type::CPU : cs3100::Task::Type::IO;
   }
 
-  cs3100::Task getTask(cs3100::Task::Type type,cs3100::Task::Type boundBy, int maxDevice, int maxPage)
+  cs3100::Task getTask(cs3100::Task::Type type,
+                       cs3100::Task::Type boundBy,
+                       int maxDevice,
+                       int maxPage)
   {
     auto duration =
       type == boundBy ? getFloat(20.0f, 5.0f) : getFloat(5.0f, 1.0f);
@@ -49,6 +52,5 @@ namespace cs3100
     }
     // end with CPU
     tasks.push_back(getTask(Task::Type::CPU, bindType, devices, pages));
-
-     }
+  }
 }
