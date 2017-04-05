@@ -31,11 +31,22 @@ namespace cs3100
     // Allocate cpu
     --idleCpu;
     // Add cpu done event
-    auto timeToFinish = jobs[next].tasks[jobs[next].cur].duration - jobs[next].tasks[jobs[next].cur].progress;
+    auto & task = jobs[next].tasks[jobs[next].cur];
+    auto timeToFinish = task.duration - task.progress;
     auto timeAllocated = std::min(parameters.maximumTimeSlice, timeToFinish);
+    auto jobDoneTime = curTime + timeAllocated + parameters.contextSwitchCost;
+    // Check for page in cache
+    auto page = task.device;
+    if(!cache->in(page))
+    {
+      queue.push(Event([this,page]{
+      cache->load(page);},curTime+parameters.cacheMissCost));
+      jobDoneTime+=parameters.cacheMissCost;
+    }
+
     queue.push(
       Event([this, next, timeAllocated] { jobDone(next, timeAllocated); },
-            curTime + timeAllocated + parameters.contextSwitchCost));
+            jobDoneTime));
   }
 
   void Simulation::scheduleIo(int job)
