@@ -7,7 +7,7 @@ namespace
   {
     thread_local std::random_device rd;
     thread_local std::mt19937 mt(rd());
-    std::uniform_int_distribution<> dist(low, high);
+    std::uniform_int_distribution<> dist(low, high - 1);
     return dist(mt);
   }
 
