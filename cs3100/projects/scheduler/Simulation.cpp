@@ -17,7 +17,7 @@ namespace cs3100
 
   void Simulation::createJob()
   {
-    Job j(curTime, parameters.devices, parameters.cacheSize);
+    Job j(curTime, parameters.devices-1, parameters.cacheSize-1);
     jobs.push_back(j);
     ready->add(jobs.size() - 1);
     scheduleJob();
