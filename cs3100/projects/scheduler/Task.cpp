@@ -32,7 +32,8 @@ namespace
   {
     auto duration =
       type == boundBy ? getFloat(20.0f, 5.0f) : getFloat(5.0f, 1.0f);
-    auto max = type == cs3100::Task::Type::CPU ? maxPage : maxDevice;
+    auto deviceLimit = maxDevice > 0 ? maxDevice - 1 : 0; // Maximum value should be excluded
+    auto max = type == cs3100::Task::Type::CPU ? maxPage : deviceLimit;
     return cs3100::Task(duration, getInt(0, max), type);
   }
 }
