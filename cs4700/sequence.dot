@@ -1,0 +1,73 @@
+digraph cs4700
+{
+Introduction [shape=box]
+Evaluation [shape=box]
+SyntaxSemantics [shape=box]
+Names [shape=box]
+Types [shape=box]
+Expressions [shape=box]
+Control [shape=box]
+Subprograms [shape=box]
+OO [shape=box,fontcolor=red]
+Concurrency [shape=box,fontcolor=red]
+Functional [shape=box,fontcolor=red]
+Monad [shape=box,fontcolor=red]
+Prolog [shape=box,fillcolor=blue,fontcolor=white,style=filled]
+AdvProlog [shape=box,fillcolor=blue,fontcolor=white,style=filled]
+Haskell  [shape=box,fillcolor=blue,fontcolor=white,style=filled]
+PostScript  [shape=box,fillcolor=blue,fontcolor=white,style=filled]
+LISP  [shape=box,fillcolor=blue,fontcolor=white,style=filled]
+
+Adventure1 [shape=diamond]
+Adventure2 [shape=diamond]
+Adventure3 [shape=diamond]
+Adventure4 [shape=diamond]
+Expected [shape=diamond]
+LSystem [shape=diamond]
+Hypotrochoid [shape=diamond]
+History [shape=diamond]
+TreeMapReduce [shape=diamond]
+Haskell2 [shape=diamond]
+Lisp1 [shape=diamond]
+Channels [shape=diamond]
+
+Haskell->TreeMapReduce
+TreeMapReduce->Haskell2
+
+Prolog->Adventure1
+AdvProlog->Adventure3
+Adventure1->Adventure2;
+Adventure2->Adventure3;
+Adventure3->Adventure4;
+
+PostScript->Hypotrochoid;
+SyntaxSemantics->Hypotrochoid;
+
+Monad->Expected;
+Subprograms->Expected;
+
+Introduction->History
+
+Prolog->AdvProlog
+Names->Types
+Expressions->Functional
+Functional->Haskell
+Introduction->Evaluation
+Control->OO
+Subprograms->OO
+Types->OO
+Evaluation->Functional
+Evaluation->Subprograms
+Subprograms->Concurrency
+Introduction->SyntaxSemantics
+Evaluation->Expressions
+Evaluation->Control
+Functional->Monad
+Hypotrochoid->LSystem
+Functional->LISP
+LISP->Lisp1
+Concurrency->Channels
+SyntaxSemantics->AdvProlog
+Evaluation->Names
+Names->Prolog
+}
