@@ -166,10 +166,30 @@
 <node TEXT="Arithmatic Grammar" ID="ID_61499148" CREATED="1500350092419" MODIFIED="1500350236353"/>
 <node TEXT="Dynamic Semantics" ID="ID_588101664" CREATED="1500350244396" MODIFIED="1500350257659">
 <attribute NAME="textbook" VALUE="03-05"/>
+<node TEXT="What does a program mean?" ID="ID_917520694" CREATED="1505837488951" MODIFIED="1505837501471"/>
+<node TEXT="What are the defined run time behaviors" ID="ID_1967883622" CREATED="1505837501880" MODIFIED="1505837509132"/>
 </node>
-<node TEXT="Operational Semantics" ID="ID_1411333744" CREATED="1500350303148" MODIFIED="1500350309673"/>
-<node TEXT="Denotaional Semantics" ID="ID_1407608982" CREATED="1500350310156" MODIFIED="1500350331057"/>
-<node TEXT="Axiomatic Semantics" ID="ID_1390733064" CREATED="1500350367940" MODIFIED="1500350373329"/>
+<node TEXT="Operational Semantics" ID="ID_1411333744" CREATED="1500350303148" MODIFIED="1500350309673">
+<node TEXT="Define meaning of program in terms of state changes on a low level machine" ID="ID_192166207" CREATED="1505837400529" MODIFIED="1505837415366"/>
+<node TEXT="Changes are too small and numerous to be of much use" ID="ID_1327690776" CREATED="1505837415698" MODIFIED="1505837426007"/>
+<node TEXT="Natural Operational Semantics - Define the effect of entire program" ID="ID_1644590402" CREATED="1505837438558" MODIFIED="1505837458772"/>
+<node TEXT="Structural Operational Semantics - Define low level sequence of state changes" ID="ID_851617693" CREATED="1505837459140" MODIFIED="1505837480519"/>
+</node>
+<node TEXT="Denotational Semantics" ID="ID_1407608982" CREATED="1500350310156" MODIFIED="1505837697509">
+<node TEXT="Map language constructs onto math objects" ID="ID_1712874885" CREATED="1505837511794" MODIFIED="1505837564778"/>
+<node TEXT="Typically functions, but also possibly ranges, categories, groups and others" ID="ID_521615770" CREATED="1505837565160" MODIFIED="1505837597223"/>
+<node TEXT="Complex denotational semantics generally indicate a difficult to implement language" ID="ID_56817082" CREATED="1505837667481" MODIFIED="1505837687654"/>
+</node>
+<node TEXT="Axiomatic Semantics" ID="ID_1390733064" CREATED="1500350367940" MODIFIED="1500350373329">
+<node TEXT="The program means what it can be proven to mean" ID="ID_620098613" CREATED="1505837714762" MODIFIED="1505837730200">
+<node TEXT="No model of a state machine" ID="ID_832677315" CREATED="1505837754568" MODIFIED="1505837761659"/>
+<node TEXT="Only the fixed relations between language entities" ID="ID_1196157381" CREATED="1505837762013" MODIFIED="1505837781112"/>
+</node>
+<node TEXT="Useful in program verification" ID="ID_489398102" CREATED="1505837730573" MODIFIED="1505837735278">
+<node TEXT="Preconditions" ID="ID_1636927903" CREATED="1505837847257" MODIFIED="1505837855043"/>
+<node TEXT="Postconditions" ID="ID_1290096019" CREATED="1505837855319" MODIFIED="1505837858838"/>
+</node>
+</node>
 </node>
 </node>
 </node>
