@@ -184,7 +184,7 @@ short_desc(key,"an ornate key glowing with alien energies").
 short_desc(kitchen,"").
 short_desc(large_disk,"a large disk glowing with alien energy").
 short_desc(laser,"").
-short_desc(laser_lab,"").
+short_desc(laser_lab,"Lasers shine in a beautiful array of cornea charing horror, good thing you have goggles on").
 short_desc(library,"").
 short_desc(medium_disk,"a medium sized disk glowing with alien energy").
 short_desc(note,"a handwritten note from your roommate").
