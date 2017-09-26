@@ -166,19 +166,19 @@ short_desc(book_b,"a copy of 'War and Peace'").
 short_desc(book_c,"a copy of 'Great Expectations'").
 short_desc(bunsen_burner,"A stand with a tube connected to a natural gas supply").
 short_desc(chemistry_lab,"").
-short_desc(closet,"").
+short_desc(closet,"Basically a hole in a wall").
 short_desc(coat,"A large white lab coat with lots of pockets").
 short_desc(common_room,"").
-short_desc(computer_lab,"").
+short_desc(computer_lab,"Many computers lined up and a desk at front of room").
 short_desc(elevator,"You are in a plain metal box.  There are buttons labeled with various locations.").
 short_desc(eslc_north,"You are on the north side of the ESLC.").
 short_desc(eslc_south,"You are on the south side of the ESLC.").
 short_desc(flask,"a glass flask suitable for mixing reagents").
 short_desc(fly,"the partialy squished body of a dead house fly").
-short_desc(geology_building,"").
+short_desc(geology_building,"Large building with rocks and trees surrounding it").
 short_desc(goggles,"dark eye protection left over from the 'Great American Eclipse'").
 short_desc(green_beam,"Dr. Sundberg is standing at a large machine which is emitting a bright beam of green light.  You overhear a conversation indicating that he has set up a wormhole generator in his secret lab.  This will allow the alien invasion force to reach earth.").
-short_desc(hall,"").
+short_desc(hall,"Long pathway that has pictures hanging on wall").
 short_desc(hub,"").
 short_desc(key,"an ornate key glowing with alien energies").
 short_desc(kitchen,"").
@@ -194,7 +194,7 @@ short_desc(plaza,"A large open space between engineering buildings").
 short_desc(pylon_a,"a glowing red pyramid shaped structure").
 short_desc(pylon_b,"a glowing blue pyramid shaped structure").
 short_desc(pylon_c,"a glowing green pyramid shaped structure").
-short_desc(quad,"").
+short_desc(quad,"A large open field split into four even sections").
 short_desc(recipe,"a page from 'Corpus Hermiticum' containing a recipe for an invisibility potion").
 short_desc(roof,"").
 short_desc(roommate_room,"").
