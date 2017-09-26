@@ -155,7 +155,7 @@ name(tunnels_north,"Underground Tunnels").
 name(tunnels_west,"Underground Tunnels").
 name(_,"").
 
-short_desc(animal_science,"").
+short_desc(animal_science,"Decivingly named for the study of animals, this is the home of the mathematics and statictics department.").
 short_desc(avenue,"").
 short_desc(bedroom,"").
 short_desc(potion,"An oily black potion").
@@ -168,7 +168,7 @@ short_desc(bunsen_burner,"A stand with a tube connected to a natural gas supply"
 short_desc(chemistry_lab,"").
 short_desc(closet,"Basically a hole in a wall").
 short_desc(coat,"A large white lab coat with lots of pockets").
-short_desc(common_room,"").
+short_desc(common_room,"A typical scene of college living, an ever growing pile of pizza boxes in the corner, you know they will not be thrown out until they begin to develop consciousness.").
 short_desc(computer_lab,"Many computers lined up and a desk at front of room").
 short_desc(elevator,"You are in a plain metal box.  There are buttons labeled with various locations.").
 short_desc(eslc_north,"You are on the north side of the ESLC.").
@@ -183,7 +183,7 @@ short_desc(hub,"").
 short_desc(key,"an ornate key glowing with alien energies").
 short_desc(kitchen,"").
 short_desc(large_disk,"a large disk glowing with alien energy").
-short_desc(laser,"").
+short_desc(laser,"Pulsating with energy, this could be used to imbue something with energy").
 short_desc(laser_lab,"").
 short_desc(library,"").
 short_desc(medium_disk,"a medium sized disk glowing with alien energy").
