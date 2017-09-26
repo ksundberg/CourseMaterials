@@ -155,7 +155,7 @@ name(tunnels_north,"Underground Tunnels").
 name(tunnels_west,"Underground Tunnels").
 name(_,"").
 
-short_desc(animal_science,"").
+short_desc(animal_science,"a cozy-looking, white-bricked old building.").
 short_desc(avenue,"").
 short_desc(bedroom,"").
 short_desc(potion,"An oily black potion").
