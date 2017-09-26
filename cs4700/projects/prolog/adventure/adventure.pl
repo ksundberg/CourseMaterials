@@ -209,7 +209,7 @@ short_desc(tunnels_north,"The underground tunnels are a confusing place.  I hope
 short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(_,"").
 
-long_desc(animal_science,"").
+long_desc(animal_science,"The early twentieth-century edifice has a certain charm to it; the worn white bricks, coral roof tiling, and neo-classical columns adorning the entrance lend themselves to a certain prideful, nostalgic semblence of old academia. A laminated banner with the words 'Animal Science' is sloppily taped above the front doors. Inside, however, you are surprised to only be met with fluorescent lighting, disjointed rennovations, and caffeine-dependent mathematicians.").
 long_desc(avenue,"").
 long_desc(bedroom,"").
 long_desc(bone,"").
