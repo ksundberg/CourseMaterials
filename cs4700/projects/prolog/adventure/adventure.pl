@@ -189,15 +189,15 @@ short_desc(library,"").
 short_desc(medium_disk,"a medium sized disk glowing with alien energy").
 short_desc(note,"a handwritten note from your roommate").
 short_desc(observatory,"").
-short_desc(old_main,"").
+short_desc(old_main,"The building is full of nerdy looking people.").
 short_desc(plaza,"A large open space between engineering buildings").
 short_desc(pylon_a,"a glowing red pyramid shaped structure").
 short_desc(pylon_b,"a glowing blue pyramid shaped structure").
 short_desc(pylon_c,"a glowing green pyramid shaped structure").
 short_desc(quad,"").
 short_desc(recipe,"a page from 'Corpus Hermiticum' containing a recipe for an invisibility potion").
-short_desc(roof,"").
-short_desc(roommate_room,"").
+short_desc(roof,"It's a long way down, don't fall off.").
+short_desc(roommate_room,"Its pretty messy. A computer light is blinking and there are textbooks near by.").
 short_desc(secret_lab,"").
 short_desc(ser_1st_floor,"").
 short_desc(ser_2nd_floor,"").
@@ -241,7 +241,7 @@ long_desc(library,"").
 long_desc(medium_disk,"").
 long_desc(note,"In the handwriting of your room mate is hastily scrawled: 'You've got to help.  Dr. Sundberg is an alien and wants to take over the world.  I think he is on to me, you are the only hope left! Try to find out what he is doing with the green beam.'").
 long_desc(observatory,"").
-long_desc(old_main,"").
+long_desc(old_main,"The building has four floors, and is the location of much pain during the Evil Dr. Sundber's class.").
 long_desc(plaza,"").
 long_desc(pylon_a,"").
 long_desc(pylon_b,"").
