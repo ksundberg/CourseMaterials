@@ -253,7 +253,7 @@ long_desc(roommate_room,"").
 long_desc(secret_lab,"").
 long_desc(ser_1st_floor,"").
 long_desc(ser_2nd_floor,"").
-long_desc(small_disk,"").
+long_desc(small_disk,"A small disk pulsates in your hand, glowing an toxic green color as it breathes slowly, a slight warm gasey feel pukes from the disk.").
 long_desc(special_collections,"").
 long_desc(tsc_patio,"").
 long_desc(tunnels_east,"").
