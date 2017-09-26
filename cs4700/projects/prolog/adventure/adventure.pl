@@ -179,7 +179,7 @@ short_desc(geology_building,"Large building with rocks and trees surrounding it"
 short_desc(goggles,"dark eye protection left over from the 'Great American Eclipse'").
 short_desc(green_beam,"Dr. Sundberg is standing at a large machine which is emitting a bright beam of green light.  You overhear a conversation indicating that he has set up a wormhole generator in his secret lab.  This will allow the alien invasion force to reach earth.").
 short_desc(hall,"Long pathway that has pictures hanging on wall").
-short_desc(hub,"").
+short_desc(hub,"Smells of coffee and pizza linger in the air. Students congregate around tables slaving away at endless homework.").
 short_desc(key,"an ornate key glowing with alien energies").
 short_desc(kitchen,"").
 short_desc(large_disk,"a large disk glowing with alien energy").
