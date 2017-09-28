@@ -1,0 +1,2 @@
+likes(jake,food).
+
