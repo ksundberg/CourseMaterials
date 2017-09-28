@@ -156,7 +156,7 @@ name(tunnels_west,"Underground Tunnels").
 name(_,"").
 
 short_desc(animal_science,"").
-short_desc(avenue,"").
+short_desc(avenue,"A tree-lined sidewalk").
 short_desc(bedroom,"").
 short_desc(potion,"An oily black potion").
 short_desc(bone,"a large dark stone").
@@ -174,7 +174,7 @@ short_desc(elevator,"You are in a plain metal box.  There are buttons labeled wi
 short_desc(eslc_north,"You are on the north side of the ESLC.").
 short_desc(eslc_south,"You are on the south side of the ESLC.").
 short_desc(flask,"a glass flask suitable for mixing reagents").
-short_desc(fly,"the partialy squished body of a dead house fly").
+short_desc(fly,"the partially squished body of a dead house fly").
 short_desc(geology_building,"").
 short_desc(goggles,"dark eye protection left over from the 'Great American Eclipse'").
 short_desc(green_beam,"Dr. Sundberg is standing at a large machine which is emitting a bright beam of green light.  You overhear a conversation indicating that he has set up a wormhole generator in his secret lab.  This will allow the alien invasion force to reach earth.").
@@ -185,7 +185,7 @@ short_desc(kitchen,"").
 short_desc(large_disk,"a large disk glowing with alien energy").
 short_desc(laser,"").
 short_desc(laser_lab,"").
-short_desc(library,"").
+short_desc(library,"a building filled with books and sleeping students").
 short_desc(medium_disk,"a medium sized disk glowing with alien energy").
 short_desc(note,"a handwritten note from your roommate").
 short_desc(observatory,"").
@@ -209,8 +209,8 @@ short_desc(tunnels_north,"The underground tunnels are a confusing place.  I hope
 short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(_,"").
 
-long_desc(animal_science,"").
-long_desc(avenue,"").
+long_desc(animal_science,"Don't let the name deceive you. No fluffy little animals await you here; only the evils of mathematics.").
+long_desc(avenue,"A tree-lined sidewalk that is often filled with students.").
 long_desc(bedroom,"").
 long_desc(bone,"").
 long_desc(book_a,"An ancient work on alchemy containing many magical formulae.").
