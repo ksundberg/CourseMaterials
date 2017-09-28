@@ -246,7 +246,7 @@ long_desc(plaza,"").
 long_desc(pylon_a,"").
 long_desc(pylon_b,"").
 long_desc(pylon_c,"").
-long_desc(quad,"").
+long_desc(quad,"A large field made up of 4 smaller fields in a quadrant form where fun and safe activites are held").
 long_desc(recipe,"A potion for invisibility: Bathe the bone of a dragon in pure light.  Distill charged bone with the wings of a fly.  Let cool before quaffing.").
 long_desc(roof,"").
 long_desc(roommate_room,"").
