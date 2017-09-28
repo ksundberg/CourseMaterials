@@ -168,7 +168,7 @@ short_desc(bunsen_burner,"A stand with a tube connected to a natural gas supply"
 short_desc(chemistry_lab,"A lab with fume hoods and various chemical instuments").
 short_desc(closet,"Basically a hole in a wall").
 short_desc(coat,"A large white lab coat with lots of pockets").
-short_desc(common_room,"").
+short_desc(common_room,"A typical scene of college living, an ever growing pile of pizza boxes in the corner, you know they will not be thrown out until they begin to develop consciousness.").
 short_desc(computer_lab,"Many computers lined up and a desk at front of room").
 short_desc(elevator,"You are in a plain metal box.  There are buttons labeled with various locations.").
 short_desc(eslc_north,"You are on the north side of the ESLC.").
@@ -179,13 +179,13 @@ short_desc(geology_building,"Large building with rocks and trees surrounding it"
 short_desc(goggles,"dark eye protection left over from the 'Great American Eclipse'").
 short_desc(green_beam,"Dr. Sundberg is standing at a large machine which is emitting a bright beam of green light.  You overhear a conversation indicating that he has set up a wormhole generator in his secret lab.  This will allow the alien invasion force to reach earth.").
 short_desc(hall,"Long pathway that has pictures hanging on wall").
-short_desc(hub,"").
+short_desc(hub,"Smells of coffee and pizza linger in the air. Students congregate around tables slaving away at endless homework.").
 short_desc(key,"an ornate key glowing with alien energies").
 short_desc(kitchen,"").
 short_desc(large_disk,"a large disk glowing with alien energy").
-short_desc(laser,"A powerful laser").
-short_desc(laser_lab,"").
-short_desc(library,"").
+short_desc(laser,"Pulsating with energy, this laser could be used to imbue something with energy").
+short_desc(laser_lab,"Lasers shine in a beautiful array of cornea charing horror, good thing you have goggles on!").
+short_desc(library,"Endless floors of books full of knowledge. A smiling librarian greets you as you enter, "welcome to the library" she says.").
 short_desc(medium_disk,"a medium sized disk glowing with alien energy").
 short_desc(note,"a handwritten note from your roommate").
 short_desc(observatory,"").
@@ -202,7 +202,7 @@ short_desc(secret_lab,"").
 short_desc(ser_1st_floor,"").
 short_desc(ser_2nd_floor,"").
 short_desc(small_disk,"a small disk glowing with alien energy").
-short_desc(special_collections,"").
+short_desc(special_collections,"Only the rarest books are kept here, who knows what secrets they might hold?").
 short_desc(tsc_patio,"A concrete patio with a water feature and multiple paths").
 short_desc(tunnels_east,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(tunnels_north,"The underground tunnels are a confusing place.  I hope you don't get lost.").
