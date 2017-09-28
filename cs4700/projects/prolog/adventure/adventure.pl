@@ -155,7 +155,7 @@ name(tunnels_north,"Underground Tunnels").
 name(tunnels_west,"Underground Tunnels").
 name(_,"").
 
-short_desc(animal_science,"").
+short_desc(animal_science,"a cozy-looking, white-bricked old building.").
 short_desc(avenue,"").
 short_desc(bedroom,"").
 short_desc(potion,"An oily black potion").
@@ -165,7 +165,7 @@ short_desc(book_a,"a copy of 'Corpus Hermiticum' a book on alchemy").
 short_desc(book_b,"a copy of 'War and Peace'").
 short_desc(book_c,"a copy of 'Great Expectations'").
 short_desc(bunsen_burner,"A stand with a tube connected to a natural gas supply").
-short_desc(chemistry_lab,"").
+short_desc(chemistry_lab,"A lab with fume hoods and various chemical instuments").
 short_desc(closet,"Basically a hole in a wall").
 short_desc(coat,"A large white lab coat with lots of pockets").
 short_desc(common_room,"A typical scene of college living, an ever growing pile of pizza boxes in the corner, you know they will not be thrown out until they begin to develop consciousness.").
@@ -189,32 +189,32 @@ short_desc(library,"Endless floors of books full of knowledge. A smiling librari
 short_desc(medium_disk,"a medium sized disk glowing with alien energy").
 short_desc(note,"a handwritten note from your roommate").
 short_desc(observatory,"").
-short_desc(old_main,"").
+short_desc(old_main,"The building is full of nerdy looking people.").
 short_desc(plaza,"A large open space between engineering buildings").
 short_desc(pylon_a,"a glowing red pyramid shaped structure").
 short_desc(pylon_b,"a glowing blue pyramid shaped structure").
 short_desc(pylon_c,"a glowing green pyramid shaped structure").
 short_desc(quad,"A large open field split into four even sections").
 short_desc(recipe,"a page from 'Corpus Hermiticum' containing a recipe for an invisibility potion").
-short_desc(roof,"").
-short_desc(roommate_room,"").
+short_desc(roof,"It's a long way down, don't fall off.").
+short_desc(roommate_room,"Its pretty messy. A computer light is blinking and there are textbooks near by.").
 short_desc(secret_lab,"").
 short_desc(ser_1st_floor,"").
 short_desc(ser_2nd_floor,"").
 short_desc(small_disk,"a small disk glowing with alien energy").
 short_desc(special_collections,"Only the rarest books are kept here, who knows what secrets they might hold?").
-short_desc(tsc_patio,"").
+short_desc(tsc_patio,"A concrete patio with a water feature and multiple paths").
 short_desc(tunnels_east,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(tunnels_north,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(_,"").
 
-long_desc(animal_science,"").
+long_desc(animal_science,"The early twentieth-century edifice has a certain charm to it; the worn white bricks, coral roof tiling, and neo-classical columns adorning the entrance lend themselves to a certain prideful, nostalgic semblence of old academia. A laminated banner with the words 'Animal Science' is sloppily taped above the front doors. Inside, however, you are surprised to only be met with fluorescent lighting, disjointed rennovations, and caffeine-dependent mathematicians.").
 long_desc(avenue,"").
 long_desc(bedroom,"").
 long_desc(bone,"").
 long_desc(book_a,"An ancient work on alchemy containing many magical formulae.").
-long_desc(book_b,"").
+long_desc(book_b,"A seemingly very old copy of War and Peace. A classic story about a Russian family during the invasion of Napoleon Bonaparte.").
 long_desc(book_c,"").
 long_desc(bunsen_burner,"").
 long_desc(chemistry_lab,"").
@@ -235,18 +235,18 @@ long_desc(hub,"").
 long_desc(key,"").
 long_desc(kitchen,"").
 long_desc(large_disk,"").
-long_desc(laser,"").
+long_desc(laser,"A rather powerful laser for research. Probably shouldnt look into it.").
 long_desc(laser_lab,"").
 long_desc(library,"").
 long_desc(medium_disk,"").
 long_desc(note,"In the handwriting of your room mate is hastily scrawled: 'You've got to help.  Dr. Sundberg is an alien and wants to take over the world.  I think he is on to me, you are the only hope left! Try to find out what he is doing with the green beam.'").
 long_desc(observatory,"").
-long_desc(old_main,"").
+long_desc(old_main,"The building has four floors, and is the location of much pain during the Evil Dr. Sundber's class.").
 long_desc(plaza,"").
 long_desc(pylon_a,"").
 long_desc(pylon_b,"").
 long_desc(pylon_c,"").
-long_desc(quad,"").
+long_desc(quad,"A large grass field quarted by concrete sidewalks and bordered by large trees. A favorite destination of students and pets alike. Multiple buildings face into the field, most of them quite historic looking.").
 long_desc(recipe,"A potion for invisibility: Bathe the bone of a dragon in pure light.  Distill charged bone with the wings of a fly.  Let cool before quaffing.").
 long_desc(roof,"").
 long_desc(roommate_room,"").
