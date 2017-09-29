@@ -241,7 +241,7 @@ long_desc(library,"").
 long_desc(medium_disk,"").
 long_desc(note,"In the handwriting of your room mate is hastily scrawled: 'You've got to help.  Dr. Sundberg is an alien and wants to take over the world.  I think he is on to me, you are the only hope left! Try to find out what he is doing with the green beam.'").
 long_desc(observatory,"").
-long_desc(old_main,"The building has four floors, and is the location of much pain during the Evil Dr. Sundber's class.").
+long_desc(old_main,"The building has four floors, and is the location of much pain during the Evil Dr. Sundberg's class.").
 long_desc(plaza,"").
 long_desc(pylon_a,"").
 long_desc(pylon_b,"").
