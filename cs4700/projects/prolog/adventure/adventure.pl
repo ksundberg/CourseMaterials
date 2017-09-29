@@ -157,7 +157,7 @@ name(_,"").
 
 short_desc(animal_science,"a cozy-looking, white-bricked old building.").
 short_desc(avenue,"").
-short_desc(bedroom,"").
+short_desc(bedroom,"It couldn't be a college dorm without the dirty laundry and heaps of old homework.").
 short_desc(potion,"An oily black potion").
 short_desc(bone,"a large dark stone").
 short_desc(charged_bone,"A small piece of 'dragon' bone").
@@ -185,7 +185,7 @@ short_desc(kitchen,"").
 short_desc(large_disk,"a large disk glowing with alien energy").
 short_desc(laser,"Pulsating with energy, this laser could be used to imbue something with energy").
 short_desc(laser_lab,"Lasers shine in a beautiful array of cornea charing horror, good thing you have goggles on!").
-short_desc(library,"Endless floors of books full of knowledge. A smiling librarian greets you as you enter, "welcome to the library" she says.").
+short_desc(library,"Endless floors of books full of knowledge. A smiling librarian greets you as you enter, \"welcome to the library\" she says.").
 short_desc(medium_disk,"a medium sized disk glowing with alien energy").
 short_desc(note,"a handwritten note from your roommate").
 short_desc(observatory,"").
@@ -211,7 +211,7 @@ short_desc(_,"").
 
 long_desc(animal_science,"The early twentieth-century edifice has a certain charm to it; the worn white bricks, coral roof tiling, and neo-classical columns adorning the entrance lend themselves to a certain prideful, nostalgic semblence of old academia. A laminated banner with the words 'Animal Science' is sloppily taped above the front doors. Inside, however, you are surprised to only be met with fluorescent lighting, disjointed rennovations, and caffeine-dependent mathematicians.").
 long_desc(avenue,"").
-long_desc(bedroom,"").
+long_desc(bedroom,"The college dorm room where you currently reside. These walls have witnessed more late night study sessions than you care to consider. The bed is soaked with the dried tears of uncounted tests failed. Fortunately, the building is aired frequently enough that you can't still smell the years of dirty laundry that have sat in the closet.").
 long_desc(bone,"").
 long_desc(book_a,"An ancient work on alchemy containing many magical formulae.").
 long_desc(book_b,"A seemingly very old copy of War and Peace. A classic story about a Russian family during the invasion of Napoleon Bonaparte.").
