@@ -219,14 +219,14 @@ long_desc(book_c,"").
 long_desc(bunsen_burner,"").
 long_desc(chemistry_lab,"").
 long_desc(closet,"").
-long_desc(coat,"").
+long_desc(coat,"A spiffy looking lab coat. The pockets are lined with some kind of residue from Dr. Sundberg's experiments. It smells like aliens... Gross!").
 long_desc(common_room,"").
 long_desc(computer_lab,"").
 long_desc(elevator,"").
 long_desc(eslc_north,"").
 long_desc(eslc_south,"").
 long_desc(flask,"").
-long_desc(fly,"").
+long_desc(fly,"It looks like the fly has been dead for some time. Although you really aren't an expert in cadaverous insects.").
 long_desc(geology_building,"").
 long_desc(goggles,"").
 long_desc(green_beam,"").
