@@ -214,8 +214,8 @@ long_desc(avenue,"").
 long_desc(bedroom,"").
 long_desc(bone,"").
 long_desc(book_a,"An ancient work on alchemy containing many magical formulae.").
-long_desc(book_b,"The Picture of Dorian Gray.").
-long_desc(book_c,"An old leatherbound book written in a very old language you can't read.").
+long_desc(book_b,"A very long and boring book, but a classic nonetheless.").
+long_desc(book_c,"Do you really want to read this? SPOILER ALERT: Everyone dies.").
 long_desc(bunsen_burner,"A small burner used to heat liquid in a flask").
 long_desc(chemistry_lab,"The chemistry lab. Many fun times are to be had here.").
 long_desc(closet,"This is the closet, don't stay in too long").
