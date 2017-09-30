@@ -2,7 +2,7 @@
 :- dynamic has/1.
 :- dynamic location/2.
 
-here(plaza).
+here(bedroom).
 
 room(animal_science).
 room(avenue).
@@ -210,7 +210,7 @@ short_desc(tunnels_north,"The underground tunnels are a confusing place.  I hope
 short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(_,"").
 
-long_desc(animal_science,"Don't let the name deceive you. No fluffy little animals await you here; only the evils of mathematics.").
+long_desc(animal_science,"The early twentieth-century edifice has a certain charm to it; the worn white bricks, coral roof tiling, and neo-classical columns adorning the entrance lend themselves to a certain prideful, nostalgic semblence of old academia. A laminated banner with the words 'Animal Science' is sloppily taped above the front doors. Inside, however, you are surprised to only be met with fluorescent lighting, disjointed rennovations, and caffeine-dependent mathematicians.").
 long_desc(library,"a building filled with books and sleeping students").
 long_desc(bedroom,"A small, cluttered bedroom.  What did you expect?  You're a struggling college student!").
 long_desc(bone,"The femur bone from the mythical fire dragon Igneel, discovered in the hills of St. Ignatius, Montana").
@@ -247,7 +247,7 @@ long_desc(plaza,"A well known spot for Pokemon Go players. It is home to 2 Gyms 
 long_desc(pylon_a,"A red platform with a rod coming out of the middle that comes up to your chest. There are three disks that have been placed here on the rod from smallest to biggest forming a pyramid.").
 long_desc(pylon_b,"A blue platform with a rod coming out of the middle that comes up to your chest. It looks like you could put something on the rod...").
 long_desc(pylon_c,"A green platform with a rod coming out of the middle that comes up to your chest. It looks like you could put something on the rod...").
-long_desc(quad,"a place for intermural sports, homework, sunbathing, campouts for USU vs BYU football tickets, and much much more.").
+long_desc(quad,"A large grass field quarted by concrete sidewalks and bordered by large trees. A favorite destination of students and pets alike. Multiple buildings face into the field, most of them quite historic looking.").
 long_desc(recipe,"A potion for invisibility: Bathe the bone of a dragon in pure light. Distill charged bone with the wings of a fly. Let cool before quaffing.").
 long_desc(roof,"Are you sure you should be up here? From up here, you can see a way to get to the green beam in the sky.").
 long_desc(roommate_room,"You should try to avoid going near their room due to the smell and loud music.").
