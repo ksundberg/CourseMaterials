@@ -226,7 +226,7 @@ long_desc(computer_lab,"").
 long_desc(elevator,"A large metal container used to transport people and large objects to different floors in a building.").
 long_desc(eslc_north,"").
 long_desc(eslc_south,"").
-long_desc(flask,"A small container made of glass that is wide at the base and narrow at the neck.  A purple liquid seems to have been leftover from a previous experiment.").
+long_desc(flask,"A small container made of glass that is wide at the base and narrow at the neck.  A purple liquid seems to have been left over from a previous experiment.").
 long_desc(fly,"").
 long_desc(geology_building,"").
 long_desc(goggles,"").
