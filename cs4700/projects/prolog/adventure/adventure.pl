@@ -216,7 +216,7 @@ long_desc(bone,"").
 long_desc(book_a,"An ancient work on alchemy containing many magical formulae.").
 long_desc(book_b,"A seemingly very old copy of War and Peace. A classic story about a Russian family during the invasion of Napoleon Bonaparte.").
 long_desc(book_c,"").
-long_desc(bunsen_burner,"").
+long_desc(bunsen_burner,"A Bunsen burner, named after Robert Bunsen, is a common piece of laboratory equipment that produces a single open gas flame, which is used for heating, sterilization, and combustion.").
 long_desc(chemistry_lab,"").
 long_desc(closet,"").
 long_desc(coat,"").
