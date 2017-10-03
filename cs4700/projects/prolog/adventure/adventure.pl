@@ -221,7 +221,7 @@ long_desc(book_c,"").
 long_desc(bunsen_burner,"A Bunsen burner, named after Robert Bunsen, is a common piece of laboratory equipment that produces a single open gas flame, which is used for heating, sterilization, and combustion.").
 long_desc(chemistry_lab,"").
 long_desc(closet,"").
-long_desc(coat,"").
+long_desc(coat,"A spiffy looking lab coat. The pockets are lined with some kind of residue from Dr. Sundberg's experiments. It smells like aliens... Gross!").
 long_desc(common_room,"").
 long_desc(computer_lab,"").
 long_desc(elevator,"").
