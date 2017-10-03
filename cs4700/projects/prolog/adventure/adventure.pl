@@ -105,7 +105,7 @@ create_recipe(bunsen_burner,[flask,charged_bone,fly],potion).
 name(animal_science,"Animal Science Building").
 name(avenue,"A tree lined avenue").
 name(bedroom,"Your bedroom").
-name(bone,"large dinosaur bone").
+name(bone,"large dragon bone").
 name(charged_bone,"a chunk of dragon bone").
 name(book_a,"Corpus Hermiticum").
 name(book_b,"War and Peace").
@@ -128,6 +128,7 @@ name(goggles,"dark saftey goggles").
 name(green_beam,"The 'Grean Beam' enclosure").
 name(hall,"Hallway").
 name(hub,"The Hub").
+name(ice_cream, "Aggie Creamery").
 name(key,"key").
 name(kitchen,"Kitchen").
 name(large_disk,"large energy disk").
@@ -213,27 +214,27 @@ short_desc(_,"").
 
 long_desc(animal_science,"The early twentieth-century edifice has a certain charm to it; the worn white bricks, coral roof tiling, and neo-classical columns adorning the entrance lend themselves to a certain prideful, nostalgic semblence of old academia. A laminated banner with the words 'Animal Science' is sloppily taped above the front doors. Inside, however, you are surprised to only be met with fluorescent lighting, disjointed rennovations, and caffeine-dependent mathematicians.").
 long_desc(avenue,"A myriad of people walk every which way along the avenue.  All are seemingly unaware of their imminent destruction at Dr.Sundberg's hand.").
+long_desc(bone,"The femur bone from a dragon discovered in the hills of St. Ignatius, Montana.").
 long_desc(bedroom,"The college dorm room where you currently reside. These walls have witnessed more late night study sessions than you care to consider. The bed is soaked with the dried tears of uncounted tests failed. Fortunately, the building is aired frequently enough that you can't still smell the years of dirty laundry that have sat in the closet.").
-long_desc(bone,"").
 long_desc(book_a,"An ancient work on alchemy containing many magical formulae.").
 long_desc(book_b,"A seemingly very old copy of War and Peace. A classic story about a Russian family during the invasion of Napoleon Bonaparte.").
-long_desc(book_c,"").
+long_desc(book_c,"The classic story of an orphan boy named Pip from the marshes of Kent.").
 long_desc(bunsen_burner,"A Bunsen burner, named after Robert Bunsen, is a common piece of laboratory equipment that produces a single open gas flame, which is used for heating, sterilization, and combustion.").
 long_desc(chemistry_lab,"").
 long_desc(closet,"").
 long_desc(coat,"A spiffy looking lab coat. The pockets are lined with some kind of residue from Dr. Sundberg's experiments. It smells like aliens... Gross!").
 long_desc(common_room,"").
 long_desc(computer_lab,"").
-long_desc(elevator,"").
+long_desc(elevator,"A large metal container used to transport people and large objects to different floors in a building.").
 long_desc(eslc_north,"").
 long_desc(eslc_south,"").
 long_desc(figurine,"Your roommate's alien figurine.  He's been obsessed with aliens since you met him.  You always wondered why, but after reading that note about Dr.Sundberg, it is all beginning to make sense.")
-long_desc(flask,"").
+long_desc(flask,"A small container made of glass that is wide at the base and narrow at the neck.  A purple liquid seems to have been left over from a previous experiment.").
 long_desc(fly,"Scientifically known as Syrphus Ribessi, this nuisance enjoys long buzzes around human faces and landing on perfectly good food. This particular house fly met an untimely death by squishing.").
 long_desc(geology_building,"").
 long_desc(goggles,"").
 long_desc(green_beam,"").
-long_desc(hall,"").
+long_desc(hall,"A narrow area or passage that connects rooms of an edifice.  The passage is laid with dark red carpeting with pictures hanging on its walls.").
 long_desc(hub,"").
 long_desc(key,"").
 long_desc(kitchen,"").
