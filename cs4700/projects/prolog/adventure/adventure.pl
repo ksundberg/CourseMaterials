@@ -75,6 +75,7 @@ location(book_b,special_collections).
 location(book_c,special_collections).
 location(recipe,book_a).
 location(bone,geology_building).
+location(figurine,bedroom).
 location(fly,roommate_room).
 location(key,coat).
 location(coat,green_beam).
@@ -119,6 +120,7 @@ name(elevator,"Elevator").
 name(potion,"potion").
 name(eslc_north,"Eccels Science Learning Center").
 name(eslc_south,"Eccels Science Learning Center").
+name(figurine,"alien figurine")
 name(flask,"glass flask").
 name(fly,"dead fly").
 name(geology_building,"Geology Building").
@@ -172,6 +174,7 @@ short_desc(computer_lab,"Many computers lined up and a desk at front of room").
 short_desc(elevator,"You are in a plain metal box.  There are buttons labeled with various locations.").
 short_desc(eslc_north,"You are on the north side of the ESLC.").
 short_desc(eslc_south,"You are on the south side of the ESLC.").
+short_desc(figurine,"Your roommate's alien figurine.  He always keeps it on his shelf.")
 short_desc(flask,"a glass flask suitable for mixing reagents").
 short_desc(fly,"the partially squished body of a dead house fly").
 short_desc(geology_building,"Large building with rocks and trees surrounding it").
@@ -209,7 +212,7 @@ short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope 
 short_desc(_,"").
 
 long_desc(animal_science,"The early twentieth-century edifice has a certain charm to it; the worn white bricks, coral roof tiling, and neo-classical columns adorning the entrance lend themselves to a certain prideful, nostalgic semblence of old academia. A laminated banner with the words 'Animal Science' is sloppily taped above the front doors. Inside, however, you are surprised to only be met with fluorescent lighting, disjointed rennovations, and caffeine-dependent mathematicians.").
-long_desc(avenue,"A tree-lined sidewalk that is often filled with students.").
+long_desc(avenue,"A myriad of people walk every which way along the avenue.  All are seemingly unaware of their imminent destruction at Dr.Sundberg's hand.").
 long_desc(bedroom,"The college dorm room where you currently reside. These walls have witnessed more late night study sessions than you care to consider. The bed is soaked with the dried tears of uncounted tests failed. Fortunately, the building is aired frequently enough that you can't still smell the years of dirty laundry that have sat in the closet.").
 long_desc(bone,"").
 long_desc(book_a,"An ancient work on alchemy containing many magical formulae.").
@@ -224,6 +227,7 @@ long_desc(computer_lab,"").
 long_desc(elevator,"").
 long_desc(eslc_north,"").
 long_desc(eslc_south,"").
+long_desc(figurine,"Your roommate's alien figurine.  He's been obsessed with aliens since you met him.  You always wondered why, but after reading that note about Dr.Sundberg, it is all beginning to make sense.")
 long_desc(flask,"").
 long_desc(fly,"").
 long_desc(geology_building,"").
@@ -269,4 +273,3 @@ puzzle(green_beam):-write("Dr. Sundberg escorts you out saying 'Sorry, this is a
 puzzle(_).
 
 read_words(W):-read_string(user_input,"\n\r","\n\r",_,L),split_string(L,"\t ","\t ",W).
-
