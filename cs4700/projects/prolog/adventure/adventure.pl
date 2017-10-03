@@ -120,7 +120,7 @@ name(elevator,"Elevator").
 name(potion,"potion").
 name(eslc_north,"Eccels Science Learning Center").
 name(eslc_south,"Eccels Science Learning Center").
-name(figurine,"alien figurine")
+name(figurine,"alien figurine").
 name(flask,"glass flask").
 name(fly,"dead fly").
 name(geology_building,"Geology Building").
@@ -175,7 +175,7 @@ short_desc(computer_lab,"Many computers lined up and a desk at front of room").
 short_desc(elevator,"You are in a plain metal box.  There are buttons labeled with various locations.").
 short_desc(eslc_north,"You are on the north side of the ESLC.").
 short_desc(eslc_south,"You are on the south side of the ESLC.").
-short_desc(figurine,"Your roommate's alien figurine.  He always keeps it on his shelf.")
+short_desc(figurine,"Your roommate's alien figurine.  He always keeps it on his shelf.").
 short_desc(flask,"a glass flask suitable for mixing reagents").
 short_desc(fly,"the partially squished body of a dead house fly").
 short_desc(geology_building,"Large building with rocks and trees surrounding it").
@@ -228,7 +228,7 @@ long_desc(computer_lab,"The room is filled with the glow and hum of many compute
 long_desc(elevator,"A large metal container used to transport people and large objects to different floors in a building.").
 long_desc(eslc_north,"").
 long_desc(eslc_south,"").
-long_desc(figurine,"Your roommate's alien figurine.  He's been obsessed with aliens since you met him.  You always wondered why, but after reading that note about Dr.Sundberg, it is all beginning to make sense.")
+long_desc(figurine,"Your roommate's alien figurine.  He's been obsessed with aliens since you met him.  You always wondered why, but after reading that note about Dr.Sundberg, it is all beginning to make sense.").
 long_desc(flask,"A small container made of glass that is wide at the base and narrow at the neck.  A purple liquid seems to have been left over from a previous experiment.").
 long_desc(fly,"Scientifically known as Syrphus Ribessi, this nuisance enjoys long buzzes around human faces and landing on perfectly good food. This particular house fly met an untimely death by squishing.").
 long_desc(geology_building,"").
