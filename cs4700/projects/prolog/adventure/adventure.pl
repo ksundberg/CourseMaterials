@@ -154,9 +154,8 @@ name(tunnels_east,"Underground Tunnels").
 name(tunnels_north,"Underground Tunnels").
 name(tunnels_west,"Underground Tunnels").
 name(_,"").
-
 short_desc(animal_science,"a cozy-looking, white-bricked old building.").
-short_desc(avenue,"").
+short_desc(avenue,"A tree-lined sidewalk").
 short_desc(bedroom,"your bedroom - complete with dirty laundry and heaps of old homework, the sad remains of many hard fought battles waged over Dr. Sundberg's homework").
 short_desc(potion,"An oily black potion").
 short_desc(bone,"a large dark stone").
@@ -174,7 +173,7 @@ short_desc(elevator,"You are in a plain metal box.  There are buttons labeled wi
 short_desc(eslc_north,"You are on the north side of the ESLC.").
 short_desc(eslc_south,"You are on the south side of the ESLC.").
 short_desc(flask,"a glass flask suitable for mixing reagents").
-short_desc(fly,"the partialy squished body of a dead house fly").
+short_desc(fly,"the partially squished body of a dead house fly").
 short_desc(geology_building,"Large building with rocks and trees surrounding it").
 short_desc(goggles,"dark eye protection left over from the 'Great American Eclipse'").
 short_desc(green_beam,"Dr. Sundberg is standing at a large machine which is emitting a bright beam of green light.  You overhear a conversation indicating that he has set up a wormhole generator in his secret lab.  This will allow the alien invasion force to reach earth.").
@@ -210,7 +209,7 @@ short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope 
 short_desc(_,"").
 
 long_desc(animal_science,"The early twentieth-century edifice has a certain charm to it; the worn white bricks, coral roof tiling, and neo-classical columns adorning the entrance lend themselves to a certain prideful, nostalgic semblence of old academia. A laminated banner with the words 'Animal Science' is sloppily taped above the front doors. Inside, however, you are surprised to only be met with fluorescent lighting, disjointed rennovations, and caffeine-dependent mathematicians.").
-long_desc(avenue,"").
+long_desc(avenue,"A tree-lined sidewalk that is often filled with students.").
 long_desc(bedroom,"The college dorm room where you currently reside. These walls have witnessed more late night study sessions than you care to consider. The bed is soaked with the dried tears of uncounted tests failed. Fortunately, the building is aired frequently enough that you can't still smell the years of dirty laundry that have sat in the closet.").
 long_desc(bone,"").
 long_desc(book_a,"An ancient work on alchemy containing many magical formulae.").
