@@ -229,7 +229,7 @@ long_desc(eslc_north,"").
 long_desc(eslc_south,"").
 long_desc(figurine,"Your roommate's alien figurine.  He's been obsessed with aliens since you met him.  You always wondered why, but after reading that note about Dr.Sundberg, it is all beginning to make sense.")
 long_desc(flask,"").
-long_desc(fly,"").
+long_desc(fly,"Scientifically known as Syrphus Ribessi, this nuisance enjoys long buzzes around human faces and landing on perfectly good food. This particular house fly met an untimely death by squishing.").
 long_desc(geology_building,"").
 long_desc(goggles,"").
 long_desc(green_beam,"").
