@@ -183,7 +183,7 @@ short_desc(green_beam,"Dr. Sundberg is standing at a large machine which is emit
 short_desc(hall,"Long pathway that has pictures hanging on wall").
 short_desc(hub,"Smells of coffee and pizza linger in the air. Students congregate around tables slaving away at endless homework.").
 short_desc(key,"an ornate key glowing with alien energies").
-short_desc(kitchen,"").
+short_desc(kitchen,"A leaning tower of pizza boxes").
 short_desc(large_disk,"a large disk glowing with alien energy").
 short_desc(laser,"Pulsating with energy, this laser could be used to imbue something with energy").
 short_desc(laser_lab,"Lasers shine in a beautiful array of cornea charing horror, good thing you have goggles on!").
