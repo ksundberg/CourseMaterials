@@ -255,7 +255,7 @@ long_desc(ser_1st_floor,"").
 long_desc(ser_2nd_floor,"").
 long_desc(small_disk,"A small disk pulsates in your hand, glowing an toxic green color as it breathes slowly, a slight warm gasey feel pukes from the disk.").
 long_desc(special_collections,"").
-long_desc(tsc_patio,"").
+long_desc(tsc_patio,"An open area with birds chirping and hipsters drinking their coffee. You won't find any CS majors here as they're all in cavedwelling in Old Main.").
 long_desc(tunnels_east,"").
 long_desc(tunnels_north,"").
 long_desc(tunnels_west,"").
