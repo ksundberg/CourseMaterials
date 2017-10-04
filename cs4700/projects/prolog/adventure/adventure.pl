@@ -10,9 +10,9 @@ room(bedroom).
 room(chemistry_lab).
 room(common_room).
 room(computer_lab).
+room(elevator).
 room(eslc_north).
 room(eslc_south).
-room(elevator).
 room(geology_building).
 room(green_beam).
 room(hall).
@@ -26,9 +26,9 @@ room(plaza).
 room(quad).
 room(roof).
 room(roommate_room).
+room(secret_lab).
 room(ser_1st_floor).
 room(ser_2nd_floor).
-room(secret_lab).
 room(special_collections).
 room(tsc_patio).
 room(tunnels_east).
@@ -102,6 +102,13 @@ equipment(bunsen_burner).
 
 create_recipe(laser,[bone],charged_bone).
 create_recipe(bunsen_burner,[flask,charged_bone,fly],potion).
+
+heavy(laser).
+heavy(bunsen_burner).
+heavy(closet).
+heavy(pylon_a).
+heavy(pylon_b).
+heavy(pylon_c).
 
 name(animal_science,"Animal Science Building").
 name(avenue,"A tree lined avenue").
