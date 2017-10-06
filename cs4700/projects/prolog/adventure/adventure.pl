@@ -215,8 +215,8 @@ long_desc(bedroom,"").
 long_desc(bone,"").
 long_desc(book_a,"An ancient work on alchemy containing many magical formulae.").
 long_desc(book_b,"A seemingly very old copy of War and Peace. A classic story about a Russian family during the invasion of Napoleon Bonaparte.").
-long_desc(book_c,"").
-long_desc(bunsen_burner,"").
+long_desc(book_c,"A 2002 reprint of the 1861 novel by Charles Dickens. As you flip through the first few pages, you can't help but feel that you were somehow expecting more.").
+long_desc(bunsen_burner,"A common piece of laboratory equipment that produces a single open gas flame, which is used for heating, sterilization, and combustion.").
 long_desc(chemistry_lab,"").
 long_desc(closet,"").
 long_desc(coat,"").
@@ -225,10 +225,10 @@ long_desc(computer_lab,"").
 long_desc(elevator,"").
 long_desc(eslc_north,"").
 long_desc(eslc_south,"").
-long_desc(flask,"").
+long_desc(flask,"A medium sized tapered flask with small scratches from being used. Looking at it you can't help but imagine yourself as a mad scientist.").
 long_desc(fly,"").
 long_desc(geology_building,"").
-long_desc(goggles,"").
+long_desc(goggles,"A 'one size fits all' elastic is attached to the sides in a way that makes you feel that the goggles would be more fitting in a Steampunk convention.").
 long_desc(green_beam,"").
 long_desc(hall,"").
 long_desc(hub,"").
