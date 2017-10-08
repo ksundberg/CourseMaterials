@@ -78,6 +78,7 @@ location(recipe,book_a).
 location(bone,geology_building).
 location(figurine,bedroom).
 location(fly,roommate_room).
+location(movie, roomate_room).
 location(key,coat).
 location(coat,green_beam).
 location(large_disk,pylon_a).
@@ -144,6 +145,7 @@ name(laser,"laser array").
 name(laser_lab,"Laser Lab").
 name(library,"Merill-Caizer Library").
 name(medium_disk,"medium energy disk").
+name(movie, "Men in Black").
 name(note,"note").
 name(observatory,"Observatory").
 name(old_main,"Old Main").
@@ -198,6 +200,7 @@ short_desc(laser,"Pulsating with energy, this laser could be used to imbue somet
 short_desc(laser_lab,"Lasers shine in a beautiful array of cornea charing horror, good thing you have goggles on!").
 short_desc(library,"Endless floors of books full of knowledge. A smiling librarian greets you as you enter, \"welcome to the library\" she says.").
 short_desc(medium_disk,"a medium sized disk glowing with alien energy").
+short_desc(movie, "A movie about policing and monitoring aliens").
 short_desc(note,"a handwritten note from your roommate").
 short_desc(observatory,"A tower where you can stargaze.").
 short_desc(old_main,"The building is full of nerdy looking people.").
@@ -250,6 +253,7 @@ long_desc(laser,"A rather powerful laser for research. Probably shouldnt look in
 long_desc(laser_lab,"You imagine yourself as a secret agent in Mission Impossible flipping and sliding around the room to avoid the lasers....maybe then you could get a girlfriend...").
 long_desc(library,"Endless floors of books full of knowledge. A smiling librarian greets you as you enter, 'Welcome to the library!'").
 long_desc(medium_disk,"a medium sized disk in between the small and large disks on the red pylon. It looks like you can move it if there isn't anything on top of it...").
+long_desc(movie, "Stars Will Smith and Tommy Lee Jones as members of a secret task force dedicated to protecting earth from alien invaders and earth's inhabitants from any knowledge of aliens. Your dormmate must have been conducting research").
 long_desc(note,"In the handwriting of your room mate is hastily scrawled: 'You've got to help.  Dr. Sundberg is an alien and wants to take over the world.  I think he is on to me, you are the only hope left! Try to find out what he is doing with the green beam.'").
 long_desc(observatory,"Welcome to the Atmospheric Lidar Observatory. Here you will find information about the 'Green Beam' at Utah State University.").
 long_desc(old_main,"The building has four floors, and is the location of much pain during the Evil Dr. Sundber's class.  Few can navigate their way to the 4th floor where dreams become computer programs.").
