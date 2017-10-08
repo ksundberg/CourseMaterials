@@ -7,6 +7,7 @@ here(bedroom).
 room(animal_science).
 room(avenue).
 room(bedroom).
+room(bedroom_closet).
 room(chemistry_lab).
 room(common_room).
 room(computer_lab).
@@ -35,6 +36,7 @@ room(tunnels_east).
 room(tunnels_north).
 room(tunnels_west).
 
+door(bedroom,bedroom_closet).
 door(eslc_north,chemistry_lab).
 door(eslc_north,tsc_patio).
 door(eslc_south,eslc_north).
@@ -68,6 +70,7 @@ door(roof,green_beam).
 door(roof,elevator).
 door(roof,observatory).
 
+location(dirty_clothes, bedroom_closet).
 location(closet,eslc_south).
 location(goggles,closet).
 location(note,bedroom).
@@ -110,6 +113,8 @@ heavy(pylon_a).
 heavy(pylon_b).
 heavy(pylon_c).
 
+name(bedroom_closet, "Your Bedroom's Closet").
+name(dirty_clothes, "Your Dirty Clothes").
 name(animal_science,"Animal Science Building").
 name(avenue,"A tree lined avenue").
 name(bedroom,"Your bedroom").
@@ -165,6 +170,9 @@ name(tunnels_east,"Underground Tunnels").
 name(tunnels_north,"Underground Tunnels").
 name(tunnels_west,"Underground Tunnels").
 name(_,"").
+
+short_desc(bedroom_closet, "A cozy little room used for storing your valuables").
+short_desc(dirty_clothes, "Gritty clothes you should probably wash").
 short_desc(animal_science,"a cozy-looking, white-bricked old building.").
 short_desc(avenue,"A broad walkway lined with trees.").
 short_desc(bedroom,"your bedroom - complete with dirty laundry and heaps of old homework, the sad remains of many hard fought battles waged over Dr. Sundberg's homework").
@@ -220,6 +228,8 @@ short_desc(tunnels_north,"The underground tunnels are a confusing place.  I hope
 short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(_,"").
 
+long_desc(bedroom_closet, "Four shelves stand before you, piles of your clothes at your feet, its quiet cramped in here.").
+long_desc(dirty_clothes, "These are all you have of value in this world are these crusted gritty clothes, that need to be washed.").
 long_desc(avenue,"A myriad of people walk every which way along the avenue.  All are seemingly unaware of their imminent destruction at Dr.Sundberg's hand.").
 long_desc(bone,"The femur bone from a dragon discovered in the hills of St. Ignatius, Montana.").
 long_desc(bedroom,"The college dorm room where you currently reside. These walls have witnessed more late night study sessions than you care to consider. The bed is soaked with the dried tears of uncounted tests failed. Fortunately, the building is aired frequently enough that you can't still smell the years of dirty laundry that have sat in the closet.").
