@@ -4,8 +4,8 @@
 
 here(bedroom).
 
-room(animal_science).
 room(agricultural_science).
+room(animal_science).
 room(avenue).
 room(bedroom).
 room(chemistry_lab).
@@ -60,12 +60,12 @@ door(library,plaza).
 door(plaza,common_room).
 door(plaza,ser_1st_floor).
 door(plaza,avenue).
+door(quad,agricultural_science).
 door(quad,animal_science).
 door(quad,eslc_south).
 door(quad,geology_building).
 door(quad,old_main).
 door(quad,tsc_patio).
-door(quad,agricultural_science).
 door(roof,green_beam).
 door(roof,elevator).
 door(roof,observatory).
@@ -112,6 +112,7 @@ heavy(pylon_a).
 heavy(pylon_b).
 heavy(pylon_c).
 
+name(agricultural_science,"Agricultural Sciences Building").
 name(animal_science,"Animal Science Building").
 name(avenue,"A tree lined avenue").
 name(bedroom,"Your bedroom").
@@ -167,6 +168,8 @@ name(tunnels_east,"Underground Tunnels").
 name(tunnels_north,"Underground Tunnels").
 name(tunnels_west,"Underground Tunnels").
 name(_,"").
+
+short_desc(agricultural_science,"Looks like a nice place to grab a bite.")
 short_desc(animal_science,"a cozy-looking, white-bricked old building.").
 short_desc(avenue,"A broad walkway lined with trees.").
 short_desc(bedroom,"your bedroom - complete with dirty laundry and heaps of old homework, the sad remains of many hard fought battles waged over Dr. Sundberg's homework").
@@ -222,6 +225,7 @@ short_desc(tunnels_north,"The underground tunnels are a confusing place.  I hope
 short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(_,"").
 
+long_desc(agricultural_science, "There is a line of students waiting to eat at the cafe. Everyone seems to be in a hurry.")
 long_desc(avenue,"A myriad of people walk every which way along the avenue.  All are seemingly unaware of their imminent destruction at Dr.Sundberg's hand.").
 long_desc(bone,"The femur bone from a dragon discovered in the hills of St. Ignatius, Montana.").
 long_desc(bedroom,"The college dorm room where you currently reside. These walls have witnessed more late night study sessions than you care to consider. The bed is soaked with the dried tears of uncounted tests failed. Fortunately, the building is aired frequently enough that you can't still smell the years of dirty laundry that have sat in the closet.").
