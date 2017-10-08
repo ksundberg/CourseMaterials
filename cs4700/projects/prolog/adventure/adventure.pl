@@ -273,7 +273,7 @@ long_desc(tsc_patio,"An open area with birds chirping and hipsters drinking thei
 long_desc(tunnels_east,"The tunnel seems to go on forever. Its dark and you are having a hard time seeing anything. You try to not let your imagination take over as you think you hear someone following you...").
 long_desc(tunnels_north,"The tunnel seems to go on forever. Its dark and you are having a hard time seeing anything. You try to not let your imagination take over as you think you hear someone following you...").
 long_desc(tunnels_west,"The tunnel seems to go on forever. Its dark but you see what looks like a door off to your right. You try to not let your imagination take over as you think you hear someone following you...").
-long_desc(tsc,"This building is the perfect place to go to spend way too much money on overpriced things... You'll find students eating, studying, socializing, and lamenting their massive student debts.").
+long_desc(tsc,"This massive building is the perfect place to go to spend way too much money on overpriced things... You'll find students eating, studying, socializing, and lamenting their massive student debts.").
 long_desc(_,"").
 
 puzzle(laser_lab):-has(goggles),!.
