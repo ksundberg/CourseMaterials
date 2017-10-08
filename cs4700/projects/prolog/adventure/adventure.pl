@@ -5,6 +5,7 @@
 here(bedroom).
 
 room(animal_science).
+room(agricultural_science).
 room(avenue).
 room(bedroom).
 room(chemistry_lab).
@@ -64,6 +65,7 @@ door(quad,eslc_south).
 door(quad,geology_building).
 door(quad,old_main).
 door(quad,tsc_patio).
+door(quad,agricultural_science).
 door(roof,green_beam).
 door(roof,elevator).
 door(roof,observatory).
