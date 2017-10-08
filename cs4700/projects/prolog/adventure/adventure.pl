@@ -90,6 +90,7 @@ location(flask,chemistry_lab).
 location(bunsen_burner,chemistry_lab).
 location(laser,laser_lab).
 
+
 container(closet).
 container(coat).
 container(book_a).
@@ -164,6 +165,7 @@ name(tsc_patio,"Patio of the TSC").
 name(tunnels_east,"Underground Tunnels").
 name(tunnels_north,"Underground Tunnels").
 name(tunnels_west,"Underground Tunnels").
+name(tsc,"Taggart Student Center").
 name(_,"").
 short_desc(animal_science,"a cozy-looking, white-bricked old building.").
 short_desc(avenue,"A broad walkway lined with trees.").
@@ -218,6 +220,7 @@ short_desc(tsc_patio,"a place to sit an study or eat outside the TSC.").
 short_desc(tunnels_east,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(tunnels_north,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope you don't get lost.").
+short_desc(tsc,"community center for students, faculty, and alumni").
 short_desc(_,"").
 
 long_desc(avenue,"A myriad of people walk every which way along the avenue.  All are seemingly unaware of their imminent destruction at Dr.Sundberg's hand.").
@@ -270,6 +273,7 @@ long_desc(tsc_patio,"An open area with birds chirping and hipsters drinking thei
 long_desc(tunnels_east,"The tunnel seems to go on forever. Its dark and you are having a hard time seeing anything. You try to not let your imagination take over as you think you hear someone following you...").
 long_desc(tunnels_north,"The tunnel seems to go on forever. Its dark and you are having a hard time seeing anything. You try to not let your imagination take over as you think you hear someone following you...").
 long_desc(tunnels_west,"The tunnel seems to go on forever. Its dark but you see what looks like a door off to your right. You try to not let your imagination take over as you think you hear someone following you...").
+long_desc(tsc,"This building is the perfect place to go to spend way too much money on overpriced things... You'll find students eating, studying, socializing, and lamenting their massive student debts.").
 long_desc(_,"").
 
 puzzle(laser_lab):-has(goggles),!.
