@@ -76,6 +76,11 @@ door(tunnels_north,tunnels_west).
 door(tunnels_west,secret_lab).
 door(tunnels_west,tunnels_east).
 
+location(closet,eslc_south).
+location(kitchen_trashcan,kitchen).
+location(tower_of_pizza_boxes, kitchen).
+location(goggles,closet).
+location(note,bedroom).
 location(bone,geology_building).
 location(book_a,special_collections).
 location(book_b,special_collections).
@@ -103,6 +108,7 @@ location(small_disk,pylon_a).
 
 
 container(closet).
+container(kitchen_trashcan).
 container(coat).
 container(book_a).
 container(pylon_a).
@@ -122,6 +128,7 @@ heavy(closet).
 heavy(pylon_a).
 heavy(pylon_b).
 heavy(pylon_c).
+heavy(kitchen_trashcan).
 heavy(small_disk).
 heavy(medium_disk).
 heavy(large_disk).
@@ -159,6 +166,7 @@ name(hub,"The Hub").
 name(ice_cream, "Aggie Creamery").
 name(key,"key").
 name(kitchen,"Kitchen").
+name(kitchen_trashcan,"trashcan").
 name(large_disk,"large energy disk").
 name(laser,"laser array").
 name(laser_lab,"Laser Lab").
@@ -183,6 +191,7 @@ name(ser_1st_floor,"1st Floor of SER Building").
 name(ser_2nd_floor,"2nd Floor of SER Building").
 name(small_disk,"small energy disk").
 name(special_collections,"Special Collections Room").
+name(tower_of_pizza_boxes,"tower of pizza boxes").
 name(tsc,"Taggart Student Center").
 name(tsc_patio,"Patio of the TSC").
 name(tunnels_east,"Underground Tunnels").
@@ -222,6 +231,7 @@ short_desc(hall,"Long pathway that has pictures hanging on wall").
 short_desc(hub,"Smells of coffee and pizza linger in the air. Students congregate around tables slaving away at endless homework.").
 short_desc(key,"an ornate key glowing with alien energies").
 short_desc(kitchen,"A small room containing the bare essentials, including a leaning tower of pizza boxes").
+short_desc(kitchen_trashcan,"This is the trashcan that resides in the kitchen.").
 short_desc(large_disk,"a large disk glowing with alien energy").
 short_desc(laser,"Pulsating with energy, this laser could be used to imbue something with energy").
 short_desc(laser_lab,"Lasers shine in a beautiful array of cornea charing horror, good thing you have goggles on!").
@@ -241,6 +251,7 @@ short_desc(quad,"four large fields split up by sidewalks").
 short_desc(recipe,"a page from 'Corpus Hermiticum' containing a recipe for an invisibility potion").
 short_desc(roof,"the roof of the dorm building.").
 short_desc(roommate_room,"its even messier than your room!").
+short_desc(tower_of_pizza_boxes,"A stack of (hopefully) empty pizza boxes").
 short_desc(secret_lab,"a secret lab?! This must be where Dr. Sundberg is hiding his secret!").
 short_desc(ser_1st_floor,"The bottom floor of the SER building. Nothing too exciting is happening here.").
 short_desc(ser_2nd_floor,"The 2nd floor of the SER building. You can see flashing lights near the laser lab room.").
@@ -252,7 +263,6 @@ short_desc(tunnels_east,"The underground tunnels are a confusing place.  I hope 
 short_desc(tunnels_north,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(_,"").
-
 
 long_desc(agricultural_science, "There is a line of students waiting to eat at the cafe. Everyone seems to be in a hurry.").
 long_desc(avenue,"A myriad of people walk every which way along the avenue.  All are seemingly unaware of their imminent destruction at Dr.Sundberg's hand.").
@@ -284,6 +294,7 @@ long_desc(hall,"A narrow area or passage that connects rooms of an edifice.  The
 long_desc(hub,"Choose from 9 different areas to eat at while enjoying a large seating area, which is perfect for hanging out and studying.").
 long_desc(key,"You feel the alien energy flowing from the key. Could it be? Have you been chosen as the next wielder of the Keyblade? You hold out your hand to the side, but sadly, nothing happens. It's just a normal alien key....").
 long_desc(kitchen,"There are an assortment of pots and pans. Someone is cooking your favorite food but it doesn't look like they are going to share.").
+long_desc(kitchen_trashcan,"A black, round, plastic container lined with a flexible bag. It's as generic as can be, lacking any logo or branding.").
 long_desc(large_disk,"a large disk on the bottom of the red pylon. You worked out today so if there isn't anything on top of it, you could probably move it...").
 long_desc(laser,"A rather powerful laser for research. Probably shouldnt look into it.").
 long_desc(laser_lab,"You imagine yourself as a secret agent in Mission Impossible flipping and sliding around the room to avoid the lasers... Maybe then you could get a date.").
@@ -307,6 +318,7 @@ long_desc(ser_1st_floor,"...even though I said nothing exciting happens here, yo
 long_desc(ser_2nd_floor,"The main part of the 2nd floor is the laser lab. The students in there experiment with what they can cut, burn, or imbue with magical energy with lasers.").
 long_desc(small_disk,"A small disk pulsates in your hand, glowing an toxic green color as it breathes slowly, a slight warm gasey feel pukes from the disk.").
 long_desc(special_collections,"a small section of the library that is home to all sorts of extrordiary books. You can read up on Russian Literature, Classic Dickens, Alchemy, and even more!").
+long_desc(tower_of_pizza_boxes,"Domino's, Pizza-Hut, Little Ceaser's and more. All are rendered equal in this towering graveyard of cardboard.").
 long_desc(tsc,"This massive building is the perfect place to go to spend way too much money on overpriced things... You'll find students eating, studying, socializing, and lamenting their massive student debts.").
 long_desc(tsc_patio,"An open area with birds chirping and hipsters drinking their coffee. You won't find any CS majors here as they're all in cavedwelling in Old Main.").
 long_desc(tunnels_east,"The tunnel seems to go on forever. Its dark and you are having a hard time seeing anything. You try to not let your imagination take over as you think you hear someone following you...").
