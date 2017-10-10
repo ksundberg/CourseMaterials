@@ -11,6 +11,7 @@ room(chemistry_lab).
 room(common_room).
 room(computer_lab).
 room(elevator).
+room(engr).
 room(eslc_north).
 room(eslc_south).
 room(geology_building).
@@ -59,6 +60,7 @@ door(library,plaza).
 door(plaza,common_room).
 door(plaza,ser_1st_floor).
 door(plaza,avenue).
+door(plaza,engr).
 door(quad,animal_science).
 door(quad,eslc_south).
 door(quad,geology_building).
@@ -80,6 +82,7 @@ location(figurine,bedroom).
 location(fly,roommate_room).
 location(key,coat).
 location(coat,green_beam).
+location(lost_homework,engr).
 location(large_disk,pylon_a).
 location(medium_disk,pylon_a).
 location(small_disk,pylon_a).
@@ -125,6 +128,7 @@ name(coat,"Dr. Sundberg's lab coat").
 name(common_room,"Dorm common room").
 name(computer_lab,"Student Computer Lab").
 name(elevator,"Elevator").
+name(engr,"ENGR - The Main Engineering Building").
 name(potion,"potion").
 name(eslc_north,"Eccels Science Learning Center").
 name(eslc_south,"Eccels Science Learning Center").
@@ -143,6 +147,7 @@ name(large_disk,"large energy disk").
 name(laser,"laser array").
 name(laser_lab,"Laser Lab").
 name(library,"Merill-Caizer Library").
+name(lost_homework,"Some student's lost geometry homework.").
 name(medium_disk,"medium energy disk").
 name(note,"note").
 name(observatory,"Observatory").
@@ -165,6 +170,7 @@ name(tunnels_east,"Underground Tunnels").
 name(tunnels_north,"Underground Tunnels").
 name(tunnels_west,"Underground Tunnels").
 name(_,"").
+
 short_desc(animal_science,"a cozy-looking, white-bricked old building.").
 short_desc(avenue,"A broad walkway lined with trees.").
 short_desc(bedroom,"your bedroom - complete with dirty laundry and heaps of old homework, the sad remains of many hard fought battles waged over Dr. Sundberg's homework").
@@ -181,6 +187,7 @@ short_desc(coat,"A large white lab coat with lots of pockets").
 short_desc(common_room,"A place where students gather for homework, food, and naps").
 short_desc(computer_lab,"Many computers lined up together and a desk at the front of the room").
 short_desc(elevator,"You are in a plain metal box.  There are buttons labeled with various locations.").
+short_desc(engr,"A large building with many classrooms, you're surprised to see students wandering the halls at this time.").
 short_desc(eslc_north,"You are on the north side of the ESLC.").
 short_desc(eslc_south,"You are on the south side of the ESLC.").
 short_desc(figurine,"Your roommate's alien figurine sitting atop a shelf.").
@@ -197,6 +204,7 @@ short_desc(large_disk,"a large disk glowing with alien energy").
 short_desc(laser,"Pulsating with energy, this laser could be used to imbue something with energy").
 short_desc(laser_lab,"Lasers shine in a beautiful array of cornea charing horror, good thing you have goggles on!").
 short_desc(library,"Endless floors of books full of knowledge. A smiling librarian greets you as you enter, \"welcome to the library\" she says.").
+short_desc(lost_homework,"The abandoned pages call out to a grader, a grader who will never see them.").
 short_desc(medium_disk,"a medium sized disk glowing with alien energy").
 short_desc(note,"a handwritten note from your roommate").
 short_desc(observatory,"A tower where you can stargaze.").
@@ -233,6 +241,7 @@ long_desc(coat,"A spiffy looking lab coat. The pockets are lined with some kind 
 long_desc(common_room,"The common room in the SER building. You see a few scattered couches, benches, and tables. It smells like Little Cesears Pizza here...").
 long_desc(computer_lab,"The room is filled with the glow and hum of many computers and the feverish typing of college students.").
 long_desc(elevator,"A large metal container used to transport people and large objects to different floors in a building.").
+long_desc(engr,"There is a display for Orbital ATK and chairs to collapse into after class. You hear your footsteps echoing down the halls as you walk.").
 long_desc(eslc_north,"A large open area where you can see chemistry labs , and the doors out to the TSC patio.").
 long_desc(eslc_south,"Smaller area lined with classrooms, labs, and closets. You notice a lot of students are wearing lab coats and goggles.").
 long_desc(figurine,"Your roommate's alien figurine.  They've been obsessed with aliens since you first met.  You always wondered why, but after reading that note about Dr.Sundberg, it is all beginning to make sense.").
@@ -249,6 +258,7 @@ long_desc(large_disk,"a large disk on the bottom of the red pylon. You worked ou
 long_desc(laser,"A rather powerful laser for research. Probably shouldnt look into it.").
 long_desc(laser_lab,"You imagine yourself as a secret agent in Mission Impossible flipping and sliding around the room to avoid the lasers... Maybe then you could get a date.").
 long_desc(library,"Endless floors of books full of knowledge. A smiling librarian greets you as you enter, 'Welcome to the library!'").
+long_desc(lost_homework,"This homework appears to be a geometric proof of the origin of the green beam that is sometimes seen in the sky. The proof shows that the beam originates on the roof of the SER building.").
 long_desc(medium_disk,"a medium sized disk in between the small and large disks on the red pylon. It looks like you can move it if there isn't anything on top of it...").
 long_desc(note,"In the handwriting of your roommate is hastily scrawled: 'You've got to help.  Dr. Sundberg is an alien and wants to take over the world.  I think he is on to me, you are the only hope left! Try to find out what he is doing with the green beam.'").
 long_desc(observatory,"Welcome to the Atmospheric Lidar Observatory. Here you will find information about the 'Green Beam' at Utah State University.").
