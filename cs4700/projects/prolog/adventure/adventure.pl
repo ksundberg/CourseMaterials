@@ -4,6 +4,7 @@
 
 here(bedroom).
 
+room(agricultural_science).
 room(animal_science).
 room(avenue).
 room(bedroom).
@@ -62,6 +63,7 @@ door(library,plaza).
 door(plaza,common_room).
 door(plaza,ser_1st_floor).
 door(plaza,avenue).
+door(quad,agricultural_science).
 door(plaza,engr).
 door(quad,animal_science).
 door(quad,eslc_south).
@@ -116,6 +118,7 @@ heavy(pylon_a).
 heavy(pylon_b).
 heavy(pylon_c).
 
+name(agricultural_science,"Agricultural Sciences Building").
 name(bedroom_closet, "Your Bedroom's Closet").
 name(dirty_clothes, "Your Dirty Clothes").
 name(animal_science,"Animal Science Building").
@@ -176,6 +179,8 @@ name(tunnels_north,"Underground Tunnels").
 name(tunnels_west,"Underground Tunnels").
 name(_,"").
 
+
+short_desc(agricultural_science,"Looks like a nice place to grab a bite.").
 short_desc(bedroom_closet, "A cozy little room used for storing your valuables").
 short_desc(dirty_clothes, "Gritty clothes you should probably wash").
 short_desc(animal_science,"a cozy-looking, white-bricked old building.").
@@ -235,6 +240,7 @@ short_desc(tunnels_north,"The underground tunnels are a confusing place.  I hope
 short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(_,"").
 
+long_desc(agricultural_science, "There is a line of students waiting to eat at the cafe. Everyone seems to be in a hurry.").
 long_desc(bedroom_closet, "Four shelves stand before you, piles of your clothes at your feet, its quiet cramped in here.").
 long_desc(dirty_clothes, "These are all you have of value in this world are these crusted gritty clothes, that need to be washed.").
 long_desc(avenue,"A myriad of people walk every which way along the avenue.  All are seemingly unaware of their imminent destruction at Dr.Sundberg's hand.").
