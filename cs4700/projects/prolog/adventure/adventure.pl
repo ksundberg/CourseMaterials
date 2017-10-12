@@ -136,7 +136,7 @@ name(book_a,"Corpus Hermiticum").
 name(book_b,"War and Peace").
 name(book_c,"Great Expectations").
 name(bunsen_burner,"bunsen burner").
-name(charged_bone,"a chunk of dragon bone").
+name(charged_bone,"charged dragon bone").
 name(chemistry_lab,"Student Chemistry Lab").
 name(clean_clothes, "Your Clothes").
 name(closet,"equipment closet").
@@ -200,7 +200,7 @@ short_desc(book_a,"a copy of 'Corpus Hermiticum' a book on alchemy").
 short_desc(book_b,"a copy of 'War and Peace'").
 short_desc(book_c,"a copy of 'Great Expectations'").
 short_desc(bunsen_burner,"Piece of equipment commonly found in a laboratory.  It produces a single open gas flame.").
-short_desc(charged_bone,"A small piece of 'dragon' bone").
+short_desc(charged_bone,"A charged piece of 'dragon' bone").
 short_desc(chemistry_lab,"A lab with fume hoods and various chemical instuments").
 short_desc(clean_clothes, "Clean clothes fresh from the wash").
 short_desc(closet,"The equipment closet used to store extra materials for science experiments").
@@ -263,6 +263,7 @@ long_desc(book_a,"An ancient work on alchemy containing many magical formulae.")
 long_desc(book_b,"A seemingly very old copy of War and Peace. A classic story about a Russian family during the invasion of Napoleon Bonaparte.").
 long_desc(book_c,"The classic story of an orphan boy named Pip from the marshes of Kent.").
 long_desc(bunsen_burner,"A Bunsen burner, named after Robert Bunsen, is a common piece of laboratory equipment that produces a single open gas flame, which is used for heating, sterilization, and combustion.").
+long_desc(charged_bone, "A piece of dragon bone imbued with energy from the laser lab.").
 long_desc(chemistry_lab,"A laboratory for research in chemistry. You see a few goofy looking students with big green goggles mixing chemicals.").
 long_desc(clean_clothes, "These are all you have of value in this world but at least they are clean.").
 long_desc(closet,"Amid all the extra equipment and junk in the closet, you notice some saftey goggles that are just your size.").
