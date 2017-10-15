@@ -131,7 +131,7 @@ heavy(small_disk).
 heavy(medium_disk).
 heavy(large_disk).
 
-short_desc(agricultural_science,"Looks like a nice place to grab a bite.").
+
 name(agricultural_science,"Agricultural Sciences Building").
 name(animal_science,"Animal Science Building").
 name(avenue,"A tree lined avenue").
@@ -202,6 +202,7 @@ name(cooked_spaghetti, "Lot's a Spaghetti").
 name(_,"").
 
 
+short_desc(agricultural_science,"Looks like a nice place to grab a bite.").
 short_desc(animal_science,"a cozy-looking, white-bricked old building.").
 short_desc(avenue,"A broad walkway lined with trees.").
 short_desc(bedroom,"your bedroom - complete with dirty laundry and heaps of old homework, the sad remains of many hard fought battles waged over Dr. Sundberg's homework").
