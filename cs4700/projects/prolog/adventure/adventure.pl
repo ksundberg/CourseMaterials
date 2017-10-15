@@ -131,6 +131,7 @@ heavy(small_disk).
 heavy(medium_disk).
 heavy(large_disk).
 
+short_desc(agricultural_science,"Looks like a nice place to grab a bite.").
 name(agricultural_science,"Agricultural Sciences Building").
 name(animal_science,"Animal Science Building").
 name(avenue,"A tree lined avenue").
