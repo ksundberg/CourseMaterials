@@ -100,7 +100,7 @@ location(pylon_b,secret_lab).
 location(pylon_c,secret_lab).
 location(recipe,book_a).
 location(small_disk,pylon_a).
-
+location(flyer,plaza).
 
 container(closet).
 container(coat).
@@ -188,6 +188,7 @@ name(tsc_patio,"Patio of the TSC").
 name(tunnels_east,"Underground Tunnels").
 name(tunnels_north,"Underground Tunnels").
 name(tunnels_west,"Underground Tunnels").
+name(flyer,"HackUSU flyer").
 name(_,"").
 
 short_desc(agricultural_science,"Looks like a nice place to grab a bite.").
@@ -251,6 +252,7 @@ short_desc(tsc_patio,"a place to sit an study or eat outside the TSC.").
 short_desc(tunnels_east,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(tunnels_north,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope you don't get lost.").
+short_desc(flyer,"A flyer advertising for the 2017 Hackathon happening on November 17th.").
 short_desc(_,"").
 
 
@@ -312,6 +314,7 @@ long_desc(tsc_patio,"An open area with birds chirping and hipsters drinking thei
 long_desc(tunnels_east,"The tunnel seems to go on forever. Its dark and you are having a hard time seeing anything. You try to not let your imagination take over as you think you hear someone following you...").
 long_desc(tunnels_north,"The tunnel seems to go on forever. Its dark and you are having a hard time seeing anything. You try to not let your imagination take over as you think you hear someone following you...").
 long_desc(tunnels_west,"The tunnel seems to go on forever. Its dark but you see what looks like a door off to your right. You try to not let your imagination take over as you think you hear someone following you...").
+long_desc(flyer,"The flyer details a 36-hour event that will begin 9:00 AM on Friday, November 17, and will end at 9:00 PM on Saturday, November 18th. Prizes, free food, and fun for this year's 'Hack the Homeless' category. Go to hackusuevents.org for details and registration.").
 long_desc(_,"").
 
 puzzle(laser_lab):-has(goggles),!.
