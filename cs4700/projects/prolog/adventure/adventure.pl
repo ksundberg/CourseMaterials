@@ -108,8 +108,10 @@ location(pylon_b,secret_lab).
 location(pylon_c,secret_lab).
 location(recipe,book_a).
 location(small_disk,pylon_a).
+location(kitchen_stove, kitchen).
+location(sauce, kitchen).
+location(spaghetti, kitchen).
 location(wash_machine,laundry_room).
-
 
 container(closet).
 container(kitchen_trashcan).
@@ -120,9 +122,11 @@ container(pylon_b).
 container(pylon_c).
 
 equipment(laser).
+equipment(kitchen_stove).
 equipment(bunsen_burner).
 equipment(wash_machine).
 
+create_recipe(kitchen_stove,[spaghetti, sauce], cooked_spaghetti).
 create_recipe(laser,[bone],charged_bone).
 create_recipe(bunsen_burner,[flask,charged_bone,fly],potion).
 create_recipe(wash_machine,[dirty_clothes,laundry_soap],clean_clothes).
@@ -205,8 +209,14 @@ name(tsc_patio,"Patio of the TSC").
 name(tunnels_east,"Underground Tunnels").
 name(tunnels_north,"Underground Tunnels").
 name(tunnels_west,"Underground Tunnels").
+name(spaghetti, "Spaghetti").
+name(sauce, "Marinara Sauce").
+name(cheese, "Shredded Cheese").
+name(stove, "A Kitchen Stove.").
+name(cooked_spaghetti, "Lot's a Spaghetti").
 name(wash_machine,"Washing Machine").
 name(_,"").
+
 
 short_desc(agricultural_science,"Looks like a nice place to grab a bite.").
 short_desc(animal_science,"a cozy-looking, white-bricked old building.").
@@ -273,6 +283,11 @@ short_desc(tsc_patio,"a place to sit an study or eat outside the TSC.").
 short_desc(tunnels_east,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(tunnels_north,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope you don't get lost.").
+short_desc(spaghetti, "The food of champions.").
+short_desc(sauce, "Rich and flaverfull Marinara Sauce").
+short_desc(cheese, "A variety blend of shredded cheese").
+short_desc(stove, "A kitchen stove for cooking food.").
+short_desc(cooked_spaghetti, "The essence of perfection.").
 short_desc(wash_machine,"An old beat up washing machine used for cleaning students' foul smelling clothes").
 short_desc(_,"").
 
@@ -339,6 +354,11 @@ long_desc(tsc_patio,"An open area with birds chirping and hipsters drinking thei
 long_desc(tunnels_east,"The tunnel seems to go on forever. Its dark and you are having a hard time seeing anything. You try to not let your imagination take over as you think you hear someone following you...").
 long_desc(tunnels_north,"The tunnel seems to go on forever. Its dark and you are having a hard time seeing anything. You try to not let your imagination take over as you think you hear someone following you...").
 long_desc(tunnels_west,"The tunnel seems to go on forever. Its dark but you see what looks like a door off to your right. You try to not let your imagination take over as you think you hear someone following you...").
+long_desc(spaghetti, "These long thin pasta noodles are a staple for a student on a budget. So much better than ramen, can be combined with various sauces for maximum effect.").
+long_desc(sauce, "Marinara Sauce").
+long_desc(cheese, "A combiniation of colby, montery jack, and cheddar cheese.").
+long_desc(stove, "A stove splattered with various substances that you assume, or at least hope used was food.").
+long_desc(cooked_spaghetti, "Al dente spaghetti dressed up with the best sauce imaginable. If there ever was a reason to save the world, this is it.").
 long_desc(wash_machine,"You open the door and to your surprise the washing machine is empty and available to use. You shut the door again.").
 long_desc(_,"").
 
