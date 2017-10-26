@@ -22,6 +22,7 @@ room(hall).
 room(hub).
 room(kitchen).
 room(laser_lab).
+room(laundry_room).
 room(library).
 room(observatory).
 room(old_main).
@@ -46,6 +47,7 @@ door(eslc_north,chemistry_lab).
 door(eslc_north,tsc_patio).
 door(eslc_south,eslc_north).
 door(hall,common_room).
+door(hall,laundry_room).
 door(hall,roommate_room).
 door(hub,tunnels_west).
 door(kitchen,hall).
@@ -96,6 +98,7 @@ location(goggles,closet).
 location(key,coat).
 location(large_disk,pylon_a).
 location(laser,laser_lab).
+location(laundry_soap,laundry_room).
 location(lost_homework,engr).
 location(medium_disk,pylon_a).
 location(movie, roomate_room).
@@ -105,6 +108,7 @@ location(pylon_b,secret_lab).
 location(pylon_c,secret_lab).
 location(recipe,book_a).
 location(small_disk,pylon_a).
+location(wash_machine,laundry_room).
 
 
 container(closet).
@@ -117,6 +121,7 @@ container(pylon_c).
 
 equipment(laser).
 equipment(bunsen_burner).
+equipment(wash_machine).
 
 create_recipe(laser,[bone],charged_bone).
 create_recipe(bunsen_burner,[flask,charged_bone,fly],potion).
@@ -132,6 +137,7 @@ heavy(kitchen_trashcan).
 heavy(small_disk).
 heavy(medium_disk).
 heavy(large_disk).
+heavy(wash_machine).
 
 name(agricultural_science,"Agricultural Sciences Building").
 name(animal_science,"Animal Science Building").
@@ -170,6 +176,8 @@ name(kitchen_trashcan,"trashcan").
 name(large_disk,"large energy disk").
 name(laser,"laser array").
 name(laser_lab,"Laser Lab").
+name(laundry_room,"Laundry Room").
+name(laundry_soap,"Laundry Soap").
 name(library,"Merill-Caizer Library").
 name(lost_homework,"Some student's lost geometry homework.").
 name(medium_disk,"medium energy disk").
@@ -197,6 +205,7 @@ name(tsc_patio,"Patio of the TSC").
 name(tunnels_east,"Underground Tunnels").
 name(tunnels_north,"Underground Tunnels").
 name(tunnels_west,"Underground Tunnels").
+name(wash_machine,"Washing Machine").
 name(_,"").
 
 short_desc(agricultural_science,"Looks like a nice place to grab a bite.").
@@ -235,6 +244,8 @@ short_desc(kitchen_trashcan,"This is the trashcan that resides in the kitchen.")
 short_desc(large_disk,"a large disk glowing with alien energy").
 short_desc(laser,"Pulsating with energy, this laser could be used to imbue something with energy").
 short_desc(laser_lab,"Lasers shine in a beautiful array of cornea charing horror, good thing you have goggles on!").
+short_desc(laundry_room,"A place for doing laundry")
+short_desc(laundry_soap,"Used for washing dirty clothes").
 short_desc(library,"Endless floors of books full of knowledge. A smiling librarian greets you as you enter, \"welcome to the library\" she says.").
 short_desc(lost_homework,"The abandoned pages call out to a grader, a grader who will never see them.").
 short_desc(medium_disk,"a medium sized disk glowing with alien energy").
@@ -262,6 +273,7 @@ short_desc(tsc_patio,"a place to sit an study or eat outside the TSC.").
 short_desc(tunnels_east,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(tunnels_north,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope you don't get lost.").
+short_desc(wash_machine,"An old beat up washing machine used for cleaning students' foul smelling clothes").
 short_desc(_,"").
 
 long_desc(agricultural_science, "There is a line of students waiting to eat at the cafe. Everyone seems to be in a hurry.").
@@ -299,6 +311,8 @@ long_desc(kitchen_trashcan,"A black, round, plastic container lined with a flexi
 long_desc(large_disk,"a large disk on the bottom of the red pylon. You worked out today so if there isn't anything on top of it, you could probably move it...").
 long_desc(laser,"A rather powerful laser for research. Probably shouldnt look into it.").
 long_desc(laser_lab,"You imagine yourself as a secret agent in Mission Impossible flipping and sliding around the room to avoid the lasers... Maybe then you could get a date.").
+long_desc(laundry_room,"A dimly lit room that has a musty smell from all the laundry piling up.").
+long_desc(laundry_soap,"This soap looks like it has been sitting here for years without being used.").
 long_desc(library,"Endless floors of books full of knowledge. A smiling librarian greets you as you enter, 'Welcome to the library!'").
 long_desc(lost_homework,"This homework appears to be a geometric proof of the origin of the green beam that is sometimes seen in the sky. The proof shows that the beam originates on the roof of the SER building.").
 long_desc(medium_disk,"a medium sized disk in between the small and large disks on the red pylon. It looks like you can move it if there isn't anything on top of it...").
@@ -325,6 +339,7 @@ long_desc(tsc_patio,"An open area with birds chirping and hipsters drinking thei
 long_desc(tunnels_east,"The tunnel seems to go on forever. Its dark and you are having a hard time seeing anything. You try to not let your imagination take over as you think you hear someone following you...").
 long_desc(tunnels_north,"The tunnel seems to go on forever. Its dark and you are having a hard time seeing anything. You try to not let your imagination take over as you think you hear someone following you...").
 long_desc(tunnels_west,"The tunnel seems to go on forever. Its dark but you see what looks like a door off to your right. You try to not let your imagination take over as you think you hear someone following you...").
+long_desc(wash_machine,"You open the door and to your surprise the washing machine is empty and available to use. You shut the door again.").
 long_desc(_,"").
 
 puzzle(laser_lab):-has(goggles),!.
