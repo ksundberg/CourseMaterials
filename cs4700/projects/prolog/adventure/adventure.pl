@@ -22,6 +22,7 @@ room(hall).
 room(hub).
 room(kitchen).
 room(laser_lab).
+room(laundry_room).
 room(library).
 room(observatory).
 room(old_main).
@@ -46,6 +47,7 @@ door(eslc_north,chemistry_lab).
 door(eslc_north,tsc_patio).
 door(eslc_south,eslc_north).
 door(hall,common_room).
+door(hall,laundry_room).
 door(hall,roommate_room).
 door(hub,tunnels_west).
 door(kitchen,hall).
@@ -76,6 +78,11 @@ door(tunnels_north,tunnels_west).
 door(tunnels_west,secret_lab).
 door(tunnels_west,tunnels_east).
 
+location(closet,eslc_south).
+location(kitchen_trashcan,kitchen).
+location(tower_of_pizza_boxes, kitchen).
+location(goggles,closet).
+location(note,bedroom).
 location(bone,geology_building).
 location(book_a,special_collections).
 location(book_b,special_collections).
@@ -91,6 +98,7 @@ location(goggles,closet).
 location(key,coat).
 location(large_disk,pylon_a).
 location(laser,laser_lab).
+location(laundry_soap,laundry_room).
 location(lost_homework,engr).
 location(medium_disk,pylon_a).
 location(movie, roomate_room).
@@ -103,9 +111,10 @@ location(small_disk,pylon_a).
 location(kitchen_stove, kitchen).
 location(sauce, kitchen).
 location(spaghetti, kitchen).
-
+location(wash_machine,laundry_room).
 
 container(closet).
+container(kitchen_trashcan).
 container(coat).
 container(book_a).
 container(pylon_a).
@@ -115,6 +124,7 @@ container(pylon_c).
 equipment(laser).
 equipment(kitchen_stove).
 equipment(bunsen_burner).
+equipment(wash_machine).
 
 create_recipe(kitchen_stove,[spaghetti, sauce], cooked_spaghetti).
 create_recipe(laser,[bone],charged_bone).
@@ -127,10 +137,11 @@ heavy(closet).
 heavy(pylon_a).
 heavy(pylon_b).
 heavy(pylon_c).
+heavy(kitchen_trashcan).
 heavy(small_disk).
 heavy(medium_disk).
 heavy(large_disk).
-
+heavy(wash_machine).
 
 name(agricultural_science,"Agricultural Sciences Building").
 name(animal_science,"Animal Science Building").
@@ -142,7 +153,7 @@ name(book_a,"Corpus Hermiticum").
 name(book_b,"War and Peace").
 name(book_c,"Great Expectations").
 name(bunsen_burner,"bunsen burner").
-name(charged_bone,"a chunk of dragon bone").
+name(charged_bone,"charged dragon bone").
 name(chemistry_lab,"Student Chemistry Lab").
 name(clean_clothes, "Your Clothes").
 name(closet,"equipment closet").
@@ -165,9 +176,12 @@ name(hub,"The Hub").
 name(ice_cream, "Aggie Creamery").
 name(key,"key").
 name(kitchen,"Kitchen").
+name(kitchen_trashcan,"trashcan").
 name(large_disk,"large energy disk").
 name(laser,"laser array").
 name(laser_lab,"Laser Lab").
+name(laundry_room,"Laundry Room").
+name(laundry_soap,"Laundry Soap").
 name(library,"Merill-Caizer Library").
 name(lost_homework,"Some student's lost geometry homework.").
 name(medium_disk,"medium energy disk").
@@ -189,6 +203,7 @@ name(ser_1st_floor,"1st Floor of SER Building").
 name(ser_2nd_floor,"2nd Floor of SER Building").
 name(small_disk,"small energy disk").
 name(special_collections,"Special Collections Room").
+name(tower_of_pizza_boxes,"tower of pizza boxes").
 name(tsc,"Taggart Student Center").
 name(tsc_patio,"Patio of the TSC").
 name(tunnels_east,"Underground Tunnels").
@@ -199,6 +214,7 @@ name(sauce, "Marinara Sauce").
 name(cheese, "Shredded Cheese").
 name(stove, "A Kitchen Stove.").
 name(cooked_spaghetti, "Lot's a Spaghetti").
+name(wash_machine,"Washing Machine").
 name(_,"").
 
 
@@ -212,7 +228,7 @@ short_desc(book_a,"a copy of 'Corpus Hermiticum' a book on alchemy").
 short_desc(book_b,"a copy of 'War and Peace'").
 short_desc(book_c,"a copy of 'Great Expectations'").
 short_desc(bunsen_burner,"Piece of equipment commonly found in a laboratory.  It produces a single open gas flame.").
-short_desc(charged_bone,"A small piece of 'dragon' bone").
+short_desc(charged_bone,"A charged piece of 'dragon' bone").
 short_desc(chemistry_lab,"A lab with fume hoods and various chemical instuments").
 short_desc(clean_clothes, "Clean clothes fresh from the wash").
 short_desc(closet,"The equipment closet used to store extra materials for science experiments").
@@ -234,9 +250,12 @@ short_desc(hall,"Long pathway that has pictures hanging on wall").
 short_desc(hub,"Smells of coffee and pizza linger in the air. Students congregate around tables slaving away at endless homework.").
 short_desc(key,"an ornate key glowing with alien energies").
 short_desc(kitchen,"A small room containing the bare essentials, including a leaning tower of pizza boxes").
+short_desc(kitchen_trashcan,"This is the trashcan that resides in the kitchen.").
 short_desc(large_disk,"a large disk glowing with alien energy").
 short_desc(laser,"Pulsating with energy, this laser could be used to imbue something with energy").
 short_desc(laser_lab,"Lasers shine in a beautiful array of cornea charing horror, good thing you have goggles on!").
+short_desc(laundry_room,"A place for doing laundry")
+short_desc(laundry_soap,"Used for washing dirty clothes").
 short_desc(library,"Endless floors of books full of knowledge. A smiling librarian greets you as you enter, \"welcome to the library\" she says.").
 short_desc(lost_homework,"The abandoned pages call out to a grader, a grader who will never see them.").
 short_desc(medium_disk,"a medium sized disk glowing with alien energy").
@@ -253,6 +272,7 @@ short_desc(quad,"four large fields split up by sidewalks").
 short_desc(recipe,"a page from 'Corpus Hermiticum' containing a recipe for an invisibility potion").
 short_desc(roof,"the roof of the dorm building.").
 short_desc(roommate_room,"its even messier than your room!").
+short_desc(tower_of_pizza_boxes,"A stack of (hopefully) empty pizza boxes").
 short_desc(secret_lab,"a secret lab?! This must be where Dr. Sundberg is hiding his secret!").
 short_desc(ser_1st_floor,"The bottom floor of the SER building. Nothing too exciting is happening here.").
 short_desc(ser_2nd_floor,"The 2nd floor of the SER building. You can see flashing lights near the laser lab room.").
@@ -268,6 +288,7 @@ short_desc(sauce, "Rich and flaverfull Marinara Sauce").
 short_desc(cheese, "A variety blend of shredded cheese").
 short_desc(stove, "A kitchen stove for cooking food.").
 short_desc(cooked_spaghetti, "The essence of perfection.").
+short_desc(wash_machine,"An old beat up washing machine used for cleaning students' foul smelling clothes").
 short_desc(_,"").
 
 long_desc(agricultural_science, "There is a line of students waiting to eat at the cafe. Everyone seems to be in a hurry.").
@@ -279,6 +300,7 @@ long_desc(book_a,"An ancient work on alchemy containing many magical formulae.")
 long_desc(book_b,"A seemingly very old copy of War and Peace. A classic story about a Russian family during the invasion of Napoleon Bonaparte.").
 long_desc(book_c,"The classic story of an orphan boy named Pip from the marshes of Kent.").
 long_desc(bunsen_burner,"A Bunsen burner, named after Robert Bunsen, is a common piece of laboratory equipment that produces a single open gas flame, which is used for heating, sterilization, and combustion.").
+long_desc(charged_bone, "A piece of dragon bone imbued with energy from the laser lab.").
 long_desc(chemistry_lab,"A laboratory for research in chemistry. You see a few goofy looking students with big green goggles mixing chemicals.").
 long_desc(clean_clothes, "These are all you have of value in this world but at least they are clean.").
 long_desc(closet,"Amid all the extra equipment and junk in the closet, you notice some saftey goggles that are just your size.").
@@ -300,9 +322,12 @@ long_desc(hall,"A narrow area or passage that connects rooms of an edifice.  The
 long_desc(hub,"Choose from 9 different areas to eat at while enjoying a large seating area, which is perfect for hanging out and studying.").
 long_desc(key,"You feel the alien energy flowing from the key. Could it be? Have you been chosen as the next wielder of the Keyblade? You hold out your hand to the side, but sadly, nothing happens. It's just a normal alien key....").
 long_desc(kitchen,"There are an assortment of pots and pans. Someone is cooking your favorite food but it doesn't look like they are going to share.").
+long_desc(kitchen_trashcan,"A black, round, plastic container lined with a flexible bag. It's as generic as can be, lacking any logo or branding.").
 long_desc(large_disk,"a large disk on the bottom of the red pylon. You worked out today so if there isn't anything on top of it, you could probably move it...").
 long_desc(laser,"A rather powerful laser for research. Probably shouldnt look into it.").
 long_desc(laser_lab,"You imagine yourself as a secret agent in Mission Impossible flipping and sliding around the room to avoid the lasers... Maybe then you could get a date.").
+long_desc(laundry_room,"A dimly lit room that has a musty smell from all the laundry piling up.").
+long_desc(laundry_soap,"This soap looks like it has been sitting here for years without being used.").
 long_desc(library,"Endless floors of books full of knowledge. A smiling librarian greets you as you enter, 'Welcome to the library!'").
 long_desc(lost_homework,"This homework appears to be a geometric proof of the origin of the green beam that is sometimes seen in the sky. The proof shows that the beam originates on the roof of the SER building.").
 long_desc(medium_disk,"a medium sized disk in between the small and large disks on the red pylon. It looks like you can move it if there isn't anything on top of it...").
@@ -323,6 +348,7 @@ long_desc(ser_1st_floor,"...even though I said nothing exciting happens here, yo
 long_desc(ser_2nd_floor,"The main part of the 2nd floor is the laser lab. The students in there experiment with what they can cut, burn, or imbue with magical energy with lasers.").
 long_desc(small_disk,"A small disk pulsates in your hand, glowing an toxic green color as it breathes slowly, a slight warm gasey feel pukes from the disk.").
 long_desc(special_collections,"a small section of the library that is home to all sorts of extrordiary books. You can read up on Russian Literature, Classic Dickens, Alchemy, and even more!").
+long_desc(tower_of_pizza_boxes,"Domino's, Pizza-Hut, Little Ceaser's and more. All are rendered equal in this towering graveyard of cardboard.").
 long_desc(tsc,"This massive building is the perfect place to go to spend way too much money on overpriced things... You'll find students eating, studying, socializing, and lamenting their massive student debts.").
 long_desc(tsc_patio,"An open area with birds chirping and hipsters drinking their coffee. You won't find any CS majors here as they're all in cavedwelling in Old Main.").
 long_desc(tunnels_east,"The tunnel seems to go on forever. Its dark and you are having a hard time seeing anything. You try to not let your imagination take over as you think you hear someone following you...").
@@ -333,6 +359,7 @@ long_desc(sauce, "Marinara Sauce").
 long_desc(cheese, "A combiniation of colby, montery jack, and cheddar cheese.").
 long_desc(stove, "A stove splattered with various substances that you assume, or at least hope used was food.").
 long_desc(cooked_spaghetti, "Al dente spaghetti dressed up with the best sauce imaginable. If there ever was a reason to save the world, this is it.").
+long_desc(wash_machine,"You open the door and to your surprise the washing machine is empty and available to use. You shut the door again.").
 long_desc(_,"").
 
 puzzle(laser_lab):-has(goggles),!.
