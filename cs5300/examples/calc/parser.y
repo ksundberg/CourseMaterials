@@ -1,6 +1,7 @@
 %{
 #include <iostream>
 extern int yylex();
+void yyerror(const char*);
 %}
 
 %union
@@ -39,3 +40,7 @@ Factor : OPEN Expression CLOSE {$$ = $2;}
 
 %%
 
+void yyerror(const char* msg)
+{
+  std::cerr << msg << std::endl;
+}

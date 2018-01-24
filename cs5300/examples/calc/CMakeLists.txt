@@ -20,7 +20,6 @@ set(calc_srcs
 )
 source_group("Calc" FILES ${calc_srcs})
 
-add_executable(calc ${main_srcs})
-
-target_link_libraries(calc  ${FLEX_LIBRARIES} ${BISON_LIBRARIES})
+add_executable(calc ${calc_srcs})
+target_link_libraries(calc ${FLEX_LIBRARIES} ${BISON_LIBRARIES})
 
