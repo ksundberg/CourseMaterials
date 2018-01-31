@@ -1,6 +1,10 @@
 %{
 #include <iostream>
 extern int yylex();
+void yyerror (char const *s) 
+{
+	std::fprintf (stderr, "%s\n", s);
+}
 %}
 
 %union
