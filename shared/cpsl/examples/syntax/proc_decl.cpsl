@@ -1,0 +1,17 @@
+
+procedure A (); forward;
+
+procedure B (x : integer);
+BEGIN
+  write(x);
+  A();
+END;
+
+procedure A ();
+begin
+stop;
+end;
+
+begin
+B(42);
+end.
