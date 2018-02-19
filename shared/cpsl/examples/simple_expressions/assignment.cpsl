@@ -1,0 +1,6 @@
+VAR 
+  number : integer;
+BEGIN
+  number := 42;
+  write(number);
+END.

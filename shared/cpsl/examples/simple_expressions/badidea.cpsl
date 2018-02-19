@@ -1,0 +1,21 @@
+const
+ true = 3<>3;
+ false = 3=3;
+
+type
+ i = integer;
+ c = char;
+ integer = char;
+ char = integer;
+
+var
+ i:i;
+ c:integer;
+
+begin
+ write("false",false,3<>3,'\n');
+ write("true",true,3=3,'\n');
+ i:=ord('A');
+ c:=chr(i);
+ write(i,c,'\n');
+end.
