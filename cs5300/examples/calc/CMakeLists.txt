@@ -15,6 +15,8 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
 
 set(calc_srcs
   main.cpp
+  symbol_table.hpp
+  symbol_table.cpp
   ${BISON_Parser_OUTPUTS}
   ${FLEX_Scanner_OUTPUTS}
 )
@@ -22,4 +24,5 @@ source_group("Calc" FILES ${calc_srcs})
 
 add_executable(calc ${calc_srcs})
 target_link_libraries(calc ${FLEX_LIBRARIES} ${BISON_LIBRARIES})
+target_include_directories(calc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
