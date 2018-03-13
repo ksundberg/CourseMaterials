@@ -1,0 +1,44 @@
+const
+ SIZE = 3;
+ BASE = 0;
+
+type
+ row = array[BASE:BASE+SIZE] of integer;
+ grid = array[BASE:BASE+SIZE] of row;
+
+var
+ g : grid;
+ r : row;
+ i,j :integer;
+
+begin;
+
+g[0][0] := 0;
+g[0][1] := 0;
+g[0][2] := 0;
+g[0][3] := 0;
+
+g[1][0] := 0;
+g[1][1] := 1;
+g[1][2] := 2;
+g[1][3] := 3;
+
+g[2][0] := 0;
+g[2][1] := 2;
+g[2][2] := 4;
+g[2][3] := 6;
+
+g[3][0] := 0;
+g[3][1] := 3;
+g[3][2] := 6;
+g[3][3] := 9;
+
+i:=2;
+r:=g[i];
+j:=r[i];
+write(j);
+
+end.
+
+
+
