@@ -6,7 +6,7 @@ type
     y:integer;
     z:boolean;
     g: array[4*2:32/2] of array['A':'Z'] of record
-     a,b,c:character;
+     a,b,c:char;
      d:array[-10:10] of integer;
     end;
    end;
