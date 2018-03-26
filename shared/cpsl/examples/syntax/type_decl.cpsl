@@ -1,0 +1,14 @@
+const
+ BASE = 5;
+ SIZE = 10;
+
+type i = integer;
+r = record a,b,c:i; end;
+a = array[BASE:BASE+SIZE]of r;
+
+var
+ A : a;
+
+begin
+stop;
+end.

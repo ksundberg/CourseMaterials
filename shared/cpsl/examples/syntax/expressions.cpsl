@@ -1,0 +1,23 @@
+const
+ BASE = 5;
+ SIZE = 10;
+
+type i = integer;
+r = record a,b,c:i; end;
+a = array[BASE:BASE+SIZE]of r;
+
+var
+ A : a;
+ x,y : boolean;
+ i,j : integer;
+
+begin
+A[BASE].a := A[BASE+SIZE].b + A[BASE+2].c;
+A[BASE].a := A[BASE+SIZE].b - A[BASE+2].c;
+A[BASE].a := A[BASE+SIZE].b * A[BASE+2].c;
+A[BASE].a := A[BASE+SIZE].b / A[BASE+2].c;
+A[BASE].a := A[BASE+SIZE].b % A[BASE+2].c;
+
+x := ((i < j ) & ((i > j) | (i <> j)) & ~(i=j)) | (i <= j) & (j >= -i) | ord('x') > 42;
+write(pred(chr(succ(ord('A')))))
+end.

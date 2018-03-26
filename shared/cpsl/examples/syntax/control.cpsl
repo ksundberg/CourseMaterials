@@ -1,0 +1,8 @@
+begin
+if true then stop end;
+if false then stop elseif false then stop elseif false then stop else stop end;
+while true do stop end;
+repeat ;stop; until true;
+for x := 2 to 3 do stop end;
+for x := 3 downto 2 do stop end;
+end.

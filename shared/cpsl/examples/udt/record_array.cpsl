@@ -1,0 +1,22 @@
+type
+ crazy = array[1:10] of 
+  record 
+   x:integer;
+   a:record 
+    y:integer;
+    z:boolean;
+    g: array[4*2:32/2] of array['A':'Z'] of record
+     a,b,c:char;
+     d:array[-10:10] of integer;
+    end;
+   end;
+  end;
+
+var
+ c : crazy;
+
+begin
+ c[3].a.g[9]['C'].d[3] := 314;
+ c[2].a.g[8]['D'] := c[3].a.g[9]['C'];
+ write(c[2].a.g[8]['D'].d[3]);
+end.

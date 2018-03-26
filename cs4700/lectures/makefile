@@ -1,4 +1,4 @@
-all: 01-Introduction.pdf 02-Evaluation.pdf 03-SyntaxSemantics.pdf 04-Names.pdf A-Postscript.pdf B-Prolog.pdf
+all: 01-Introduction.pdf 02-Evaluation.pdf 03-SyntaxSemantics.pdf 04-Names.pdf A-Postscript.pdf 05-TypeAbstraction.pdf 06-Expressions.pdf B-Prolog.pdf C-Haskel.pdf 07-Control.pdf
 
 .PHONY: clean all
 

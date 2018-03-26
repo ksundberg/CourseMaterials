@@ -1,0 +1,15 @@
+procedure lotsanulls();
+begin
+;;;;;;;;;;;;;;;;;;;;;;;;;;
+end;
+
+procedure empty();
+begin end;
+
+procedure nonulls();
+begin
+stop
+end;
+
+begin
+end.

@@ -1,0 +1,8 @@
+integer
+char
+boolean
+string
+true
+false
+an_identifier
+a1234567890_BZ

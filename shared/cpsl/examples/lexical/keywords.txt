@@ -1,0 +1,33 @@
+array	ARRAY
+else	ELSE
+if	IF
+record	RECORD
+to	TO
+begin	BEGIN
+elseif	ELSEIF
+of	OF
+repeat	REPEAT
+type	TYPE
+chr	CHR
+end	END
+ord	ORD
+return	RETURN
+until	UNTIL
+const	CONST
+for	FOR
+pred	PRED
+stop	STOP
+var	VAR
+do	DO
+forward	FORWARD
+procedure	PROCEDURE
+succ	SUCC
+while	WHILE
+downto	DOWNTO
+function	FUNCTION
+read	READ
+then	THEN
+write	WRITE
+ref REF
+
+

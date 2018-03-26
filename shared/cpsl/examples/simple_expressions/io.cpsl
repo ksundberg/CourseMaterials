@@ -1,0 +1,9 @@
+var
+i: integer;
+c: char;
+
+begin
+read(i,c);
+write(i,c);
+write(true,false);
+end.

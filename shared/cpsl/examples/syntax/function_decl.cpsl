@@ -1,0 +1,17 @@
+var
+x : integer;
+
+function postinc(ref x:integer) : integer;
+var
+temp : integer;
+begin
+ temp := x;
+ x := succ(x);
+ return temp;
+end;
+
+begin
+x := 1;
+write(x,postinc(x),x);
+end.
+

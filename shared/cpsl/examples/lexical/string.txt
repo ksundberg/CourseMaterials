@@ -1,0 +1,11 @@
+"This is a string"
+"cool"
+"test all characters ~`!@#$%^&*()_-+={[}}|\:;'<,>.?/234567890"
+"test newline \n"
+"this is "not" a string"
+$ Can quotes be escaped?
+"this is \" a string"
+$The following is a lexical error
+"test quote character " "
+
+
