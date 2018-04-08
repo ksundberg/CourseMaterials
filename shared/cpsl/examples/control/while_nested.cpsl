@@ -1,0 +1,19 @@
+VAR 
+  i, j : integer;
+
+BEGIN
+
+i:= 0;
+j:= 0;
+
+while(i <= 6) do
+  while(j <= i) do
+    write(i, ":",j,' ');
+    j := j+1;
+  end;
+  write('\n');
+  i := succ(i);
+  j := 0;
+end;
+
+END.

@@ -1,0 +1,14 @@
+VAR 
+  i : integer;
+
+BEGIN 
+
+  for i := 10 downto 5 do
+    write(i, " \n");
+  end;
+ 
+  for j := 4 downto 0 do
+    write(' ',j);
+  end;
+
+END.

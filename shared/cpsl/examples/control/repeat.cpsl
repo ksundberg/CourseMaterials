@@ -1,0 +1,22 @@
+VAR 
+  i : integer;
+
+BEGIN
+
+i := 0;
+
+repeat 
+  write("i: ", i, " \n");
+  i := i+1;
+until i > 5;
+
+repeat
+  write("should only happen once ", i, " \n");
+  i := i+1;
+until i > 5;
+
+while (i < 5) do
+  write("should not happen i=",i,'\n');
+end;
+
+END.

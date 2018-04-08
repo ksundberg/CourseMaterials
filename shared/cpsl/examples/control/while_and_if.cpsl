@@ -1,0 +1,15 @@
+VAR
+a : integer;
+
+BEGIN
+a := 0;
+
+while a < 10 do
+  if a % 2 = 0
+  then
+	  write(a);
+  end;
+	a := a + 1;
+end
+
+end.
