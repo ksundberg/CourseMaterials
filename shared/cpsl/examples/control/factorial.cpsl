@@ -1,0 +1,10 @@
+VAR
+  n,f : INTEGER;
+
+BEGIN
+  f:=1;
+  for n := 1 to 8 do
+    f:=f*n;
+    WRITE(n,'\t',f,'\n');
+  END;
+END.

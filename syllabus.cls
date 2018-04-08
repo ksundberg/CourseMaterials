@@ -62,7 +62,7 @@ The last day to add or drop this course without a notation is #1.
 {
 \section*{Office Hours}
 \begin{tabular}{ll}
-Office Hours: & By appointment only. \\
+Office Hours: & #1 \\
 E-mail: & kasundberg@gmail.com \\
 Phone: & 713-3487 \\
 \end{tabular}
