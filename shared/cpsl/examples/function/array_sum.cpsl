@@ -1,0 +1,28 @@
+const
+	NUMS_LENGTH = 12;
+
+type
+	nums = array[1:NUMS_LENGTH] of integer;
+
+var 
+	x : integer;
+	arr : nums;
+
+function sum(var a:nums) : integer;
+	var i,total:integer;
+begin
+	total := 0;
+	for i := 1 to NUMS_LENGTH do
+		total := total + a[i];
+	end;
+	return total;
+end;
+
+begin
+	for x := 1 to NUMS_LENGTH do
+		arr[x] := 5 + x;
+	end;
+
+	write("The sum of the array is: ", sum(arr), '\n');
+end.
+

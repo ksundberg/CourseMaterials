@@ -1,0 +1,20 @@
+var disks : integer;
+
+procedure moveTower(var disk: integer; source,dest,spare: character);
+begin
+	if(disk=1) then
+		write("Move ",disk," from ",source," to ",dest,'\n');
+	else
+		moveTower(disk-1,source,spare,dest);
+		write("Move ",disk," from ",source," to ",dest,'\n');
+		moveTower(disk-1,spare,dest,source);
+	end;
+end;
+
+begin
+	write("Enter number of disks:");
+	read(disks);
+	write("Moving ",disks," disks from tower A to tower B with tower C helping\n");
+	moveTower(disks,'A','B','C');
+	write("Done\n");
+end.
