@@ -1,0 +1,69 @@
+const
+ LIST_MAX = 100;
+type
+  list = array[0:LIST_MAX] of integer;
+
+var
+  seed : integer;
+  l : list;
+
+function rand() : integer;
+var result : integer;
+begin
+ seed := (8121 * seed + 28411);
+ result := seed / 134456;
+ seed := seed % 134456;
+ return result;
+end;
+
+procedure print(ref a:list);
+begin
+ for i :=0 to LIST_MAX - 1 do
+  write(a[i],' ');
+ end;
+ write(a[LIST_MAX]);
+end;
+
+
+procedure rfill(ref a:list);
+
+begin
+ for i :=0 to LIST_MAX do
+  a[i] := rand() % 1000;
+ end;
+end;
+
+procedure swap(ref a,b:integer);
+var t:integer;
+begin
+ t:=a;
+ a:=b;
+ b:=t;
+end;
+
+procedure isort(ref a:list; s,e:integer);
+begin
+ for i := 0 to LIST_MAX do
+  for j := i+1 to LIST_MAX do
+   if (a[i] > a[j]) then
+    swap(a[i],a[j])
+   end;
+  end;
+ end;
+end;
+
+procedure sort(ref a:list);
+begin
+ isort(a,0,LIST_MAX);
+end;
+
+begin
+rfill(l);
+write("Random: ");
+print(l);
+write('\n');
+sort(l);
+write("\nSorted: ");
+print(l);
+write('\n');
+end.
