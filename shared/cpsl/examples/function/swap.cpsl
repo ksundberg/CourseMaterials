@@ -1,0 +1,17 @@
+var a,b:integer;
+
+procedure swap(ref a,b:integer);
+var t:integer;
+begin
+ t:=a;
+ a:=b;
+ b:=t;
+end;
+
+begin
+a:=1;
+b:=0;
+write(a,b,'\n');
+swap(a,b);
+write(a,b,'\n');
+end.
