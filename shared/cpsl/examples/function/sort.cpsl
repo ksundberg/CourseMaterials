@@ -41,7 +41,7 @@ begin
  b:=t;
 end;
 
-procedure isort(ref a:list; s,e:integer);
+procedure sort(ref a:list; s,e:integer);
 begin
  for i := 0 to LIST_MAX do
   for j := i+1 to LIST_MAX do
@@ -52,17 +52,12 @@ begin
  end;
 end;
 
-procedure sort(ref a:list);
-begin
- isort(a,0,LIST_MAX);
-end;
-
 begin
 rfill(l);
 write("Random: ");
 print(l);
 write('\n');
-sort(l);
+sort(l,0,LIST_MAX);
 write("\nSorted: ");
 print(l);
 write('\n');
