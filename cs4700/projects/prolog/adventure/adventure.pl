@@ -266,7 +266,7 @@ short_desc(kitchen_trashcan,"This is the trashcan that resides in the kitchen.")
 short_desc(large_disk,"a large disk glowing with alien energy").
 short_desc(laser,"Pulsating with energy, this laser could be used to imbue something with energy").
 short_desc(laser_lab,"Lasers shine in a beautiful array of cornea charing horror, good thing you have goggles on!").
-short_desc(laundry_room,"A place for doing laundry")
+short_desc(laundry_room,"A place for doing laundry").
 short_desc(laundry_soap,"Used for washing dirty clothes").
 short_desc(library,"Endless floors of books full of knowledge. A smiling librarian greets you as you enter, \"welcome to the library\" she says.").
 short_desc(lost_homework,"The abandoned pages call out to a grader, a grader who will never see them.").
