@@ -94,14 +94,12 @@ location(book_a,special_collections).
 location(book_b,special_collections).
 location(book_c,special_collections).
 location(bunsen_burner,chemistry_lab).
-location(closet,eslc_south).
 location(coat,green_beam).
 location(combination_gas,ser_conference).
 location(dirty_clothes, bedroom_closet).
 location(figurine,bedroom).
 location(flask,chemistry_lab).
 location(fly,roommate_room).
-location(goggles,closet).
 location(key,coat).
 location(large_disk,pylon_a).
 location(laser,laser_lab).
