@@ -109,7 +109,6 @@ location(laundry_soap,laundry_room).
 location(lost_homework,engr).
 location(medium_disk,pylon_a).
 location(movie, roomate_room).
-location(note,bedroom).
 location(pylon_a,secret_lab).
 location(pylon_b,secret_lab).
 location(pylon_c,secret_lab).
