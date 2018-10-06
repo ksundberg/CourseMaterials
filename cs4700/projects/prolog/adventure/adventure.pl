@@ -244,7 +244,7 @@ short_desc(closet,"The equipment closet used to store extra materials for scienc
 short_desc(coat,"A large white lab coat with lots of pockets.").
 short_desc(common_room,"A place where students gather for homework, food, and naps.").
 short_desc(computer_lab,"Many computers lined up together with a desk at the front of the room.").
-short_desc(cooked_spaghetti, "Soft noodles, get over yourself.").
+short_desc(cooked_spaghetti, "soft noodles").
 short_desc(dirty_clothes, "Gritty clothes you should probably wash.").
 short_desc(elevator,"You are in a plain metal box. There are buttons labeled with various locations.").
 short_desc(engr,"A large building with many classrooms, you're surprised to see students wandering the halls at this time.").
