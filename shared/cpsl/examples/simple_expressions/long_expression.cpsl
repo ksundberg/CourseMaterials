@@ -40,7 +40,7 @@ z:=(a)/(b)
   +(a*a*a*a*a*a*a*a*a*a*a*a*a*a*a*a)/(b*b*b*b*b*b*b*b*b*b*b*b*b*b*b*b)
   +(a*a*a*a*a*a*a*a*a*a*a*a*a*a*a*a*a)/(b*b*b*b*b*b*b*b*b*b*b*b*b*b*b*b*b)
   ;
-write(x,'\n');
-write(y,'\n');
-write(z,'\n');
+write("x = ",x,"    should be 0",'\n');
+write("y = ",y,"  should be 136\n");
+write("z = ",z," should be 2944\n");
 end.

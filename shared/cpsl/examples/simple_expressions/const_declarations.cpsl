@@ -5,5 +5,8 @@ const
  str = "Hello world";
 
 begin
-write(int,char,bool,str);
+write("5=",int,'\n');
+write("a=",char,'\n');
+write("true=",bool,'\n');
+write("str=",str,'\n');
 end.

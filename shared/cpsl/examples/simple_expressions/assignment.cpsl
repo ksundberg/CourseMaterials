@@ -2,5 +2,5 @@ VAR
   number : integer;
 BEGIN
   number := 42;
-  write(number);
+  write("The answer is ",number,"\n");
 END.

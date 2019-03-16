@@ -3,7 +3,10 @@ i: integer;
 c: char;
 
 begin
+write("Enter an integer, then a character:\n");
 read(i,c);
-write(i,c);
-write(true,false);
+write("integer:   ",i,'\n');
+write("character: ",c,'\n');
+write("true: ",true,'\n');
+write("false: ",false,'\n');
 end.

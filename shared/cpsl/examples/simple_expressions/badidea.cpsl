@@ -13,9 +13,13 @@ var
  c:integer;
 
 begin
- write("false",false,3<>3,'\n');
- write("true",true,3=3,'\n');
+ write(false,3<>3,'\n');
+ write(true,3=3,'\n');
  i:=ord('A');
  c:=chr(i);
- write(i,c,'\n');
+ write(i,' ',c,'\n');
+ write("Expected:\n");
+ write("10\n");
+ write("01\n");
+ write("65 A\n")
 end.
