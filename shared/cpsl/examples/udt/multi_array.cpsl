@@ -36,7 +36,9 @@ g[3][3] := 9;
 i:=2;
 r:=g[i];
 j:=r[i];
-write(j);
+
+write("Result   :",j,'\n');
+write("Expected :",4,'\n');
 
 end.
 

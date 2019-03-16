@@ -6,5 +6,6 @@ begin
   x := 2;
   a[x] := x;
   a[3] := a[1] + a[2];
-  write(a[3]);
+  write("Result  : ",a[3],'\n');
+  write("Expected: ",42,'\n');
 end.

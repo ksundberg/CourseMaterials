@@ -10,5 +10,7 @@ begin
  p.y := y * z;
  p.z := z * x;
 
- write(p.x,p.y,p.z);
+write("Result  : ");
+ write(p.x,' ',p.y,' ',p.z,'\n');
+write("Expected: 2 6 3\n");
 end.
