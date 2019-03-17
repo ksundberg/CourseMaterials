@@ -24,5 +24,6 @@ begin
 	end;
 
 	write("The sum of the array is: ", sum(arr), '\n');
+  write("Expected value         : 138\n";
 end.
 
