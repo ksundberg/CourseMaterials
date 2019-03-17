@@ -7,4 +7,13 @@ BEGIN
     f:=f*n;
     WRITE(n,'\t',f,'\n');
   END;
+WRITE("\nExpected:\n");
+WRITE("1\t1\n");
+WRITE("2\t2\n");
+WRITE("3\t6\n");
+WRITE("4\t24\n");
+WRITE("5\t120\n");
+WRITE("6\t720\n");
+WRITE("7\t5040\n");
+WRITE("8\t40320\n");
 END.

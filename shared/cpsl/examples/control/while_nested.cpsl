@@ -15,5 +15,6 @@ while(i <= 6) do
   i := succ(i);
   j := 0;
 end;
+write("Expected: list pairs of [0-6]\n");
 
 END.

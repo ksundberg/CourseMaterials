@@ -10,6 +10,7 @@ while a < 10 do
 	  write(a);
   end;
 	a := a + 1;
-end
+end;
+write("\nExpected:\n02468\n")
 
 end.

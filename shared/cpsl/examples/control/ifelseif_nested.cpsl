@@ -12,7 +12,7 @@ BEGIN
       then write("j is 1\n");
     end;
   elseif (i = 5)
-    then write("i is 5!");
+    then write("i is 5! (expected result)");
   else
     write("i is greater than 5!");
   end;

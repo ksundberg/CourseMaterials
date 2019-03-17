@@ -5,6 +5,7 @@ BEGIN
 
 i := 0;
 
+write("i from 0 to 5\n");
 repeat 
   write("i: ", i, " \n");
   i := i+1;

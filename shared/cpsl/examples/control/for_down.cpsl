@@ -11,4 +11,7 @@ BEGIN
     write(' ',j);
   end;
 
+write("\nExpected:\n");
+write("10\n9\n8\n7\n6\n5\n 4 3 2 1 0\n");
+
 END.

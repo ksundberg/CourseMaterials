@@ -4,7 +4,8 @@ VAR
 BEGIN 
 
   for i := 0 to 5 do
-    write(i, " \n");
+    write(i, " ");
   end;
+  write("\n\nExpected:\n0 1 2 3 4 5\n");
 
 END.
