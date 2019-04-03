@@ -1,6 +1,6 @@
 var disks : integer;
 
-procedure moveTower(var disk: integer; source,dest,spare: character);
+procedure moveTower(var disk: integer; source,dest,spare: char);
 begin
 	if(disk=1) then
 		write("Move ",disk," from ",source," to ",dest,'\n');
