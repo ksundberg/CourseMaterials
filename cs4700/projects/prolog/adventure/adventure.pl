@@ -121,6 +121,8 @@ location(small_disk,pylon_a).
 location(spaghetti, kitchen).
 location(tower_of_pizza_boxes, kitchen).
 location(wash_machine,laundry_room).
+location(money, bedroom).
+location(vending_machine, tsc).
 
 container(book_a).
 container(closet).
@@ -134,11 +136,13 @@ equipment(bunsen_burner).
 equipment(kitchen_stove).
 equipment(laser).
 equipment(wash_machine).
+equipment(vending_machine).
 
 create_recipe(bunsen_burner,[flask,charged_bone,fly],potion).
 create_recipe(kitchen_stove,[spaghetti, sauce], cooked_spaghetti).
 create_recipe(laser,[bone],charged_bone).
 create_recipe(wash_machine,[dirty_clothes,laundry_soap],clean_clothes).
+create_recipe(vending_machine, [money], bag_of_chips).
 
 heavy(bunsen_burner).
 heavy(closet).
@@ -151,6 +155,7 @@ heavy(pylon_b).
 heavy(pylon_c).
 heavy(small_disk).
 heavy(wash_machine).
+heavy(vending_machine).
 
 name(agricultural_science,"Agricultural Sciences Building").
 name(animal_science,"Animal Science Building").
@@ -228,6 +233,8 @@ name(tunnels_east,"Underground Tunnels").
 name(tunnels_north,"Underground Tunnels").
 name(tunnels_west,"Underground Tunnels").
 name(wash_machine,"Washing Machine").
+name(money, "Money").
+name(vending_machine, "Vending machine").
 
 short_desc(agricultural_science,"Looks like a nice place to grab a bite.").
 short_desc(animal_science,"a cozy-looking, white-bricked old building.").
@@ -302,6 +309,8 @@ short_desc(tunnels_east,"The underground tunnels are a confusing place.  I hope 
 short_desc(tunnels_north,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(wash_machine,"An old beat up washing machine used for cleaning students' foul smelling clothes").
+short_desc(money, "A couple of dollars.").
+short_desc(vending_machine, "A vending machine located in the TSC.").
 
 long_desc(agricultural_science, "There is a line of students waiting to eat at the cafe. Everyone seems to be in a hurry.").
 long_desc(avenue,"A myriad of people walk every which way along the avenue.  All are seemingly unaware of their imminent destruction at Dr.Sundberg's hand.").
@@ -374,6 +383,8 @@ long_desc(tunnels_east,"The tunnel seems to go on forever. Its dark and you are 
 long_desc(tunnels_north,"The tunnel seems to go on forever. Its dark and you are having a hard time seeing anything. You try to not let your imagination take over as you think you hear someone following you...").
 long_desc(tunnels_west,"The tunnel seems to go on forever. Its dark but you see what looks like a door off to your right. You try to not let your imagination take over as you think you hear someone following you...").
 long_desc(wash_machine,"You open the door and to your surprise the washing machine is empty and available to use. You shut the door again.").
+long_desc(money, "A couple of dollars found on your dresser. You've heard it can be exchanged for goods and services.").
+long_desc(vending_machine, "The vending machine is stocked with a large variety of chips. The machine requires money to use, of course.").
 
 puzzle(laser_lab):-has(goggles),!.
 puzzle(laser_lab):-write("It is too dangerous to go in without eye protection."),nl,!,fail.
