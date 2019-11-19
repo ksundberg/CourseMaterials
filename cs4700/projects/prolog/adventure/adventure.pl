@@ -2,6 +2,8 @@
 :- dynamic has/1.
 :- dynamic location/2.
 
+:- set_prolog_flag(double_quotes,atom).
+
 here(bedroom).
 
 room(agricultural_science).
