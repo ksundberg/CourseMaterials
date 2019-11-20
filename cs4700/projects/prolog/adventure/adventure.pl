@@ -396,4 +396,152 @@ puzzle(green_beam):-has(potion),write("You quaff some potion so that Dr. Sundber
 puzzle(green_beam):-write("Dr. Sundberg escorts you out saying 'Sorry, this is a restricted area'."),nl,!,fail.
 puzzle(_).
 
+%Below are helper functions to display the towers of hanoi game
+display_top_disk(Pylon):-location(small_disk, Pylon),location(medium_disk,Pylon),location(large_disk, Pylon),  write("  [|]  "),!.
+display_top_disk(_):- write("   |   "),!.
+
+display_middle_disk(Pylon):- location(small_disk,Pylon), location(medium_disk,Pylon), not(location(large_disk,Pylon)),write("  [|]  "),!.
+display_middle_disk(Pylon):- location(large_disk,Pylon), location(medium_disk,Pylon), write(" [-|-] "),!.
+display_middle_disk(_):- write("   |   "),!.
+
+display_bottom_disk(Pylon):-location(small_disk, Pylon),not(location(medium_disk,Pylon)),not(location(large_disk, Pylon)),  write("  [|]  "),!.
+display_bottom_disk(Pylon):- not(location(large_disk,Pylon)), location(medium_disk,Pylon), write(" [-|-] "),!.
+display_bottom_disk(Pylon):- location(large_disk,Pylon),write("[--|--]"),!.
+display_bottom_disk(_):- write("   |   "),!.
+
+display_top:-display_top_disk(pylon_a),display_top_disk(pylon_b),display_top_disk(pylon_c),fail.
+display_top:-nl.
+display_middle:-display_middle_disk(pylon_a),display_middle_disk(pylon_b),display_middle_disk(pylon_c),fail.
+display_middle:-nl.
+display_bottom:-display_bottom_disk(pylon_a),display_bottom_disk(pylon_b),display_bottom_disk(pylon_c),fail.
+display_bottom:-nl.
+
+%invoke display_pylons to pretty print the final puzzle.
+display_pylons:-write("---A------B------C---"),nl,display_top, display_middle, display_bottom,write("---------------------"),nl,!.
+
+%NLP
+article([the|X]-X).
+article([a|X]-X).
+article([an|X]-X).
+
+verb(place,look,[look|X]-X).
+verb(place,look,[study|X]-X).
+verb(place,look,[look,around|X]-X).
+
+verb(thing,study,[look|X]-X).
+verb(thing,study,[study|X]-X).
+verb(thing,study,[look,at|X]-X).
+
+verb(place,move,[go|X]-X).
+verb(place,move,[go,to|X]-X).
+verb(place,move,[walk|X]-X).
+verb(place,move,[walk,to|X]-X).
+verb(place,move,[move|X]-X).
+verb(place,move,[move,to|X]-X).
+
+verb(thing,take,[take|X]-X).
+verb(thing,take,[grab|X]-X).
+verb(thing,take,[get|X]-X).
+verb(thing,take,[pick,up|X]-X).
+
+verb(thing,make,[make|X]-X).
+verb(thing,make,[create|X]-X).
+
+verb(thing,put,[put|X]-X).
+verb(thing,put,[drop|X]-X).
+verb(thing,put,[put,down|X]-X).
+verb(thing,put,[lay,down|X]-X).
+
+verb(thing,transfer,[move|X]-X).
+
+noun(place,agricultural_science,[agricultural,science,building|X]-X).
+noun(place,animal_science,[animal,science,building |X]-X).
+noun(place,avenue,[avenue|X]-X).
+noun(place,bedroom,[bedroom |X]-X).
+noun(place,bedroom,[room |X]-X).
+noun(place,bedroom_closet,[closet |X]-X).
+noun(place,chemistry_lab,[chemistry,lab |X]-X).
+noun(place,common_room,[common,room |X]-X).
+noun(place,computer_lab,[computer,lab |X]-X).
+noun(place,elevator,[elevator |X]-X).
+noun(place,engr,[engineering,building |X]-X).
+noun(place,eslc_north,[eslc |X]-X).
+noun(place,eslc_south,[eslc |X]-X).
+noun(place,geology_building,[geology,building |X]-X).
+noun(place,green_beam,[enclosure |X]-X).
+noun(place,hall,[hall |X]-X).
+noun(place,hub,[hub |X]-X).
+noun(place,kitchen,[kitchen |X]-X).
+noun(place,laser_lab,[laser,lab |X]-X).
+noun(place,laundry_room,[laundry |X]-X).
+noun(place,library,[library |X]-X).
+noun(place,observatory,[observatory |X]-X).
+noun(place,old_main,[old,main |X]-X).
+noun(place,plaza,[plaza |X]-X).
+noun(place,quad,[quad |X]-X).
+noun(place,roof,[roof |X]-X).
+noun(place,roommate_room,[roommate,room |X]-X).
+
+noun(place,secret_lab,[secret,lab |X]-X).
+noun(place,ser_1st_floor,[ser |X]-X).
+noun(place,ser_2nd_floor,[second,floor |X]-X).
+noun(place,ser_basement,[basement |X]-X).
+noun(place,ser_conference,[conference,room |X]-X).
+noun(place,gas_lab,[gas,lab |X]-X).
+noun(place,special_collections,[special,collections |X]-X).
+noun(place,tsc_patio,[patio |X]-X).
+noun(place,tsc,[tsc |X]-X).
+noun(place,tunnels_east,[tunnels |X]-X).
+noun(place,tunnels_north,[tunnels |X]-X).
+noun(place,tunnels_west,[tunnels |X]-X).
+
+noun(thing,bone,[bone |X]-X).
+noun(thing,book_a,[corpus,hermiticum |X]-X).
+noun(thing,book_b,[war,and,peace |X]-X).
+noun(thing,book_c,[great,expectations |X]-X).
+noun(thing,bunsen_burner,[burner |X]-X).
+noun(thing,closet,[closet |X]-X).
+noun(thing,coat,[coat |X]-X).
+noun(thing,combination_gas,[scrap,of,paper |X]-X).
+noun(thing,dirty_clothes, [clothes |X]-X).
+noun(thing,figurine,[figurine |X]-X).
+noun(thing,flask,[flask |X]-X).
+noun(thing,fly,[fly |X]-X).
+noun(thing,goggles,[goggles |X]-X).
+noun(thing,key,[key |X]-X).
+noun(thing,kitchen_stove, [stove |X]-X).
+noun(thing,kitchen_trashcan,[trashcan |X]-X).
+noun(thing,large_disk,[large,disk |X]-X).
+noun(thing,laser,[laser |X]-X).
+noun(thing,laundry_soap,[soap |X]-X).
+noun(thing,lost_homework,[homework |X]-X).
+noun(thing,medium_disk,[medium,disk |X]-X).
+noun(thing,movie, [movie |X]-X).
+noun(thing,note,[note |X]-X).
+noun(thing,pylon_a,[red,pylon |X]-X).
+noun(thing,pylon_b,[blue,pylon |X]-X).
+noun(thing,pylon_c,[green,pylon |X]-X).
+noun(thing,recipe,[recipe |X]-X).
+noun(thing,sauce, [sauce |X]-X).
+noun(thing,small_disk,[small,disk |X]-X).
+noun(thing,spaghetti, [spaghetti |X]-X).
+noun(thing,tower_of_pizza_boxes, [boxes |X]-X).
+noun(thing,wash_machine,[washing,machine |X]-X).
+noun(thing,money, [money |X]-X).
+noun(thing,vending_machine, [vending,machine |X]-X).
+noun(thing,potion, [potion |X]-X).
+noun(thing,cooked_spaghetti, [spaghetti |X]-X).
+noun(thing,charged_bone, [bone |X]-X).
+noun(thing,clean_clothes, [clothes |X]-X).
+noun(thing,bag_of_chips, [chips |X]-X).
+
+object(Type,N,S1-S3):-article(S1-S2),noun(Type,N,S2-S3).
+object(Type,N,S1-S2):-noun(Type,N,S1-S2).
+
+command([V,O],In) :- verb(Type,V,In-S),object(Type,O,S-[]).
+
+
+%Game loop
 read_words(W):-read_string(user_input,"\n\r","\n\r",_,L),split_string(L,"\t ","\t ",W).
+
+play :- read_words(W),command(C,W),P=..C,P,win.
