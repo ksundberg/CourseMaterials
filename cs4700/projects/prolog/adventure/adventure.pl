@@ -1,10 +1,13 @@
 :- dynamic here/1.
 :- dynamic has/1.
 :- dynamic location/2.
+:-dynamic computer_password/1.
 
 :- set_prolog_flag(double_quotes,atom).
 
 here(bedroom).
+
+computer_password("*****").
 
 room(agricultural_science).
 room(animal_science).
@@ -14,6 +17,7 @@ room(bedroom_closet).
 room(chemistry_lab).
 room(common_room).
 room(computer_lab).
+room(cs_lounge).
 room(elevator).
 room(engr).
 room(eslc_north).
@@ -28,6 +32,8 @@ room(laundry_room).
 room(library).
 room(observatory).
 room(old_main).
+room(old_main_elevator).
+room(old_main_4th_floor).
 room(plaza).
 room(quad).
 room(roof).
@@ -44,10 +50,13 @@ room(tsc).
 room(tunnels_east).
 room(tunnels_north).
 room(tunnels_west).
+room(tutor_lab).
 
 door(avenue,quad).
 door(bedroom,bedroom_closet).
 door(bedroom,hall).
+door(common_room,hall).
+door(cs_lounge,old_main_4th_floor).
 door(eslc_north,chemistry_lab).
 door(eslc_north,tsc_patio).
 door(eslc_south,eslc_north).
@@ -56,9 +65,16 @@ door(hall,laundry_room).
 door(hall,roommate_room).
 door(hub,tunnels_west).
 door(kitchen,hall).
+door(laundry_room,hall).
+door(roommate_room,hall).
 door(library,plaza).
 door(library,special_collections).
 door(old_main,computer_lab).
+door(old_main,old_main_elevator).
+door(old_main_elevator,old_main).
+door(old_main_elevator,old_main_4th_floor).
+door(old_main_4th_floor,cs_lounge).
+door(old_main_4th_floor,tutor_lab).
 door(plaza,avenue).
 door(plaza,common_room).
 door(plaza,engr).
@@ -85,6 +101,7 @@ door(tunnels_north,animal_science).
 door(tunnels_north,tunnels_west).
 door(tunnels_west,secret_lab).
 door(tunnels_west,tunnels_east).
+door(tutor_lab,old_main_4th_floor).
 
 location(bone,geology_building).
 location(book_a,special_collections).
@@ -95,11 +112,11 @@ location(closet,eslc_south).
 location(closet,eslc_south).
 location(coat,green_beam).
 location(combination_gas,ser_conference).
+location(computer,cs_lounge).
 location(dirty_clothes, bedroom_closet).
 location(figurine,bedroom).
 location(flask,chemistry_lab).
 location(fly,roommate_room).
-location(goggles,closet).
 location(goggles,closet).
 location(key,coat).
 location(kitchen_stove, kitchen).
@@ -108,19 +125,21 @@ location(large_disk,pylon_a).
 location(laser,laser_lab).
 location(laundry_soap,laundry_room).
 location(lost_homework,engr).
+location(left_sock,old_main_4th_floor).
 location(medium_disk,pylon_a).
 location(movie, roomate_room).
-location(note,bedroom).
 location(note,bedroom).
 location(pylon_a,secret_lab).
 location(pylon_b,secret_lab).
 location(pylon_c,secret_lab).
 location(recipe,book_a).
+location(right_sock,cs_lounge).
 location(sauce, kitchen).
 location(small_disk,pylon_a).
 location(spaghetti, kitchen).
 location(tower_of_pizza_boxes, kitchen).
 location(wash_machine,laundry_room).
+location(whiteboard, tutor_lab).
 location(money, bedroom).
 location(vending_machine, tsc).
 
@@ -146,6 +165,7 @@ create_recipe(vending_machine, [money], bag_of_chips).
 
 heavy(bunsen_burner).
 heavy(closet).
+heavy(computer).
 heavy(kitchen_trashcan).
 heavy(large_disk).
 heavy(laser).
@@ -155,6 +175,7 @@ heavy(pylon_b).
 heavy(pylon_c).
 heavy(small_disk).
 heavy(wash_machine).
+heavy(whiteboard).
 heavy(vending_machine).
 
 name(agricultural_science,"Agricultural Sciences Building").
@@ -176,7 +197,9 @@ name(coat,"Dr. Sundberg's lab coat").
 name(combination_gas,"A scrap of paper with a sequence of numbers scribbled on it").
 name(common_room,"Dorm common room").
 name(computer_lab,"Student Computer Lab").
+name(computer,"CS lounge computer.").
 name(cooked_spaghetti, "Lot's a Spaghetti").
+name(cs_lounge,"CS lounge").
 name(dirty_clothes, "Your Dirty Clothes").
 name(elevator,"Elevator").
 name(engr,"ENGR - The Main Engineering Building").
@@ -200,6 +223,7 @@ name(laser,"laser array").
 name(laser_lab,"Laser Lab").
 name(laundry_room,"Laundry Room").
 name(laundry_soap,"Laundry Soap").
+name(left_sock,"Left Sock").
 name(library,"Merill-Caizer Library").
 name(lost_homework,"Some student's lost geometry homework.").
 name(medium_disk,"medium energy disk").
@@ -207,6 +231,8 @@ name(movie, "Men in Black").
 name(note,"note").
 name(observatory,"Observatory").
 name(old_main,"Old Main").
+name(old_main_elevator,"Old Main Elevator").
+name(old_main_4th_floor,"The fourth floor of Old Main").
 name(plaza,"Engineering plaza").
 name(potion,"potion").
 name(pylon_a,"red pylon").
@@ -216,6 +242,7 @@ name(quad,"The Quad").
 name(recipe,"alchemical recipe").
 name(roof,"On the roof of the SER Building").
 name(roommate_room,"Your dormmate's room").
+name(right_sock,"Right Sock").
 name(sauce, "Marinara Sauce").
 name(secret_lab,"Dr. Sundberg's Secret Lab").
 name(ser_1st_floor,"1st Floor of SER Building").
@@ -232,7 +259,9 @@ name(tsc_patio,"Patio of the TSC").
 name(tunnels_east,"Underground Tunnels").
 name(tunnels_north,"Underground Tunnels").
 name(tunnels_west,"Underground Tunnels").
+name(tutor_lab,"Tutor Lab").
 name(wash_machine,"Washing Machine").
+name(whiteboard,"Whiteboard").
 name(money, "Money").
 name(vending_machine, "Vending machine").
 
@@ -254,7 +283,10 @@ short_desc(closet,"The equipment closet used to store extra materials for scienc
 short_desc(coat,"A large white lab coat with lots of pockets").
 short_desc(common_room,"A place where students gather for homework, food, and naps").
 short_desc(computer_lab,"Many computers lined up together and a desk at the front of the room").
+short_desc(computer,D):-computer_password("pass"),D is "A powered on computer just waiting to be logged into.".
+short_desc(computer,"A powered on computer, it looks like it needs a password to log in.").
 short_desc(cooked_spaghetti, "The essence of perfection.").
+short_desc(cs_lounge,"A lounge for future computer scientists.").
 short_desc(dirty_clothes, "Gritty clothes you should probably wash").
 short_desc(elevator,"You are in a plain metal box.  There are buttons labeled with various locations.").
 short_desc(engr,"A large building with many classrooms, you're surprised to see students wandering the halls at this time.").
@@ -279,11 +311,14 @@ short_desc(laundry_room,"A place for doing laundry").
 short_desc(laundry_soap,"Used for washing dirty clothes").
 short_desc(library,"Endless floors of books full of knowledge. A smiling librarian greets you as you enter, \"welcome to the library\" she says.").
 short_desc(lost_homework,"The abandoned pages call out to a grader, a grader who will never see them.").
+short_desc(left_sock,"A sock meant for a left foot.").
 short_desc(medium_disk,"a medium sized disk glowing with alien energy").
 short_desc(movie, "A movie about policing and monitoring aliens").
 short_desc(note,"a handwritten note from your roommate").
 short_desc(observatory,"A tower where you can stargaze.").
 short_desc(old_main,"The building is full of nerdy looking people.").
+short_desc(old_main_elevator,"A iffy looking elevator in the middle of the building.").
+short_desc(old_main_4th_floor,"The top of Old Main.").
 short_desc(plaza,"A large open space between engineering buildings").
 short_desc(potion,"An oily black potion").
 short_desc(pylon_a,"a glowing red pyramid shaped structure").
@@ -293,6 +328,7 @@ short_desc(quad,"four large fields split up by sidewalks").
 short_desc(recipe,"a page from 'Corpus Hermiticum' containing a recipe for an invisibility potion").
 short_desc(roof,"the roof of the dorm building.").
 short_desc(roommate_room,"its even messier than your room!").
+short_desc(right_sock,"A right sock laying on the floor.").
 short_desc(sauce, "Rich and flaverfull Marinara Sauce").
 short_desc(secret_lab,"a secret lab?! This must be where Dr. Sundberg is hiding his secret!").
 short_desc(ser_1st_floor,"The bottom floor of the SER building. Nothing too exciting is happening here.").
@@ -308,7 +344,9 @@ short_desc(tsc_patio,"a place to sit an study or eat outside the TSC.").
 short_desc(tunnels_east,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(tunnels_north,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope you don't get lost.").
+short_desc(tutor_lab,"Where young CS students spend their waking hours.").
 short_desc(wash_machine,"An old beat up washing machine used for cleaning students' foul smelling clothes").
+short_desc(whiteboard,"A large whiteboard with lots of scribles and diagrams.").
 short_desc(money, "A couple of dollars.").
 short_desc(vending_machine, "A vending machine located in the TSC.").
 
@@ -329,7 +367,10 @@ long_desc(closet,"Amid all the extra equipment and junk in the closet, you notic
 long_desc(coat,"A spiffy looking lab coat. The pockets are lined with some kind of residue from Dr. Sundberg's experiments. It smells like aliens... Gross!").
 long_desc(common_room,"The common room in the SER building. You see a few scattered couches, benches, and tables. It smells like Little Cesears Pizza here...").
 long_desc(computer_lab,"The room is filled with the glow and hum of many computers and the feverish typing of college students.").
+long_desc(computer,D):-computer_password("pass"),assign(D,"You enter the passsword into the computer and it logs in successfully. It seems to be running a prolog simulation of a text based adventure game. You better log out before you get caught in some sort of weird infinite game loop.").
+long_desc(computer,"A computer humming quietly in the lounge. The display is on, but it's asking for a password that you don't know."). 
 long_desc(cooked_spaghetti, "Al dente spaghetti dressed up with the best sauce imaginable. If there ever was a reason to save the world, this is it.").
+long_desc(cs_lounge,"A dark musky room filled with old couches and an eerie sense of exhaustion. There is the faint glow of a running computer in the corner.").
 long_desc(dirty_clothes, "These are all you have of value in this world are these crusted gritty clothes, that need to be washed.").
 long_desc(elevator,"A large metal container used to transport people and large objects to different floors in a building.").
 long_desc(engr,"There is a display for Orbital ATK and chairs to collapse into after class. You hear your footsteps echoing down the halls as you walk.").
@@ -352,6 +393,7 @@ long_desc(laser,"A rather powerful laser for research. Probably shouldnt look in
 long_desc(laser_lab,"You imagine yourself as a secret agent in Mission Impossible flipping and sliding around the room to avoid the lasers... Maybe then you could get a date.").
 long_desc(laundry_room,"A dimly lit room that has a musty smell from all the laundry piling up.").
 long_desc(laundry_soap,"This soap looks like it has been sitting here for years without being used.").
+long_desc(left_sock,"A white sock with gray on the tip. It seems to been taken off and thrown to the floor in a hurry.").
 long_desc(library,"Endless floors of books full of knowledge. A smiling librarian greets you as you enter, 'Welcome to the library!'").
 long_desc(lost_homework,"This homework appears to be a geometric proof of the origin of the green beam that is sometimes seen in the sky. The proof shows that the beam originates on the roof of the SER building.").
 long_desc(medium_disk,"a medium sized disk in between the small and large disks on the red pylon. It looks like you can move it if there isn't anything on top of it...").
@@ -359,12 +401,15 @@ long_desc(movie, "Stars Will Smith and Tommy Lee Jones as members of a secret ta
 long_desc(note,"In the handwriting of your roommate is hastily scrawled: 'You've got to help.  Dr. Sundberg is an alien and wants to take over the world.  I think he is on to me, you are the only hope left! Try to find out what he is doing with the green beam.'").
 long_desc(observatory,"Welcome to the Atmospheric Lidar Observatory. Here you will find information about the 'Green Beam' at Utah State University.").
 long_desc(old_main,"The building has four floors, and is the location of much pain during the Evil Dr. Sundber's class.  Few can navigate their way to the 4th floor where dreams become computer programs.").
+long_desc(old_main_elevator,"There are four floors, but only the first and fourth floor buttons seem to work. It's a strange elevator, but it moves pretty fast.").
+long_desc(old_main_4th_floor,"The only way up here is the elevator, the smell is unique, and the only people here look like they've never seen the light of day.").
 long_desc(plaza,"A well known spot for Pokemon Go players. It is home to 2 Gyms and 3 pokestops. Terf wars have been known to occur here, so avoid wearing solid blue, yellow or red clothes to avoid potential conflict.").
 long_desc(pylon_a,"A red platform with a rod coming out of the middle that comes up to your chest. There are three disks that have been placed here on the rod from smallest to biggest forming a pyramid.").
 long_desc(pylon_b,"A blue platform with a rod coming out of the middle that comes up to your chest. It looks like you could put something on the rod...").
 long_desc(pylon_c,"A green platform with a rod coming out of the middle that comes up to your chest. It looks like you could put something on the rod...").
 long_desc(quad,"A large grass field quarted by concrete sidewalks and bordered by large trees. A favorite destination of students and pets alike. Multiple buildings face into the field, most of them quite historic looking.").
 long_desc(recipe,"A potion for invisibility: Bathe the bone of a dragon in pure light.  Distill charged bone with the wings of a fly.  Let cool before quaffing.").
+long_desc(right_sock,"It's a sock... that's about all there is to it. However, you get the feeling that it's a little lonely.").
 long_desc(roof,"Not a place to be caught in a windstorm - the shingles are slippery and cracked.").
 long_desc(roommate_room,"Not quite as messey as yours, your roommate's room has a mini fridge stocked with Dr. Pepper. You see the sun shining through the locked window. ").
 long_desc(sauce, "Marinara Sauce").
@@ -382,7 +427,9 @@ long_desc(tsc_patio,"An open area with birds chirping and hipsters drinking thei
 long_desc(tunnels_east,"The tunnel seems to go on forever. Its dark and you are having a hard time seeing anything. You try to not let your imagination take over as you think you hear someone following you...").
 long_desc(tunnels_north,"The tunnel seems to go on forever. Its dark and you are having a hard time seeing anything. You try to not let your imagination take over as you think you hear someone following you...").
 long_desc(tunnels_west,"The tunnel seems to go on forever. Its dark but you see what looks like a door off to your right. You try to not let your imagination take over as you think you hear someone following you...").
+long_desc(tutor_lab,"A place for learning and discovery. Students with limited knowledge teach younger students with even less.").
 long_desc(wash_machine,"You open the door and to your surprise the washing machine is empty and available to use. You shut the door again.").
+long_desc(whiteboard,"Lots of writing adorns this board, most written by tutors attempting to show their students how they can visualize some trivial problem from CS1400. You notice somthing small in the corner however. It looks like a password for a computer. \"pass\" it reads."):-retract(computer_password(_)),asserta(computer_password("pass")).
 long_desc(money, "A couple of dollars found on your dresser. You've heard it can be exchanged for goods and services.").
 long_desc(vending_machine, "The vending machine is stocked with a large variety of chips. The machine requires money to use, of course.").
 
@@ -463,6 +510,7 @@ noun(place,bedroom_closet,[closet |X]-X).
 noun(place,chemistry_lab,[chemistry,lab |X]-X).
 noun(place,common_room,[common,room |X]-X).
 noun(place,computer_lab,[computer,lab |X]-X).
+noun(place,cs_lounge,[cs,lounge |X]-X).
 noun(place,elevator,[elevator |X]-X).
 noun(place,engr,[engineering,building |X]-X).
 noun(place,eslc_north,[eslc |X]-X).
@@ -477,6 +525,8 @@ noun(place,laundry_room,[laundry |X]-X).
 noun(place,library,[library |X]-X).
 noun(place,observatory,[observatory |X]-X).
 noun(place,old_main,[old,main |X]-X).
+noun(place,old_main_elevator,[old,main,elevator |X]-X).
+noun(place,old_main_4th_floor,[old,main,fourth,floor |X]-X).
 noun(place,plaza,[plaza |X]-X).
 noun(place,quad,[quad |X]-X).
 noun(place,roof,[roof |X]-X).
@@ -494,6 +544,7 @@ noun(place,tsc,[tsc |X]-X).
 noun(place,tunnels_east,[tunnels |X]-X).
 noun(place,tunnels_north,[tunnels |X]-X).
 noun(place,tunnels_west,[tunnels |X]-X).
+noun(place,tutor_lab,[tutor,lab |X]-X).
 
 noun(thing,bone,[bone |X]-X).
 noun(thing,book_a,[corpus,hermiticum |X]-X).
@@ -503,6 +554,7 @@ noun(thing,bunsen_burner,[burner |X]-X).
 noun(thing,closet,[closet |X]-X).
 noun(thing,coat,[coat |X]-X).
 noun(thing,combination_gas,[scrap,of,paper |X]-X).
+noun(thing,computer,[computer |X]-X).
 noun(thing,dirty_clothes, [clothes |X]-X).
 noun(thing,figurine,[figurine |X]-X).
 noun(thing,flask,[flask |X]-X).
@@ -514,6 +566,7 @@ noun(thing,kitchen_trashcan,[trashcan |X]-X).
 noun(thing,large_disk,[large,disk |X]-X).
 noun(thing,laser,[laser |X]-X).
 noun(thing,laundry_soap,[soap |X]-X).
+noun(thing,left_sock,[left,sock |X]-X).
 noun(thing,lost_homework,[homework |X]-X).
 noun(thing,medium_disk,[medium,disk |X]-X).
 noun(thing,movie, [movie |X]-X).
@@ -522,11 +575,13 @@ noun(thing,pylon_a,[red,pylon |X]-X).
 noun(thing,pylon_b,[blue,pylon |X]-X).
 noun(thing,pylon_c,[green,pylon |X]-X).
 noun(thing,recipe,[recipe |X]-X).
+noun(thing,right_sock,[right,sock |X]-X).
 noun(thing,sauce, [sauce |X]-X).
 noun(thing,small_disk,[small,disk |X]-X).
 noun(thing,spaghetti, [spaghetti |X]-X).
 noun(thing,tower_of_pizza_boxes, [boxes |X]-X).
 noun(thing,wash_machine,[washing,machine |X]-X).
+noun(thing,whiteboard,[whiteboard |X]-X).
 noun(thing,money, [money |X]-X).
 noun(thing,vending_machine, [vending,machine |X]-X).
 noun(thing,potion, [potion |X]-X).
@@ -534,6 +589,8 @@ noun(thing,cooked_spaghetti, [spaghetti |X]-X).
 noun(thing,charged_bone, [bone |X]-X).
 noun(thing,clean_clothes, [clothes |X]-X).
 noun(thing,bag_of_chips, [chips |X]-X).
+
+assign(X,X).
 
 object(Type,N,S1-S3):-article(S1-S2),noun(Type,N,S2-S3).
 object(Type,N,S1-S2):-noun(Type,N,S1-S2).
