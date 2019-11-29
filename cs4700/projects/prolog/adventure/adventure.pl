@@ -92,14 +92,12 @@ location(book_b,special_collections).
 location(book_c,special_collections).
 location(bunsen_burner,chemistry_lab).
 location(closet,eslc_south).
-location(closet,eslc_south).
 location(coat,green_beam).
 location(combination_gas,ser_conference).
 location(dirty_clothes, bedroom_closet).
 location(figurine,bedroom).
 location(flask,chemistry_lab).
 location(fly,roommate_room).
-location(goggles,closet).
 location(goggles,closet).
 location(key,coat).
 location(kitchen_stove, kitchen).
@@ -110,7 +108,6 @@ location(laundry_soap,laundry_room).
 location(lost_homework,engr).
 location(medium_disk,pylon_a).
 location(movie, roomate_room).
-location(note,bedroom).
 location(note,bedroom).
 location(pylon_a,secret_lab).
 location(pylon_b,secret_lab).
