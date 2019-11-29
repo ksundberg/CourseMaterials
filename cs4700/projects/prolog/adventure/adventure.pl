@@ -235,6 +235,7 @@ name(tunnels_west,"Underground Tunnels").
 name(wash_machine,"Washing Machine").
 name(money, "Money").
 name(vending_machine, "Vending machine").
+name(bag_of_chips, "Bag of Chips").
 
 short_desc(agricultural_science,"Looks like a nice place to grab a bite.").
 short_desc(animal_science,"a cozy-looking, white-bricked old building.").
@@ -311,6 +312,7 @@ short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope 
 short_desc(wash_machine,"An old beat up washing machine used for cleaning students' foul smelling clothes").
 short_desc(money, "A couple of dollars.").
 short_desc(vending_machine, "A vending machine located in the TSC.").
+short_desc(bag_of_chips, "A small bag of potatoe chips.").
 
 long_desc(agricultural_science, "There is a line of students waiting to eat at the cafe. Everyone seems to be in a hurry.").
 long_desc(avenue,"A myriad of people walk every which way along the avenue.  All are seemingly unaware of their imminent destruction at Dr.Sundberg's hand.").
@@ -385,6 +387,7 @@ long_desc(tunnels_west,"The tunnel seems to go on forever. Its dark but you see 
 long_desc(wash_machine,"You open the door and to your surprise the washing machine is empty and available to use. You shut the door again.").
 long_desc(money, "A couple of dollars found on your dresser. You've heard it can be exchanged for goods and services.").
 long_desc(vending_machine, "The vending machine is stocked with a large variety of chips. The machine requires money to use, of course.").
+long_desc(bag_of_chips, "A small bag of salty, delicious potatoe chips. This is quite possibly the only food a college student like yourself needs to survive.").
 
 puzzle(laser_lab):-has(goggles),!.
 puzzle(laser_lab):-write("It is too dangerous to go in without eye protection."),nl,!,fail.
