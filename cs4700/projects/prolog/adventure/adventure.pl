@@ -31,12 +31,14 @@ room(old_main).
 room(plaza).
 room(quad).
 room(roof).
+room(roof_plank).
 room(roommate_room).
 room(secret_lab).
 room(ser_1st_floor).
 room(ser_2nd_floor).
 room(ser_basement).
 room(ser_conference).
+room(space_ship).
 room(gas_lab).
 room(special_collections).
 room(tsc_patio).
@@ -72,12 +74,14 @@ door(quad,tsc_patio).
 door(roof,elevator).
 door(roof,green_beam).
 door(roof,observatory).
+door(roof,roof_plank).
 door(ser_1st_floor,elevator).
 door(ser_2nd_floor,elevator).
 door(ser_2nd_floor,ser_conference).
 door(ser_basement,elevator).
 door(ser_basement,gas_lab).
 door(ser_2nd_floor,laser_lab).
+door(roof_plank,shace_ship).
 door(tsc,hub).
 door(tsc_patio,tsc).
 door(tunnels_east,ser_1st_floor).
@@ -96,11 +100,14 @@ location(closet,eslc_south).
 location(coat,green_beam).
 location(combination_gas,ser_conference).
 location(dirty_clothes, bedroom_closet).
+location(dirty_rock, treasure_chest).
 location(figurine,bedroom).
 location(flask,chemistry_lab).
 location(fly,roommate_room).
 location(goggles,closet).
 location(goggles,closet).
+location(gold_bar, treasure_chest).
+location(gold_ring, treasure_chest).
 location(key,coat).
 location(kitchen_stove, kitchen).
 location(kitchen_trashcan,kitchen).
@@ -120,6 +127,7 @@ location(sauce, kitchen).
 location(small_disk,pylon_a).
 location(spaghetti, kitchen).
 location(tower_of_pizza_boxes, kitchen).
+location(treasure_chest, space_ship).
 location(wash_machine,laundry_room).
 location(money, bedroom).
 location(vending_machine, tsc).
@@ -131,6 +139,7 @@ container(kitchen_trashcan).
 container(pylon_a).
 container(pylon_b).
 container(pylon_c).
+container(treasure_chest).
 
 equipment(bunsen_burner).
 equipment(kitchen_stove).
@@ -178,6 +187,7 @@ name(common_room,"Dorm common room").
 name(computer_lab,"Student Computer Lab").
 name(cooked_spaghetti, "Lot's a Spaghetti").
 name(dirty_clothes, "Your Dirty Clothes").
+name(dirty_rock, "A dirty rock").
 name(elevator,"Elevator").
 name(engr,"ENGR - The Main Engineering Building").
 name(eslc_north,"Eccels Science Learning Center").
@@ -188,6 +198,8 @@ name(fly,"dead fly").
 name(gas_lab, "The Get Away Special Lab").
 name(geology_building,"Geology Building").
 name(goggles,"dark saftey goggles").
+name(gold_ring,"solid gold ring").
+name(gold_bar,"solid gold bar").
 name(green_beam,"The 'Grean Beam' enclosure").
 name(hall,"Hallway").
 name(hub,"The Hub").
@@ -215,6 +227,7 @@ name(pylon_c,"green pylon").
 name(quad,"The Quad").
 name(recipe,"alchemical recipe").
 name(roof,"On the roof of the SER Building").
+name(roof_plank,"A plank leading off the roof.").
 name(roommate_room,"Your dormmate's room").
 name(sauce, "Marinara Sauce").
 name(secret_lab,"Dr. Sundberg's Secret Lab").
@@ -226,7 +239,9 @@ name(small_disk,"small energy disk").
 name(spaghetti, "Spaghetti").
 name(special_collections,"Special Collections Room").
 name(stove, "A Kitchen Stove.").
+name(space_ship,"A Space Ship").
 name(tower_of_pizza_boxes,"tower of pizza boxes").
+name(treasure_chest,"futuristic treasure chest").
 name(tsc,"Taggart Student Center").
 name(tsc_patio,"Patio of the TSC").
 name(tunnels_east,"Underground Tunnels").
@@ -255,7 +270,8 @@ short_desc(coat,"A large white lab coat with lots of pockets").
 short_desc(common_room,"A place where students gather for homework, food, and naps").
 short_desc(computer_lab,"Many computers lined up together and a desk at the front of the room").
 short_desc(cooked_spaghetti, "The essence of perfection.").
-short_desc(dirty_clothes, "Gritty clothes you should probably wash").
+short_desc(dirty_clothes, "Gritty clothes you should probably wash.").
+short_desc(dirty_rock, "A dirty rock that feels warm in your hands.").
 short_desc(elevator,"You are in a plain metal box.  There are buttons labeled with various locations.").
 short_desc(engr,"A large building with many classrooms, you're surprised to see students wandering the halls at this time.").
 short_desc(eslc_north,"You are on the north side of the ESLC.").
@@ -266,6 +282,8 @@ short_desc(fly,"the partially squished body of a dead house fly").
 short_desc(gas_lab, "A place of space research and frendship").
 short_desc(geology_building,"Large building with rocks and trees surrounding it").
 short_desc(goggles,"dark eye protection left over from the 'Great American Eclipse'").
+short_desc(gold_bar,"really heavy, and probably worth a lot of money.").
+short_desc(gold_ring,"finely crafted golden ring.").
 short_desc(green_beam,"Dr. Sundberg is standing at a large machine which is emitting a bright beam of green light.  You overhear a conversation indicating that he has set up a wormhole generator in his secret lab.  This will allow the alien invasion force to reach earth.").
 short_desc(hall,"Long pathway that has pictures hanging on wall").
 short_desc(hub,"Smells of coffee and pizza linger in the air. Students congregate around tables slaving away at endless homework.").
@@ -292,6 +310,7 @@ short_desc(pylon_c,"a glowing green pyramid shaped structure").
 short_desc(quad,"four large fields split up by sidewalks").
 short_desc(recipe,"a page from 'Corpus Hermiticum' containing a recipe for an invisibility potion").
 short_desc(roof,"the roof of the dorm building.").
+short_desc(roof_plank,"a plank that leads off of the roof into nothingness.").
 short_desc(roommate_room,"its even messier than your room!").
 short_desc(sauce, "Rich and flaverfull Marinara Sauce").
 short_desc(secret_lab,"a secret lab?! This must be where Dr. Sundberg is hiding his secret!").
@@ -302,12 +321,14 @@ short_desc(small_disk,"a small disk glowing with alien energy").
 short_desc(spaghetti, "The food of champions.").
 short_desc(special_collections,"the 'special' section of the library. Holds the more important and classical books.").
 short_desc(stove, "A kitchen stove for cooking food.").
+short_desc(space_ship,"A silver-bullet-looking space ship with an old woman standing in the doorway waving you in.").
 short_desc(tower_of_pizza_boxes,"A stack of (hopefully) empty pizza boxes").
 short_desc(tsc,"community center for students, faculty, and alumni").
 short_desc(tsc_patio,"a place to sit an study or eat outside the TSC.").
 short_desc(tunnels_east,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(tunnels_north,"The underground tunnels are a confusing place.  I hope you don't get lost.").
 short_desc(tunnels_west,"The underground tunnels are a confusing place.  I hope you don't get lost.").
+short_desc(treasure_chest,"A beautiful stainless stell treasure chest that is wide open").
 short_desc(wash_machine,"An old beat up washing machine used for cleaning students' foul smelling clothes").
 short_desc(money, "A couple of dollars.").
 short_desc(vending_machine, "A vending machine located in the TSC.").
@@ -331,6 +352,7 @@ long_desc(common_room,"The common room in the SER building. You see a few scatte
 long_desc(computer_lab,"The room is filled with the glow and hum of many computers and the feverish typing of college students.").
 long_desc(cooked_spaghetti, "Al dente spaghetti dressed up with the best sauce imaginable. If there ever was a reason to save the world, this is it.").
 long_desc(dirty_clothes, "These are all you have of value in this world are these crusted gritty clothes, that need to be washed.").
+long_desc(dirty_rock, "Strangley, this crusty old rock has a warmth to it. Rubbing a little bit off you can see a gleaming surface beneath.").
 long_desc(elevator,"A large metal container used to transport people and large objects to different floors in a building.").
 long_desc(engr,"There is a display for Orbital ATK and chairs to collapse into after class. You hear your footsteps echoing down the halls as you walk.").
 long_desc(eslc_north,"A large open area where you can see chemistry labs , and the doors out to the TSC patio.").
@@ -341,6 +363,8 @@ long_desc(fly,"Scientifically known as Syrphus Ribessi, this nuisance enjoys lon
 long_desc(gas_lab,"Founded in 1976, the Get Away Special team is a student-driven, space research team which has established and upheld Utah State University's reputation as the university that has flown more experiments into space than any other university in the world.").
 long_desc(geology_building,"An old looking building that secretly hides the math department. The only reason people want to go in, is to see the large 'dinosaur' bone exhibit they have in there.").
 long_desc(goggles,"Specialized Eclipse goggles that allow you to stare at the sun, or intense lasers without going blind.").
+long_desc(gold_bar,"A massive gold bar. With your extensive estimating skills, you think that it is worth about $1.23 million.").
+long_desc(gold_ring,"This ring is valuable and could be a family heirloom. There is non gem, unfortunately. Only an empty holder where you believe a gem might have been.").
 long_desc(green_beam,"Dr. Sundberg is standing at a large machine which is emitting a bright beam of green light.  You overhear a conversation indicating that he has set up a wormhole generator in his secret lab.  This will allow the alien invasion force to reach earth.").
 long_desc(hall,"A narrow area or passage that connects rooms of an edifice.  The passage is laid with dark red carpeting with pictures hanging on its walls.").
 long_desc(hub,"Choose from 9 different areas to eat at while enjoying a large seating area, which is perfect for hanging out and studying.").
@@ -366,6 +390,7 @@ long_desc(pylon_c,"A green platform with a rod coming out of the middle that com
 long_desc(quad,"A large grass field quarted by concrete sidewalks and bordered by large trees. A favorite destination of students and pets alike. Multiple buildings face into the field, most of them quite historic looking.").
 long_desc(recipe,"A potion for invisibility: Bathe the bone of a dragon in pure light.  Distill charged bone with the wings of a fly.  Let cool before quaffing.").
 long_desc(roof,"Not a place to be caught in a windstorm - the shingles are slippery and cracked.").
+long_desc(roof_plank,"This plank is made of a shiny metal, and it looks very new...").
 long_desc(roommate_room,"Not quite as messey as yours, your roommate's room has a mini fridge stocked with Dr. Pepper. You see the sun shining through the locked window. ").
 long_desc(sauce, "Marinara Sauce").
 long_desc(secret_lab,"You notice your surroundings are almost identical to the cartoon Dexter's laboratory. There are many experiments being done around the room.").
@@ -376,7 +401,9 @@ long_desc(small_disk,"A small disk pulsates in your hand, glowing an toxic green
 long_desc(spaghetti, "These long thin pasta noodles are a staple for a student on a budget. So much better than ramen, can be combined with various sauces for maximum effect.").
 long_desc(special_collections,"a small section of the library that is home to all sorts of extrordiary books. You can read up on Russian Literature, Classic Dickens, Alchemy, and even more!").
 long_desc(stove, "A stove splattered with various substances that you assume, or at least hope used was food.").
+long_desc(space_ship, "A silver space ship that just zoomed in from outerspace. It looks like it's been well maintained, although you wouldn't know a well maintained spaceship if you saw one. There is an old woman, human looking, that is waving you in with a friendly grin.").
 long_desc(tower_of_pizza_boxes,"Domino's, Pizza-Hut, Little Ceaser's and more. All are rendered equal in this towering graveyard of cardboard.").
+long_desc(treasure_chest,"A large silver treasure chest. It looks like something out of the future, or something that would be on a pirate space ship. It's open, as if waiting for you. It's doubtful that you'd be able to crack it if it was locked.").
 long_desc(tsc,"This massive building is the perfect place to go to spend way too much money on overpriced things... You'll find students eating, studying, socializing, and lamenting their massive student debts.").
 long_desc(tsc_patio,"An open area with birds chirping and hipsters drinking their coffee. You won't find any CS majors here as they're all in cavedwelling in Old Main.").
 long_desc(tunnels_east,"The tunnel seems to go on forever. Its dark and you are having a hard time seeing anything. You try to not let your imagination take over as you think you hear someone following you...").
@@ -394,6 +421,12 @@ puzzle(gas_lab):-has(combination_gas),!.
 puzzle(gas_lab):-write("The light's are off and the door is locked. There must not be any friends in the GAS Lab right now, you need the combination to unlock the door").
 puzzle(green_beam):-has(potion),write("You quaff some potion so that Dr. Sundberg can't see you."),nl.
 puzzle(green_beam):-write("Dr. Sundberg escorts you out saying 'Sorry, this is a restricted area'."),nl,!,fail.
+puzzle(roof_plank):-
+	location(small_disk, pylon_c),
+	location(medium_disk, pylon_c),
+	location(large_disk, pylon_c),
+	write("A strange woman flies up in a space ship and invites you to join her.").
+puzzle(roof_plank):-write("It looks too scary to go out there.").
 puzzle(_).
 
 %Below are helper functions to display the towers of hanoi game
