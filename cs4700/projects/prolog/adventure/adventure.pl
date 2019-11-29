@@ -21,15 +21,18 @@ room(eslc_south).
 room(geology_building).
 room(green_beam).
 room(hall).
+room(hangar).
 room(hub).
 room(kitchen).
 room(laser_lab).
 room(laundry_room).
 room(library).
+room(moon).
 room(observatory).
 room(old_main).
 room(plaza).
 room(quad).
+room(rocket).
 room(roof).
 room(roommate_room).
 room(secret_lab).
@@ -54,6 +57,7 @@ door(eslc_south,eslc_north).
 door(hall,common_room).
 door(hall,laundry_room).
 door(hall,roommate_room).
+door(hangar, gas_lab).
 door(hub,tunnels_west).
 door(kitchen,hall).
 door(library,plaza).
@@ -69,6 +73,7 @@ door(quad,eslc_south).
 door(quad,geology_building).
 door(quad,old_main).
 door(quad,tsc_patio).
+door(rocket, hangar).
 door(roof,elevator).
 door(roof,green_beam).
 door(roof,observatory).
@@ -91,6 +96,7 @@ location(book_a,special_collections).
 location(book_b,special_collections).
 location(book_c,special_collections).
 location(bunsen_burner,chemistry_lab).
+location(button, rocket).
 location(closet,eslc_south).
 location(closet,eslc_south).
 location(coat,green_beam).
@@ -102,6 +108,7 @@ location(fly,roommate_room).
 location(goggles,closet).
 location(goggles,closet).
 location(key,coat).
+location(key_card, observatory).
 location(kitchen_stove, kitchen).
 location(kitchen_trashcan,kitchen).
 location(large_disk,pylon_a).
@@ -110,23 +117,30 @@ location(laundry_soap,laundry_room).
 location(lost_homework,engr).
 location(medium_disk,pylon_a).
 location(movie, roomate_room).
+location(moon_rocks, moon).
 location(note,bedroom).
-location(note,bedroom).
+location(potassium_nitrate, chemistry_lab).
 location(pylon_a,secret_lab).
 location(pylon_b,secret_lab).
 location(pylon_c,secret_lab).
 location(recipe,book_a).
 location(sauce, kitchen).
 location(small_disk,pylon_a).
+location(space_suit, dirty_clothes).
+location(space_suit, clean_clothes).
 location(spaghetti, kitchen).
+location(sulphur, chemistry_lab).
 location(tower_of_pizza_boxes, kitchen).
 location(wash_machine,laundry_room).
 location(money, bedroom).
 location(vending_machine, tsc).
 
 container(book_a).
+container(clean_clothes).
 container(closet).
 container(coat).
+container(dirty_clothes).
+container(inventory_placeholder).
 container(kitchen_trashcan).
 container(pylon_a).
 container(pylon_b).
@@ -139,6 +153,9 @@ equipment(wash_machine).
 equipment(vending_machine).
 
 create_recipe(bunsen_burner,[flask,charged_bone,fly],potion).
+create_recipe(bunsen_burner,[burnt_spaghetti, potassium_nitrate, sulphur],rocket_fuel).
+create_recipe(kitchen_stove,[burnt_spaghetti, potassium_nitrate, sulphur],rocket_fuel).
+create_recipe(kitchen_stove, [cooked_spaghetti], burnt_spaghetti).
 create_recipe(kitchen_stove,[spaghetti, sauce], cooked_spaghetti).
 create_recipe(laser,[bone],charged_bone).
 create_recipe(wash_machine,[dirty_clothes,laundry_soap],clean_clothes).
@@ -146,6 +163,7 @@ create_recipe(vending_machine, [money], bag_of_chips).
 
 heavy(bunsen_burner).
 heavy(closet).
+heavy(inventory_placeholder).
 heavy(kitchen_trashcan).
 heavy(large_disk).
 heavy(laser).
@@ -167,6 +185,8 @@ name(book_a,"Corpus Hermiticum").
 name(book_b,"War and Peace").
 name(book_c,"Great Expectations").
 name(bunsen_burner,"bunsen burner").
+name(burnt_spaghetti, "Burnt spaghetti").
+name(button, "Big red scary button").
 name(charged_bone,"charged dragon bone").
 name(cheese, "Shredded Cheese").
 name(chemistry_lab,"Student Chemistry Lab").
@@ -189,10 +209,12 @@ name(gas_lab, "The Get Away Special Lab").
 name(geology_building,"Geology Building").
 name(goggles,"dark saftey goggles").
 name(green_beam,"The 'Grean Beam' enclosure").
+name(hangar,"Secret Rocket Hangar").
 name(hall,"Hallway").
 name(hub,"The Hub").
 name(ice_cream, "Aggie Creamery").
 name(key,"key").
+name(key_card, "Key card").
 name(kitchen,"Kitchen").
 name(kitchen_trashcan,"trashcan").
 name(large_disk,"large energy disk").
@@ -203,11 +225,14 @@ name(laundry_soap,"Laundry Soap").
 name(library,"Merill-Caizer Library").
 name(lost_homework,"Some student's lost geometry homework.").
 name(medium_disk,"medium energy disk").
+name(moon, "The Moon").
+name(moon_rocks, "Moon rocks").
 name(movie, "Men in Black").
 name(note,"note").
 name(observatory,"Observatory").
 name(old_main,"Old Main").
 name(plaza,"Engineering plaza").
+name(potassium_nitrate, "Potassium nitrate").
 name(potion,"potion").
 name(pylon_a,"red pylon").
 name(pylon_b,"blue pylon").
@@ -216,6 +241,8 @@ name(quad,"The Quad").
 name(recipe,"alchemical recipe").
 name(roof,"On the roof of the SER Building").
 name(roommate_room,"Your dormmate's room").
+name(rocket, "Rocket").
+name(rocket_fuel, "Rocket fuel").
 name(sauce, "Marinara Sauce").
 name(secret_lab,"Dr. Sundberg's Secret Lab").
 name(ser_1st_floor,"1st Floor of SER Building").
@@ -223,9 +250,11 @@ name(ser_2nd_floor,"2nd Floor of SER Building").
 name(ser_basement,"Basement of the SER Building").
 name(ser_conference,"The SER Conference Room").
 name(small_disk,"small energy disk").
+name(space_suit, "Space suit").
 name(spaghetti, "Spaghetti").
 name(special_collections,"Special Collections Room").
 name(stove, "A Kitchen Stove.").
+name(sulphur, "Sulphur").
 name(tower_of_pizza_boxes,"tower of pizza boxes").
 name(tsc,"Taggart Student Center").
 name(tsc_patio,"Patio of the TSC").
@@ -246,6 +275,8 @@ short_desc(book_a,"a copy of 'Corpus Hermiticum' a book on alchemy").
 short_desc(book_b,"a copy of 'War and Peace'").
 short_desc(book_c,"a copy of 'Great Expectations'").
 short_desc(bunsen_burner,"Piece of equipment commonly found in a laboratory.  It produces a single open gas flame.").
+short_desc(burnt_spaghetti, "The charred remains of your sad pasta meal. It smells awful, but could be useful.").
+short_desc(button, "It just says \"Moon.\" You probably shouldn't push it.").
 short_desc(charged_bone,"A charged piece of 'dragon' bone").
 short_desc(cheese, "A variety blend of shredded cheese").
 short_desc(chemistry_lab,"A lab with fume hoods and various chemical instuments").
@@ -268,8 +299,10 @@ short_desc(geology_building,"Large building with rocks and trees surrounding it"
 short_desc(goggles,"dark eye protection left over from the 'Great American Eclipse'").
 short_desc(green_beam,"Dr. Sundberg is standing at a large machine which is emitting a bright beam of green light.  You overhear a conversation indicating that he has set up a wormhole generator in his secret lab.  This will allow the alien invasion force to reach earth.").
 short_desc(hall,"Long pathway that has pictures hanging on wall").
+short_desc(hangar, "Looks like there's a rocket in there.").
 short_desc(hub,"Smells of coffee and pizza linger in the air. Students congregate around tables slaving away at endless homework.").
 short_desc(key,"an ornate key glowing with alien energies").
+short_desc(key_card,"An electronic key card.").
 short_desc(kitchen,"A small room containing the bare essentials, including a leaning tower of pizza boxes").
 short_desc(kitchen_trashcan,"This is the trashcan that resides in the kitchen.").
 short_desc(large_disk,"a large disk glowing with alien energy").
@@ -280,17 +313,21 @@ short_desc(laundry_soap,"Used for washing dirty clothes").
 short_desc(library,"Endless floors of books full of knowledge. A smiling librarian greets you as you enter, \"welcome to the library\" she says.").
 short_desc(lost_homework,"The abandoned pages call out to a grader, a grader who will never see them.").
 short_desc(medium_disk,"a medium sized disk glowing with alien energy").
+short_desc(moon, "The surface of the moon is rocky and desolate. It almost looks like if you walked too far you could fall off.").
+short_desc(moon_rocks, "Rocks, but of the moon variety.").
 short_desc(movie, "A movie about policing and monitoring aliens").
 short_desc(note,"a handwritten note from your roommate").
 short_desc(observatory,"A tower where you can stargaze.").
 short_desc(old_main,"The building is full of nerdy looking people.").
 short_desc(plaza,"A large open space between engineering buildings").
+short_desc(potassium_nitrate, "A jar of potassium nitrate.").
 short_desc(potion,"An oily black potion").
 short_desc(pylon_a,"a glowing red pyramid shaped structure").
 short_desc(pylon_b,"a glowing blue pyramid shaped structure").
 short_desc(pylon_c,"a glowing green pyramid shaped structure").
 short_desc(quad,"four large fields split up by sidewalks").
 short_desc(recipe,"a page from 'Corpus Hermiticum' containing a recipe for an invisibility potion").
+short_desc(rocket, "A giant space rocket.").
 short_desc(roof,"the roof of the dorm building.").
 short_desc(roommate_room,"its even messier than your room!").
 short_desc(sauce, "Rich and flaverfull Marinara Sauce").
@@ -299,9 +336,11 @@ short_desc(ser_1st_floor,"The bottom floor of the SER building. Nothing too exci
 short_desc(ser_2nd_floor,"The 2nd floor of the SER building. You can see flashing lights near the laser lab room.").
 short_desc(ser_basement,"The basement of the SER building.").
 short_desc(small_disk,"a small disk glowing with alien energy").
+short_desc(space_suit, "A worn-looking space suit.").
 short_desc(spaghetti, "The food of champions.").
 short_desc(special_collections,"the 'special' section of the library. Holds the more important and classical books.").
 short_desc(stove, "A kitchen stove for cooking food.").
+short_desc(sulphur, "A jar of sulphur.").
 short_desc(tower_of_pizza_boxes,"A stack of (hopefully) empty pizza boxes").
 short_desc(tsc,"community center for students, faculty, and alumni").
 short_desc(tsc_patio,"a place to sit an study or eat outside the TSC.").
@@ -321,6 +360,8 @@ long_desc(book_a,"An ancient work on alchemy containing many magical formulae.")
 long_desc(book_b,"A seemingly very old copy of War and Peace. A classic story about a Russian family during the invasion of Napoleon Bonaparte.").
 long_desc(book_c,"The classic story of an orphan boy named Pip from the marshes of Kent.").
 long_desc(bunsen_burner,"A Bunsen burner, named after Robert Bunsen, is a common piece of laboratory equipment that produces a single open gas flame, which is used for heating, sterilization, and combustion.").
+long_desc(burnt_spaghetti, "The charred remains of your sad pasta meal. It smells awful, but could be useful.").
+long_desc(button, "It just says 'Moon.' You probably shouldn't push it, but if you wanted to, you could.").
 long_desc(charged_bone, "A piece of dragon bone imbued with energy from the laser lab.").
 long_desc(cheese, "A combiniation of colby, montery jack, and cheddar cheese.").
 long_desc(chemistry_lab,"A laboratory for research in chemistry. You see a few goofy looking students with big green goggles mixing chemicals.").
@@ -343,7 +384,9 @@ long_desc(geology_building,"An old looking building that secretly hides the math
 long_desc(goggles,"Specialized Eclipse goggles that allow you to stare at the sun, or intense lasers without going blind.").
 long_desc(green_beam,"Dr. Sundberg is standing at a large machine which is emitting a bright beam of green light.  You overhear a conversation indicating that he has set up a wormhole generator in his secret lab.  This will allow the alien invasion force to reach earth.").
 long_desc(hall,"A narrow area or passage that connects rooms of an edifice.  The passage is laid with dark red carpeting with pictures hanging on its walls.").
+long_desc(hangar, "A large hangar with a giant space rocket inside.  Quite convieniently, the roof is already open.").
 long_desc(hub,"Choose from 9 different areas to eat at while enjoying a large seating area, which is perfect for hanging out and studying.").
+long_desc(key_card,"An unmarked electronic key card.").
 long_desc(key,"You feel the alien energy flowing from the key. Could it be? Have you been chosen as the next wielder of the Keyblade? You hold out your hand to the side, but sadly, nothing happens. It's just a normal alien key....").
 long_desc(kitchen,"There are an assortment of pots and pans. Someone is cooking your favorite food but it doesn't look like they are going to share.").
 long_desc(kitchen_trashcan,"A black, round, plastic container lined with a flexible bag. It's as generic as can be, lacking any logo or branding.").
@@ -355,6 +398,8 @@ long_desc(laundry_soap,"This soap looks like it has been sitting here for years 
 long_desc(library,"Endless floors of books full of knowledge. A smiling librarian greets you as you enter, 'Welcome to the library!'").
 long_desc(lost_homework,"This homework appears to be a geometric proof of the origin of the green beam that is sometimes seen in the sky. The proof shows that the beam originates on the roof of the SER building.").
 long_desc(medium_disk,"a medium sized disk in between the small and large disks on the red pylon. It looks like you can move it if there isn't anything on top of it...").
+long_desc(moon, "The surface of the moon is rocky and desolate. It almost looks like if you walked too far you could fall off.").
+long_desc(moon_rocks, "They look like regular old rocks.").
 long_desc(movie, "Stars Will Smith and Tommy Lee Jones as members of a secret task force dedicated to protecting earth from alien invaders and earth's inhabitants from any knowledge of aliens. Your dormmate must have been conducting research").
 long_desc(note,"In the handwriting of your roommate is hastily scrawled: 'You've got to help.  Dr. Sundberg is an alien and wants to take over the world.  I think he is on to me, you are the only hope left! Try to find out what he is doing with the green beam.'").
 long_desc(observatory,"Welcome to the Atmospheric Lidar Observatory. Here you will find information about the 'Green Beam' at Utah State University.").
@@ -365,6 +410,7 @@ long_desc(pylon_b,"A blue platform with a rod coming out of the middle that come
 long_desc(pylon_c,"A green platform with a rod coming out of the middle that comes up to your chest. It looks like you could put something on the rod...").
 long_desc(quad,"A large grass field quarted by concrete sidewalks and bordered by large trees. A favorite destination of students and pets alike. Multiple buildings face into the field, most of them quite historic looking.").
 long_desc(recipe,"A potion for invisibility: Bathe the bone of a dragon in pure light.  Distill charged bone with the wings of a fly.  Let cool before quaffing.").
+long_desc(rocket, "Someone should really keep this thing locked.  In front of you are a couple of seats and a control pannel with a giant red button that just says \"Moon.\" You should probably leave it alone.").
 long_desc(roof,"Not a place to be caught in a windstorm - the shingles are slippery and cracked.").
 long_desc(roommate_room,"Not quite as messey as yours, your roommate's room has a mini fridge stocked with Dr. Pepper. You see the sun shining through the locked window. ").
 long_desc(sauce, "Marinara Sauce").
@@ -373,6 +419,7 @@ long_desc(ser_1st_floor,"...even though I said nothing exciting happens here, yo
 long_desc(ser_2nd_floor,"The main part of the 2nd floor is the laser lab. The students in there experiment with what they can cut, burn, or imbue with magical energy with lasers.").
 long_desc(ser_basement, "Behind every door is another labrotory. The hallways are strewn with machines that appear to belong to a mad scientist although it's probably only Dr. JR Dennison").
 long_desc(small_disk,"A small disk pulsates in your hand, glowing an toxic green color as it breathes slowly, a slight warm gasey feel pukes from the disk.").
+long_desc(space_suit, "You have no idea what a space suit is doing in your ditry laundry. The suit looks old, hopefully there are no holes in it.").
 long_desc(spaghetti, "These long thin pasta noodles are a staple for a student on a budget. So much better than ramen, can be combined with various sauces for maximum effect.").
 long_desc(special_collections,"a small section of the library that is home to all sorts of extrordiary books. You can read up on Russian Literature, Classic Dickens, Alchemy, and even more!").
 long_desc(stove, "A stove splattered with various substances that you assume, or at least hope used was food.").
@@ -386,8 +433,14 @@ long_desc(wash_machine,"You open the door and to your surprise the washing machi
 long_desc(money, "A couple of dollars found on your dresser. You've heard it can be exchanged for goods and services.").
 long_desc(vending_machine, "The vending machine is stocked with a large variety of chips. The machine requires money to use, of course.").
 
+puzzle(hangar):-has(key_card),!.
+puzzle(hangar):-write("The door has been electronically locked."),nl,!,fail.
 puzzle(laser_lab):-has(goggles),!.
 puzzle(laser_lab):-write("It is too dangerous to go in without eye protection."),nl,!,fail.
+puzzle(moon):-has(rocket_fuel),!.
+puzzle(moon):-write("You can't get to the moon without fuel."),nl,!,fail.
+puzzle(rocket):-has(space_suit),!.
+puzzle(rocket):-write("You probably shouldn't go in there without a space suit."), nl, !, fail.
 puzzle(secret_lab):-has(key),!.
 puzzle(secret_lab):-write("The door is locked, so you can't get in"),nl,!,fail.
 puzzle(gas_lab):-has(combination_gas),!.
