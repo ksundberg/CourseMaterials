@@ -50,6 +50,7 @@ room(tunnels_west).
 door(avenue,quad).
 door(bedroom,bedroom_closet).
 door(bedroom,hall).
+door(conference_center,hackathon_judging).
 door(eslc_north,chemistry_lab).
 door(eslc_north,tsc_patio).
 door(eslc_south,eslc_north).
