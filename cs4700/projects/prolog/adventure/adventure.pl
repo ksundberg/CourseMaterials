@@ -156,6 +156,7 @@ create_recipe(vending_machine, [money], bag_of_chips).
 
 heavy(bunsen_burner).
 heavy(closet).
+heavy(dripping_stalagtite).
 heavy(kitchen_trashcan).
 heavy(large_disk).
 heavy(laser).
