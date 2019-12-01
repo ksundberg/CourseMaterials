@@ -18,8 +18,10 @@ room(elevator).
 room(engr).
 room(eslc_north).
 room(eslc_south).
+room(conference_center).
 room(geology_building).
 room(green_beam).
+room(hackathon_judging).
 room(hall).
 room(hub).
 room(kitchen).
@@ -69,6 +71,7 @@ door(quad,eslc_south).
 door(quad,geology_building).
 door(quad,old_main).
 door(quad,tsc_patio).
+door(quad,conference_center).
 door(roof,elevator).
 door(roof,green_beam).
 door(roof,observatory).
@@ -96,6 +99,7 @@ location(closet,eslc_south).
 location(coat,green_beam).
 location(combination_gas,ser_conference).
 location(dirty_clothes, bedroom_closet).
+location(energy_drink_mix,conference_center).
 location(figurine,bedroom).
 location(flask,chemistry_lab).
 location(fly,roommate_room).
@@ -112,6 +116,8 @@ location(medium_disk,pylon_a).
 location(movie, roomate_room).
 location(note,bedroom).
 location(note,bedroom).
+location(paper_cup,conference_center).
+location(participation_sticker,hackathon_judging).
 location(pylon_a,secret_lab).
 location(pylon_b,secret_lab).
 location(pylon_c,secret_lab).
@@ -133,12 +139,14 @@ container(pylon_b).
 container(pylon_c).
 
 equipment(bunsen_burner).
+equipment(dripping_stalagtite).
 equipment(kitchen_stove).
 equipment(laser).
 equipment(wash_machine).
 equipment(vending_machine).
 
 create_recipe(bunsen_burner,[flask,charged_bone,fly],potion).
+create_recipe(dripping_stalagtite,[energy_drink_mix,paper_cup],energy_drink).
 create_recipe(kitchen_stove,[spaghetti, sauce], cooked_spaghetti).
 create_recipe(laser,[bone],charged_bone).
 create_recipe(wash_machine,[dirty_clothes,laundry_soap],clean_clothes).
@@ -176,9 +184,13 @@ name(coat,"Dr. Sundberg's lab coat").
 name(combination_gas,"A scrap of paper with a sequence of numbers scribbled on it").
 name(common_room,"Dorm common room").
 name(computer_lab,"Student Computer Lab").
+name(conference_center,"Eccles Conference Center").
 name(cooked_spaghetti, "Lot's a Spaghetti").
 name(dirty_clothes, "Your Dirty Clothes").
+name(dripping_stalagtite,"Dripping stalagtite").
 name(elevator,"Elevator").
+name(energy_drink,"Magical energy drink").
+name(energy_drink_mix,"Energy drink mix packet").
 name(engr,"ENGR - The Main Engineering Building").
 name(eslc_north,"Eccels Science Learning Center").
 name(eslc_south,"Eccels Science Learning Center").
@@ -189,6 +201,7 @@ name(gas_lab, "The Get Away Special Lab").
 name(geology_building,"Geology Building").
 name(goggles,"dark saftey goggles").
 name(green_beam,"The 'Grean Beam' enclosure").
+name(hackathon_judging,"Hackathon Judging Room").
 name(hall,"Hallway").
 name(hub,"The Hub").
 name(ice_cream, "Aggie Creamery").
@@ -207,6 +220,8 @@ name(movie, "Men in Black").
 name(note,"note").
 name(observatory,"Observatory").
 name(old_main,"Old Main").
+name(paper_cup,"paper cup").
+name(participation_sticker,"HackUSU participation sticker").
 name(plaza,"Engineering plaza").
 name(potion,"potion").
 name(pylon_a,"red pylon").
@@ -254,9 +269,13 @@ short_desc(closet,"The equipment closet used to store extra materials for scienc
 short_desc(coat,"A large white lab coat with lots of pockets").
 short_desc(common_room,"A place where students gather for homework, food, and naps").
 short_desc(computer_lab,"Many computers lined up together and a desk at the front of the room").
+short_desc(conference_center,"A black, glassy building where this year's hackathon is being held").
 short_desc(cooked_spaghetti, "The essence of perfection.").
 short_desc(dirty_clothes, "Gritty clothes you should probably wash").
+short_desc(dripping_stalagtite,"A sharp, fang-like stalagtite dripping sparkly water").
 short_desc(elevator,"You are in a plain metal box.  There are buttons labeled with various locations.").
+short_desc(energy_drink,"A magical energy drink").
+short_desc(energy_drink_mix,"A magical energy drink mix packet with instructions on the back").
 short_desc(engr,"A large building with many classrooms, you're surprised to see students wandering the halls at this time.").
 short_desc(eslc_north,"You are on the north side of the ESLC.").
 short_desc(eslc_south,"You are on the south side of the ESLC.").
@@ -267,6 +286,7 @@ short_desc(gas_lab, "A place of space research and frendship").
 short_desc(geology_building,"Large building with rocks and trees surrounding it").
 short_desc(goggles,"dark eye protection left over from the 'Great American Eclipse'").
 short_desc(green_beam,"Dr. Sundberg is standing at a large machine which is emitting a bright beam of green light.  You overhear a conversation indicating that he has set up a wormhole generator in his secret lab.  This will allow the alien invasion force to reach earth.").
+short_desc(hackathon_judging,"Judges go from table to table to see the teams present their hacks.").
 short_desc(hall,"Long pathway that has pictures hanging on wall").
 short_desc(hub,"Smells of coffee and pizza linger in the air. Students congregate around tables slaving away at endless homework.").
 short_desc(key,"an ornate key glowing with alien energies").
@@ -284,6 +304,8 @@ short_desc(movie, "A movie about policing and monitoring aliens").
 short_desc(note,"a handwritten note from your roommate").
 short_desc(observatory,"A tower where you can stargaze.").
 short_desc(old_main,"The building is full of nerdy looking people.").
+short_desc(paper_cup,"A paper cup sporting a blue and purple wavey pattern out of the 90s").
+short_desc(participation_sticker,"An awesome, octogon-shaped sticker that says 'HackUSU - I demoed'").
 short_desc(plaza,"A large open space between engineering buildings").
 short_desc(potion,"An oily black potion").
 short_desc(pylon_a,"a glowing red pyramid shaped structure").
@@ -329,9 +351,13 @@ long_desc(closet,"Amid all the extra equipment and junk in the closet, you notic
 long_desc(coat,"A spiffy looking lab coat. The pockets are lined with some kind of residue from Dr. Sundberg's experiments. It smells like aliens... Gross!").
 long_desc(common_room,"The common room in the SER building. You see a few scattered couches, benches, and tables. It smells like Little Cesears Pizza here...").
 long_desc(computer_lab,"The room is filled with the glow and hum of many computers and the feverish typing of college students.").
+long_desc(conference_center,"Hundreds of geeky-looking students exitedly walk about with free food in hand. Rooms are filled with tables of students with their laptops or impressive desktop rigs. Some code with headphones while sipping Mountain Dew. Others laugh or intently plan with team-mates around their table. All are settled in for a long night of fun and hacking.").
 long_desc(cooked_spaghetti, "Al dente spaghetti dressed up with the best sauce imaginable. If there ever was a reason to save the world, this is it.").
 long_desc(dirty_clothes, "These are all you have of value in this world are these crusted gritty clothes, that need to be washed.").
+long_desc(dripping_stalagtite,"This formation of calcium salts appears to have been there for a long time. There is something entrancing about the sparkling water dripping at about 3 Hertz.").
 long_desc(elevator,"A large metal container used to transport people and large objects to different floors in a building.").
+long_desc(energy_drink,"An energy drink made from magical water").
+long_desc(energy_drink_mix,"Zoom Mango Rush flavor formulated with B vitamins and midichlorians. Instructions: just add pure water that has never been in human plumbing. GMO and gluten free.").
 long_desc(engr,"There is a display for Orbital ATK and chairs to collapse into after class. You hear your footsteps echoing down the halls as you walk.").
 long_desc(eslc_north,"A large open area where you can see chemistry labs , and the doors out to the TSC patio.").
 long_desc(eslc_south,"Smaller area lined with classrooms, labs, and closets. You notice a lot of students are wearing lab coats and goggles.").
@@ -342,6 +368,7 @@ long_desc(gas_lab,"Founded in 1976, the Get Away Special team is a student-drive
 long_desc(geology_building,"An old looking building that secretly hides the math department. The only reason people want to go in, is to see the large 'dinosaur' bone exhibit they have in there.").
 long_desc(goggles,"Specialized Eclipse goggles that allow you to stare at the sun, or intense lasers without going blind.").
 long_desc(green_beam,"Dr. Sundberg is standing at a large machine which is emitting a bright beam of green light.  You overhear a conversation indicating that he has set up a wormhole generator in his secret lab.  This will allow the alien invasion force to reach earth.").
+long_desc(hackathon_judging,"The students have made some pretty sweet projects. Thankfully, Dr. Sundberg is not a judge.").
 long_desc(hall,"A narrow area or passage that connects rooms of an edifice.  The passage is laid with dark red carpeting with pictures hanging on its walls.").
 long_desc(hub,"Choose from 9 different areas to eat at while enjoying a large seating area, which is perfect for hanging out and studying.").
 long_desc(key,"You feel the alien energy flowing from the key. Could it be? Have you been chosen as the next wielder of the Keyblade? You hold out your hand to the side, but sadly, nothing happens. It's just a normal alien key....").
@@ -359,6 +386,8 @@ long_desc(movie, "Stars Will Smith and Tommy Lee Jones as members of a secret ta
 long_desc(note,"In the handwriting of your roommate is hastily scrawled: 'You've got to help.  Dr. Sundberg is an alien and wants to take over the world.  I think he is on to me, you are the only hope left! Try to find out what he is doing with the green beam.'").
 long_desc(observatory,"Welcome to the Atmospheric Lidar Observatory. Here you will find information about the 'Green Beam' at Utah State University.").
 long_desc(old_main,"The building has four floors, and is the location of much pain during the Evil Dr. Sundber's class.  Few can navigate their way to the 4th floor where dreams become computer programs.").
+long_desc(paper_cup,"Paper cups are great for beverages.").
+long_desc(participation_sticker,"This sticker would look really cool on the back of your laptop. All the cool kids have their laptops plastered in these.").
 long_desc(plaza,"A well known spot for Pokemon Go players. It is home to 2 Gyms and 3 pokestops. Terf wars have been known to occur here, so avoid wearing solid blue, yellow or red clothes to avoid potential conflict.").
 long_desc(pylon_a,"A red platform with a rod coming out of the middle that comes up to your chest. There are three disks that have been placed here on the rod from smallest to biggest forming a pyramid.").
 long_desc(pylon_b,"A blue platform with a rod coming out of the middle that comes up to your chest. It looks like you could put something on the rod...").
@@ -394,6 +423,8 @@ puzzle(gas_lab):-has(combination_gas),!.
 puzzle(gas_lab):-write("The light's are off and the door is locked. There must not be any friends in the GAS Lab right now, you need the combination to unlock the door").
 puzzle(green_beam):-has(potion),write("You quaff some potion so that Dr. Sundberg can't see you."),nl.
 puzzle(green_beam):-write("Dr. Sundberg escorts you out saying 'Sorry, this is a restricted area'."),nl,!,fail.
+puzzle(hackathon_judging):-has(energy_drink),write("With the help of your magical energy drink, you were able to finish up your project."),nl.
+puzzle(hackathon_judging):-write("You were too tired to finish your project, so you can't participate in judging."),nl,!,fail.
 puzzle(_).
 
 %Below are helper functions to display the towers of hanoi game
@@ -463,12 +494,14 @@ noun(place,bedroom_closet,[closet |X]-X).
 noun(place,chemistry_lab,[chemistry,lab |X]-X).
 noun(place,common_room,[common,room |X]-X).
 noun(place,computer_lab,[computer,lab |X]-X).
+noun(place,conference_center,[conference,center |X]-X).
 noun(place,elevator,[elevator |X]-X).
 noun(place,engr,[engineering,building |X]-X).
 noun(place,eslc_north,[eslc |X]-X).
 noun(place,eslc_south,[eslc |X]-X).
 noun(place,geology_building,[geology,building |X]-X).
 noun(place,green_beam,[enclosure |X]-X).
+noun(place,hackathon_judging,[hackathon,judging |X]-X).
 noun(place,hall,[hall |X]-X).
 noun(place,hub,[hub |X]-X).
 noun(place,kitchen,[kitchen |X]-X).
@@ -504,6 +537,8 @@ noun(thing,closet,[closet |X]-X).
 noun(thing,coat,[coat |X]-X).
 noun(thing,combination_gas,[scrap,of,paper |X]-X).
 noun(thing,dirty_clothes, [clothes |X]-X).
+noun(thing,energy_drink, [energy,drink |X]-X).
+noun(thing,energy_drink_mix, [energy,drink,mix |X]-X).
 noun(thing,figurine,[figurine |X]-X).
 noun(thing,flask,[flask |X]-X).
 noun(thing,fly,[fly |X]-X).
@@ -518,6 +553,8 @@ noun(thing,lost_homework,[homework |X]-X).
 noun(thing,medium_disk,[medium,disk |X]-X).
 noun(thing,movie, [movie |X]-X).
 noun(thing,note,[note |X]-X).
+noun(thing,paper_cup, [paper,cup |X]-X).
+noun(thing,participation_sticker, [participation,sticker |X]-X).
 noun(thing,pylon_a,[red,pylon |X]-X).
 noun(thing,pylon_b,[blue,pylon |X]-X).
 noun(thing,pylon_c,[green,pylon |X]-X).
