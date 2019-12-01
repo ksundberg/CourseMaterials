@@ -160,6 +160,7 @@ heavy(vending_machine).
 name(agricultural_science,"Agricultural Sciences Building").
 name(animal_science,"Animal Science Building").
 name(avenue,"A tree lined avenue").
+name(bag_of_chips, "A Bag of Chips").
 name(bedroom,"Your bedroom").
 name(bedroom_closet, "Your Bedroom's Closet").
 name(bone,"large dragon bone").
