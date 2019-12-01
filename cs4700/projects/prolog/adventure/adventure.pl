@@ -99,6 +99,7 @@ location(closet,eslc_south).
 location(coat,green_beam).
 location(combination_gas,ser_conference).
 location(dirty_clothes, bedroom_closet).
+location(dripping_stalagtite,tunnels_east).
 location(energy_drink_mix,conference_center).
 location(figurine,bedroom).
 location(flask,chemistry_lab).
