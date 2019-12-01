@@ -100,7 +100,6 @@ location(figurine,bedroom).
 location(flask,chemistry_lab).
 location(fly,roommate_room).
 location(goggles,closet).
-location(goggles,closet).
 location(key,coat).
 location(kitchen_stove, kitchen).
 location(kitchen_trashcan,kitchen).
@@ -110,7 +109,6 @@ location(laundry_soap,laundry_room).
 location(lost_homework,engr).
 location(medium_disk,pylon_a).
 location(movie, roomate_room).
-location(note,bedroom).
 location(note,bedroom).
 location(pylon_a,secret_lab).
 location(pylon_b,secret_lab).
