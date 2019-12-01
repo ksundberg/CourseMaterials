@@ -401,6 +401,7 @@ display_top_disk(Pylon):-location(small_disk, Pylon),location(medium_disk,Pylon)
 display_top_disk(_):- write("   |   "),!.
 
 display_middle_disk(Pylon):- location(small_disk,Pylon), location(medium_disk,Pylon), not(location(large_disk,Pylon)),write("  [|]  "),!.
+display_middle_disk(Pylon):- location(large_disk,Pylon), location(small_disk,Pylon), not(location(medium_disk,Pylon)), write("  [|]  "),!.
 display_middle_disk(Pylon):- location(large_disk,Pylon), location(medium_disk,Pylon), write(" [-|-] "),!.
 display_middle_disk(_):- write("   |   "),!.
 
