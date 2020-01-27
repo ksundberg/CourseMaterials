@@ -4,6 +4,8 @@
 #include "parser.hpp"
 %}
 
+%option noyywrap
+
 %%
 
 "+" {return ADD;}
