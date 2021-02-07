@@ -1,5 +1,5 @@
 var
- a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p : integer;
+ a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s : integer;
  x,y,z:integer;
 
 begin
@@ -19,9 +19,12 @@ begin
  n:=14;
  o:=15;
  p:=16;
+ q:=17;
+ r:=18;
+ s:=19;
 
 x:=(((a+b)*(c+d))-((e+f)*(g+h)))/(((i+j)*(k+l))-((m+n)*(o+p)));
-y:=(a+(b+(c+(d+(e+(f+(g+(h+(i+(j+(k+(l+(m+(n+(o+(p))))))))))))))));
+y:=(a+(b+(c+(d+(e+(f+(g+(h+(i+(j+(k+(l+(m+(n+(o+(p+(q+(r+(s)))))))))))))))))));
 z:=(a)/(b)
   +(a*a)/(b*b)
   +(a*a*a)/(b*b*b)
